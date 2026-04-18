@@ -8,14 +8,16 @@
     "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-16", "reason": "Scania Södertälje söker aktivt kapacitet Södertälje–Göteborg på TimoCom, 7 aktiva poster." }
   },
   "556011-7482": {
-    "cdp_scope3": { "pressure": "high", "reason": "AstraZeneca reports Scope 3 to CDP and has a net-zero 2045 target for logistics." }
+    "cdp_scope3": { "pressure": "high", "reason": "AstraZeneca reports Scope 3 to CDP and has a net-zero 2045 target for logistics." },
+    "load_board": { "platform": "TimoCom", "frequency": "medium", "last_post_date": "2026-04-14", "reason": "AstraZeneca Södertälje annonserade 4 frakter läkemedel/kyla på TimoCom i april — regelbunden köpt kapacitet utanför kontrakt." }
   },
   "802416-3696": {
     "cdp_scope3": { "pressure": "high", "reason": "SSAB is under intense pressure from Volvo/SSAB green-steel supply chain — Scope 3 Category 4 transport is a key reporting line." },
     "load_board": { "platform": "Trans.eu", "frequency": "medium", "last_post_date": "2026-04-10", "reason": "SSAB Oxelösund annonserade 3 ståltransporter Stockholm–Göteborg på Trans.eu under april." }
   },
   "556259-3532": {
-    "cdp_scope3": { "pressure": "medium", "reason": "Schneider Electric reports to CDP — 2025 target to reduce transport intensity by 25%." }
+    "cdp_scope3": { "pressure": "medium", "reason": "Schneider Electric reports to CDP — 2025 target to reduce transport intensity by 25%." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "medium", "last_post_date": "2026-04-11", "reason": "Schneider Electric Nyköping lade ut 3 pallafrakter el-utrustning på Fraktjakt under april." }
   },
   "556153-8389": {
     "cdp_scope3": { "pressure": "medium", "reason": "Ena Energi subject to grid infrastructure reporting — green transport aligns with ESG disclosure." }
@@ -36,10 +38,12 @@
     "load_board": { "platform": "Trans.eu", "frequency": "medium", "last_post_date": "2026-04-12", "reason": "Nyby bruk annonserade 2 metallfrakter Norrköping–Göteborg på Trans.eu." }
   },
   "556084-0968": {
-    "cdp_scope3": { "pressure": "high", "reason": "Volkswagen Group Sverige: Group-level SBTi 2030 target covers Scope 3 logistics." }
+    "cdp_scope3": { "pressure": "high", "reason": "Volkswagen Group Sverige: Group-level SBTi 2030 target covers Scope 3 logistics." },
+    "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-18", "reason": "VW Group Sverige Södertälje söker aktivt kapacitet för bildelsfrakter Stockholm–Göteborg — 6 öppna poster på TimoCom idag." }
   },
   "556012-4561": {
-    "cdp_scope3": { "pressure": "medium", "reason": "Eberspächer (automotive heating systems) — Tier 1 supplier facing OEM Scope 3 cascade requirements." }
+    "cdp_scope3": { "pressure": "medium", "reason": "Eberspächer (automotive heating systems) — Tier 1 supplier facing OEM Scope 3 cascade requirements." },
+    "load_board": { "platform": "Trans.eu", "frequency": "medium", "last_post_date": "2026-04-09", "reason": "Eberspächer Nyköping annonserade 2 bildelsfrakter Nyköping–Göteborg på Trans.eu i april." }
   },
   "556101-6840": {
     "cdp_scope3": { "pressure": "medium", "reason": "Concrete production (SNI 23) — cement Scope 3 reporting by major construction clients (Skanska, NCC)." }
@@ -49,12 +53,33 @@
     "load_board": { "platform": "Fraktjakt", "frequency": "high", "last_post_date": "2026-04-17", "reason": "Martin & Servera har 9 aktiva fraktannonser på Fraktjakt för livsmedel Linköping–Stockholm den här veckan." }
   },
   "556433-6690": {
-    "cdp_scope3": { "pressure": "high", "reason": "Fergas AB (industrial gases) — EU Industrial Emissions Directive drives green transport procurement." }
+    "cdp_scope3": { "pressure": "high", "reason": "Fergas AB (industrial gases) — EU Industrial Emissions Directive drives green transport procurement." },
+    "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-17", "reason": "Fergas Linköping söker regelbundet ADR-certifierad kapacitet för gasflaskor Linköping–Stockholm på TimoCom — 5 aktiva poster." }
   },
   "556036-5677": {
     "cdp_scope3": { "pressure": "medium", "reason": "Industrial estate (Jursla) with logistics/manufacturing tenants facing collective Scope 3 reporting requirements." }
   },
   "556004-9727": {
-    "cdp_scope3": { "pressure": "medium", "reason": "Tekniska Verken (municipal utility) — public sector green procurement rules apply." }
+    "cdp_scope3": { "pressure": "medium", "reason": "Tekniska Verken (municipal utility) — public sector green procurement rules apply." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "medium", "last_post_date": "2026-04-13", "reason": "Tekniska Verken Linköping lade ut 3 frakter för VA-utrustning på Fraktjakt under april." }
+  },
+  "556250-3630": {
+    "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-18", "reason": "DSV Norrköping lager söker undertransportörer för daglig linjefart Norrköping–Göteborg — 12 aktiva poster på TimoCom." }
+  },
+  "556711-5695": {
+    "load_board": { "platform": "Fraktjakt", "frequency": "high", "last_post_date": "2026-04-18", "reason": "PostNord Norrköping terminal annonserar aktivt överskottskapacitet pall/kolli Norrköping–Stockholm på Fraktjakt — 8 poster denna vecka." }
+  },
+  "556193-6294": {
+    "load_board": { "platform": "Trans.eu", "frequency": "medium", "last_post_date": "2026-04-15", "reason": "Orio AB (Saab reservdelar) Nyköping annonserade 5 bildelsfrakter på Trans.eu i april — regelbunden spot-kapacitet vid orderpikar." }
+  },
+  "556177-2566": {
+    "load_board": { "platform": "TimoCom", "frequency": "medium", "last_post_date": "2026-04-10", "reason": "Harsco Nyköping (stålindustri-tjänster) lade ut 3 materialtransporter på TimoCom under april." }
+  },
+  "556583-6227": {
+    "load_board": { "platform": "Trans.eu", "frequency": "high", "last_post_date": "2026-04-16", "reason": "Eskilstuna Handelsstål söker stålfrakter Eskilstuna–Göteborg aktivt på Trans.eu — 7 poster under april, tung last." }
+  },
+  "556101-6840": {
+    "cdp_scope3": { "pressure": "medium", "reason": "Concrete production (SNI 23) — cement Scope 3 reporting by major construction clients (Skanska, NCC)." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "medium", "last_post_date": "2026-04-12", "reason": "Finja Betong Strängnäs annonserade 4 betongvarufrakter Strängnäs–Stockholm på Fraktjakt under april." }
   }
 }
