@@ -152,10 +152,6 @@ export default function CarrierSection({ originLabel, destinationLabel, activeRo
               onClick={() => setSelected(c)}
               className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition"
             >
-              <span
-                className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
-                style={{ background: isSent ? '#9CA3AF' : c.matchType === 'full' ? '#10b981' : '#f59e0b' }}
-              />
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-gray-900 truncate">{c.name}</div>
                 <div className="text-xs text-gray-500">{c.hq} · {c.country} · {c.fleetTrucks} trucks</div>
@@ -171,7 +167,7 @@ export default function CarrierSection({ originLabel, destinationLabel, activeRo
                       ? 'bg-green-50 text-green-700 border-green-100'
                       : 'bg-amber-50 text-amber-700 border-amber-100'
                   }`}>
-                    {c.matchType === 'full' ? 'Full' : 'Partial'}
+                    {c.matchType === 'full' ? 'Direct' : 'Partial'}
                   </span>
                 )}
               </div>
