@@ -15,11 +15,26 @@ export function draftPickupEmail(shipper, activeRoute, pickupTime) {
   const pallets = activeRoute.palletCapacity ?? 22;
   const weightKg = activeRoute.maxWeightKg ?? 24000;
   const tonLabel = `${(weightKg / 1000).toFixed(weightKg % 1000 === 0 ? 0 : 1)} ton`;
+
+  const signals = shipper.signals ?? [];
+  const tedSig = signals.find(s => s.type === 'ted');
+  const lbSig  = signals.find(s => s.type === 'load_board');
+  const cdpSig = signals.find(s => s.type === 'cdp');
+
+  let signalHook = '';
+  if (tedSig) {
+    const valueMsek = tedSig.valueSek ? ` (${(tedSig.valueSek / 1_000_000).toFixed(1)} MSEK)` : '';
+    signalHook = `\nWe noticed your logistics framework contract${valueMsek} is coming up for renewal in ${tedSig.expiry} — we'd love to be your green transport partner going forward.`;
+  } else if (lbSig) {
+    signalHook = `\nWe see you have an active freight posting on the corridor (${lbSig.detail}) — our truck passes ${shipper.location.split(',')[0].trim()} at ${pickupTime} and can take that load today.`;
+  } else if (cdpSig?.pressure === 'high') {
+    signalHook = `\nYour sector faces increasing Scope 3 transport scrutiny — our zero-emission 40-ton truck delivers verified carbon data with every shipment, ready for your sustainability report.`;
+  }
   return `Subject: Backhaul capacity ${originLabel} → ${destinationLabel} · ${today}
 
 Hi ${shipper.company} team,
 
-We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.
+We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.${signalHook}
 
   Capacity:  up to ${pallets} EUR pallet${pallets === 1 ? '' : 's'} / ${tonLabel}
   Pickup:    today, ${pickupTime}

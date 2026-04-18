@@ -22,7 +22,10 @@ import {
   Clock,
   ChevronLeft,
   Coffee,
-  X
+  X,
+  FileText,
+  Package,
+  TreePine,
 } from 'lucide-react';
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
@@ -845,6 +848,13 @@ function ShipperRow({ shipper, onClick, onSetSaidYes, onSetCargo, onRoute, route
           </div>
         </div>
         <div className="flex-shrink-0 flex items-center gap-1">
+          {!onRoute && (shipper.signals ?? []).map(sig => (
+            <span key={sig.type} title={sig.label} className="flex-shrink-0">
+              {sig.type === 'ted'        && <FileText size={10} className="text-amber-500" />}
+              {sig.type === 'load_board' && <Package  size={10} className="text-blue-500" />}
+              {sig.type === 'cdp'        && <TreePine size={10} className={sig.pressure === 'high' ? 'text-emerald-600' : 'text-emerald-400'} />}
+            </span>
+          ))}
           {onRoute ? (
             <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
               {routeStop}
@@ -973,6 +983,44 @@ function ShipperPanel({ shipper, body, setBody, onSend, alreadySent }) {
         <Tile icon={<Activity size={12} />} label="Off E4" value={`${shipper.distanceFromE4} km`} />
         <Tile icon={<Mail size={12} />} label="Status" value={alreadySent ? 'Contacted' : 'Open lead'} highlight={alreadySent} />
       </div>
+
+      {(shipper.signals ?? []).length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.22 }}
+          className="space-y-1.5"
+        >
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Live signals</div>
+          {shipper.signals.map(sig => (
+            <div
+              key={sig.type}
+              className={`flex items-start gap-2 rounded-lg border px-3 py-2 text-xs ${
+                sig.type === 'ted'
+                  ? 'bg-amber-50 border-amber-100'
+                  : sig.type === 'load_board'
+                  ? 'bg-blue-50 border-blue-100'
+                  : sig.pressure === 'high'
+                  ? 'bg-emerald-50 border-emerald-100'
+                  : 'bg-gray-50 border-gray-100'
+              }`}
+            >
+              <span className="mt-0.5 flex-shrink-0">
+                {sig.type === 'ted'        && <FileText size={12} className="text-amber-500" />}
+                {sig.type === 'load_board' && <Package  size={12} className="text-blue-500" />}
+                {sig.type === 'cdp'        && <TreePine size={12} className={sig.pressure === 'high' ? 'text-emerald-600' : 'text-emerald-400'} />}
+              </span>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-gray-800">
+                  {sig.label}
+                  {sig.expiry ? <span className="font-normal text-gray-500 ml-1">· {sig.expiry}</span> : null}
+                </div>
+                <div className="text-gray-500 leading-snug mt-0.5">{sig.detail}</div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      )}
 
       <div>
         <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Cargo</div>
