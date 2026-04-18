@@ -222,43 +222,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Truck card */}
-              <div className="px-4 py-3 border-b border-gray-100">
-                <button
-                  className="w-full text-left bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl p-3 transition"
-                  onClick={() => setSelected({ type: 'truck', data: { ...activeRoute, progressPct } })}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <Truck size={14} className="text-einride" />
-                      <span className="text-sm font-semibold text-gray-900">{activeRoute.truckId}</span>
-                    </div>
-                    <span className="text-[11px] bg-einride/10 text-einride px-2 py-0.5 rounded-full font-semibold">
-                      {activeRoute.status}
-                    </span>
-                  </div>
-                  <div className="flex gap-4 text-xs text-gray-500 mb-2.5">
-                    <span className="flex items-center gap-1"><Gauge size={11} />{activeRoute.soc}% SoC</span>
-                    <span className="flex items-center gap-1"><Clock size={11} />ETA {activeRoute.etaMin} min</span>
-                    <span className="flex items-center gap-1"><Mail size={11} />{contactedCount}/{effectiveShippers.length}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1">
-                    <span>Route progress</span>
-                    <span className="text-einride font-semibold">{progressPct}%</span>
-                  </div>
-                  <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-einride rounded-full"
-                      animate={{ width: `${progressPct}%` }}
-                      transition={{ duration: 0.2, ease: 'linear' }}
-                    />
-                  </div>
-                  <div className="flex justify-between mt-1.5 text-[9px] text-gray-400">
-                    <span>GBG</span><span>JKG</span><span>LKP</span><span>SDT</span><span>STO</span>
-                  </div>
-                </button>
-              </div>
-
               {/* Shippers list */}
               <div className="flex-1 overflow-y-auto">
                 <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
