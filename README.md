@@ -1,5 +1,8 @@
 # RouteRider
 
+Check it out at:
+https://route-rider-sable.vercel.app/?fbclid=IwY2xjawRQawxleHRuA2FlbQIxMABzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEeOu1qIN58YOnyRhq6GFuGCsBUB_KCQI4BOdGSgSHyfbDnMbznh42SxLeC6dQ_aem_DPDiDPG03iDDUxqEM8DrQA
+
 Applikation som föreslår företag längs en given rutt (Stockholm–Göteborg) som kan vara potentiella upphämtningspunkter för gods. Rutter rankas efter **nettovärde** — inte kortaste väg — med hänsyn till lastfyllnadsgrad, bränsle och tid.
 
 ## Fas 1 — Datainsamling (nu)
