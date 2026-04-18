@@ -43,6 +43,10 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
   const [feasibleIds, setFeasibleIds] = useState([]);       // score-sorted shipper IDs that fit the cap
   const [feasibleMeta, setFeasibleMeta] = useState({});     // id → { addedMin }
   const [plannedRoute, setPlannedRoute] = useState(null);
+  // Resolved direct line origin → destination, set the moment feasibility
+  // computes. Drives the map preview during the "showing_feasible_list" /
+  // outreach-sent phases so the user sees the trip before locking a route.
+  const [directRoute, setDirectRoute] = useState(null);
 
   const opId = useRef(0); // guards against stale async writes
 
@@ -67,6 +71,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     setFeasibleIds([]);
     setFeasibleMeta({});
     setPlannedRoute(null);
+    setDirectRoute(null);
   }, []);
 
   const submitOrigin = useCallback(text => {
@@ -145,6 +150,18 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       dest: result.dest,
       baselineDriving: result.baselineDriving
     };
+    // Use the real road-following geometry returned by OSRM/Mapbox so the
+    // preview line matches the actual driving path, not a great-circle.
+    setDirectRoute({
+      originLabel: result.origin.label,
+      destinationLabel: result.dest.label,
+      originCoords: result.origin.coords,
+      destinationCoords: result.dest.coords,
+      routeCoords: result.baselineRouteCoords ?? [result.origin.coords, result.dest.coords],
+      drivingMin: result.baselineDriving,
+      distanceKm: result.baselineDistanceKm,
+      routingSource: result.baselineSource
+    });
 
     const meta = {};
     for (const s of result.feasible) meta[s.id] = { addedMin: s.addedMin };
@@ -332,6 +349,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     maxWeightKg,
     feasibleShippers,
     plannedRoute,
+    directRoute,
     // Back-compat aliases so App.jsx / ChatPanel don't need a big rewrite:
     suggestions: plannedRoute ? [plannedRoute] : [],
     selectedRoute: plannedRoute,

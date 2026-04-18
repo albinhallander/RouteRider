@@ -672,6 +672,44 @@ export default function App() {
           {/* Nothing renders until the chat produces suggestions — map is a
               blank canvas that responds to the conversation. */}
 
+          {/* Feasibility preview: as soon as the chat shows
+              "Found N eligible shippers…", render the direct origin →
+              destination line plus a dot per eligible shipper so the user
+              can see the trip + opportunities before locking a route.
+              Suppressed once a route is locked (the locked-route block
+              below takes over). */}
+          {chat.directRoute && !routeLocked && (
+            <Fragment key="direct-preview">
+              {/* Real road-following geometry from OSRM/Mapbox via
+                  filterFeasibleShippers. Falls back to a 2-pt line only if
+                  the routing provider returned no geometry. */}
+              <Polyline
+                positions={chat.directRoute.routeCoords}
+                pathOptions={{ color: '#9ca3af', weight: 9, opacity: 0.2, lineJoin: 'round', lineCap: 'round' }}
+              />
+              <Polyline
+                positions={chat.directRoute.routeCoords}
+                pathOptions={{ color: '#6b7280', weight: 3, opacity: 0.9, dashArray: '6 6', lineJoin: 'round', lineCap: 'round' }}
+              />
+              <Marker position={chat.directRoute.originCoords} icon={originIcon} />
+              <Marker position={chat.directRoute.destinationCoords} icon={destIcon} />
+              {chat.feasibleShippers.map(s => (
+                <CircleMarker
+                  key={`feasible-${s.id}`}
+                  center={s.position}
+                  radius={6}
+                  pathOptions={{
+                    color: '#fff',
+                    weight: 2,
+                    fillColor: tierColor(s.tier),
+                    fillOpacity: s.contacted ? 0.55 : 0.95
+                  }}
+                  eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+                />
+              ))}
+            </Fragment>
+          )}
+
           {/* Planning: draw every suggestion in its own color. Once one is
               locked, hide the rest and turn the winner Einride blue with a
               halo — the map becomes a single clean route. */}
