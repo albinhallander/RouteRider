@@ -153,16 +153,37 @@ export default function App() {
   const showingSuggestions = hasSuggestions && !routeLocked;
   const SELECTED_COLOR = '#10b981';
 
-  const activeRouteCoords = selectedRoute?.routeCoords ?? ROUTE;
+  // Effective active route for email drafting — enriches with the user's
+  // origin/destination so outreach copy matches the actual trip.
+  const effectiveActiveRoute = useMemo(() => {
+    if (!selectedRoute) return activeRoute;
+    return {
+      ...activeRoute,
+      direction: selectedRoute.direction,
+      etaMin: selectedRoute.etaMin,
+      originLabel: selectedRoute.originLabel,
+      destinationLabel: selectedRoute.destinationLabel
+    };
+  }, [activeRoute, selectedRoute]);
 
   const recommendedStops = useMemo(
-    () => routeLocked ? getRecommendedStops(selectedRoute.routeCoords) : [],
+    () => (routeLocked ? getRecommendedStops(selectedRoute.routeCoords) : []),
     [routeLocked, selectedRoute]
   );
 
+  // Stations near the *user's* planned routes — only while suggestions are on
+  // screen. No fallback to the hardcoded E4 corridor.
+  const planningCoords = useMemo(
+    () => (hasSuggestions ? chat.suggestions.flatMap(r => r.routeCoords) : []),
+    [hasSuggestions, chat.suggestions]
+  );
+
   const nearbyStations = useMemo(
-    () => routeLocked ? [] : getStationsNearRoute(activeRouteCoords, { maxKm: 30, hgvOnly: !showAllStations }),
-    [routeLocked, activeRouteCoords, showAllStations]
+    () =>
+      showingSuggestions
+        ? getStationsNearRoute(planningCoords, { maxKm: 30, hgvOnly: !showAllStations })
+        : [],
+    [showingSuggestions, planningCoords, showAllStations]
   );
 
   const effectiveShippers = selectedRoute
@@ -170,8 +191,8 @@ export default function App() {
     : shippers;
 
   useEffect(() => {
-    if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, activeRoute));
-  }, [selected, activeRoute]);
+    if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
+  }, [selected, effectiveActiveRoute]);
 
   const handleSend = () => {
     if (!selected || selected.type !== 'shipper') return;
@@ -335,8 +356,8 @@ export default function App() {
 
       {/* ── Map ── */}
       <div className="flex-1 relative">
-        {/* Charging station toggle — only shown when no route is locked */}
-        {!routeLocked && (
+        {/* Charging station toggle — only while the user is weighing suggestions. */}
+        {showingSuggestions && (
           <button
             onClick={() => setShowAllStations(v => !v)}
             className="absolute top-3 right-3 z-[1000] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-md border transition"
@@ -364,13 +385,8 @@ export default function App() {
             maxZoom={20}
           />
 
-          {/* Idle: base E4 corridor before any plan is built */}
-          {!hasSuggestions && (
-            <>
-              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }} />
-              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
-            </>
-          )}
+          {/* Nothing renders until the chat produces suggestions — map is a
+              blank canvas that responds to the conversation. */}
 
           {/* Planning: draw every suggestion in its own color. When one is
               locked, fade the rest and turn the winner green with a halo. */}
@@ -416,14 +432,6 @@ export default function App() {
               position={[stop.lat, stop.lng]}
               icon={chargingStopIcon(stop.stopIndex)}
               eventHandlers={{ click: () => setSelected({ type: 'hub', data: stop }) }}
-            />
-          ))}
-
-          {/* Idle shippers: plain circles */}
-          {!hasSuggestions && shippers.map(s => (
-            <CircleMarker key={s.id} center={s.position} radius={8}
-              pathOptions={{ color: '#fff', weight: 2, fillColor: s.contacted ? '#9ca3af' : '#4264FB', fillOpacity: 1 }}
-              eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
 

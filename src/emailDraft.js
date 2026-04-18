@@ -9,11 +9,14 @@ export function suggestedPickupTime(idx) {
 
 export function draftPickupEmail(shipper, activeRoute, pickupTime) {
   const today = new Date().toLocaleDateString('sv-SE');
-  return `Subject: Backhaul capacity Gothenburg → Stockholm · ${today}
+  const originLabel = activeRoute.originLabel ?? 'Gothenburg';
+  const destinationLabel = activeRoute.destinationLabel ?? 'Stockholm';
+  const directionLine = (activeRoute.direction ?? `Heading to ${destinationLabel}`).toLowerCase();
+  return `Subject: Backhaul capacity ${originLabel} → ${destinationLabel} · ${today}
 
 Hi ${shipper.company} team,
 
-We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${activeRoute.direction.toLowerCase()} along the E4. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.
+We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.
 
   Capacity:  up to 22 EUR pallets / 24 ton
   Pickup:    today, ${pickupTime}

@@ -128,13 +128,20 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     const route = suggestions.find(r => r.id === selectedRouteId);
     if (!route) return;
 
+    const effectiveRoute = {
+      ...activeRoute,
+      direction: route.direction,
+      etaMin: route.etaMin,
+      originLabel: route.originLabel,
+      destinationLabel: route.destinationLabel
+    };
     const queue = route.shipperIds
       .map((sid, i) => {
         const shipper = shippers.find(s => s.id === sid);
         if (!shipper) return null;
         return {
           shipperId: sid,
-          draftBody: draftPickupEmail(shipper, activeRoute, suggestedPickupTime(i))
+          draftBody: draftPickupEmail(shipper, effectiveRoute, suggestedPickupTime(i))
         };
       })
       .filter(Boolean);
