@@ -25,7 +25,7 @@ import {
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
-import { getStationsNearRoute } from './chargingStations.js';
+import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js';
 
 // ─── Route (E4 corridor, south → north) ─────────────────────────────────────
 const ROUTE = [
@@ -125,6 +125,18 @@ const chargingIconEV = L.divIcon({
   iconAnchor: [10, 10]
 });
 
+function chargingStopIcon(n) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:30px;height:30px;background:#059669;border:2.5px solid #fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 7px rgba(0,0,0,0.28);">
+      <svg viewBox="0 0 24 24" width="11" height="11" fill="#fff"><path d="M13 2L3 14h7l-1 8 11-14h-7z"/></svg>
+      <span style="font-size:8px;font-weight:800;color:#fff;line-height:1;font-family:system-ui;margin-top:1px">${n}</span>
+    </div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+  });
+}
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const { shippers, activeRoute, outreachLogs, sendOutreach } = useLogistics();
@@ -142,9 +154,15 @@ export default function App() {
   const SELECTED_COLOR = '#10b981';
 
   const activeRouteCoords = selectedRoute?.routeCoords ?? ROUTE;
+
+  const recommendedStops = useMemo(
+    () => routeLocked ? getRecommendedStops(selectedRoute.routeCoords) : [],
+    [routeLocked, selectedRoute]
+  );
+
   const nearbyStations = useMemo(
-    () => getStationsNearRoute(activeRouteCoords, { maxKm: 30, hgvOnly: !showAllStations }),
-    [activeRouteCoords, showAllStations]
+    () => routeLocked ? [] : getStationsNearRoute(activeRouteCoords, { maxKm: 30, hgvOnly: !showAllStations }),
+    [routeLocked, activeRouteCoords, showAllStations]
   );
 
   const effectiveShippers = selectedRoute
@@ -252,6 +270,40 @@ export default function App() {
                 )}
               </div>
 
+              {/* Charging plan — only when route is locked */}
+              {routeLocked && (
+                <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
+                  <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <Zap size={10} className="text-emerald-500" />
+                    Laddplan · {recommendedStops.length} stopp
+                  </div>
+                  {recommendedStops.length === 0 ? (
+                    <div className="text-xs text-gray-400">Ingen laddning krävs på denna rutt.</div>
+                  ) : (
+                    <div className="space-y-1.5">
+                      {recommendedStops.map(stop => (
+                        <button
+                          key={`plan-${stop.stopIndex}`}
+                          onClick={() => setSelected({ type: 'hub', data: stop })}
+                          className="w-full flex items-center gap-2 text-left hover:bg-gray-50 rounded-md px-1.5 py-1 transition"
+                        >
+                          <span className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
+                            {stop.stopIndex}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-medium text-gray-800 truncate">{stop.name}</div>
+                            <div className="text-[10px] text-gray-400">
+                              {stop.max_power_kw ? `${stop.max_power_kw} kW` : 'Effekt okänd'}
+                              {stop.operator ? ` · ${stop.operator}` : ''}
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Shippers list */}
               <div className="flex-1 overflow-y-auto">
                 <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
@@ -283,19 +335,21 @@ export default function App() {
 
       {/* ── Map ── */}
       <div className="flex-1 relative">
-        {/* Charging station toggle */}
-        <button
-          onClick={() => setShowAllStations(v => !v)}
-          className="absolute top-3 right-3 z-[1000] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-md border transition"
-          style={{
-            background: showAllStations ? '#10b981' : '#fff',
-            color: showAllStations ? '#fff' : '#374151',
-            borderColor: showAllStations ? '#10b981' : '#d1d5db',
-          }}
-        >
-          <Zap size={11} />
-          {showAllStations ? 'Alla EV' : 'HGV'}
-        </button>
+        {/* Charging station toggle — only shown when no route is locked */}
+        {!routeLocked && (
+          <button
+            onClick={() => setShowAllStations(v => !v)}
+            className="absolute top-3 right-3 z-[1000] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-md border transition"
+            style={{
+              background: showAllStations ? '#10b981' : '#fff',
+              color: showAllStations ? '#fff' : '#374151',
+              borderColor: showAllStations ? '#10b981' : '#d1d5db',
+            }}
+          >
+            <Zap size={11} />
+            {showAllStations ? 'Alla EV' : 'HGV'}
+          </button>
+        )}
         <MapContainer
           center={[58.5, 15.5]}
           zoom={6}
@@ -345,13 +399,23 @@ export default function App() {
             );
           })}
 
-          {/* Charging stations — dynamic, filtered by active route */}
+          {/* Charging stations — shown when no route is locked */}
           {nearbyStations.map((station, i) => (
             <Marker
               key={station.osm_id ?? station.ocm_id ?? station.nobil_id ?? i}
               position={[station.lat, station.lng]}
               icon={station.hgv_compatible ? chargingIconHGV : chargingIconEV}
               eventHandlers={{ click: () => setSelected({ type: 'hub', data: station }) }}
+            />
+          ))}
+
+          {/* Recommended charging stops — shown when a route is locked */}
+          {recommendedStops.map(stop => (
+            <Marker
+              key={`rec-${stop.stopIndex}`}
+              position={[stop.lat, stop.lng]}
+              icon={chargingStopIcon(stop.stopIndex)}
+              eventHandlers={{ click: () => setSelected({ type: 'hub', data: stop }) }}
             />
           ))}
 
