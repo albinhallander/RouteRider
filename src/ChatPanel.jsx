@@ -61,7 +61,7 @@ export default function ChatPanel({
           <div className="text-[10px] uppercase tracking-[0.25em] text-einride font-semibold leading-none">Route planner</div>
           <div className="text-xs font-semibold text-gray-800 mt-0.5">Backhaul Assistant</div>
         </div>
-        {selectedRouteId && suggestions.length > 1 && !TERMINAL_PHASES.includes(phase) && (
+        {selectedRouteId && suggestions.length > 1 && (
           <button
             onClick={onChangeRoute}
             title="Byt rutt"
