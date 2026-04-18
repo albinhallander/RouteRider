@@ -170,6 +170,17 @@ export function getStationsNearRoute(routeCoords, { maxKm = 30, hgvOnly = true, 
   });
 }
 
+function densifySegment([lat1, lon1], [lat2, lon2], stepKm = 10) {
+  const total = haversineKm([lat1, lon1], [lat2, lon2]);
+  const steps = Math.max(1, Math.ceil(total / stepKm));
+  const pts = [];
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    pts.push([lat1 + (lat2 - lat1) * t, lon1 + (lon2 - lon1) * t]);
+  }
+  return pts;
+}
+
 // Returns an ordered list of recommended HGV charging stops for a route.
 // Walks the densified polyline and every rangeKm picks the nearest HGV station.
 export function getRecommendedStops(routeCoords, { rangeKm = 200, searchRadiusKm = 40 } = {}) {

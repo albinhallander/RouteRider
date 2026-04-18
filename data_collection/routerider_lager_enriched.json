@@ -273,9 +273,11 @@
       "name": "Ena Energi",
       "power": "plant"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556153-8389",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Torbjörn Gunnar Claesson",
+    "allabolag_url": "https://www.allabolag.se/foretag/ena-energi-ab/enk%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JZ72HHI63IG2",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -331,9 +333,11 @@
       "landuse": "industrial",
       "name": "Västerås hamn"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556088-4727",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Mats Andreas Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/m%C3%A4larhamnar-ab/v%C3%A4ster%C3%A5s/lastning-och-lossning/2JYT247I63III",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -353,7 +357,9 @@
     },
     "org_nr": "",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "Innehavare Johnny Per Erik Borg",
+    "allabolag_url": "https://www.allabolag.se/foretag/acb-motor/fj%C3%A4rdhundra/bilar/7VJQ7GVXII5YCZW",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -374,9 +380,11 @@
       "operator": "Mälarenergi",
       "power": "plant"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556507-4308",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Sebastian Cabander",
+    "allabolag_url": "https://www.allabolag.se/foretag/karlskoga-kraftv%C3%A4rmeverk-ab/karlskoga/fj%C3%A4rrv%C3%A4rme/2K1AUTGI63IG2",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -414,9 +422,11 @@
       "building": "industrial",
       "operator": "Bombardier Transportation"
     },
-    "org_nr": "",
+    "org_nr": "878002-0502",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/verkstadsklubben-bombardier-transportation-v%C3%A4ste/v%C3%A4ster%C3%A5s/f%C3%B6reningar/417EB6EI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -480,9 +490,11 @@
       "name": "FedEx",
       "phone": "+46 20 025 22 52"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556217-7807",
+    "omsattning_kr": 2025000,
+    "bransch": "Verkställande direktör Torsten Gadfelt",
+    "allabolag_url": "https://www.allabolag.se/foretag/fedex-express-sverige-ab/upplands-v%C3%A4sby/transportf%C3%B6rmedling/2JZKRV3I5YI2J",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -548,9 +560,11 @@
       "wikidata": "Q10706497",
       "wikipedia": "sv:Turbinhuset"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559269-4060",
+    "omsattning_kr": 9282000,
+    "bransch": "Ledamot Per Inge Tomas Montler",
+    "allabolag_url": "https://www.allabolag.se/foretag/turbinhuset-i-landskrona-ab/landskrona/fastighetsbolag-lokaler/2KHQUCSI5YDUJ",
+    "godspotential": 9.3
   },
   {
     "source": "openstreetmap",
@@ -588,9 +602,11 @@
       "landuse": "industrial",
       "name": "NCC"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556613-4929",
+    "omsattning_kr": 2024000,
+    "bransch": "Ordförande Tomas Carl Georg Carlsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/ncc-sverige-ab/solna/byggm%C3%A4stare/2K1XL75I5YDDT",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -608,9 +624,11 @@
       "landuse": "industrial",
       "name": "Malmasågen"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559016-1062",
+    "omsattning_kr": 8709136000,
+    "bransch": "Ledamot Håkan Sven Gustav Östergren",
+    "allabolag_url": "https://www.allabolag.se/foretag/malmv%C3%A5gen-fastigheter-ab/vattholma/fastighetsbolag-lokaler/2KG8JVQI5YDUJ",
+    "godspotential": 8709.1
   },
   {
     "source": "openstreetmap",
@@ -630,9 +648,11 @@
       "landuse": "industrial",
       "name": "Northvolt Labs AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559144-2891",
+    "omsattning_kr": 92329000,
+    "bransch": "Ledamot Sami Jarkko Juhani Haikala",
+    "allabolag_url": "https://www.allabolag.se/foretag/northvolt-labs-ab/v%C3%A4ster%C3%A5s/batterier/2KH00Y3I5YCMT",
+    "godspotential": 92.3
   },
   {
     "source": "openstreetmap",
@@ -847,9 +867,11 @@
       "building": "industrial",
       "name": "Målerispektrum"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556304-0079",
+    "omsattning_kr": 837000,
+    "bransch": "Verkställande direktör Ulf Johan Geibert",
+    "allabolag_url": "https://www.allabolag.se/foretag/v%C3%A4ster%C3%A5s-m%C3%A5lerispectrum-aktiebolag/v%C3%A4ster%C3%A5s/byggm%C3%A4stare/2K03973I5YDDT",
+    "godspotential": 0.8
   },
   {
     "source": "openstreetmap",
@@ -868,9 +890,11 @@
       "name": "Nyby bruk",
       "source": "Bing"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556602-0698",
+    "omsattning_kr": 2025000,
+    "bransch": "Ordförande Mats Oscar Johan Broling",
+    "allabolag_url": "https://www.allabolag.se/foretag/nyby-bruk-ab/gnosj%C3%B6/metaller-legeringar/2K1V522I5YGAN",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -1536,9 +1560,11 @@
       "building": "industrial",
       "name": "EKTAB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556631-8902",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Per Ola Eifrém",
+    "allabolag_url": "https://www.allabolag.se/foretag/ekab-entreprenad-i-gr%C3%B6dinge-ab/s%C3%B6dert%C3%A4lje/entrepren%C3%B6rer/2K21J5II63IFX",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -1637,9 +1663,11 @@
       "landuse": "industrial",
       "name": "DHL"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556103-0437",
+    "omsattning_kr": 5554000,
+    "bransch": "Verkställande direktör Robert Kenth Zander",
+    "allabolag_url": "https://www.allabolag.se/foretag/dhl-freight-sweden-ab/solna/transportf%C3%B6rmedling/2JYW6JPI5YI2J",
+    "godspotential": 5.6
   },
   {
     "source": "openstreetmap",
@@ -1657,9 +1685,11 @@
       "building": "industrial",
       "name": "Eskilstuna Handelsstål AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556583-6227",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Esa Tapio Ahonen",
+    "allabolag_url": "https://www.allabolag.se/foretag/eskilstuna-handelsst%C3%A5l-ab/eskilstuna/metaller-legeringar/2K1R6PVI5YGAN",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -1821,9 +1851,11 @@
       "wikidata": "Q48805184",
       "wikipedia": "en:EPC Groupe"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556588-7857",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Nils Edvin Patrik Norén",
+    "allabolag_url": "https://www.allabolag.se/foretag/epc-sverige-ab/eskilstuna/kemikalier-industrikemikalier-tillverkning/2K1SAK1I63IHZ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -1862,9 +1894,11 @@
       "name": "Bilskrot",
       "note": "Ja, den heter faktiskt Bilskrot"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556123-5325",
+    "omsattning_kr": 826000,
+    "bransch": "Extern verkställande direktör Oscar Eric Bjurhovd",
+    "allabolag_url": "https://www.allabolag.se/foretag/aktiebolaget-harrys-bilskrot/malm%C3%B6/bilar/2JZ0KN1I5YCZW",
+    "godspotential": 0.8
   },
   {
     "source": "openstreetmap",
@@ -1883,9 +1917,11 @@
       "landuse": "industrial",
       "name": "Strängnäs Bilskrot"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556911-5750",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Ali Rahimi",
+    "allabolag_url": "https://www.allabolag.se/foretag/str%C3%A4ngn%C3%A4s-bil-skrot-aktiebolag/str%C3%A4ngn%C3%A4s/avfallshantering/2K3PH7QI63IOK",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -1909,9 +1945,11 @@
       "landuse": "industrial",
       "name": "Finja Betong AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556101-6840",
+    "omsattning_kr": 139000,
+    "bransch": "Extern verkställande direktör Kjell Daniel Jonsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/finja-betong-ab/finja/betong-betongvaror-produktion/2JYVW20I63IMB",
+    "godspotential": 0.1
   },
   {
     "source": "openstreetmap",
@@ -2031,9 +2069,11 @@
       "landuse": "industrial",
       "name": "Malmby Bilskrot"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556259-7566",
+    "omsattning_kr": 1450114764000,
+    "bransch": "Ledamot Ali Tahsin Fattah",
+    "allabolag_url": "https://www.allabolag.se/foretag/malmby-bilskrot-aktiebolag/str%C3%A4ngn%C3%A4s/transportf%C3%B6rmedling/2JZTRR2I5YI2J",
+    "godspotential": 1450114.8
   },
   {
     "source": "openstreetmap",
@@ -2110,9 +2150,11 @@
       "landuse": "industrial",
       "name": "Åsporten"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556569-5367",
+    "omsattning_kr": 2025000,
+    "bransch": "Verkställande direktör Mats Erik Sven Gillstam",
+    "allabolag_url": "https://www.allabolag.se/foretag/%C3%A5sporten-f%C3%B6rvaltning-ab/katrineholm/fastighetsbolag-lokaler/2K1O613I5YDUJ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -2130,9 +2172,11 @@
       "landuse": "industrial",
       "name": "Stibo Complete"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559049-4968",
+    "omsattning_kr": 6442000,
+    "bransch": "Extern verkställande direktör Palle Jacobsen",
+    "allabolag_url": "https://www.allabolag.se/foretag/stibo-complete-ab/katrineholm/tryckerier/2KGFPIWI5YI3L",
+    "godspotential": 6.4
   },
   {
     "source": "openstreetmap",
@@ -2178,9 +2222,11 @@
       "roof:levels": "2",
       "roof:shape": "gabled"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556566-3639",
+    "omsattning_kr": 4731035000,
+    "bransch": "Verkställande direktör Tom Charles Lynbech",
+    "allabolag_url": "https://www.allabolag.se/foretag/energihuset-i-vimmerby-ab/vimmerby/j%C3%A4rnvaror/2K1NHJRI5YEU5",
+    "godspotential": 4731.0
   },
   {
     "source": "openstreetmap",
@@ -2217,9 +2263,11 @@
       "landuse": "industrial",
       "name": "Volvo Construction Equipment"
     },
-    "org_nr": "",
+    "org_nr": "802526-2737",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/unionen-volvo-construction-equipment-hallsberg/hallsberg/f%C3%B6reningar/3OQ18CXI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -2349,9 +2397,11 @@
       "office": "logistics",
       "source": "Bing"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556103-0437",
+    "omsattning_kr": 5554000,
+    "bransch": "Verkställande direktör Robert Kenth Zander",
+    "allabolag_url": "https://www.allabolag.se/foretag/dhl-freight-sweden-ab/solna/transportf%C3%B6rmedling/2JYW6JPI5YI2J",
+    "godspotential": 5.6
   },
   {
     "source": "openstreetmap",
@@ -2413,9 +2463,11 @@
       "building": "industrial",
       "name": "Servicehallarna"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556792-2538",
+    "omsattning_kr": 957000,
+    "bransch": "Ledamot Lars-Åke Benny Birgersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/bennys-servicehall-ab/kungsbacka/bilar/2K2ZWIYI5YCZW",
+    "godspotential": 1.0
   },
   {
     "source": "openstreetmap",
@@ -2456,9 +2508,11 @@
       "man_made": "works",
       "name": "Mondi"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556114-9138",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Kurt Magnus Kangas",
+    "allabolag_url": "https://www.allabolag.se/foretag/mondi-dyn%C3%A4s-ab/v%C3%A4ja/papper-massa/2JYYQ4YI5YG16",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -2534,9 +2588,11 @@
       "landuse": "industrial",
       "name": "Örnen"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556200-5032",
+    "omsattning_kr": 2025000,
+    "bransch": "Ledamot Karl Petter Linus Quist",
+    "allabolag_url": "https://www.allabolag.se/foretag/%C3%B6rnen-fastigheter-ab/tran%C3%A5s/fastighetsbolag-lokaler/2JZH2JSI5YDUJ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -2737,9 +2793,11 @@
       "building": "industrial",
       "name": "EMBA Machinery AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556046-0106",
+    "omsattning_kr": 13033000,
+    "bransch": "Ordförande Anders Erland Berg",
+    "allabolag_url": "https://www.allabolag.se/foretag/emba-machinery-aktiebolag/%C3%B6rebro/maskinf%C3%B6rn%C3%B6denheter/2JYJYH6I5YG68",
+    "godspotential": 13.0
   },
   {
     "source": "openstreetmap",
@@ -2814,9 +2872,11 @@
       "landuse": "industrial",
       "name": "Atleverket"
     },
-    "org_nr": "",
+    "org_nr": "802488-5900",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "",
+    "allabolag_url": "https://www.allabolag.se/foretag/katteverket/stockholm/-/3OPT5L8I0000",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -2973,9 +3033,11 @@
       "landuse": "industrial",
       "name": "Epiroc"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556077-9018",
+    "omsattning_kr": 191000,
+    "bransch": "Verkställande direktör Jonas Peter Albertson",
+    "allabolag_url": "https://www.allabolag.se/foretag/epiroc-rock-drills-aktiebolag/%C3%B6rebro/maskinf%C3%B6rn%C3%B6denheter/2JYQSJUI5YG68",
+    "godspotential": 0.2
   },
   {
     "source": "openstreetmap",
@@ -2993,9 +3055,11 @@
       "landuse": "industrial",
       "name": "Länstrafiken"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556071-4478",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Harriet Anita Söder",
+    "allabolag_url": "https://www.allabolag.se/foretag/l%C3%A4nstrafiken-i-v%C3%A4sterbotten-aktiebolag/lycksele/passagerartransporter/2JYPER2I63IJZ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3013,9 +3077,11 @@
       "landuse": "industrial",
       "name": "Johnsson metall"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556062-0196",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Anders Torbjörn Nord",
+    "allabolag_url": "https://www.allabolag.se/foretag/johnson-metall-aktiebolag/%C3%B6rebro/maskinf%C3%B6rn%C3%B6denheter/2JYNE04I5YG68",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3072,9 +3138,11 @@
       "name": "Närke slakteri",
       "shop": "butcher"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556514-4861",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Lars Mats Larsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/n%C3%A4rkes-slakteri-i-g%C3%A4llersta-aktiebolag/%C3%B6rebro/livsmedel/2K1CD99I5YFWD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3101,9 +3169,11 @@
       "name": "DHL",
       "office": "logistics"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556103-0437",
+    "omsattning_kr": 5554000,
+    "bransch": "Verkställande direktör Robert Kenth Zander",
+    "allabolag_url": "https://www.allabolag.se/foretag/dhl-freight-sweden-ab/solna/transportf%C3%B6rmedling/2JYW6JPI5YI2J",
+    "godspotential": 5.6
   },
   {
     "source": "openstreetmap",
@@ -3160,9 +3230,11 @@
       "name": "Axima DTS AB",
       "website": "https://www.axima.se/"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556060-6708",
+    "omsattning_kr": 2025000,
+    "bransch": "Verkställande direktör Åke Carl Lindell",
+    "allabolag_url": "https://www.allabolag.se/foretag/axima-dts-ab/kumla/lantbruksmaskiner-f%C3%B6rn%C3%B6denheter-grossist/2JYN3LGI63IIH",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3205,9 +3277,11 @@
       "height": "10",
       "name": "Elektroskandia"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559029-5118",
+    "omsattning_kr": 675282570000,
+    "bransch": "Ledamot Jan Anders Christer Nordlöw",
+    "allabolag_url": "https://www.allabolag.se/foretag/elektroskandia-fastighets-ab/sollentuna/fastighetsbolag-lokaler/2KGBFBII5YDUJ",
+    "godspotential": 675282.6
   },
   {
     "source": "openstreetmap",
@@ -3374,9 +3448,11 @@
       "building": "warehouse",
       "name": "Dollar Store"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556537-1662",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Timo-Jukka Kalevi Heimo",
+    "allabolag_url": "https://www.allabolag.se/foretag/dollarstore-ab/kista/m%C3%B6bler-inredning-k%C3%B6k-och-belysningsutrustning/2K1H89AI63IJH",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3440,9 +3516,11 @@
       "landuse": "industrial",
       "name": "Almnäs"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556307-3468",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Hans Uno Mickael Thomas Berglund",
+    "allabolag_url": "https://www.allabolag.se/foretag/almn%C3%A4s-bruk-ab/hjo/jordbruk/2K03YYKI63IHJ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3463,9 +3541,11 @@
       "name": "AVL",
       "roof:colour": "gray"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556765-3786",
+    "omsattning_kr": 63221000,
+    "bransch": "Extern verkställande direktör Dan Mikael Lilja",
+    "allabolag_url": "https://www.allabolag.se/foretag/nordv%C3%A4stra-sk%C3%A5nes-vatten-och-avlopp-ab/helsingborg/vvs-arbeten-material-och-produkter/2K2U55MI5YILC",
+    "godspotential": 63.2
   },
   {
     "source": "openstreetmap",
@@ -3505,9 +3585,11 @@
       "landuse": "industrial",
       "name": "Scania"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556084-0976",
+    "omsattning_kr": 111958339000,
+    "bransch": "Verkställande direktör Rolf Christian Levin",
+    "allabolag_url": "https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW",
+    "godspotential": 111958.3
   },
   {
     "source": "openstreetmap",
@@ -3525,9 +3607,11 @@
       "landuse": "industrial",
       "name": "Scania"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556084-0976",
+    "omsattning_kr": 111958339000,
+    "bransch": "Verkställande direktör Rolf Christian Levin",
+    "allabolag_url": "https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW",
+    "godspotential": 111958.3
   },
   {
     "source": "openstreetmap",
@@ -3545,9 +3629,11 @@
       "landuse": "industrial",
       "name": "Hovsjö industriområde"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "717910-4596",
+    "omsattning_kr": 1087000,
+    "bransch": "77390 Uthyrning och leasing av diverse övrig utrustning samt diverse övriga maskiner och materiella tillgångar",
+    "allabolag_url": "https://www.allabolag.se/foretag/domsj%C3%B6-industriomr%C3%A5de-samf%C3%A4llighetsf%C3%B6rening/%C3%B6rnsk%C3%B6ldsvik/uthyrning/3AQ94K4I5YIEZ",
+    "godspotential": 1.1
   },
   {
     "source": "openstreetmap",
@@ -3764,9 +3850,11 @@
       "roof:colour": "gray",
       "roof:shape": "flat"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556975-5589",
+    "omsattning_kr": 2024000,
+    "bransch": "Ordförande Ulf Mathias Aronsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/wallenstam-fastigheter-106-ab/g%C3%B6teborg/fastighetsbolag-lokaler/2K436X1I5YDUJ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -3784,9 +3872,11 @@
       "landuse": "industrial",
       "name": "AstraZeneca"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556011-7482",
+    "omsattning_kr": 4916000,
+    "bransch": "Verkställande direktör Per David Alfredsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF",
+    "godspotential": 4.9
   },
   {
     "source": "openstreetmap",
@@ -4945,9 +5035,11 @@
       "building": "industrial",
       "name": "102"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556640-0262",
+    "omsattning_kr": 8243000,
+    "bransch": "Verkställande direktör Bo Christer Lundstedt",
+    "allabolag_url": "https://www.allabolag.se/foretag/hedern-fastigheter-102-ab/sundsvall/fastighetsbolag-lokaler/2K239XII5YDUJ",
+    "godspotential": 8.2
   },
   {
     "source": "openstreetmap",
@@ -4994,9 +5086,11 @@
       "building": "industrial",
       "name": "Tekniska Kontoret"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556501-1938",
+    "omsattning_kr": 2025000,
+    "bransch": "Ledamot Jenz Robert Åberg",
+    "allabolag_url": "https://www.allabolag.se/foretag/teknik-kontor-servrar-i-%C3%B6rebro-ab/%C3%B6rebro/datorer-kringutrustningar/2K19IOYI5YCUH",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -5035,9 +5129,11 @@
       "landuse": "industrial",
       "name": "Skarlunda"
     },
-    "org_nr": "",
+    "org_nr": "802447-2204",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "68209 Övrig förvaltning av egna eller arrenderade fastigheter",
+    "allabolag_url": "https://www.allabolag.se/foretag/skarlunda-v%C3%A4gf%C3%B6rening/s%C3%B6dert%C3%A4lje/fastighetsbolag-lokaler/3OPKADOI5YDUJ",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -5074,9 +5170,11 @@
       "landuse": "industrial",
       "name": "Mörby"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556528-7629",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Per Niclas Stephani",
+    "allabolag_url": "https://www.allabolag.se/foretag/m%C3%B6rbyl%C3%A5nga-bostads-aktiebolag/m%C3%B6rbyl%C3%A5nga/fastighetsbolag-lokaler/2K1FFF1I5YDUJ",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -5247,9 +5345,11 @@
       "building": "industrial",
       "name": "Volkswagen Group Sverige AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556084-0968",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Claes Peter Jerveland",
+    "allabolag_url": "https://www.allabolag.se/foretag/volkswagen-group-sverige/s%C3%B6dert%C3%A4lje/bilar/2JYS4COI5YCZW",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -5326,9 +5426,11 @@
       "landuse": "industrial",
       "name": "AstraZeneca"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556011-7482",
+    "omsattning_kr": 4916000,
+    "bransch": "Verkställande direktör Per David Alfredsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF",
+    "godspotential": 4.9
   },
   {
     "source": "openstreetmap",
@@ -5417,9 +5519,11 @@
       "name": "Racehall Stockholm AB",
       "sport": "karting"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559451-4241",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Peter Vindbæk Skjødt-Jacobsen",
+    "allabolag_url": "https://www.allabolag.se/foretag/racehall-stockholm-ab/gr%C3%B6dinge/motorbanor/2KITUTDI63IUD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -5750,9 +5854,11 @@
       "landuse": "industrial",
       "name": "Momento AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556475-6848",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Nils Torbjörn Palmberg",
+    "allabolag_url": "https://www.allabolag.se/foretag/ab-momento/flen/verktyg-och-redskap/2K141V4I63IL9",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -5770,9 +5876,11 @@
       "landuse": "industrial",
       "name": "Företagsby"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556176-9521",
+    "omsattning_kr": 3427000,
+    "bransch": "Ordförande Kjell Emanuel Nilsberg",
+    "allabolag_url": "https://www.allabolag.se/foretag/vallentuna-f%C3%B6retagsby-aktiebolag/vallentuna/fastighetsbolag-lokaler/2JZC0TTI5YDUJ",
+    "godspotential": 3.4
   },
   {
     "source": "openstreetmap",
@@ -5905,9 +6013,11 @@
       "landuse": "industrial",
       "name": "Idbäcken"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556857-0088",
+    "omsattning_kr": 214000,
+    "bransch": "Ledamot Carl Jakob Johansson",
+    "allabolag_url": "https://www.allabolag.se/foretag/fastighets-ab-idb%C3%A4cken/stockholm/fastighetsbolag-lokaler/2K3DS6GI5YDUJ",
+    "godspotential": 0.2
   },
   {
     "source": "openstreetmap",
@@ -5983,9 +6093,11 @@
       "landuse": "industrial",
       "name": "SSAB Oxelösund"
     },
-    "org_nr": "",
+    "org_nr": "802416-3696",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/cf-klubben-ssab-oxel%C3%B6sund/oxel%C3%B6sund/f%C3%B6reningar/3OPDOC0I63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -6121,9 +6233,11 @@
       "building": "industrial",
       "name": "Eberspächer"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556012-4561",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Karl Gunnar Stålheim Geijer",
+    "allabolag_url": "https://www.allabolag.se/foretag/ebersp%C3%A4cher-aktiebolag/trollh%C3%A4ttan/detaljhandel/2JYCRKHI63ILU",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6141,9 +6255,11 @@
       "building": "industrial",
       "name": "Schneider Electric"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556259-3532",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Anna Kristina Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/schneider-electric-sverige-ab/solna/elektronik-och-telekommunikationsutrustning/2JZTON0I63IFR",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6161,9 +6277,11 @@
       "building": "industrial",
       "name": "Perioden"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559501-6329",
+    "omsattning_kr": 161000,
+    "bransch": "Ledamot Farouk Eskander",
+    "allabolag_url": "https://www.allabolag.se/foretag/periodent-ab/h%C3%A4sselby/h%C3%A4lsotj%C3%A4nster/2KJ4M89I63IHB",
+    "godspotential": 0.2
   },
   {
     "source": "openstreetmap",
@@ -6227,9 +6345,11 @@
       "landuse": "industrial",
       "name": "Tegelladan"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "769606-2764",
+    "omsattning_kr": 1000000,
+    "bransch": "Ordförande Lena Birgitta Sköld",
+    "allabolag_url": "https://www.allabolag.se/foretag/bostadsr%C3%A4ttsf%C3%B6reningen-tegelladan-1/sundsvall/fastighetsbolag-lokaler/3JA1C18I5YDUJ",
+    "godspotential": 1.0
   },
   {
     "source": "openstreetmap",
@@ -6342,9 +6462,11 @@
       "building": "warehouse",
       "name": "Orio AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556193-6294",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Jesper Otto Qvist-Pedersen",
+    "allabolag_url": "https://www.allabolag.se/foretag/orion-pharma-aktiebolag/danderyd/apoteksvaror-l%C3%A4kemedel-partihandel/2JZFLIEI63IM3",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6420,9 +6542,11 @@
       "building": "industrial",
       "name": "Sjoklagret"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559160-7899",
+    "omsattning_kr": 9890000,
+    "bransch": "Ledamot Jan Magnus Gustafsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/hjolagret-ab/hjo/k%C3%B6ksinredningar-agentur-och-grossist/2KH3K9NI63IIE",
+    "godspotential": 9.9
   },
   {
     "source": "openstreetmap",
@@ -6556,9 +6680,11 @@
       "name": "Kullbergs",
       "shop": "stationery"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556309-3292",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Magnus Kullberg",
+    "allabolag_url": "https://www.allabolag.se/foretag/kullbergs-mur-och-bygg-aktiebolag/ronneby/byggm%C3%A4stare/2K04E98I5YDDT",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6693,9 +6819,11 @@
       "building": "industrial",
       "name": "Harsco"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556177-2566",
+    "omsattning_kr": 216000,
+    "bransch": "Verkställande direktör Lars Ove Lindqvist",
+    "allabolag_url": "https://www.allabolag.se/foretag/harsco-metals-sweden-ab/norberg/avfallshantering/2JZC36EI63IOK",
+    "godspotential": 0.2
   },
   {
     "source": "openstreetmap",
@@ -6713,9 +6841,11 @@
       "building": "industrial",
       "name": "Foria"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556069-1684",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Jonas Lars Skovgaard",
+    "allabolag_url": "https://www.allabolag.se/foretag/foria-ab-publ/s%C3%B6dert%C3%A4lje/transportf%C3%B6rmedling/2JYOX5WI5YI2J",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6812,9 +6942,11 @@
       "landuse": "industrial",
       "name": "Björshult Skrot & Mek AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556639-6940",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Mats Olov Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/bj%C3%B6rshult-skrot-mek-ab/nyk%C3%B6ping/avfallshantering/2K237D8I63IOK",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7004,9 +7136,11 @@
       "landuse": "industrial",
       "name": "Hults Bruk"
     },
-    "org_nr": "",
+    "org_nr": "802464-3531",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94990 Verksamhet i diverse övriga intresseorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/hults-bruks-smidescentrum/norrk%C3%B6ping/f%C3%B6reningar/3OPNYKRI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7024,9 +7158,11 @@
       "landuse": "industrial",
       "name": "Jursla industriområde"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556036-5677",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Simon Karl Ragnar Tjäder",
+    "allabolag_url": "https://www.allabolag.se/foretag/evergreen-garden-care-sverige-ab/%C3%A5by/kemikalier-industrikemikalier/2JYHXM5I5YEXO",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7045,9 +7181,11 @@
       "name": "Fiskeby",
       "source": "Yahoo"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556032-6158",
+    "omsattning_kr": 378000,
+    "bransch": "Verkställande direktör John Mattias Wahlgren",
+    "allabolag_url": "https://www.allabolag.se/foretag/fiskeby-board-ab/norrk%C3%B6ping/producenter/2JYH34EI63IK3",
+    "godspotential": 0.4
   },
   {
     "source": "openstreetmap",
@@ -7186,9 +7324,11 @@
       "landuse": "industrial",
       "name": "Agroetanol"
     },
-    "org_nr": "",
+    "org_nr": "802537-0589",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/unionen-p%C3%A5-lantm%C3%A4nnen-agroetanol-ab/norrk%C3%B6ping/f%C3%B6reningar/3OQ3JKTI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7230,9 +7370,11 @@
       "building": "industrial",
       "name": "Martin & Servera"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559135-5549",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7337,9 +7479,11 @@
       "name": "Kühne & Nagel",
       "office": "logistics"
     },
-    "org_nr": "",
+    "org_nr": "502096-0794",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "52260 Annan stödverksamhet avseende transport",
+    "allabolag_url": "https://www.allabolag.se/foretag/k%C3%BChne-nagel-ag-co.-kg/-/transportf%C3%B6rmedling/2B1CM56I5YI2J",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7385,9 +7529,11 @@
       "building": "industrial",
       "name": "Jens S. Transmissioner"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556043-7005",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Johan Fredrik Benzler",
+    "allabolag_url": "https://www.allabolag.se/foretag/jens-s.-transmissioner-ab/norrk%C3%B6ping/insatsvaror/2JYJGNHI63IHE",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7469,9 +7615,11 @@
       "building": "warehouse",
       "name": "CEOS"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556712-3319",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Karl Johan Ludvig Dalin",
+    "allabolag_url": "https://www.allabolag.se/foretag/ceos-fritzoe-ab/n%C3%A4ssj%C3%B6/tr%C3%A4-och-byggvaror-grossist/2K2IRUFI63IL2",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7625,9 +7773,11 @@
       "name": "TvNo",
       "source": "Bing sat"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556194-6152",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Anna Karin Elisabet Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/tvno-textilservice-aktiebolag/norrk%C3%B6ping/tv%C3%A4tterier/2JZFT48I5YI7I",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7760,9 +7910,11 @@
       "landuse": "industrial",
       "name": "Polyproject"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556908-6282",
+    "omsattning_kr": 2025000,
+    "bransch": "Extern verkställande direktör Isabell Inger Ramona Lindahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/polyproject-environment-ab/kolm%C3%A5rden/milj%C3%B6teknik/2K3OUH6I5YGC3",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7924,9 +8076,11 @@
       "name": "Columbia Elektronik",
       "website": "https://www.columbia.se/"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556174-9317",
+    "omsattning_kr": 918000,
+    "bransch": "Verkställande direktör Mats Göran Klarholm",
+    "allabolag_url": "https://www.allabolag.se/foretag/columbia-elektronik-aktiebolag/kolm%C3%A5rden/elektronik-legotillverkning/2JZBL8LI5YDXQ",
+    "godspotential": 0.9
   },
   {
     "source": "openstreetmap",
@@ -8139,9 +8293,11 @@
       "building": "warehouse",
       "name": "DSV"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556250-3630",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Tomas Erik Johansson",
+    "allabolag_url": "https://www.allabolag.se/foretag/dsv-road-ab/g%C3%B6teborg/transportf%C3%B6rmedling/2JZRR9QI5YI2J",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -8219,7 +8375,9 @@
     },
     "org_nr": "",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "Innehavare Peter Christian Falksäter",
+    "allabolag_url": "https://www.allabolag.se/foretag/pm63-charlottenberg/charlottenberg/h%C3%A4lsotj%C3%A4nster/7VJQ7FKSRI63IHB",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -8590,9 +8748,11 @@
       "name": "Postnord",
       "operator": "PostNord TPL AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556711-5695",
+    "omsattning_kr": 29916000,
+    "bransch": "Extern verkställande direktör Peter Davids Gisel-Ekdahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/postnord-sverige-ab/solna/kurirverksamhet/2K2ILYNI5YFN0",
+    "godspotential": 29.9
   },
   {
     "source": "openstreetmap",
@@ -8727,9 +8887,11 @@
       "building": "warehouse",
       "name": "martin&servera"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559135-5549",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -8937,9 +9099,11 @@
       "name": "SGS Analytics",
       "office": "company"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556152-0916",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Lars Mikael Löfdahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/sgs-analytics-sweden-ab/link%C3%B6ping/teknisk-provning-och-analys/2JZ6P04I63IKV",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -9169,9 +9333,11 @@
       "name": "Silon",
       "source": "survey"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559314-2952",
+    "omsattning_kr": 2025000,
+    "bransch": "Verkställande direktör Helen Margareta Öström",
+    "allabolag_url": "https://www.allabolag.se/foretag/silon-consulting-ab/sollentuna/f%C3%B6retagsutveckling/2KI0GQ0I5YEHU",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -9284,9 +9450,11 @@
       "roof:shape": "flat",
       "source": "Bing"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556433-6690",
+    "omsattning_kr": 7901000,
+    "bransch": "Extern verkställande direktör Patrik Jonny Jonsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/fergas-north-europe-ab/link%C3%B6ping/maskinf%C3%B6rn%C3%B6denheter/2K0V1O2I5YG68",
+    "godspotential": 7.9
   },
   {
     "source": "openstreetmap",
@@ -10070,9 +10238,11 @@
       "building:levels": "4",
       "name": "Tekniska verken"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556004-9727",
+    "omsattning_kr": 905000,
+    "bransch": "Extern verkställande direktör Bror Conny Udd",
+    "allabolag_url": "https://www.allabolag.se/foretag/tekniska-verken-i-link%C3%B6ping-ab-publ/link%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JYB5TRI63IG2",
+    "godspotential": 0.9
   },
   {
     "source": "openstreetmap",
