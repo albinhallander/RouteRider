@@ -278,15 +278,15 @@ export default function App() {
           {/* Idle state: show base E4 route */}
           {!showingSuggestions && !routeLocked && (
             <>
-              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 16, opacity: 0.25 }} />
-              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 7, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
             </>
           )}
 
           {/* Suggestions phase: show all 3 routes */}
           {showingSuggestions && chat.suggestions.map((route, i) => (
             <Polyline key={route.id} positions={route.routeCoords}
-              pathOptions={{ color: '#4264FB', weight: 6, opacity: i === 0 ? 1 : 0.45, lineJoin: 'round', lineCap: 'round' }}
+              pathOptions={{ color: '#4264FB', weight: 4, opacity: i === 0 ? 1 : 0.4, lineJoin: 'round', lineCap: 'round' }}
             />
           ))}
 
@@ -294,10 +294,10 @@ export default function App() {
           {routeLocked && selectedRoute && (
             <>
               <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: '#6b8ef5', weight: 18, opacity: 0.25 }}
+                pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }}
               />
               <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: '#4264FB', weight: 7, opacity: 1, lineJoin: 'round', lineCap: 'round' }}
+                pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }}
               />
             </>
           )}
