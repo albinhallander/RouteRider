@@ -97,10 +97,11 @@ function orderForReturn(candidates) {
 }
 
 function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
-  // Waypoints only — distance, duration, and road geometry are filled in by
-  // enrichSuggestionsWithMapbox using a real routing provider.
+  // Backhaul leg only: destination → pickups → origin. The outbound leg
+  // (origin → destination) is assumed sunk-cost — the truck is going there
+  // regardless to deliver primary cargo — so all durations, distances, and
+  // the rendered polyline cover the *return* trip only.
   const routeCoords = [
-    origin.coords,
     dest.coords,
     ...shippers.map(s => s.position),
     origin.coords

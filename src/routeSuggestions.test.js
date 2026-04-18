@@ -10,10 +10,9 @@ const shippers = [
 ];
 
 function mockFetch(durationMinByStops) {
-  // Returns a fetchFn that keys durationMin on the number of waypoints,
-  // so we can simulate "direct = 300 min, 3-stop = 1000 min" etc.
+  // routeCoords is now backhaul-only: [dest, ...stops, origin].
   return waypoints => {
-    const stops = Math.max(0, waypoints.length - 3); // waypoints = [origin, dest, ...stops, origin]
+    const stops = Math.max(0, waypoints.length - 2);
     const min = durationMinByStops[stops] ?? 300;
     return Promise.resolve({
       durationMin: min,
