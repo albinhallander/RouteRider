@@ -127,8 +127,6 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
-  const [chatCollapsed, setChatCollapsed] = useState(false);
-
   const chat = useChatPlanner(shippers);
   const { selectedRoute } = chat;
 
@@ -201,7 +199,7 @@ export default function App() {
 
           ) : (
 
-            /* Default list view */
+            /* Chat view */
             <motion.div
               key="list"
               initial={{ x: 16, opacity: 0 }}
@@ -211,64 +209,28 @@ export default function App() {
               className="flex flex-col h-full overflow-hidden"
             >
               {/* Brand header */}
-              <div className="px-4 py-4 border-b border-gray-100">
+              <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
                 <div className="flex items-center gap-2 text-[11px] tracking-widest text-einride uppercase font-semibold">
                   <span className="w-1.5 h-1.5 rounded-full bg-einride animate-pulse" />
                   Einride · Backhaul
                 </div>
-                <div className="text-xl font-bold text-gray-900 mt-0.5">RouteRider</div>
+                <div className="text-lg font-bold text-gray-900 mt-0.5">RouteRider</div>
                 <div className="text-xs text-gray-400">
                   {selectedRoute ? selectedRoute.direction : 'E4 · Göteborg → Stockholm'}
                 </div>
               </div>
 
-              {/* Shippers list */}
-              <div className="flex-1 overflow-y-auto">
-                <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
-                  <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                    Shippers · {contactedCount}/{effectiveShippers.length} contacted
-                  </span>
-                </div>
-                <div className="divide-y divide-gray-50">
-                  {effectiveShippers.map(s => (
-                    <ShipperRow
-                      key={s.id}
-                      shipper={s}
-                      onClick={() => setSelected({ type: 'shipper', data: s })}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Outreach log */}
-              {outreachLogs.length > 0 && (
-                <div className="border-t border-gray-100 px-4 py-3 max-h-36 overflow-y-auto bg-gray-50">
-                  <div className="text-[10px] uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-1.5">
-                    <Mail size={11} /> Outreach log · {outreachLogs.length}
-                  </div>
-                  <div className="space-y-1.5">
-                    {outreachLogs.slice().reverse().map(log => {
-                      const sh = shippers.find(s => s.id === log.shipperId);
-                      return (
-                        <div key={log.id} className="flex items-center justify-between text-xs">
-                          <span className="truncate text-gray-700 mr-2">{sh?.company}</span>
-                          <span className="text-einride text-[10px] flex items-center gap-1 flex-shrink-0">
-                            <CheckCircle2 size={10} /> Sent
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Legend */}
-              <div className="px-4 py-3 border-t border-gray-100 bg-gray-50 space-y-1.5">
-                <LegendRow color="#5DC1E0" label="E4 route · truck" />
-                <LegendRow color="#10B981" label="Shipper · open" />
-                <LegendRow color="#5DC1E0" label="Shipper · contacted" />
-                <LegendRow color="#FBBF24" label="Charging hub" square />
-              </div>
+              {/* Chat fills remaining space */}
+              <ChatPanel
+                phase={chat.phase}
+                messages={chat.messages}
+                suggestions={chat.suggestions}
+                selectedRouteId={chat.selectedRouteId}
+                onSubmitDestination={chat.submitDestination}
+                onConfirmBackhaul={chat.confirmBackhaul}
+                onPickRoute={chat.pickRoute}
+                onReset={chat.reset}
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -321,19 +283,6 @@ export default function App() {
           ))}
         </MapContainer>
 
-        {/* Chat panel — overlays the map pane */}
-        <ChatPanel
-          phase={chat.phase}
-          messages={chat.messages}
-          suggestions={chat.suggestions}
-          selectedRouteId={chat.selectedRouteId}
-          onSubmitDestination={chat.submitDestination}
-          onConfirmBackhaul={chat.confirmBackhaul}
-          onPickRoute={chat.pickRoute}
-          onReset={chat.reset}
-          collapsed={chatCollapsed}
-          onToggleCollapse={() => setChatCollapsed(c => !c)}
-        />
       </div>
 
       {/* Toast */}

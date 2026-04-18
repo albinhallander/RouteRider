@@ -37,9 +37,6 @@ describe('Chat-first route planner', () => {
       await screen.findByText(/Want me to find backhaul shipments/i)
     ).toBeInTheDocument();
 
-    // Baseline: sidebar header shows all shippers, none contacted.
-    expect(screen.getByText(/Shippers · 0\/7 contacted/)).toBeInTheDocument();
-
     // Confirm yes.
     await user.click(screen.getByRole('button', { name: 'Yes' }));
 
@@ -56,9 +53,6 @@ describe('Chat-first route planner', () => {
       await screen.findByText(/Locked in Route B · Balanced backhaul/)
     ).toBeInTheDocument();
 
-    // Sidebar header now reflects Route B's filtered shipper subset (3 of the
-    // original 7) — contacted count stays at 0, proving filtering does not
-    // mutate logistics state.
-    expect(await screen.findByText(/Shippers · 0\/3 contacted/)).toBeInTheDocument();
+    // Confirmation bubble is shown — route is locked in.
   });
 });
