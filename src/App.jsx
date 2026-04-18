@@ -109,11 +109,34 @@ Reply YES to lock this slot — our ops team will confirm within 5 minutes.
 }
 
 // ─── Leaflet icons ────────────────────────────────────────────────────────────
+function stopIcon(n) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:26px;height:26px;background:#1d4ed8;border:2.5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.25);font-size:11px;font-weight:700;color:#fff;font-family:system-ui">${n}</div>`,
+    iconSize: [26, 26],
+    iconAnchor: [13, 13]
+  });
+}
+
+const originIcon = L.divIcon({
+  className: '',
+  html: `<div style="width:14px;height:14px;background:#fff;border:3px solid #374151;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.3)"></div>`,
+  iconSize: [14, 14],
+  iconAnchor: [7, 7]
+});
+
+const destIcon = L.divIcon({
+  className: '',
+  html: `<div style="width:18px;height:18px;background:#374151;border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3)"></div>`,
+  iconSize: [18, 18],
+  iconAnchor: [9, 9]
+});
+
 const chargingIcon = L.divIcon({
   className: '',
   html: `
-    <div style="width:36px;height:36px;background:#FBBF24;border:2px solid #fff;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="#000">
+    <div style="width:36px;height:36px;background:#fff;border:2px solid #4264FB;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#4264FB">
         <path d="M13 2L3 14h7l-1 8 11-14h-7z"/>
       </svg>
     </div>`,
@@ -130,12 +153,12 @@ export default function App() {
   const chat = useChatPlanner(shippers);
   const { selectedRoute } = chat;
 
-  const effectiveRoute = selectedRoute?.routeCoords ?? ROUTE;
+  const showingSuggestions = chat.phase === 'showing_suggestions';
+  const routeLocked = chat.phase === 'route_selected';
+
   const effectiveShippers = selectedRoute
     ? shippers.filter(s => selectedRoute.shipperIds.includes(s.id))
     : shippers;
-
-  const progressPct = activeRoute.soc;
 
   useEffect(() => {
     if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, activeRoute));
@@ -257,19 +280,79 @@ export default function App() {
             subdomains="abcd"
             maxZoom={20}
           />
-          <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 16, opacity: 0.18 }} />
-          <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 4, opacity: 1 }} />
+
+          {/* Idle state: show base E4 route */}
+          {!showingSuggestions && !routeLocked && (
+            <>
+              <Polyline positions={ROUTE} pathOptions={{ color: '#9ca3af', weight: 14, opacity: 0.15 }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#9ca3af', weight: 3, opacity: 0.7, dashArray: '8 6' }} />
+            </>
+          )}
+
+          {/* Suggestions phase: show all 3 routes as colored lines */}
+          {showingSuggestions && chat.suggestions.map(route => (
+            <Polyline key={route.id} positions={route.routeCoords}
+              pathOptions={{ color: route.color, weight: 4, opacity: 0.75 }}
+            />
+          ))}
+
+          {/* Locked route: thick colored line + glow */}
+          {routeLocked && selectedRoute && (
+            <>
+              <Polyline positions={selectedRoute.routeCoords}
+                pathOptions={{ color: selectedRoute.color, weight: 16, opacity: 0.12 }}
+              />
+              <Polyline positions={selectedRoute.routeCoords}
+                pathOptions={{ color: selectedRoute.color, weight: 5, opacity: 1 }}
+              />
+            </>
+          )}
+
+          {/* Charging hubs */}
           {CHARGING_HUBS.map(hub => (
             <Marker key={hub.id} position={hub.position} icon={chargingIcon}
               eventHandlers={{ click: () => setSelected({ type: 'hub', data: hub }) }}
             />
           ))}
-          {effectiveShippers.map(s => (
-            <CircleMarker key={s.id} center={s.position} radius={9}
-              pathOptions={{ color: '#fff', weight: 2.5, fillColor: s.contacted ? '#5DC1E0' : '#10B981', fillOpacity: 0.95 }}
+
+          {/* Idle shippers: plain circles */}
+          {!showingSuggestions && !routeLocked && shippers.map(s => (
+            <CircleMarker key={s.id} center={s.position} radius={8}
+              pathOptions={{ color: '#fff', weight: 2, fillColor: s.contacted ? '#9ca3af' : '#4264FB', fillOpacity: 1 }}
               eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
+
+          {/* Suggestions phase: highlight shippers involved in each route */}
+          {showingSuggestions && shippers.map(s => {
+            const inAnyRoute = chat.suggestions.some(r => r.shipperIds.includes(s.id));
+            return (
+              <CircleMarker key={s.id} center={s.position} radius={inAnyRoute ? 8 : 5}
+                pathOptions={{ color: '#fff', weight: 2, fillColor: inAnyRoute ? '#4264FB' : '#d1d5db', fillOpacity: inAnyRoute ? 1 : 0.6 }}
+                eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+              />
+            );
+          })}
+
+          {/* Locked route: numbered stop markers + origin/dest pins */}
+          {routeLocked && selectedRoute && (
+            <>
+              {/* Origin */}
+              <Marker position={selectedRoute.routeCoords[0]} icon={originIcon} />
+              {/* Numbered pickup stops */}
+              {selectedRoute.shipperIds.map((id, i) => {
+                const s = shippers.find(sh => sh.id === id);
+                if (!s) return null;
+                return (
+                  <Marker key={id} position={s.position} icon={stopIcon(i + 1)}
+                    eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+                  />
+                );
+              })}
+              {/* Destination */}
+              <Marker position={selectedRoute.routeCoords[selectedRoute.routeCoords.length - 1]} icon={destIcon} />
+            </>
+          )}
         </MapContainer>
       </div>
 
@@ -315,7 +398,7 @@ function ShipperRow({ shipper, onClick }) {
     >
       <span
         className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
-        style={{ background: shipper.contacted ? '#5DC1E0' : '#10B981' }}
+        style={{ background: shipper.contacted ? '#9CA3AF' : '#4264FB' }}
       />
       <div className="flex-1 min-w-0">
         <div className="text-sm font-medium text-gray-900 truncate">{shipper.company}</div>

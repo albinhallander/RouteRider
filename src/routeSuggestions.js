@@ -31,6 +31,7 @@ export function buildRouteSuggestions(destinationInput, shippers) {
   return [
     {
       id: 'A',
+      color: '#6b7280',
       label: 'Route A · Direct',
       tagline: 'Fastest run on the E4 corridor — no detours.',
       shipperIds: [],
@@ -43,6 +44,7 @@ export function buildRouteSuggestions(destinationInput, shippers) {
     },
     {
       id: 'B',
+      color: '#3b82f6',
       label: 'Route B · Balanced backhaul',
       tagline: 'Three on-corridor pickups with minimal detour.',
       shipperIds: ['s-2', 's-3', 's-5'],
@@ -55,6 +57,7 @@ export function buildRouteSuggestions(destinationInput, shippers) {
     },
     {
       id: 'C',
+      color: '#10b981',
       label: 'Route C · Max revenue',
       tagline: 'Full-capacity detour via Älmhult + Scania.',
       shipperIds: ['s-1', 's-2', 's-4', 's-6', 's-7'],
