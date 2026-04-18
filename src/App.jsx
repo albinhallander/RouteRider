@@ -723,6 +723,8 @@ export default function App() {
           onSendOutreachToAll={chat.sendOutreachToAll}
           onDeclineSendAll={chat.declineSendAll}
           onRequestPlan={chat.requestPlan}
+          onSendConfirmations={chat.sendConfirmations}
+          onSkipConfirmations={chat.skipConfirmations}
           onReset={chat.reset}
         />
       </aside>

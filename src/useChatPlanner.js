@@ -6,7 +6,7 @@ import {
   QUICK_DESTINATIONS,
   QUICK_ORIGINS
 } from './routeSuggestions.js';
-import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
+import { draftPickupEmail, draftConfirmationEmail, suggestedPickupTime } from './emailDraft.js';
 
 // Phases:
 //   awaiting_origin           — waiting for user's origin city
@@ -239,9 +239,59 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     if (route.skippedIds.length > 0) summary += ` Skipped ${route.skippedIds.length} to respect the caps.`;
     if (missingCargoCount > 0) summary += ` ${missingCargoCount} yes-shipper${missingCargoCount === 1 ? '' : 's'} ignored — no cargo filled in.`;
 
-    appendMessages([{ role: 'assistant', text: summary }]);
-    setPhase('route_planned');
+    const hasPickups = route.shipperIds.length > 0;
+    appendMessages([
+      { role: 'assistant', text: summary },
+      hasPickups
+        ? {
+            role: 'assistant',
+            text: `Want me to send pickup-confirmation emails to the ${route.shipperIds.length} selected supplier${route.shipperIds.length === 1 ? '' : 's'}?`,
+            quickReplies: ['Send confirmations', 'Skip']
+          }
+        : {
+            role: 'assistant',
+            text: 'No suppliers on this route — nothing to confirm.'
+          }
+    ]);
+    setPhase(hasPickups ? 'awaiting_confirmation_decision' : 'route_planned');
   }, [feasibleIds, shippers, appendMessages, palletCapacity, maxWeightKg]);
+
+  const sendConfirmations = useCallback(() => {
+    if (!resolved.current || !plannedRoute) return;
+    const { origin: o, dest: d } = resolved.current;
+    const effectiveRoute = {
+      ...activeRoute,
+      truckId: activeRoute.truckId,
+      originLabel: o.label,
+      destinationLabel: d.label,
+      direction: `Return to ${o.label} from ${d.label}`,
+      palletCapacity,
+      maxWeightKg
+    };
+
+    let sent = 0;
+    plannedRoute.shipperIds.forEach((sid, i) => {
+      const shipper = shippers.find(s => s.id === sid);
+      if (!shipper) return;
+      const body = draftConfirmationEmail(shipper, effectiveRoute, suggestedPickupTime(i));
+      if (sendOutreach) sendOutreach(sid, body);
+      sent++;
+    });
+
+    appendMessages([
+      { role: 'user', text: 'Send confirmations' },
+      { role: 'assistant', text: `Confirmed with ${sent} supplier${sent === 1 ? '' : 's'}. The route is live.` }
+    ]);
+    setPhase('route_planned');
+  }, [plannedRoute, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
+
+  const skipConfirmations = useCallback(() => {
+    appendMessages([
+      { role: 'user', text: 'Skip' },
+      { role: 'assistant', text: "OK — no confirmations sent. You can reach out manually any time." }
+    ]);
+    setPhase('route_planned');
+  }, [appendMessages]);
 
   const reset = useCallback(() => {
     opId.current++; // cancel any pending async
@@ -289,6 +339,8 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     sendOutreachToAll,
     declineSendAll,
     requestPlan,
+    sendConfirmations,
+    skipConfirmations,
     reset
   };
 }

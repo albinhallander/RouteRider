@@ -21,6 +21,8 @@ export default function ChatPanel({
   onSendOutreachToAll,
   onDeclineSendAll,
   onRequestPlan,
+  onSendConfirmations,
+  onSkipConfirmations,
   onReset,
 }) {
   const scrollRef = useRef(null);
@@ -35,10 +37,12 @@ export default function ChatPanel({
     if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
     if (phase === 'awaiting_pallet_capacity') return onSubmitPalletCapacity?.(text);
     if (phase === 'awaiting_weight_kg') return onSubmitWeightKg?.(text);
-    if (text === 'Send to all') return onSendOutreachToAll?.();
-    if (text === 'Not now')     return onDeclineSendAll?.();
-    if (text === 'Plan route')  return onRequestPlan?.();
-    if (text === 'Start over')  return onReset?.();
+    if (text === 'Send to all')         return onSendOutreachToAll?.();
+    if (text === 'Not now')             return onDeclineSendAll?.();
+    if (text === 'Plan route')          return onRequestPlan?.();
+    if (text === 'Send confirmations')  return onSendConfirmations?.();
+    if (text === 'Skip')                return onSkipConfirmations?.();
+    if (text === 'Start over')          return onReset?.();
   };
 
   const handleTextSubmit = text => {

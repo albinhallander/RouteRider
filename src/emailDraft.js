@@ -31,6 +31,36 @@ Reply YES to lock this slot — our ops team will confirm within 5 minutes.
 — RouteRider · Einride Backhaul`;
 }
 
+// Booking-confirmation email sent once a route is locked — only to the
+// shippers that actually made it onto the truck. Echoes the cargo the
+// shipper quoted (pallets + total kg) and the pickup slot.
+export function draftConfirmationEmail(shipper, activeRoute, pickupTime) {
+  const today = new Date().toLocaleDateString('sv-SE');
+  const originLabel = activeRoute.originLabel ?? 'Gothenburg';
+  const destinationLabel = activeRoute.destinationLabel ?? 'Stockholm';
+  const pallets = shipper.pallets;
+  const weightKg = shipper.weightKg;
+  const cargoLine =
+    pallets != null && weightKg != null
+      ? `  Cargo:     ${pallets} EUR pallet${pallets === 1 ? '' : 's'} · ${weightKg.toLocaleString('sv-SE')} kg`
+      : '';
+
+  return `Subject: Pickup confirmed · ${originLabel} → ${destinationLabel} · ${today}
+
+Hi ${shipper.company} team,
+
+Confirming your backhaul pickup for today. Our electric truck ${activeRoute.truckId} is on the way.
+
+  Pickup:    today, ${pickupTime}
+  Location:  ${shipper.location}
+${cargoLine}
+  Corridor:  ${originLabel} → ${destinationLabel}
+
+Driver will check in 15 minutes before arrival. Any last-minute changes — reply to this thread.
+
+— RouteRider · Einride Backhaul`;
+}
+
 // Mock edit-rewriter. If the user's note mentions a time (HH:MM) + pickup-ish
 // keyword, swap the Pickup line. Otherwise append the note at the bottom.
 export function applyUserNote(draft, note) {
