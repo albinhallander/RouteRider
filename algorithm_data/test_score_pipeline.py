@@ -65,3 +65,59 @@ def test_sustainability_score_range():
     c = {"sni": "24"}
     score = sustainability_score(c)
     assert 0.0 <= score <= 1.0
+
+from unittest.mock import patch
+
+def _mock_osrm_response(distance_m):
+    return {"routes": [{"distance": distance_m}]}
+
+def test_osrm_distance_km():
+    from score_pipeline import osrm_distance_km
+    with patch("score_pipeline.requests.get") as mock_get:
+        mock_get.return_value.json.return_value = _mock_osrm_response(470_000)
+        mock_get.return_value.raise_for_status = lambda: None
+        km = osrm_distance_km([(57.7089, 11.9746), (59.3293, 18.0686)])
+    assert abs(km - 470.0) < 0.1
+
+def test_geo_score_no_detour():
+    from score_pipeline import geo_score
+    # Candidate exactly on the direct route: detour ~0 → score ~1.0
+    with patch("score_pipeline.osrm_distance_km") as mock_dist:
+        mock_dist.side_effect = [470.0]  # detour call returns same as direct
+        score, err = geo_score(
+            {"lat": 58.5, "lng": 15.0},
+            origin=(57.7089, 11.9746),
+            destination=(59.3293, 18.0686),
+            direct_km=470.0,
+            delay=0,
+        )
+    assert err is False
+    assert score >= 0.99
+
+def test_geo_score_large_detour():
+    from score_pipeline import geo_score
+    # 30% detour → score = 0.0
+    with patch("score_pipeline.osrm_distance_km") as mock_dist:
+        mock_dist.side_effect = [470.0 * 1.30]
+        score, err = geo_score(
+            {"lat": 58.5, "lng": 15.0},
+            origin=(57.7089, 11.9746),
+            destination=(59.3293, 18.0686),
+            direct_km=470.0,
+            delay=0,
+        )
+    assert err is False
+    assert score == 0.0
+
+def test_geo_score_osrm_failure():
+    from score_pipeline import geo_score
+    with patch("score_pipeline.osrm_distance_km", side_effect=Exception("timeout")):
+        score, err = geo_score(
+            {"lat": 58.5, "lng": 15.0},
+            origin=(57.7089, 11.9746),
+            destination=(59.3293, 18.0686),
+            direct_km=470.0,
+            delay=0,
+        )
+    assert score == 0.0
+    assert err is True

@@ -111,3 +111,45 @@ def sustainability_score(company: dict) -> float:
 
 def total_score(geo: float, freight: float, commercial: float, sus: float) -> float:
     return round(0.40 * geo + 0.25 * freight + 0.20 * commercial + 0.15 * sus, 3)
+
+
+# ---------------------------------------------------------------------------
+# OSRM geo scoring
+# ---------------------------------------------------------------------------
+
+def osrm_distance_km(coords: list) -> float:
+    """
+    Call OSRM and return route distance in km.
+    coords: list of (lat, lng) tuples — OSRM expects lng,lat order.
+    """
+    coord_str = ";".join(f"{lng},{lat}" for lat, lng in coords)
+    url = f"{OSRM_BASE}/{coord_str}?overview=false"
+    resp = requests.get(url, timeout=10)
+    resp.raise_for_status()
+    routes = resp.json().get("routes", [])
+    if not routes:
+        raise ValueError("OSRM returned no routes")
+    return routes[0]["distance"] / 1000.0
+
+
+def geo_score(
+    company: dict,
+    origin: tuple,
+    destination: tuple,
+    direct_km: float,
+    delay: float = OSRM_DELAY_S,
+) -> tuple:
+    """
+    Returns (score: float, osrm_error: bool).
+    detour_ratio >= 0.30 → score 0.0.
+    """
+    time.sleep(delay)
+    try:
+        detour_km = osrm_distance_km(
+            [origin, (company["lat"], company["lng"]), destination]
+        )
+        detour_ratio = (detour_km - direct_km) / direct_km
+        score = max(0.0, 1.0 - detour_ratio / 0.30)
+        return round(score, 3), False
+    except Exception:
+        return 0.0, True
