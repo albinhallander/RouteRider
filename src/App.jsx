@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useCallback, useRef } from 'react';
+import { Fragment, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -25,6 +25,7 @@ import {
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
+import { getStationsNearRoute } from './chargingStations.js';
 
 // ─── Route (E4 corridor, south → north) ─────────────────────────────────────
 const ROUTE = [
@@ -42,26 +43,6 @@ const ROUTE = [
   [59.3293, 18.0686]  // Stockholm
 ];
 
-const CHARGING_HUBS = [
-  {
-    id: 'ch-1',
-    name: 'OKQ8 / Tesla Megacharger',
-    operator: 'OKQ8 · Tesla',
-    position: [57.7826, 14.1618],
-    capacity: '350 kW × 6 bays',
-    status: 'Available',
-    queue: 0
-  },
-  {
-    id: 'ch-2',
-    name: 'Stockholm Energy Hub',
-    operator: 'Tesla Supercharger',
-    position: [59.3293, 18.0686],
-    capacity: '250 kW × 12 bays',
-    status: 'Available',
-    queue: 1
-  }
-];
 
 const INITIAL_SHIPPERS = [
   { id: 's-1', company: 'IKEA Distribution',       location: 'Älmhult',    position: [56.5512, 14.1418], score: 92, distanceFromE4: 12, contact: 'logistics@ikea.se',                 cargo: 'Flat-pack furniture · 18 EUR pallets' },
@@ -126,16 +107,22 @@ const destIcon = L.divIcon({
   iconAnchor: [9, 9]
 });
 
-const chargingIcon = L.divIcon({
+const chargingIconHGV = L.divIcon({
   className: '',
-  html: `
-    <div style="width:26px;height:26px;background:#fff;border:2px solid #4264FB;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,0.18);">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="#4264FB">
-        <path d="M13 2L3 14h7l-1 8 11-14h-7z"/>
-      </svg>
-    </div>`,
-  iconSize: [26, 26],
-  iconAnchor: [13, 13]
+  html: `<div style="width:28px;height:28px;background:#fff;border:2px solid #10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,0.18);">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="#10b981"><path d="M13 2L3 14h7l-1 8 11-14h-7z"/></svg>
+  </div>`,
+  iconSize: [28, 28],
+  iconAnchor: [14, 14]
+});
+
+const chargingIconEV = L.divIcon({
+  className: '',
+  html: `<div style="width:20px;height:20px;background:#fff;border:2px solid #9ca3af;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.12);">
+    <svg viewBox="0 0 24 24" width="10" height="10" fill="#9ca3af"><path d="M13 2L3 14h7l-1 8 11-14h-7z"/></svg>
+  </div>`,
+  iconSize: [20, 20],
+  iconAnchor: [10, 10]
 });
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -147,10 +134,18 @@ export default function App() {
   const chat = useChatPlanner(shippers, activeRoute, sendOutreach);
   const { selectedRoute } = chat;
 
+  const [showAllStations, setShowAllStations] = useState(false);
+
   const hasSuggestions = chat.suggestions.length > 0;
   const routeLocked = !!selectedRoute;
   const showingSuggestions = hasSuggestions && !routeLocked;
   const SELECTED_COLOR = '#10b981';
+
+  const activeRouteCoords = selectedRoute?.routeCoords ?? ROUTE;
+  const nearbyStations = useMemo(
+    () => getStationsNearRoute(activeRouteCoords, { maxKm: 30, hgvOnly: !showAllStations }),
+    [activeRouteCoords, showAllStations]
+  );
 
   const effectiveShippers = selectedRoute
     ? shippers.filter(s => selectedRoute.shipperIds.includes(s.id))
@@ -288,6 +283,19 @@ export default function App() {
 
       {/* ── Map ── */}
       <div className="flex-1 relative">
+        {/* Charging station toggle */}
+        <button
+          onClick={() => setShowAllStations(v => !v)}
+          className="absolute top-3 right-3 z-[1000] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-md border transition"
+          style={{
+            background: showAllStations ? '#10b981' : '#fff',
+            color: showAllStations ? '#fff' : '#374151',
+            borderColor: showAllStations ? '#10b981' : '#d1d5db',
+          }}
+        >
+          <Zap size={11} />
+          {showAllStations ? 'Alla EV' : 'HGV'}
+        </button>
         <MapContainer
           center={[58.5, 15.5]}
           zoom={6}
@@ -302,8 +310,16 @@ export default function App() {
             maxZoom={20}
           />
 
-          {/* Nothing renders until the chat produces suggestions — the map is
-              a blank canvas that responds to the conversation. */}
+          {/* Idle: base E4 corridor before any plan is built */}
+          {!hasSuggestions && (
+            <>
+              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
+            </>
+          )}
+
+          {/* Planning: draw every suggestion in its own color. When one is
+              locked, fade the rest and turn the winner green with a halo. */}
           {hasSuggestions && chat.suggestions.map(route => {
             const isSelected = routeLocked && route.id === selectedRoute.id;
             const dimmed = routeLocked && !isSelected;
@@ -329,10 +345,21 @@ export default function App() {
             );
           })}
 
-          {/* Charging hubs appear alongside the planned routes, not on the empty map. */}
-          {hasSuggestions && CHARGING_HUBS.map(hub => (
-            <Marker key={hub.id} position={hub.position} icon={chargingIcon}
-              eventHandlers={{ click: () => setSelected({ type: 'hub', data: hub }) }}
+          {/* Charging stations — dynamic, filtered by active route */}
+          {nearbyStations.map((station, i) => (
+            <Marker
+              key={station.osm_id ?? station.ocm_id ?? station.nobil_id ?? i}
+              position={[station.lat, station.lng]}
+              icon={station.hgv_compatible ? chargingIconHGV : chargingIconEV}
+              eventHandlers={{ click: () => setSelected({ type: 'hub', data: station }) }}
+            />
+          ))}
+
+          {/* Idle shippers: plain circles */}
+          {!hasSuggestions && shippers.map(s => (
+            <CircleMarker key={s.id} center={s.position} radius={8}
+              pathOptions={{ color: '#fff', weight: 2, fillColor: s.contacted ? '#9ca3af' : '#4264FB', fillOpacity: 1 }}
+              eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
 
@@ -530,28 +557,45 @@ function ShipperPanel({ shipper, body, setBody, onSend, alreadySent }) {
 }
 
 function HubPanel({ hub }) {
+  const powerLabel = hub.max_power_kw ? `${hub.max_power_kw} kW` : '—';
+  const pointsLabel = hub.charging_points ? `${hub.charging_points} st` : '—';
+  const connectors = (hub.connectors ?? []).join(', ') || '—';
+  const hours = hub.open_hours || '—';
+  const hgvLabel = hub.hgv_compatible ? 'Ja' : 'Nej';
+
   return (
     <div className="space-y-4">
       <header className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center flex-shrink-0">
-          <Zap size={18} className="text-amber-500" />
+        <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${hub.hgv_compatible ? 'bg-emerald-50 border border-emerald-200' : 'bg-amber-50 border border-amber-200'}`}>
+          <Zap size={18} className={hub.hgv_compatible ? 'text-emerald-500' : 'text-amber-500'} />
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400">Charging hub</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Laddstation</div>
           <h2 className="text-base font-bold text-gray-900 leading-tight">{hub.name}</h2>
-          <div className="text-xs text-gray-500">{hub.operator}</div>
+          <div className="text-xs text-gray-500">{hub.operator || '—'}</div>
         </div>
       </header>
 
-      <div className="grid grid-cols-3 gap-2">
-        <Tile icon={<Zap size={12} />} label="Capacity" value={hub.capacity} />
-        <Tile icon={<Activity size={12} />} label="Status" value={hub.status} highlight />
-        <Tile icon={<Clock size={12} />} label="Queue" value={`${hub.queue} truck${hub.queue === 1 ? '' : 's'}`} />
+      <div className="grid grid-cols-2 gap-2">
+        <Tile icon={<Zap size={12} />} label="Max effekt" value={powerLabel} />
+        <Tile icon={<Activity size={12} />} label="Laddpunkter" value={pointsLabel} />
+        <Tile icon={<Truck size={12} />} label="HGV" value={hgvLabel} highlight={hub.hgv_compatible} />
+        <Tile icon={<Clock size={12} />} label="Öppettider" value={hours} />
       </div>
 
-      <div className="text-xs text-gray-500 border border-gray-100 bg-gray-50 rounded-lg p-3">
-        Reserved for ER-2814 on arrival · projected SoC at plug-in: ~42%
-      </div>
+      {hub.connectors?.length > 0 && (
+        <div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Kontaktorer</div>
+          <div className="text-sm text-gray-700">{connectors}</div>
+        </div>
+      )}
+
+      {hub.address && (
+        <div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Adress</div>
+          <div className="text-sm text-gray-700">{hub.address}{hub.postcode ? `, ${hub.postcode}` : ''}</div>
+        </div>
+      )}
     </div>
   );
 }
