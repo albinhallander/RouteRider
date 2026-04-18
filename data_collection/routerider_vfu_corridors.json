@@ -1,0 +1,103 @@
+{
+  "source": "Trafikanalys VFU 2020 (kuraterad baseline)",
+  "unit": "miljoner ton/år",
+  "note": "Approximativa värden för prototyp — ersätt med fullständig VFU-extrakt när 2025 publiceras (2026-09-18).",
+  "corridors": [
+    {
+      "from_nuts": "SE110",
+      "from_name": "Stockholms län",
+      "to_nuts": "SE224",
+      "to_name": "Skåne län",
+      "tonnes_mt": 8.2,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE110",
+      "from_name": "Stockholms län",
+      "to_nuts": "SE232",
+      "to_name": "Västra Götalands län",
+      "tonnes_mt": 11.4,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE232",
+      "from_name": "Västra Götalands län",
+      "to_nuts": "SE224",
+      "to_name": "Skåne län",
+      "tonnes_mt": 9.7,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE232",
+      "from_name": "Västra Götalands län",
+      "to_nuts": "SE110",
+      "to_name": "Stockholms län",
+      "tonnes_mt": 10.8,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE224",
+      "from_name": "Skåne län",
+      "to_nuts": "SE110",
+      "to_name": "Stockholms län",
+      "tonnes_mt": 7.9,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE110",
+      "from_name": "Stockholms län",
+      "to_nuts": "SE125",
+      "to_name": "Östergötlands län",
+      "tonnes_mt": 6.1,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE232",
+      "from_name": "Västra Götalands län",
+      "to_nuts": "SE211",
+      "to_name": "Jönköpings län",
+      "tonnes_mt": 5.3,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE110",
+      "from_name": "Stockholms län",
+      "to_nuts": "SE121",
+      "to_name": "Uppsala län",
+      "tonnes_mt": 4.8,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE224",
+      "from_name": "Skåne län",
+      "to_nuts": "SE232",
+      "to_name": "Västra Götalands län",
+      "tonnes_mt": 8.9,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE125",
+      "from_name": "Östergötlands län",
+      "to_nuts": "SE110",
+      "to_name": "Stockholms län",
+      "tonnes_mt": 5.7,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE211",
+      "from_name": "Jönköpings län",
+      "to_nuts": "SE232",
+      "to_name": "Västra Götalands län",
+      "tonnes_mt": 4.9,
+      "mode": "road"
+    },
+    {
+      "from_nuts": "SE122",
+      "from_name": "Södermanlands län",
+      "to_nuts": "SE110",
+      "to_name": "Stockholms län",
+      "tonnes_mt": 3.6,
+      "mode": "road"
+    }
+  ]
+}

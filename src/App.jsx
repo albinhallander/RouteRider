@@ -31,6 +31,7 @@ import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js
 import { getRecommendedRestStops } from './restStops.js';
 import { formatEta } from './routeSuggestions.js';
 import { COMPANIES } from './companies.js';
+import CarrierSection from './CarrierSection.jsx';
 
 
 // ─── useLogistics ────────────────────────────────────────────────────────────
@@ -329,12 +330,12 @@ export default function App() {
                 )}
               </div>
 
-              {/* Rastplan — shown when route is locked */}
+              {/* Rest plan — shown when route is locked */}
               {routeLocked && recommendedRestStops.length > 0 && (
                 <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
                   <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <Coffee size={10} className="text-amber-500" />
-                    Rastplan · {recommendedRestStops.length} stopp
+                    Rest plan · {recommendedRestStops.length} stops
                   </div>
                   <div className="space-y-1.5">
                     {recommendedRestStops.map(stop => (
@@ -349,7 +350,7 @@ export default function App() {
                         <div className="flex-1 min-w-0">
                           <div className="text-xs font-medium text-gray-800 truncate">{stop.name}</div>
                           <div className="text-[10px] text-gray-400">
-                            {stop.city} · 45 min · vid ~{stop.kmAtStop} km
+                            {stop.city} · 45 min · at ~{stop.kmAtStop} km
                           </div>
                         </div>
                       </button>
@@ -358,15 +359,15 @@ export default function App() {
                 </div>
               )}
 
-              {/* Laddplan — shown when route is locked */}
+              {/* Charge plan — shown when route is locked */}
               {routeLocked && (
                 <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
                   <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <Zap size={10} className="text-emerald-500" />
-                    Laddplan · {recommendedStops.length} stopp
+                    Charge plan · {recommendedStops.length} stops
                   </div>
                   {recommendedStops.length === 0 ? (
-                    <div className="text-xs text-gray-400">Ingen laddning krävs på denna rutt.</div>
+                    <div className="text-xs text-gray-400">No charging required on this route.</div>
                   ) : (
                     <div className="space-y-1.5">
                       {recommendedStops.map(stop => (
@@ -381,7 +382,7 @@ export default function App() {
                           <div className="flex-1 min-w-0">
                             <div className="text-xs font-medium text-gray-800 truncate">{stop.name}</div>
                             <div className="text-[10px] text-gray-400">
-                              {stop.max_power_kw ? `${stop.max_power_kw} kW` : 'Effekt okänd'}
+                              {stop.max_power_kw ? `${stop.max_power_kw} kW` : 'Power unknown'}
                               {stop.operator ? ` · ${stop.operator}` : ''}
                             </div>
                           </div>
@@ -400,9 +401,9 @@ export default function App() {
                   <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
                     {[
                       { key: 'prio',     label: 'Prio',     count: prioCount },
-                      { key: 'possible', label: 'Möjliga',  count: possibleCount },
-                      { key: 'all',      label: 'Alla',     count: allNonSkippedCount },
-                      { key: 'skipped',  label: 'Skippade', count: skippedIds.size },
+                      { key: 'possible', label: 'Possible', count: possibleCount },
+                      { key: 'all',      label: 'All',      count: allNonSkippedCount },
+                      { key: 'skipped',  label: 'Skipped',  count: skippedIds.size },
                     ].map(tab => (
                       <button
                         key={tab.key}
@@ -421,14 +422,14 @@ export default function App() {
 
                 <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
                   <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                    Avsändare · {contactedCount}/{displayedShippers.length} kontaktade
+                    Shippers · {contactedCount}/{displayedShippers.length} contacted
                   </span>
                 </div>
 
                 <div className="divide-y divide-gray-50">
                   {displayedShippers.length === 0 ? (
                     <div className="px-4 py-6 text-xs text-gray-400 text-center">
-                      Inga avsändare i detta filter.
+                      No shippers in this filter.
                     </div>
                   ) : (
                     displayedShippers.map(s => (
@@ -443,6 +444,9 @@ export default function App() {
                     ))
                   )}
                 </div>
+
+                {/* Åkerier på sträckan — självständig sektion */}
+                <CarrierSection selectedRoute={selectedRoute} activeRoute={effectiveActiveRoute} />
               </div>
             </motion.div>
           )}
@@ -675,7 +679,7 @@ function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
             onKeyDown={e => e.key === 'Enter' && (e.stopPropagation(), onUnskip(shipper.id))}
             className="text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded-full font-medium hover:bg-gray-200 transition cursor-pointer"
           >
-            Ångra
+            Undo
           </span>
         ) : shipper.contacted ? (
           <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
@@ -760,10 +764,10 @@ function ShipperPanel({ shipper, body, setBody, onSend, alreadySent }) {
 
 function HubPanel({ hub }) {
   const powerLabel = hub.max_power_kw ? `${hub.max_power_kw} kW` : '—';
-  const pointsLabel = hub.charging_points ? `${hub.charging_points} st` : '—';
+  const pointsLabel = hub.charging_points ? `${hub.charging_points}` : '—';
   const connectors = (hub.connectors ?? []).join(', ') || '—';
   const hours = hub.open_hours || '—';
-  const hgvLabel = hub.hgv_compatible ? 'Ja' : 'Nej';
+  const hgvLabel = hub.hgv_compatible ? 'Yes' : 'No';
 
   return (
     <div className="space-y-4">
@@ -772,29 +776,29 @@ function HubPanel({ hub }) {
           <Zap size={18} className={hub.hgv_compatible ? 'text-emerald-500' : 'text-amber-500'} />
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400">Laddstation</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Charging station</div>
           <h2 className="text-base font-bold text-gray-900 leading-tight">{hub.name}</h2>
           <div className="text-xs text-gray-500">{hub.operator || '—'}</div>
         </div>
       </header>
 
       <div className="grid grid-cols-2 gap-2">
-        <Tile icon={<Zap size={12} />} label="Max effekt" value={powerLabel} />
-        <Tile icon={<Activity size={12} />} label="Laddpunkter" value={pointsLabel} />
+        <Tile icon={<Zap size={12} />} label="Max power" value={powerLabel} />
+        <Tile icon={<Activity size={12} />} label="Charge points" value={pointsLabel} />
         <Tile icon={<Truck size={12} />} label="HGV" value={hgvLabel} highlight={hub.hgv_compatible} />
-        <Tile icon={<Clock size={12} />} label="Öppettider" value={hours} />
+        <Tile icon={<Clock size={12} />} label="Hours" value={hours} />
       </div>
 
       {hub.connectors?.length > 0 && (
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Kontaktorer</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Connectors</div>
           <div className="text-sm text-gray-700">{connectors}</div>
         </div>
       )}
 
       {hub.address && (
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Adress</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Address</div>
           <div className="text-sm text-gray-700">{hub.address}{hub.postcode ? `, ${hub.postcode}` : ''}</div>
         </div>
       )}
@@ -810,20 +814,20 @@ function RestAreaPanel({ area }) {
           <Coffee size={18} className="text-amber-500" />
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400">Rastplats</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Rest area</div>
           <h2 className="text-base font-bold text-gray-900 leading-tight">{area.name}</h2>
           <div className="text-xs text-gray-500">{area.city} · E4</div>
         </div>
       </header>
 
       <div className="grid grid-cols-2 gap-2">
-        <Tile icon={<Clock size={12} />} label="Obligatorisk rast" value="45 min" highlight />
-        <Tile icon={<Activity size={12} />} label="Vid km" value={area.kmAtStop ? `~${area.kmAtStop} km` : '—'} />
+        <Tile icon={<Clock size={12} />} label="Mandatory rest" value="45 min" highlight />
+        <Tile icon={<Activity size={12} />} label="At km" value={area.kmAtStop ? `~${area.kmAtStop} km` : '—'} />
       </div>
 
       {area.facilities?.length > 0 && (
         <div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Faciliteter</div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Facilities</div>
           <div className="flex flex-wrap gap-1.5">
             {area.facilities.map(f => (
               <span key={f} className="text-xs bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded-full">
@@ -835,7 +839,7 @@ function RestAreaPanel({ area }) {
       )}
 
       <div className="text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded-lg p-3 leading-relaxed">
-        EU 561/2006 kräver 45 min rast efter 4,5h körning. Kan delas upp: 15 + 30 min.
+        EU 561/2006 requires 45 min rest after 4.5h driving. Can be split: 15 + 30 min.
       </div>
     </div>
   );

@@ -1,0 +1,1064 @@
+{
+  "source": "Eurostat road_go_ia_rc (International road freight by c_load × c_unload)",
+  "year": 2023,
+  "unit": "THS_T",
+  "count": 132,
+  "rows": [
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 11859
+    },
+    {
+      "reporter": "DE",
+      "c_load": "NL",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 7973
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 7037
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 7030
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 6453
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 6149
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 6015
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "BE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 5954
+    },
+    {
+      "reporter": "DE",
+      "c_load": "BE",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 5052
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 4402
+    },
+    {
+      "reporter": "DE",
+      "c_load": "AT",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 4018
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 3171
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "LU",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 2686
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "CZ",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 2571
+    },
+    {
+      "reporter": "DE",
+      "c_load": "CZ",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 2511
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DK",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 2266
+    },
+    {
+      "reporter": "DE",
+      "c_load": "CH",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 2135
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1883
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1732
+    },
+    {
+      "reporter": "DE",
+      "c_load": "IT",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1599
+    },
+    {
+      "reporter": "AT",
+      "c_load": "IT",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1436
+    },
+    {
+      "reporter": "SE",
+      "c_load": "SE",
+      "c_unload": "NO",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1385
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "PL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1384
+    },
+    {
+      "reporter": "FI",
+      "c_load": "FI",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1284
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DK",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1235
+    },
+    {
+      "reporter": "DE",
+      "c_load": "PL",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 1042
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 976
+    },
+    {
+      "reporter": "DE",
+      "c_load": "LU",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 855
+    },
+    {
+      "reporter": "SE",
+      "c_load": "NO",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 697
+    },
+    {
+      "reporter": "FI",
+      "c_load": "SE",
+      "c_unload": "FI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 695
+    },
+    {
+      "reporter": "DK",
+      "c_load": "SE",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 664
+    },
+    {
+      "reporter": "AT",
+      "c_load": "CZ",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 631
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DK",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 605
+    },
+    {
+      "reporter": "DE",
+      "c_load": "BE",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 561
+    },
+    {
+      "reporter": "DE",
+      "c_load": "BE",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 547
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "UK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 535
+    },
+    {
+      "reporter": "DE",
+      "c_load": "NL",
+      "c_unload": "BE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 510
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "BE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 455
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DE",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 399
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 395
+    },
+    {
+      "reporter": "AT",
+      "c_load": "HU",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 354
+    },
+    {
+      "reporter": "SE",
+      "c_load": "SE",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 348
+    },
+    {
+      "reporter": "AT",
+      "c_load": "IT",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 342
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "ES",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 323
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DK",
+      "c_unload": "NO",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 313
+    },
+    {
+      "reporter": "AT",
+      "c_load": "CH",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 308
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "CZ",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 293
+    },
+    {
+      "reporter": "DE",
+      "c_load": "NL",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 279
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "SI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 278
+    },
+    {
+      "reporter": "SE",
+      "c_load": "SE",
+      "c_unload": "FI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 266
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 259
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "HU",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 239
+    },
+    {
+      "reporter": "DE",
+      "c_load": "SE",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 236
+    },
+    {
+      "reporter": "DE",
+      "c_load": "ES",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 215
+    },
+    {
+      "reporter": "AT",
+      "c_load": "SK",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 214
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 213
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "ES",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 204
+    },
+    {
+      "reporter": "SE",
+      "c_load": "SE",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 201
+    },
+    {
+      "reporter": "SE",
+      "c_load": "DE",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 198
+    },
+    {
+      "reporter": "SE",
+      "c_load": "DK",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 190
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 182
+    },
+    {
+      "reporter": "DE",
+      "c_load": "UK",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 179
+    },
+    {
+      "reporter": "AT",
+      "c_load": "SI",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 174
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "SK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 169
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 169
+    },
+    {
+      "reporter": "DE",
+      "c_load": "IT",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 168
+    },
+    {
+      "reporter": "FI",
+      "c_load": "FI",
+      "c_unload": "RU",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 161
+    },
+    {
+      "reporter": "FI",
+      "c_load": "FI",
+      "c_unload": "NO",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 153
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "PT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 153
+    },
+    {
+      "reporter": "DE",
+      "c_load": "AT",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 150
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 146
+    },
+    {
+      "reporter": "DE",
+      "c_load": "CH",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 135
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "LI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 125
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "HU",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 122
+    },
+    {
+      "reporter": "DK",
+      "c_load": "NO",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 118
+    },
+    {
+      "reporter": "SE",
+      "c_load": "FI",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 114
+    },
+    {
+      "reporter": "AT",
+      "c_load": "NL",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 104
+    },
+    {
+      "reporter": "DE",
+      "c_load": "AT",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 99
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DK",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 99
+    },
+    {
+      "reporter": "DE",
+      "c_load": "UK",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 99
+    },
+    {
+      "reporter": "DE",
+      "c_load": "ES",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 97
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 97
+    },
+    {
+      "reporter": "DE",
+      "c_load": "NL",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 89
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "BE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 84
+    },
+    {
+      "reporter": "AT",
+      "c_load": "IT",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 83
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DK",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 81
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "LI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 71
+    },
+    {
+      "reporter": "DE",
+      "c_load": "HU",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 71
+    },
+    {
+      "reporter": "AT",
+      "c_load": "FR",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 71
+    },
+    {
+      "reporter": "DE",
+      "c_load": "BE",
+      "c_unload": "UK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 66
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "UK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 66
+    },
+    {
+      "reporter": "DE",
+      "c_load": "CH",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 64
+    },
+    {
+      "reporter": "DE",
+      "c_load": "FR",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 64
+    },
+    {
+      "reporter": "AT",
+      "c_load": "CH",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 63
+    },
+    {
+      "reporter": "DE",
+      "c_load": "IT",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 61
+    },
+    {
+      "reporter": "DK",
+      "c_load": "NL",
+      "c_unload": "DK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 59
+    },
+    {
+      "reporter": "AT",
+      "c_load": "BE",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 59
+    },
+    {
+      "reporter": "AT",
+      "c_load": "LI",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 59
+    },
+    {
+      "reporter": "AT",
+      "c_load": "BE",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 54
+    },
+    {
+      "reporter": "AT",
+      "c_load": "CH",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 54
+    },
+    {
+      "reporter": "DE",
+      "c_load": "DE",
+      "c_unload": "NO",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 52
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 49
+    },
+    {
+      "reporter": "AT",
+      "c_load": "NL",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 43
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "BE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 42
+    },
+    {
+      "reporter": "AT",
+      "c_load": "SI",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 42
+    },
+    {
+      "reporter": "SE",
+      "c_load": "SE",
+      "c_unload": "NL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 41
+    },
+    {
+      "reporter": "AT",
+      "c_load": "FR",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 41
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "FR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 39
+    },
+    {
+      "reporter": "AT",
+      "c_load": "SE",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 39
+    },
+    {
+      "reporter": "DK",
+      "c_load": "SE",
+      "c_unload": "NO",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 38
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "UK",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 37
+    },
+    {
+      "reporter": "DE",
+      "c_load": "SK",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 36
+    },
+    {
+      "reporter": "DK",
+      "c_load": "DK",
+      "c_unload": "IT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 34
+    },
+    {
+      "reporter": "AT",
+      "c_load": "CZ",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 34
+    },
+    {
+      "reporter": "AT",
+      "c_load": "BE",
+      "c_unload": "LU",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 33
+    },
+    {
+      "reporter": "AT",
+      "c_load": "IT",
+      "c_unload": "CH",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 33
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "EL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 32
+    },
+    {
+      "reporter": "DK",
+      "c_load": "NO",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 28
+    },
+    {
+      "reporter": "AT",
+      "c_load": "HR",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 25
+    },
+    {
+      "reporter": "AT",
+      "c_load": "EL",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 23
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "HR",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 21
+    },
+    {
+      "reporter": "AT",
+      "c_load": "SE",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 21
+    },
+    {
+      "reporter": "AT",
+      "c_load": "IT",
+      "c_unload": "SI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 20
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "PL",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 19
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "SE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 19
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "CZ",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 19
+    },
+    {
+      "reporter": "AT",
+      "c_load": "DE",
+      "c_unload": "LI",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 19
+    },
+    {
+      "reporter": "AT",
+      "c_load": "AT",
+      "c_unload": "ES",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 18
+    },
+    {
+      "reporter": "AT",
+      "c_load": "ES",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 18
+    },
+    {
+      "reporter": "AT",
+      "c_load": "PL",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 17
+    },
+    {
+      "reporter": "AT",
+      "c_load": "EL",
+      "c_unload": "AT",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 14
+    },
+    {
+      "reporter": "AT",
+      "c_load": "LI",
+      "c_unload": "DE",
+      "unit": "THS_T",
+      "year": "2023",
+      "value": 14
+    }
+  ]
+}

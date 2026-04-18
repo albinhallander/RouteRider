@@ -201,9 +201,9 @@ function SuggestionCard({ route, selected, disabled, onPick }) {
       <div className="text-[11px] text-gray-400 mb-2">{route.tagline}</div>
       <div className="grid grid-cols-2 gap-1">
         <Cell icon={<Clock size={10} />} label="ETA" value={formatEta(route.etaMin)} />
-        <Cell icon={<Truck size={10} />} label="Stopp" value={route.shipperIds.length} />
-        <Cell icon={<Leaf size={10} />} label="Hållb." value={`${route.sustainScore}/100`} />
-        <Cell icon={<Coins size={10} />} label="Intäkt" value={`${route.revenueSek.toLocaleString('sv-SE')} kr`} />
+        <Cell icon={<Truck size={10} />} label="Stops" value={route.shipperIds.length} />
+        <Cell icon={<Leaf size={10} />} label="Sust." value={`${route.sustainScore}/100`} />
+        <Cell icon={<Coins size={10} />} label="Revenue" value={`${route.revenueSek.toLocaleString('sv-SE')} SEK`} />
       </div>
     </button>
   );
@@ -232,14 +232,14 @@ function ChatInput({ phase, onSubmit }) {
   };
 
   const placeholder = phase === 'awaiting_origin'
-    ? 'Ange startpunkt…'
+    ? 'Enter origin…'
     : phase === 'awaiting_destination'
-    ? 'Ange destination…'
+    ? 'Enter destination…'
     : phase === 'awaiting_edit'
-    ? 'Beskriv ändring (t.ex. "byt tid till 16:00")…'
+    ? 'Describe change (e.g. "change time to 16:00")…'
     : phase === 'route_selected' || phase === 'outreach_complete'
-    ? 'Klar · tryck ↻ för ny plan'
-    : 'Välj ett alternativ ovan…';
+    ? 'Done · press ↻ to plan again'
+    : 'Pick an option above…';
 
   return (
     <form onSubmit={submit} className="border-t border-gray-100 p-2.5 flex items-center gap-2 bg-white flex-shrink-0">

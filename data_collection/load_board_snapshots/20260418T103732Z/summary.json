@@ -1,0 +1,18 @@
+{
+  "snapshot_at": "20260418T103732Z",
+  "sources": {
+    "returlast": {
+      "count": 49,
+      "file": "returlast.jsonl"
+    },
+    "cargopedia": {
+      "count": 0,
+      "skipped": "JS-renderad feed, kräver login+Playwright"
+    },
+    "123cargo": {
+      "count": 0,
+      "skipped": "Listningar bakom login"
+    }
+  },
+  "total": 49
+}

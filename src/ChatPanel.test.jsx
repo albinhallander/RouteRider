@@ -105,7 +105,7 @@ describe('Chat-first route planner', () => {
     ).toBeInTheDocument();
 
     // Submit an edit — time change routes through the mock rewriter.
-    const input = screen.getByPlaceholderText(/Beskriv ändring/i);
+    const input = screen.getByPlaceholderText(/Describe change/i);
     await user.type(input, 'Change pickup to 16:00');
     await user.keyboard('{Enter}');
     expect(
