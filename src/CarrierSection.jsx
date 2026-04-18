@@ -162,11 +162,7 @@ export default function CarrierSection({ originLabel, destinationLabel, activeRo
                     <CheckCircle2 size={10} /> Sent
                   </span>
                 ) : (
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${
-                    c.matchType === 'full'
-                      ? 'bg-green-50 text-green-700 border-green-100'
-                      : 'bg-amber-50 text-amber-700 border-amber-100'
-                  }`}>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-full font-medium border bg-gray-50 text-gray-600 border-gray-200">
                     {c.matchType === 'full' ? 'Direct' : 'Partial'}
                   </span>
                 )}
