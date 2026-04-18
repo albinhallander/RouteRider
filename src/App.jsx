@@ -587,17 +587,13 @@ export default function App() {
                         {tab.label} {tab.count}
                       </button>
                     ))}
-                    <button
-                      onClick={() => setShowLoadBoardOnly(v => !v)}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
-                        showLoadBoardOnly
-                          ? 'bg-amber-400 text-black'
-                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                      }`}
+                    <span
+                      title="Lastbörssignaler ej anslutna ännu — se README för Fraktjakt API-integration"
+                      className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-400 cursor-not-allowed opacity-60"
                     >
                       <Package size={10} />
-                      Lastbörs {loadBoardCount}
-                    </button>
+                      Lastbörs —
+                    </span>
                   </div>
 
                   <div className="px-4 py-2.5 bg-white border-b border-gray-100 flex-shrink-0">
