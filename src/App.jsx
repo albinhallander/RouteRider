@@ -284,26 +284,26 @@ export default function App() {
           {/* Idle state: show base E4 route */}
           {!showingSuggestions && !routeLocked && (
             <>
-              <Polyline positions={ROUTE} pathOptions={{ color: '#9ca3af', weight: 14, opacity: 0.15 }} />
-              <Polyline positions={ROUTE} pathOptions={{ color: '#9ca3af', weight: 3, opacity: 0.7, dashArray: '8 6' }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 16, opacity: 0.25 }} />
+              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 7, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
             </>
           )}
 
-          {/* Suggestions phase: show all 3 routes as colored lines */}
-          {showingSuggestions && chat.suggestions.map(route => (
+          {/* Suggestions phase: show all 3 routes */}
+          {showingSuggestions && chat.suggestions.map((route, i) => (
             <Polyline key={route.id} positions={route.routeCoords}
-              pathOptions={{ color: route.color, weight: 4, opacity: 0.75 }}
+              pathOptions={{ color: '#4264FB', weight: 6, opacity: i === 0 ? 1 : 0.45, lineJoin: 'round', lineCap: 'round' }}
             />
           ))}
 
-          {/* Locked route: thick colored line + glow */}
+          {/* Locked route: Google Maps style solid blue */}
           {routeLocked && selectedRoute && (
             <>
               <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: selectedRoute.color, weight: 16, opacity: 0.12 }}
+                pathOptions={{ color: '#6b8ef5', weight: 18, opacity: 0.25 }}
               />
               <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: selectedRoute.color, weight: 5, opacity: 1 }}
+                pathOptions={{ color: '#4264FB', weight: 7, opacity: 1, lineJoin: 'round', lineCap: 'round' }}
               />
             </>
           )}
