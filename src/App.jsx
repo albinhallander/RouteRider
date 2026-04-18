@@ -127,7 +127,7 @@ export default function App() {
   const hasSuggestions = chat.suggestions.length > 0;
   const routeLocked = !!selectedRoute;
   const showingSuggestions = hasSuggestions && !routeLocked;
-  const SELECTED_COLOR = '#10b981';
+  const SELECTED_COLOR = '#2563eb'; // Einride blue — shown only once a route is locked
 
   // Effective active route for email drafting — enriches with the user's
   // origin/destination so outreach copy matches the actual trip.
@@ -364,32 +364,33 @@ export default function App() {
           {/* Nothing renders until the chat produces suggestions — map is a
               blank canvas that responds to the conversation. */}
 
-          {/* Planning: draw every suggestion in its own color. When one is
-              locked, fade the rest and turn the winner green with a halo. */}
-          {hasSuggestions && chat.suggestions.map(route => {
-            const isSelected = routeLocked && route.id === selectedRoute.id;
-            const dimmed = routeLocked && !isSelected;
-            const color = isSelected ? SELECTED_COLOR : route.color;
-            return (
-              <Fragment key={route.id}>
-                {isSelected && (
+          {/* Planning: draw every suggestion in its own color. Once one is
+              locked, hide the rest and turn the winner Einride blue with a
+              halo — the map becomes a single clean route. */}
+          {hasSuggestions && chat.suggestions
+            .filter(route => !routeLocked || route.id === selectedRoute.id)
+            .map(route => {
+              const isSelected = routeLocked && route.id === selectedRoute.id;
+              const color = isSelected ? SELECTED_COLOR : route.color;
+              return (
+                <Fragment key={route.id}>
+                  {isSelected && (
+                    <Polyline positions={route.routeCoords}
+                      pathOptions={{ color: SELECTED_COLOR, weight: 12, opacity: 0.22, lineJoin: 'round', lineCap: 'round' }}
+                    />
+                  )}
                   <Polyline positions={route.routeCoords}
-                    pathOptions={{ color: SELECTED_COLOR, weight: 11, opacity: 0.28, lineJoin: 'round', lineCap: 'round' }}
+                    pathOptions={{
+                      color,
+                      weight: isSelected ? 5 : 4,
+                      opacity: 0.9,
+                      lineJoin: 'round',
+                      lineCap: 'round'
+                    }}
                   />
-                )}
-                <Polyline positions={route.routeCoords}
-                  pathOptions={{
-                    color,
-                    weight: isSelected ? 5 : 4,
-                    opacity: dimmed ? 0.18 : 0.9,
-                    dashArray: dimmed ? '4 6' : undefined,
-                    lineJoin: 'round',
-                    lineCap: 'round'
-                  }}
-                />
-              </Fragment>
-            );
-          })}
+                </Fragment>
+              );
+            })}
 
           {/* Charging stations — shown when no route is locked */}
           {nearbyStations.map((station, i) => (

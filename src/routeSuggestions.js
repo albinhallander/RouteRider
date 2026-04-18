@@ -5,6 +5,7 @@
 // sit roughly on the destination→origin line and ordered along that return leg.
 
 import { fetchDrivingRoute } from './mapboxRouting.js';
+import { geocodeCity } from './geocode.js';
 
 export const GOTHENBURG = [57.7088, 11.9746];
 
@@ -35,10 +36,22 @@ export const QUICK_DESTINATIONS = [
   { label: 'Hamburg',     coords: [53.5511, 9.9937] }
 ];
 
-function resolvePlace(input, fallback) {
-  const q = (input ?? '').trim().toLowerCase();
-  const match = PLACES.find(p => p.label.toLowerCase() === q);
-  return match ?? { label: (input ?? '').trim() || fallback.label, coords: fallback.coords };
+// Resolve a user-typed city name to coordinates. Tries the local PLACES
+// list first (fast, no network), then Nominatim. Falls back to the caller's
+// `fallback` city only when geocoding returns nothing so the trip is still
+// plannable rather than erroring out.
+async function resolvePlace(input, fallback) {
+  const q = (input ?? '').trim();
+  if (!q) return { label: fallback.label, coords: fallback.coords };
+
+  const local = PLACES.find(p => p.label.toLowerCase() === q.toLowerCase());
+  if (local) return { label: local.label, coords: local.coords };
+
+  const geo = await geocodeCity(q);
+  if (geo) return { label: geo.label, coords: geo.coords };
+
+  console.warn(`[routeSuggestions] Could not resolve "${q}" — using fallback ${fallback.label}.`);
+  return { label: q, coords: fallback.coords };
 }
 
 const R_KM = 6371;
@@ -134,15 +147,11 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
   };
 }
 
-export function buildRouteSuggestions(destinationInput, shippers, originInput) {
-  const dest = resolvePlace(destinationInput, {
-    label: 'Stockholm',
-    coords: [59.3293, 18.0686]
-  });
-  const origin = resolvePlace(originInput, {
-    label: 'Göteborg',
-    coords: GOTHENBURG
-  });
+export async function buildRouteSuggestions(destinationInput, shippers, originInput) {
+  const [dest, origin] = await Promise.all([
+    resolvePlace(destinationInput, { label: 'Stockholm', coords: [59.3293, 18.0686] }),
+    resolvePlace(originInput,      { label: 'Göteborg',  coords: GOTHENBURG })
+  ]);
 
   const candidates = backhaulCandidates(origin, dest, shippers);
   const byScore = [...candidates].sort((a, b) => b.shipper.score - a.shipper.score);

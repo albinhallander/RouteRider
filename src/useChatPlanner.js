@@ -72,7 +72,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
 
   const confirmBackhaul = useCallback(async yes => {
     if (!destination) return;
-    const all = buildRouteSuggestions(destination, shippers, origin);
+    const all = await buildRouteSuggestions(destination, shippers, origin);
     const initial = yes ? all : all.slice(0, 1);
 
     // Show the user reply + a planning bubble immediately; the real route
