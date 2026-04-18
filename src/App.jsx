@@ -865,7 +865,8 @@ function ShipperRow({ shipper, onClick, onSetSaidYes, onSetCargo, onRoute, route
   const needsCargoInput = said === 'yes' && !hasCargo;
 
   const sustainCat = shipper.sustainability?.category;
-  const showLeaf = sustainCat === 'leader' || sustainCat === 'active';
+  // Only show the web-sourced leaf when CDP has nothing — CDP's TreePine takes priority.
+  const showLeaf = !shipper.hasCdp && (sustainCat === 'leader' || sustainCat === 'active');
   const sustainTip = showLeaf
     ? [
         sustainCat === 'leader' ? 'Sustainability leader' : 'Sustainability active',

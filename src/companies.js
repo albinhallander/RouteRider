@@ -1,7 +1,7 @@
 import rawData from './data/companies.json';
 import { getLiveSignals, buildSignalList } from './liveSignals.js';
 
-// E4-korridoren waypoints — speglar ROUTE i App.jsx
+// E4 corridor waypoints — mirrors ROUTE in App.jsx
 const E4 = [
   [57.7088, 11.9746],
   [57.7400, 12.6000],
@@ -56,15 +56,15 @@ const TYP_SCORE = {
 };
 
 const SNI_SCORE = {
-  '52': 18, // Lagring & transport
-  '46': 15, // Partihandel
-  '10': 12, // Livsmedel
-  '29': 10, // Fordon
-  '20': 10, // Kemi
-  '25': 8,  // Metallvaror
-  '28': 8,  // Maskiner
-  '45': 5,  // Motorfordonshandel
-  '47': 5,  // Detaljhandel
+  '52': 18, // Warehousing & transport
+  '46': 15, // Wholesale
+  '10': 12, // Food
+  '29': 10, // Vehicles
+  '20': 10, // Chemicals
+  '25': 8,  // Metal products
+  '28': 8,  // Machinery
+  '45': 5,  // Motor-vehicle trade
+  '47': 5,  // Retail
 };
 
 // Sustainability bonus written by data_collection/sustainability_enrich.py.
@@ -137,7 +137,7 @@ function calcBusinessScore({ typ, bransch, org_nr, sites, sig }) {
 
 function formatCargo(d) {
   if (d.bransch) {
-    // Bransch från allabolag är t.ex. "52 – Lagring och transport" — ta bara texten
+    // bransch from allabolag is e.g. "52 – Lagring och transport" — keep only the text
     const clean = d.bransch.replace(/^\d+\s*[–-]\s*/, '').trim();
     const label = d.typ ? `${d.typ.charAt(0).toUpperCase()}${d.typ.slice(1)}` : '';
     return [clean.split(' ').slice(0, 5).join(' '), label].filter(Boolean).join(' · ');
@@ -222,11 +222,13 @@ export const COMPANIES = [...groups.entries()]
     const sig = getLiveSignals(orgnr);
     const signals = buildSignalList(sig);
 
-    // Business-case score (0–100) plus a sustainability nudge from offline LLM
-    // classification. Pick the first non-empty sustainability block across sites.
+    // Business-case score (0–100). CDP (in calcBusinessScore) is the primary
+    // sustainability signal when we have it; our offline LLM classification only
+    // kicks in as a fallback for companies CDP doesn't cover.
     const sustainability = members.find(m => m.sustainability)?.sustainability || null;
+    const hasCdp = !!sig?.cdp_scope3;
     const baseScore = calcBusinessScore({ typ, bransch, org_nr: orgnr, sites, sig });
-    const sustainBonus = SUSTAIN_BONUS[sustainability?.category] ?? 0;
+    const sustainBonus = hasCdp ? 0 : (SUSTAIN_BONUS[sustainability?.category] ?? 0);
     const score = clamp(baseScore + sustainBonus, 0, 100);
 
     return {
@@ -246,6 +248,7 @@ export const COMPANIES = [...groups.entries()]
       typ,
       signals,
       sustainability,
+      hasCdp,
     };
   })
   .filter(c => {
