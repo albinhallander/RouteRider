@@ -70,25 +70,21 @@ OUTPUT_FILE = "routerider_lager.json"
 # KÄLLA 1: OVERPASS API (OpenStreetMap) — Gratis
 # ═══════════════════════════════════════════════════════════════════════════════
 
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+# Använder backup-endpoint om primär är nere
+OVERPASS_URLS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+]
 
-# OSM-taggar som indikerar lager, fabrik, distributionscenter
+# Förenklad query — färre predicate = snabbare = mindre timeout-risk
 OSM_FILTERS = """
 (
-  node["building"="warehouse"]{bbox};
-  way["building"="warehouse"]{bbox};
-  node["building"="industrial"]{bbox};
-  way["building"="industrial"]{bbox};
-  node["building"="factory"]{bbox};
-  way["building"="factory"]{bbox};
-  node["industrial"="warehouse"]{bbox};
-  way["industrial"="warehouse"]{bbox};
-  node["industrial"="factory"]{bbox};
-  way["industrial"="factory"]{bbox};
-  node["shop"="wholesale"]{bbox};
+  way["building"~"warehouse|industrial|factory"]{bbox};
+  node["building"~"warehouse|factory"]{bbox};
   way["shop"="wholesale"]{bbox};
-  node["landuse"="industrial"]["name"~"lager|logistik|distribut|terminal|förråd",i]{bbox};
-  way["landuse"="industrial"]["name"~"lager|logistik|distribut|terminal|förråd",i]{bbox};
+  way["landuse"="industrial"]["name"]{bbox};
+  node["landuse"="industrial"]["name"]{bbox};
 );
 out center tags;
 """
@@ -109,14 +105,27 @@ def overpass_query(city: Dict) -> List[Dict]:
     dlng = r / (111_000 * math.cos(math.radians(lat)))
     bbox = f"({lat-dlat:.5f},{lng-dlng:.5f},{lat+dlat:.5f},{lng+dlng:.5f})"
 
-    query = "[out:json][timeout:30];\n" + OSM_FILTERS.replace("{bbox}", bbox)
+    query = "[out:json][timeout:60];\n" + OSM_FILTERS.replace("{bbox}", bbox)
 
-    try:
-        resp = requests.post(OVERPASS_URL, data={"data": query}, timeout=45)
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception as e:
-        log.error(f"Overpass fel för {city['name']}: {e}")
+    for attempt in range(4):
+        wait = [0, 30, 60, 90][attempt]
+        if wait:
+            log.info(f"  Väntar {wait}s innan försök {attempt+1} för {city['name']}...")
+            time.sleep(wait)
+        for url in OVERPASS_URLS:
+            try:
+                resp = requests.post(url, data={"data": query}, timeout=90, headers={"User-Agent": "RouteRider/1.0"})
+                resp.raise_for_status()
+                data = resp.json()
+                break
+            except Exception as e:
+                log.warning(f"Overpass försök {attempt+1} ({url}) misslyckades för {city['name']}: {e}")
+        else:
+            if attempt == 3:
+                return []
+            continue
+        break
+    else:
         return []
 
     results = []
@@ -549,7 +558,7 @@ def main(google_api_key: Optional[str] = None) -> None:
         # 1. Overpass (OpenStreetMap) — alltid
         osm = overpass_query(city)
         all_locations.extend(osm)
-        time.sleep(3)  # Var snäll mot Overpass
+        time.sleep(35)  # Overpass rate-limit: max ~1 req/30s
 
         # 2. Google Places — om API-nyckel finns
         if google_api_key:
