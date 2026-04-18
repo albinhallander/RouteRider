@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -168,11 +168,29 @@ export default function App() {
 
   const contactedCount = effectiveShippers.filter(s => s.contacted).length;
 
+  const [leftW, setLeftW] = useState(320);
+  const [rightW, setRightW] = useState(288);
+  const dragging = useRef(null);
+
+  const onMouseDown = useCallback((side, e) => {
+    e.preventDefault();
+    dragging.current = { side, startX: e.clientX, startW: side === 'left' ? leftW : rightW };
+    const onMove = mv => {
+      const dx = mv.clientX - dragging.current.startX;
+      const next = dragging.current.startW + (side === 'left' ? dx : -dx);
+      const clamped = Math.min(520, Math.max(180, next));
+      side === 'left' ? setLeftW(clamped) : setRightW(clamped);
+    };
+    const onUp = () => { dragging.current = null; window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  }, [leftW, rightW]);
+
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
 
       {/* ── Sidebar ── */}
-      <aside className="w-80 flex-shrink-0 flex flex-col bg-white border-r border-gray-200 shadow-lg z-10 overflow-hidden">
+      <aside style={{ width: leftW }} className="flex-shrink-0 flex flex-col bg-white border-r border-gray-200 shadow-lg z-10 overflow-hidden">
         <AnimatePresence mode="wait" initial={false}>
 
           {/* Detail view */}
@@ -258,6 +276,13 @@ export default function App() {
           )}
         </AnimatePresence>
       </aside>
+
+      {/* ── Left resize handle ── */}
+      <div
+        onMouseDown={e => onMouseDown('left', e)}
+        className="w-1 flex-shrink-0 cursor-col-resize hover:bg-blue-400 active:bg-blue-500 transition-colors z-20"
+        style={{ background: 'transparent' }}
+      />
 
       {/* ── Map ── */}
       <div className="flex-1 relative">
@@ -350,8 +375,15 @@ export default function App() {
         </MapContainer>
       </div>
 
+      {/* ── Right resize handle ── */}
+      <div
+        onMouseDown={e => onMouseDown('right', e)}
+        className="w-1 flex-shrink-0 cursor-col-resize hover:bg-blue-400 active:bg-blue-500 transition-colors z-20"
+        style={{ background: 'transparent' }}
+      />
+
       {/* ── Chat panel (right) ── */}
-      <aside className="w-72 flex-shrink-0 flex flex-col bg-white border-l border-gray-200 shadow-lg z-10 overflow-hidden">
+      <aside style={{ width: rightW }} className="flex-shrink-0 flex flex-col bg-white border-l border-gray-200 shadow-lg z-10 overflow-hidden">
         <ChatPanel
           phase={chat.phase}
           messages={chat.messages}
