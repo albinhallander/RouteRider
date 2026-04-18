@@ -3,8 +3,38 @@
 // be dropped into the sidebar without App.jsx knowing anything about carriers.
 
 import { useState, useEffect } from 'react';
-import { Truck, Send, CheckCircle2, ChevronLeft } from 'lucide-react';
+import { Truck, Send, CheckCircle2, ChevronLeft, Leaf } from 'lucide-react';
 import { suggestCarriers, draftCarrierCollabEmail } from './carrierSuggestions.js';
+
+const SUSTAIN_LABEL = {
+  leader: 'Sustainability leader',
+  active: 'Sustainability active',
+  mentioned: 'Mentioned',
+  silent: 'No signal',
+};
+
+const SUSTAIN_STYLE = {
+  leader: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  active: 'bg-green-50 text-green-700 border-green-100',
+  mentioned: 'bg-gray-50 text-gray-600 border-gray-200',
+  silent: 'bg-gray-50 text-gray-400 border-gray-100',
+};
+
+function SustainBadge({ sustainability }) {
+  const cat = sustainability?.category;
+  if (!cat || cat === 'unknown' || cat === 'silent') return null;
+  const evidence = sustainability.evidence?.[0] || '';
+  const source = sustainability.source || '';
+  const tip = [SUSTAIN_LABEL[cat], evidence, source].filter(Boolean).join(' — ');
+  return (
+    <span
+      title={tip}
+      className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border flex items-center gap-1 ${SUSTAIN_STYLE[cat]}`}
+    >
+      <Leaf size={9} /> {SUSTAIN_LABEL[cat]}
+    </span>
+  );
+}
 
 export default function CarrierSection({ originLabel, destinationLabel, activeRoute }) {
   const [selected, setSelected] = useState(null);
@@ -156,7 +186,8 @@ export default function CarrierSection({ originLabel, destinationLabel, activeRo
                 <div className="text-sm font-medium text-gray-900 truncate">{c.name}</div>
                 <div className="text-xs text-gray-500">{c.hq} · {c.country} · {c.fleetTrucks} trucks</div>
               </div>
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex items-center gap-1">
+                <SustainBadge sustainability={c.sustainability} />
                 {isSent ? (
                   <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
                     <CheckCircle2 size={10} /> Sent

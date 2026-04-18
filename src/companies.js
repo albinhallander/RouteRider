@@ -67,6 +67,10 @@ const SNI_SCORE = {
   '47': 5,  // Detaljhandel
 };
 
+// Sustainability bonus written by data_collection/sustainability_enrich.py.
+// Applied on top of calcBusinessScore — missing data stays neutral.
+const SUSTAIN_BONUS = { leader: 10, active: 5, mentioned: 2, silent: -3, unknown: 0 };
+
 function _sniPrefix(bransch) {
   const digits = (bransch || '').match(/\d{2,5}/)?.[0] ?? '';
   return digits.slice(0, 2);
@@ -218,9 +222,12 @@ export const COMPANIES = [...groups.entries()]
     const sig = getLiveSignals(orgnr);
     const signals = buildSignalList(sig);
 
-    // New spec: score is the business-case score (0–100). No other live-signal
-    // bonuses are mixed into the ranking (CDP still influences via sustainability).
-    const score = calcBusinessScore({ typ, bransch, org_nr: orgnr, sites, sig });
+    // Business-case score (0–100) plus a sustainability nudge from offline LLM
+    // classification. Pick the first non-empty sustainability block across sites.
+    const sustainability = members.find(m => m.sustainability)?.sustainability || null;
+    const baseScore = calcBusinessScore({ typ, bransch, org_nr: orgnr, sites, sig });
+    const sustainBonus = SUSTAIN_BONUS[sustainability?.category] ?? 0;
+    const score = clamp(baseScore + sustainBonus, 0, 100);
 
     return {
       id,
@@ -229,7 +236,7 @@ export const COMPANIES = [...groups.entries()]
       position: rep.position,
       sites,
       score,
-      baseScore: score,
+      baseScore,
       distanceFromE4: repDist,
       tier: calcTier(score, repDist),
       contact,
@@ -238,6 +245,7 @@ export const COMPANIES = [...groups.entries()]
       bransch,
       typ,
       signals,
+      sustainability,
     };
   })
   .filter(c => {
