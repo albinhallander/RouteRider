@@ -29,7 +29,7 @@ import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js';
 import { getRecommendedRestStops } from './restStops.js';
-import { formatEta } from './routeSuggestions.js';
+import { formatEta, getShippersNearRoute } from './routeSuggestions.js';
 import { COMPANIES } from './companies.js';
 
 
@@ -197,34 +197,45 @@ export default function App() {
     [showingSuggestions, planningCoords, showAllStations]
   );
 
-  // Tier counts for filter chips
+  // When route is locked: all shippers within 40 km of the route polyline,
+  // sorted so route picks come first, then by score descending.
+  const corridorShippers = useMemo(
+    () => selectedRoute
+      ? getShippersNearRoute(selectedRoute.routeCoords, shippers, 40)
+          .sort((a, b) => {
+            const aOnRoute = selectedRoute.shipperIds.includes(a.id) ? 0 : 1;
+            const bOnRoute = selectedRoute.shipperIds.includes(b.id) ? 0 : 1;
+            return aOnRoute - bOnRoute || b.score - a.score;
+          })
+      : shippers,
+    [selectedRoute, shippers]
+  );
+
+  // Tier counts — based on corridor when locked, full list otherwise
+  const countBase = selectedRoute ? corridorShippers : shippers;
   const prioCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
-    [shippers, skippedIds]
+    () => countBase.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
+    [countBase, skippedIds]
   );
   const possibleCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'possible').length,
-    [shippers, skippedIds]
+    () => countBase.filter(s => !skippedIds.has(s.id) && s.tier === 'possible').length,
+    [countBase, skippedIds]
   );
   const allNonSkippedCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id)).length,
-    [shippers, skippedIds]
+    () => countBase.filter(s => !skippedIds.has(s.id)).length,
+    [countBase, skippedIds]
   );
 
   const displayedShippers = useMemo(() => {
-    if (selectedRoute) {
-      const base = shippers.filter(s => selectedRoute.shipperIds.includes(s.id));
-      return activeFilter === 'skipped'
-        ? base.filter(s => skippedIds.has(s.id))
-        : base.filter(s => !skippedIds.has(s.id));
-    }
-    const pool = shippers.filter(s =>
+    const base = selectedRoute ? corridorShippers : shippers;
+    const pool = base.filter(s =>
       activeFilter === 'skipped' ? skippedIds.has(s.id) : !skippedIds.has(s.id)
     );
     if (activeFilter === 'prio') return pool.filter(s => s.tier === 'prio');
     if (activeFilter === 'possible') return pool.filter(s => s.tier === 'possible');
+    if (activeFilter === 'all') return pool;
     return pool;
-  }, [selectedRoute, shippers, skippedIds, activeFilter]);
+  }, [selectedRoute, corridorShippers, shippers, skippedIds, activeFilter]);
 
   useEffect(() => {
     if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
@@ -395,29 +406,27 @@ export default function App() {
               {/* Shippers list */}
               <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
 
-                {/* Filter chips — only before route is locked */}
-                {!routeLocked && (
-                  <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
-                    {[
-                      { key: 'prio',     label: 'Prio',     count: prioCount },
-                      { key: 'possible', label: 'Möjliga',  count: possibleCount },
-                      { key: 'all',      label: 'Alla',     count: allNonSkippedCount },
-                      { key: 'skipped',  label: 'Skippade', count: skippedIds.size },
-                    ].map(tab => (
-                      <button
-                        key={tab.key}
-                        onClick={() => setActiveFilter(tab.key)}
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
-                          activeFilter === tab.key
-                            ? 'bg-einride text-black'
-                            : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                        }`}
-                      >
-                        {tab.label} {tab.count}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                {/* Filter chips */}
+                <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
+                  {[
+                    { key: 'prio',     label: 'Prio',     count: prioCount },
+                    { key: 'possible', label: 'Möjliga',  count: possibleCount },
+                    { key: 'all',      label: 'Alla',     count: allNonSkippedCount },
+                    { key: 'skipped',  label: 'Skippade', count: skippedIds.size },
+                  ].map(tab => (
+                    <button
+                      key={tab.key}
+                      onClick={() => setActiveFilter(tab.key)}
+                      className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
+                        activeFilter === tab.key
+                          ? 'bg-einride text-black'
+                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                      }`}
+                    >
+                      {tab.label} {tab.count}
+                    </button>
+                  ))}
+                </div>
 
                 <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
                   <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
@@ -439,6 +448,8 @@ export default function App() {
                         onSkip={skipShipper}
                         onUnskip={unskipShipper}
                         isSkipped={skippedIds.has(s.id)}
+                        onRoute={routeLocked && selectedRoute.shipperIds.includes(s.id)}
+                        routeStop={routeLocked ? selectedRoute.shipperIds.indexOf(s.id) + 1 : 0}
                       />
                     ))
                   )}
@@ -638,7 +649,7 @@ export default function App() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
+function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped, onRoute, routeStop }) {
   return (
     <button
       onClick={onClick}
@@ -676,6 +687,10 @@ function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
             className="text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded-full font-medium hover:bg-gray-200 transition cursor-pointer"
           >
             Ångra
+          </span>
+        ) : onRoute ? (
+          <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
+            {routeStop}
           </span>
         ) : shipper.contacted ? (
           <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">

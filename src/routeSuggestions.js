@@ -134,6 +134,16 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
   };
 }
 
+// All shippers within maxKm of any point on the route polyline.
+export function getShippersNearRoute(routeCoords, shippers, maxKm = 40) {
+  return shippers.filter(s => {
+    for (const [lat, lng] of routeCoords) {
+      if (haversineKm(s.position, [lat, lng]) <= maxKm) return true;
+    }
+    return false;
+  });
+}
+
 export function buildRouteSuggestions(destinationInput, shippers, originInput) {
   const dest = resolvePlace(destinationInput, {
     label: 'Stockholm',
