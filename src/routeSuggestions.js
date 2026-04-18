@@ -66,6 +66,14 @@ function haversineKm([lat1, lon1], [lat2, lon2]) {
   return 2 * R_KM * Math.asin(Math.sqrt(h));
 }
 
+function clamp(n, lo, hi) {
+  return Math.max(lo, Math.min(hi, n));
+}
+
+function clamp01(n) {
+  return clamp(n, 0, 1);
+}
+
 function totalRouteKm(points) {
   let sum = 0;
   for (let i = 1; i < points.length; i++) sum += haversineKm(points[i - 1], points[i]);
@@ -89,14 +97,115 @@ const STOP_MIN = 40;                    // pickup dwell time (min per stop)
 const MAX_ADDED_MIN = 360;              // hard cap on reroute overhead: 6 hours
 const REVENUE_PER_STOP = 14000;         // SEK, scaled by shipper score
 
+// Ranking model: 2-factor (business case + distance/time).
+const BUSINESS_WEIGHT = 0.60;
+const DISTANCE_TIME_WEIGHT = 0.40;
+const MULTI_SITE_WEIGHT_IN_DISTANCE_TIME = 0.20;
+const TIME_WEIGHT_IN_DISTANCE_TIME = 1 - MULTI_SITE_WEIGHT_IN_DISTANCE_TIME;
+
+function normalizeSites(shipper) {
+  if (Array.isArray(shipper?.sites) && shipper.sites.length > 0) return shipper.sites;
+  if (Array.isArray(shipper?.position) && shipper.position.length === 2) return [{ position: shipper.position }];
+  return [];
+}
+
+function densifyRoute(routeCoords) {
+  if (!routeCoords || routeCoords.length < 2) return [];
+  const dense = [routeCoords[0]];
+  for (let i = 1; i < routeCoords.length; i++) {
+    const [la1, lo1] = routeCoords[i - 1];
+    const [la2, lo2] = routeCoords[i];
+    const totalKm = haversineKm([la1, lo1], [la2, lo2]);
+    const steps = Math.max(1, Math.ceil(totalKm / 20));
+    for (let s = 1; s <= steps; s++) {
+      const t = s / steps;
+      dense.push([la1 + (la2 - la1) * t, lo1 + (lo2 - lo1) * t]);
+    }
+  }
+  return dense;
+}
+
+function countSitesNearRoute(routeCoords, sites, maxKm = 40) {
+  const dense = densifyRoute(routeCoords);
+  if (dense.length === 0) return 0;
+  let count = 0;
+  for (const site of sites || []) {
+    const pos = site?.position;
+    if (!pos) continue;
+    for (const p of dense) {
+      if (haversineKm(pos, p) <= maxKm) {
+        count++;
+        break;
+      }
+    }
+  }
+  return count;
+}
+
+function bestSiteForDetour(originCoords, destCoords, sites) {
+  const directKm = haversineKm(destCoords, originCoords);
+  if (!sites || sites.length === 0 || directKm < 1) return null;
+
+  let best = null;
+  let bestViaKm = Infinity;
+  for (const site of sites) {
+    const pos = site?.position;
+    if (!pos) continue;
+    const viaKm = haversineKm(destCoords, pos) + haversineKm(pos, originCoords);
+    if (viaKm < bestViaKm) {
+      bestViaKm = viaKm;
+      best = site;
+    }
+  }
+  return best;
+}
+
+function timeScoreFromAddedMin(addedMin, maxAddedMin) {
+  // High added time should be penalized. Square makes penalties harsher near the cap.
+  const linear = clamp01(1 - (Number(addedMin) || 0) / (maxAddedMin || MAX_ADDED_MIN));
+  return linear ** 2;
+}
+
+function multiSiteScoreFromCount(sitesNearRoute) {
+  // Reward only if there's more than 1 site near the corridor.
+  const n = Number(sitesNearRoute) || 0;
+  if (n <= 1) return 0;
+  return clamp01((n - 1) / 3); // 2→0.33, 4→1.0
+}
+
+function distanceTimeScore({ addedMin, maxAddedMin, sitesNearRoute }) {
+  const t = timeScoreFromAddedMin(addedMin, maxAddedMin);
+  const m = multiSiteScoreFromCount(sitesNearRoute);
+  const score01 = TIME_WEIGHT_IN_DISTANCE_TIME * t + MULTI_SITE_WEIGHT_IN_DISTANCE_TIME * m;
+  return clamp(score01 * 100, 0, 100);
+}
+
+function rankScore({ businessScore, distanceTime }) {
+  const b = clamp(Number(businessScore) || 0, 0, 100);
+  const dt = clamp(Number(distanceTime) || 0, 0, 100);
+  return BUSINESS_WEIGHT * b + DISTANCE_TIME_WEIGHT * dt;
+}
+
 function backhaulCandidates(origin, dest, shippers) {
   const directKm = haversineKm(origin.coords, dest.coords);
   if (directKm < 1) return [];
   return shippers
     .map(s => {
-      const distFromDest = haversineKm(dest.coords, s.position);
-      const viaKm = distFromDest + haversineKm(s.position, origin.coords);
-      return { shipper: s, distFromDest, detour: viaKm - directKm };
+      const sites = normalizeSites(s);
+      const best = bestSiteForDetour(origin.coords, dest.coords, sites) || { position: s.position };
+      const pos = best.position;
+      const distFromDest = haversineKm(dest.coords, pos);
+      const viaKm = distFromDest + haversineKm(pos, origin.coords);
+      const detourKm = viaKm - directKm;
+
+      // Estimate the 6h-cap overhead in minutes for ranking. Used only to
+      // order candidates before the real routing enrichment kicks in.
+      const estAddedMin = Math.max(0, detourKm) * 0.8 + STOP_MIN;
+      const sitesNear = countSitesNearRoute([dest.coords, origin.coords], sites, 40);
+      const dt = distanceTimeScore({ addedMin: estAddedMin, maxAddedMin: MAX_ADDED_MIN, sitesNearRoute: sitesNear });
+      const r = rankScore({ businessScore: s.score, distanceTime: dt });
+
+      return { shipper: s, distFromDest, detour: detourKm, rankScore: r };
     })
     .filter(c => c.detour <= directKm * BACKHAUL_DETOUR_TOLERANCE);
 }
@@ -181,8 +290,8 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
   ]);
 
   const candidates = backhaulCandidates(origin, dest, shippers);
-  const byScore = [...candidates].sort((a, b) => b.shipper.score - a.shipper.score);
-  const allCandidateIds = byScore.map(c => c.shipper.id);
+  const byRank = [...candidates].sort((a, b) => b.rankScore - a.rankScore);
+  const allCandidateIds = byRank.map(c => c.shipper.id);
 
   const routeA = buildRoute({
     id: 'A',
@@ -195,7 +304,7 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
     candidateIds: []
   });
 
-  const balancedPicks = orderForReturn(byScore.slice(0, 3));
+  const balancedPicks = orderForReturn(byRank.slice(0, 3));
   const routeB = buildRoute({
     id: 'B',
     color: '#3b82f6',
@@ -211,7 +320,7 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
   });
 
   const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN);
-  const fullPicks = orderForReturn(candidates).slice(0, maxStops);
+    const fullPicks = orderForReturn(byRank.slice(0, maxStops));
   const routeC = buildRoute({
     id: 'C',
     color: '#10b981',
@@ -294,6 +403,7 @@ export async function filterFeasibleShippers(
 
   const baseline = await fetchFn([dest.coords, origin.coords]);
   const baselineDriving = baseline.durationMin;
+  const baselineRouteCoords = baseline.geometry?.length ? baseline.geometry : [dest.coords, origin.coords];
 
   // Cheap haversine pre-filter. Haversine always *underestimates* real
   // road distance, so if the straight-line detour already blows the cap
@@ -302,31 +412,50 @@ export async function filterFeasibleShippers(
   // typically leaves ~30–80 candidates, keeping the OSRM fan-out under
   // the public demo's rate limits.
   const directHaversineKm = haversineKm(dest.coords, origin.coords);
-  const preFiltered = shippers.filter(s => {
-    const viaKm =
-      haversineKm(dest.coords, s.position) +
-      haversineKm(s.position, origin.coords);
-    const detourKm = Math.max(0, viaKm - directHaversineKm);
-    // 0.8 min/km ≈ 75 km/h free-flow pace; plus the 40 min stop dwell.
-    const estAddedMin = detourKm * 0.8 + STOP_MIN;
-    return estAddedMin <= maxAddedMin;
-  });
+  const preFiltered = shippers
+    .map(s => {
+      const sites = normalizeSites(s);
+      const best = bestSiteForDetour(origin.coords, dest.coords, sites);
+      const pos = best?.position || s.position;
+      if (!pos) return null;
+
+      const viaKm = haversineKm(dest.coords, pos) + haversineKm(pos, origin.coords);
+      const detourKm = Math.max(0, viaKm - directHaversineKm);
+      // 0.8 min/km ≈ 75 km/h free-flow pace; plus the 40 min stop dwell.
+      const estAddedMin = detourKm * 0.8 + STOP_MIN;
+      return { shipper: s, bestPos: pos, estAddedMin };
+    })
+    .filter(Boolean)
+    .filter(x => x.estAddedMin <= maxAddedMin);
 
   const perShipper = await Promise.all(
-    preFiltered.map(s => fetchFn([dest.coords, s.position, origin.coords]))
+    preFiltered.map(x => fetchFn([dest.coords, x.bestPos, origin.coords]))
   );
 
-  const evaluated = preFiltered.map((s, i) => {
+  const evaluated = preFiltered.map((x, i) => {
+    const s = x.shipper;
     const drivingMin = perShipper[i].durationMin;
     const addedMin = Math.max(0, (drivingMin + STOP_MIN) - baselineDriving);
-    return { ...s, addedMin, drivingMin, feasible: addedMin <= maxAddedMin };
+    const sites = normalizeSites(s);
+    const sitesNearRoute = countSitesNearRoute(baselineRouteCoords, sites, 40);
+    const dt = distanceTimeScore({ addedMin, maxAddedMin, sitesNearRoute });
+    const r = rankScore({ businessScore: s.score, distanceTime: dt });
+    return {
+      ...s,
+      addedMin,
+      drivingMin,
+      feasible: addedMin <= maxAddedMin,
+      distanceTimeScore: Math.round(dt),
+      rankScore: Math.round(r),
+      sitesNearRoute
+    };
   });
 
   return {
     origin,
     dest,
     baselineDriving,
-    feasible: evaluated.filter(s => s.feasible).sort((a, b) => b.score - a.score),
+    feasible: evaluated.filter(s => s.feasible).sort((a, b) => b.rankScore - a.rankScore),
     infeasible: evaluated.filter(s => !s.feasible),
     evaluatedCount: preFiltered.length,
     totalCount: shippers.length

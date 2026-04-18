@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   buildRouteSuggestions,
   enrichSuggestionsWithMapbox,
+  filterFeasibleShippers,
   planRouteFromYes
 } from './routeSuggestions.js';
 
@@ -18,6 +19,27 @@ function mockFetch(durationMinByStops) {
   return waypoints => {
     const stops = Math.max(0, waypoints.length - 2);
     const min = durationMinByStops[stops] ?? 300;
+    return Promise.resolve({
+      durationMin: min,
+      distanceKm: min * 1.2,
+      geometry: waypoints,
+      source: 'mock'
+    });
+  };
+}
+
+function mockFetchFeasibility({ baselineMin, minByMidLat }) {
+  return waypoints => {
+    if (waypoints.length === 2) {
+      return Promise.resolve({
+        durationMin: baselineMin,
+        distanceKm: baselineMin * 1.2,
+        geometry: waypoints,
+        source: 'mock'
+      });
+    }
+    const mid = waypoints[1];
+    const min = minByMidLat[mid[0]] ?? baselineMin;
     return Promise.resolve({
       durationMin: min,
       distanceKm: min * 1.2,
@@ -120,5 +142,53 @@ describe('planRouteFromYes capacity caps', () => {
     expect(route.shipperIds).toContain('y-1'); // 10000
     expect(route.shipperIds).toContain('y-3'); // 10000 + 5000 = 15000
     expect(route.shipperIds).not.toContain('y-2'); // 10000 + 8000 would overflow
+  });
+});
+
+describe('filterFeasibleShippers ranking', () => {
+  const origin = 'Göteborg';
+  const dest = 'Stockholm';
+
+  it('penalizes higher addedMin when business score is equal', async () => {
+    const fast = { id: 'fast', position: [58.20, 13.80], score: 80, sites: [{ position: [58.20, 13.80] }] };
+    const slow = { id: 'slow', position: [58.30, 13.90], score: 80, sites: [{ position: [58.30, 13.90] }] };
+
+    const fetchFn = mockFetchFeasibility({
+      baselineMin: 300,
+      minByMidLat: {
+        [fast.position[0]]: 340, // added=(340+40)-300=80
+        [slow.position[0]]: 460  // added=(460+40)-300=200
+      }
+    });
+
+    const res = await filterFeasibleShippers(dest, origin, [fast, slow], { fetchFn });
+    expect(res.feasible.map(s => s.id)).toEqual(['fast', 'slow']);
+    expect(res.feasible[0].addedMin).toBeLessThan(res.feasible[1].addedMin);
+  });
+
+  it('rewards multiple sites near the corridor when addedMin is equal', async () => {
+    // Points interpolated along the Göteborg→Stockholm straight line (lat/lng).
+    const p1 = [58.1940, 13.8020];
+    const p2 = [58.5191, 15.0216];
+    const p3 = [58.8441, 16.2413];
+
+    const single = { id: 'single', position: p2, score: 80, sites: [{ position: p2 }] };
+    const multi = { id: 'multi', position: p2, score: 80, sites: [{ position: p1 }, { position: p2 }, { position: p3 }] };
+
+    const fetchFn = mockFetchFeasibility({
+      baselineMin: 300,
+      minByMidLat: {
+        [p1[0]]: 360,
+        [p2[0]]: 360,
+        [p3[0]]: 360, // added=(360+40)-300=100
+      }
+    });
+
+    const res = await filterFeasibleShippers(dest, origin, [single, multi], { fetchFn });
+    expect(res.feasible.length).toBe(2);
+    expect(res.feasible.map(s => s.id)[0]).toBe('multi');
+    expect(res.feasible.find(s => s.id === 'multi').sitesNearRoute).toBeGreaterThan(
+      res.feasible.find(s => s.id === 'single').sitesNearRoute
+    );
   });
 });
