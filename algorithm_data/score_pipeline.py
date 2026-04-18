@@ -68,3 +68,46 @@ def mock_enrich(company: dict) -> dict:
     anstallda = emp_lo + ((seed >> 8) % (emp_hi - emp_lo + 1))
 
     return {**company, "sni": sni, "omsattning_msek": omsattning, "anstallda": anstallda}
+
+
+# ---------------------------------------------------------------------------
+# Scoring helpers
+# ---------------------------------------------------------------------------
+
+def bell(x: float, lo: float, hi: float) -> float:
+    """1.0 inside [lo, hi], Gaussian falloff outside."""
+    if lo <= x <= hi:
+        return 1.0
+    elif x < lo:
+        return math.exp(-((x - lo) / (lo * 0.5)) ** 2)
+    else:
+        return math.exp(-((x - hi) / (hi * 0.5)) ** 2)
+
+
+def sigmoid(x: float) -> float:
+    return 1.0 / (1.0 + math.exp(-x))
+
+
+# ---------------------------------------------------------------------------
+# Component scores (each returns 0.0–1.0)
+# ---------------------------------------------------------------------------
+
+def freight_score(company: dict) -> float:
+    intensity = freight_intensity(company["sni"])
+    size_proxy = sigmoid((company["omsattning_msek"] - 150) / 100)
+    return round(intensity * size_proxy, 3)
+
+
+def commercial_score(company: dict) -> float:
+    rev_score = bell(company["omsattning_msek"], 50, 500)
+    emp_score = bell(company["anstallda"], 20, 500)
+    return round(0.6 * rev_score + 0.4 * emp_score, 3)
+
+
+def sustainability_score(company: dict) -> float:
+    profile = sni_sustainability_score(company["sni"])
+    return round(profile["combined_score"], 3)
+
+
+def total_score(geo: float, freight: float, commercial: float, sus: float) -> float:
+    return round(0.40 * geo + 0.25 * freight + 0.20 * commercial + 0.15 * sus, 3)
