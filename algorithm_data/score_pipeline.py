@@ -63,7 +63,7 @@ def mock_enrich(company: dict) -> dict:
     sni = TYP_SNI.get(typ, "25")
     rev_lo, rev_hi, emp_lo, emp_hi = TYP_RANGES.get(typ, (30, 500, 15, 300))
 
-    seed = int(hashlib.md5(company["name"].encode()).hexdigest()[:8], 16)
+    seed = int(hashlib.md5(company.get("name", "unknown").encode()).hexdigest()[:8], 16)
     omsattning = rev_lo + (seed % (rev_hi - rev_lo + 1))
     anstallda = emp_lo + ((seed >> 8) % (emp_hi - emp_lo + 1))
 
@@ -153,3 +153,84 @@ def geo_score(
         return round(score, 3), False
     except Exception:
         return 0.0, True
+
+
+# ---------------------------------------------------------------------------
+# Data loading
+# ---------------------------------------------------------------------------
+
+def load_candidates() -> list:
+    with open(DATA_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+    return [
+        d for d in data
+        if d.get("name", "").strip() and d.get("lat") and d.get("lng")
+    ]
+
+
+# ---------------------------------------------------------------------------
+# Main pipeline
+# ---------------------------------------------------------------------------
+
+def main(
+    origin: tuple = (57.7089, 11.9746),     # Göteborg
+    destination: tuple = (59.3293, 18.0686), # Stockholm
+):
+    print("Loading candidates...")
+    candidates = load_candidates()
+    enriched = [mock_enrich(c) for c in candidates]
+    print(f"  {len(enriched)} candidates loaded.")
+
+    print("Fetching direct route from OSRM...")
+    direct_km = osrm_distance_km([origin, destination])
+    print(f"  Direct route: {direct_km:.0f} km")
+
+    print(f"Scoring {len(enriched)} candidates (OSRM rate-limited, ~{len(enriched)*0.2:.0f}s)...")
+    results = []
+    for i, company in enumerate(enriched):
+        g, osrm_err = geo_score(company, origin, destination, direct_km)
+        fr = freight_score(company)
+        com = commercial_score(company)
+        sus = sustainability_score(company)
+        score = total_score(g, fr, com, sus)
+        results.append({
+            "company": company,
+            "geo": g,
+            "freight": fr,
+            "commercial": com,
+            "sustainability": sus,
+            "total": score,
+            "osrm_err": osrm_err,
+        })
+        if (i + 1) % 20 == 0:
+            print(f"  {i + 1}/{len(enriched)}...")
+
+    results.sort(key=lambda r: r["total"], reverse=True)
+    top10 = results[:10]
+
+    # Output
+    origin_name = "Göteborg"
+    dest_name = "Stockholm"
+    print()
+    print(f"BACKHAUL RANKING: {origin_name} → {dest_name}  (direktrutt: {direct_km:.0f} km)")
+    print("═" * 78)
+    print(f" {'#':<3} {'Företag':<25} {'Stad':<14} {'Score':<7} {'Geo':<6} {'Frgt':<6} {'Com':<6} {'Sus'}")
+    print("─" * 78)
+    for rank, r in enumerate(top10, 1):
+        c = r["company"]
+        flag = " [!]" if r["osrm_err"] else ""
+        print(
+            f" {rank:<3} {c['name'][:24]:<25} {c.get('city','')[:13]:<14}"
+            f" {r['total']:<7.2f} {r['geo']:<6.2f} {r['freight']:<6.2f}"
+            f" {r['commercial']:<6.2f} {r['sustainability']:.2f}{flag}"
+        )
+    print("═" * 78)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        olat, olng = map(float, sys.argv[1].split(","))
+        dlat, dlng = map(float, sys.argv[2].split(","))
+        main((olat, olng), (dlat, dlng))
+    else:
+        main()
