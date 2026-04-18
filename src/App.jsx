@@ -689,6 +689,7 @@ export default function App() {
           onSkipCurrentDraft={chat.skipCurrentDraft}
           onStartEdit={chat.startEdit}
           onSubmitEdit={chat.submitEdit}
+          onChangeRoute={chat.changeRoute}
           onReset={chat.reset}
         />
       </aside>
