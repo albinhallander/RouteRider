@@ -81,10 +81,6 @@ function useLogistics() {
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-function generateEmail(shipper, activeRoute) {
-  return draftPickupEmail(shipper, activeRoute, suggestedPickupTime(0));
-}
-
 function tierColor(tier) {
   if (tier === 'prio') return '#10b981';
   if (tier === 'possible') return '#4264FB';
@@ -203,7 +199,8 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
-  const chat = useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes);
+  const [outreachDate, setOutreachDate] = useState(() => new Date().toLocaleDateString('sv-SE'));
+  const chat = useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes, outreachDate);
   const { selectedRoute } = chat;
 
   const [showAllStations, setShowAllStations] = useState(false);
@@ -319,8 +316,10 @@ export default function App() {
   );
 
   useEffect(() => {
-    if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
-  }, [selected, effectiveActiveRoute]);
+    if (selected?.type === 'shipper') {
+      setEmailBody(draftPickupEmail(selected.data, effectiveActiveRoute, suggestedPickupTime(0), outreachDate));
+    }
+  }, [selected, effectiveActiveRoute, outreachDate]);
 
   const handleSend = () => {
     if (!selected || selected.type !== 'shipper') return;
@@ -825,6 +824,8 @@ export default function App() {
           messages={chat.messages}
           suggestions={chat.suggestions}
           selectedRouteId={chat.selectedRouteId}
+          outreachDate={outreachDate}
+          onOutreachDateChange={setOutreachDate}
           onSubmitOrigin={chat.submitOrigin}
           onSubmitDestination={chat.submitDestination}
           onSubmitPalletCapacity={chat.submitPalletCapacity}

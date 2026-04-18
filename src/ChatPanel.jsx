@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail
+  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail, Calendar
 } from 'lucide-react';
 import { formatEta } from './routeSuggestions.js';
 
@@ -14,6 +14,8 @@ export default function ChatPanel({
   messages,
   suggestions,
   selectedRouteId,
+  outreachDate,
+  onOutreachDateChange,
   onSubmitOrigin,
   onSubmitDestination,
   onSubmitPalletCapacity,
@@ -72,6 +74,20 @@ export default function ChatPanel({
             <RotateCcw size={13} />
           </button>
         )}
+      </div>
+
+      <div className="px-4 py-2.5 border-b border-gray-100 bg-gray-50/60 flex items-center gap-2">
+        <label htmlFor="outreach-date" className="text-[10px] uppercase tracking-widest text-gray-500 font-semibold flex items-center gap-1.5 whitespace-nowrap">
+          <Calendar size={11} className="text-gray-500" />
+          Outreach date
+        </label>
+        <input
+          id="outreach-date"
+          type="date"
+          value={outreachDate}
+          onChange={e => onOutreachDateChange?.(e.target.value)}
+          className="flex-1 min-w-0 bg-white border border-gray-200 rounded-md px-2 py-1.5 text-xs text-gray-700 focus:outline-none focus:border-einride/50"
+        />
       </div>
 
       {/* Messages */}

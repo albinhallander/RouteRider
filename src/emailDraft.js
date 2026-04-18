@@ -7,8 +7,15 @@ export function suggestedPickupTime(idx) {
   return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 }
 
-export function draftPickupEmail(shipper, activeRoute, pickupTime) {
-  const today = new Date().toLocaleDateString('sv-SE');
+function normalizeOutreachDate(outreachDate) {
+  if (typeof outreachDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(outreachDate)) {
+    return outreachDate;
+  }
+  return new Date().toLocaleDateString('sv-SE');
+}
+
+export function draftPickupEmail(shipper, activeRoute, pickupTime, outreachDate) {
+  const pickupDate = normalizeOutreachDate(outreachDate);
   const originLabel = activeRoute.originLabel ?? 'Gothenburg';
   const destinationLabel = activeRoute.destinationLabel ?? 'Stockholm';
   const directionLine = (activeRoute.direction ?? `Heading to ${destinationLabel}`).toLowerCase();
@@ -27,14 +34,14 @@ export function draftPickupEmail(shipper, activeRoute, pickupTime) {
   if (lbSig?.frequency === 'high') {
     signalHook += `\nVi ser att ni aktivt annonserar frakter på ${lbSig.label.split('på ')[1]} — vår rutt matchar er korridor och vi har kapacitet nu.`;
   }
-  return `Subject: Backhaul capacity ${originLabel} → ${destinationLabel} · ${today}
+  return `Subject: Backhaul capacity ${originLabel} → ${destinationLabel} · ${pickupDate}
 
 Hi ${shipper.company} team,
 
-We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.${signalHook}
+We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a backhaul slot at ~35% below standard freight.${signalHook}
 
   Capacity:  up to ${pallets} EUR pallet${pallets === 1 ? '' : 's'} / ${tonLabel}
-  Pickup:    today, ${pickupTime}
+  Pickup:    ${pickupDate}, ${pickupTime}
   CO₂:       0 g tailpipe — sustainability uplift score ${shipper.score}/100
   Cargo fit: ${shipper.cargo}
 
@@ -46,8 +53,8 @@ Reply YES to lock this slot — our ops team will confirm within 5 minutes.
 // Booking-confirmation email sent once a route is locked — only to the
 // shippers that actually made it onto the truck. Echoes the cargo the
 // shipper quoted (pallets + total kg) and the pickup slot.
-export function draftConfirmationEmail(shipper, activeRoute, pickupTime) {
-  const today = new Date().toLocaleDateString('sv-SE');
+export function draftConfirmationEmail(shipper, activeRoute, pickupTime, outreachDate) {
+  const pickupDate = normalizeOutreachDate(outreachDate);
   const originLabel = activeRoute.originLabel ?? 'Gothenburg';
   const destinationLabel = activeRoute.destinationLabel ?? 'Stockholm';
   const pallets = shipper.pallets;
@@ -57,13 +64,13 @@ export function draftConfirmationEmail(shipper, activeRoute, pickupTime) {
       ? `  Cargo:     ${pallets} EUR pallet${pallets === 1 ? '' : 's'} · ${weightKg.toLocaleString('sv-SE')} kg`
       : '';
 
-  return `Subject: Pickup confirmed · ${originLabel} → ${destinationLabel} · ${today}
+  return `Subject: Pickup confirmed · ${originLabel} → ${destinationLabel} · ${pickupDate}
 
 Hi ${shipper.company} team,
 
-Confirming your backhaul pickup for today. Our electric truck ${activeRoute.truckId} is on the way.
+Confirming your backhaul pickup for ${pickupDate}. Our electric truck ${activeRoute.truckId} is on the way.
 
-  Pickup:    today, ${pickupTime}
+  Pickup:    ${pickupDate}, ${pickupTime}
   Location:  ${shipper.location}
 ${cargoLine}
   Corridor:  ${originLabel} → ${destinationLabel}
@@ -89,7 +96,12 @@ export function applyUserNote(draft, note) {
     lower.includes('kl');
 
   if (timeMatch && mentionsPickup) {
-    return draft.replace(/^\s*Pickup:.*$/m, `  Pickup:    today, ${timeMatch[0]}`);
+    const updated = draft.replace(
+      /^(\s*Pickup:\s*.*?,\s*)([01]?\d|2[0-3]):([0-5]\d)(.*)$/m,
+      `$1${timeMatch[0]}$4`
+    );
+    if (updated !== draft) return updated;
+    return draft.replace(/^\s*Pickup:.*$/m, `  Pickup:    ${timeMatch[0]}`);
   }
   return `${draft}\n\n(Note from dispatcher: ${trimmed})`;
 }

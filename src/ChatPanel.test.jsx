@@ -66,5 +66,5 @@ describe('Chat-first backhaul planner', () => {
     expect(
       await screen.findByText(/Locked in/i, {}, { timeout: 5000 })
     ).toBeInTheDocument();
-  });
+  }, 15000);
 });

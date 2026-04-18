@@ -28,7 +28,7 @@ const INITIAL_MESSAGES = [
   }
 ];
 
-export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) {
+export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes, outreachDate) {
   const [phase, setPhase] = useState('awaiting_origin');
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [origin, setOrigin] = useState(null);
@@ -204,7 +204,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     feasibleIds.forEach((sid, i) => {
       const shipper = shippers.find(s => s.id === sid);
       if (!shipper) return;
-      const body = draftPickupEmail(shipper, effectiveRoute, suggestedPickupTime(i));
+      const body = draftPickupEmail(shipper, effectiveRoute, suggestedPickupTime(i), outreachDate);
       if (sendOutreach) sendOutreach(sid, body);
       sentCount++;
     });
@@ -218,7 +218,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       }
     ]);
     setPhase('outreach_sent');
-  }, [feasibleIds, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
+  }, [feasibleIds, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg, outreachDate]);
 
   const declineSendAll = useCallback(() => {
     // "Not now" abandons the outreach flow → restart from the beginning
@@ -311,7 +311,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     plannedRoute.shipperIds.forEach((sid, i) => {
       const shipper = shippers.find(s => s.id === sid);
       if (!shipper) return;
-      const body = draftConfirmationEmail(shipper, effectiveRoute, suggestedPickupTime(i));
+      const body = draftConfirmationEmail(shipper, effectiveRoute, suggestedPickupTime(i), outreachDate);
       if (sendOutreach) sendOutreach(sid, body);
       sent++;
     });
@@ -321,7 +321,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       { role: 'assistant', text: `Confirmed with ${sent} supplier${sent === 1 ? '' : 's'}. The route is live.` }
     ]);
     setPhase('route_planned');
-  }, [plannedRoute, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
+  }, [plannedRoute, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg, outreachDate]);
 
   const skipConfirmations = useCallback(() => {
     // "Skip" on the confirmation step also bails the flow → restart.
