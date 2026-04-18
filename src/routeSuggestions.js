@@ -170,7 +170,8 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     shippers: balancedPicks
   });
 
-  const fullPicks = orderForReturn(candidates);
+  const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN); // keep addedMin ≤ cap
+  const fullPicks = orderForReturn(candidates).slice(0, maxStops);
   const routeC = buildRoute({
     id: 'C',
     color: '#10b981',

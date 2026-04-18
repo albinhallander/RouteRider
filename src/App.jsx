@@ -27,20 +27,12 @@ import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js';
 import { formatEta } from './routeSuggestions.js';
+import { COMPANIES } from './companies.js';
 
-const INITIAL_SHIPPERS = [
-  { id: 's-1', company: 'IKEA Distribution',       location: 'Älmhult',    position: [56.5512, 14.1418], score: 92, distanceFromE4: 12, contact: 'logistics@ikea.se',                 cargo: 'Flat-pack furniture · 18 EUR pallets' },
-  { id: 's-2', company: 'Husqvarna AB',             location: 'Huskvarna',  position: [57.7906, 14.2750], score: 88, distanceFromE4: 4,  contact: 'freight@husqvarna.com',             cargo: 'Outdoor power equipment · 22 pallets' },
-  { id: 's-3', company: 'Toyota Material Handling', location: 'Mjölby',     position: [58.3266, 15.1268], score: 85, distanceFromE4: 6,  contact: 'eu.logistics@toyota-industries.eu', cargo: 'Forklift components · 14 pallets' },
-  { id: 's-4', company: 'Saab Aeronautics',         location: 'Linköping',  position: [58.4108, 15.6214], score: 79, distanceFromE4: 2,  contact: 'supply@saab.se',                    cargo: 'Precision components · 8 crates' },
-  { id: 's-5', company: 'AstraZeneca',              location: 'Södertälje', position: [59.1620, 17.5920], score: 90, distanceFromE4: 3,  contact: 'pharma.shipping@astrazeneca.com',   cargo: 'Cold-chain pharma · 12 totes' },
-  { id: 's-6', company: 'Scania Logistics',         location: 'Södertälje', position: [59.1955, 17.6252], score: 95, distanceFromE4: 1,  contact: 'backhaul@scania.com',               cargo: 'Truck assemblies · 6 units' },
-  { id: 's-7', company: 'Spotify Datacenter Ops',  location: 'Stockholm',  position: [59.3600, 18.0150], score: 81, distanceFromE4: 3,  contact: 'datacenter@spotify.com',            cargo: 'Server racks · 4 pallets' }
-];
 
 // ─── useLogistics ────────────────────────────────────────────────────────────
 function useLogistics() {
-  const [shippers, setShippers] = useState(INITIAL_SHIPPERS);
+  const [shippers, setShippers] = useState(COMPANIES);
   const [activeRoute] = useState({
     truckId: 'ER-2814',
     status: 'Empty',
