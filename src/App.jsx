@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
+import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 
 // ─── Route (E4 corridor, south → north) ─────────────────────────────────────
 const ROUTE = [
@@ -91,21 +92,7 @@ function useLogistics() {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function generateEmail(shipper, activeRoute) {
-  const today = new Date().toLocaleDateString('sv-SE');
-  return `Subject: Backhaul capacity Gothenburg → Stockholm · ${today}
-
-Hi ${shipper.company} team,
-
-We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${activeRoute.direction.toLowerCase()} along the E4. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.
-
-  Capacity:  up to 22 EUR pallets / 24 ton
-  Pickup:    today, 14:00 – 16:00
-  CO₂:       0 g tailpipe — sustainability uplift score ${shipper.score}/100
-  Cargo fit: ${shipper.cargo}
-
-Reply YES to lock this slot — our ops team will confirm within 5 minutes.
-
-— RouteRider · Einride Backhaul`;
+  return draftPickupEmail(shipper, activeRoute, suggestedPickupTime(0));
 }
 
 // ─── Leaflet icons ────────────────────────────────────────────────────────────
@@ -127,7 +114,7 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
-  const chat = useChatPlanner(shippers);
+  const chat = useChatPlanner(shippers, activeRoute, sendOutreach);
   const { selectedRoute } = chat;
 
   const effectiveRoute = selectedRoute?.routeCoords ?? ROUTE;
@@ -283,6 +270,11 @@ export default function App() {
           onSubmitDestination={chat.submitDestination}
           onConfirmBackhaul={chat.confirmBackhaul}
           onPickRoute={chat.pickRoute}
+          onConfirmOutreach={chat.confirmOutreach}
+          onSendCurrentDraft={chat.sendCurrentDraft}
+          onSkipCurrentDraft={chat.skipCurrentDraft}
+          onStartEdit={chat.startEdit}
+          onSubmitEdit={chat.submitEdit}
           onReset={chat.reset}
         />
       </aside>

@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw
+  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail
 } from 'lucide-react';
+
+const TERMINAL_PHASES = ['route_selected', 'outreach_complete'];
+const TEXT_INPUT_PHASES = ['awaiting_destination', 'awaiting_edit'];
 
 export default function ChatPanel({
   phase,
@@ -12,6 +15,11 @@ export default function ChatPanel({
   onSubmitDestination,
   onConfirmBackhaul,
   onPickRoute,
+  onConfirmOutreach,
+  onSendCurrentDraft,
+  onSkipCurrentDraft,
+  onStartEdit,
+  onSubmitEdit,
   onReset,
 }) {
   const scrollRef = useRef(null);
@@ -20,6 +28,22 @@ export default function ChatPanel({
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, suggestions]);
+
+  const handleQuickReply = text => {
+    if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
+    if (phase === 'awaiting_backhaul_confirm') return onConfirmBackhaul?.(text === 'Yes');
+    if (phase === 'awaiting_outreach_confirm') return onConfirmOutreach?.(text === 'Yes');
+    if (phase === 'drafting_outreach') {
+      if (text === 'Send') return onSendCurrentDraft?.();
+      if (text === 'Skip') return onSkipCurrentDraft?.();
+      if (text === 'Edit') return onStartEdit?.();
+    }
+  };
+
+  const handleTextSubmit = text => {
+    if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
+    if (phase === 'awaiting_edit') return onSubmitEdit?.(text);
+  };
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
@@ -32,7 +56,7 @@ export default function ChatPanel({
           <div className="text-[10px] uppercase tracking-[0.25em] text-einride font-semibold leading-none">Route planner</div>
           <div className="text-xs font-semibold text-gray-800 mt-0.5">Backhaul Assistant</div>
         </div>
-        {phase === 'route_selected' && (
+        {TERMINAL_PHASES.includes(phase) && (
           <button
             onClick={onReset}
             title="Plan again"
@@ -46,16 +70,14 @@ export default function ChatPanel({
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 py-3 space-y-3 bg-gray-50 min-h-0">
         <AnimatePresence initial={false}>
-          {messages.map(msg => (
+          {messages.map((msg, i) => (
             <MessageBubble
               key={msg.id}
               msg={msg}
+              isLatest={i === messages.length - 1}
               suggestions={suggestions}
               selectedRouteId={selectedRouteId}
-              onQuickReply={text => {
-                if (phase === 'awaiting_destination') onSubmitDestination(text);
-                else if (phase === 'awaiting_backhaul_confirm') onConfirmBackhaul(text === 'Yes');
-              }}
+              onQuickReply={handleQuickReply}
               onPickRoute={onPickRoute}
               phase={phase}
             />
@@ -64,13 +86,16 @@ export default function ChatPanel({
       </div>
 
       {/* Input */}
-      <ChatInput phase={phase} onSubmit={onSubmitDestination} />
+      <ChatInput phase={phase} onSubmit={handleTextSubmit} />
     </div>
   );
 }
 
-function MessageBubble({ msg, suggestions, selectedRouteId, onQuickReply, onPickRoute, phase }) {
+function MessageBubble({ msg, isLatest, suggestions, selectedRouteId, onQuickReply, onPickRoute, phase }) {
   const isUser = msg.role === 'user';
+  const hasDraft = !!msg.draftBody;
+  const hasSuggestions = !!msg.suggestionIds;
+  const showControls = isLatest && !TERMINAL_PHASES.includes(phase);
 
   return (
     <motion.div
@@ -84,7 +109,7 @@ function MessageBubble({ msg, suggestions, selectedRouteId, onQuickReply, onPick
           <Bot size={11} className="text-einride" />
         </div>
       )}
-      <div className={`flex flex-col gap-2 ${msg.suggestionIds ? 'w-full' : 'max-w-[85%]'} ${isUser ? 'items-end' : 'items-start'}`}>
+      <div className={`flex flex-col gap-2 ${hasSuggestions || hasDraft ? 'w-full' : 'max-w-[85%]'} ${isUser ? 'items-end' : 'items-start'}`}>
         <div className={`rounded-xl px-3 py-2 text-xs leading-relaxed border ${
           isUser
             ? 'bg-einride/10 border-einride/30 text-einride font-medium'
@@ -93,7 +118,16 @@ function MessageBubble({ msg, suggestions, selectedRouteId, onQuickReply, onPick
           {msg.text}
         </div>
 
-        {msg.quickReplies && phase !== 'route_selected' && (
+        {hasDraft && (
+          <div className="w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div className="px-2.5 py-1.5 border-b border-gray-100 bg-gray-50 flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-gray-500 font-semibold">
+              <Mail size={10} /> Draft
+            </div>
+            <pre className="px-2.5 py-2 text-[11px] leading-relaxed font-mono text-gray-800 whitespace-pre-wrap break-words">{msg.draftBody}</pre>
+          </div>
+        )}
+
+        {msg.quickReplies && showControls && (
           <div className="flex flex-wrap gap-1.5">
             {msg.quickReplies.map(r => (
               <button
@@ -107,20 +141,24 @@ function MessageBubble({ msg, suggestions, selectedRouteId, onQuickReply, onPick
           </div>
         )}
 
-        {msg.suggestionIds && (
+        {hasSuggestions && (
           <div className="w-full flex flex-col gap-2">
             {msg.suggestionIds
               .map(id => suggestions.find(s => s.id === id))
               .filter(Boolean)
-              .map(route => (
-                <SuggestionCard
-                  key={route.id}
-                  route={route}
-                  selected={route.id === selectedRouteId}
-                  disabled={!!selectedRouteId}
-                  onPick={() => onPickRoute(route.id)}
-                />
-              ))}
+              .map(route => {
+                const isSelected = route.id === selectedRouteId;
+                const cardDisabled = !!selectedRouteId || !isLatest;
+                return (
+                  <SuggestionCard
+                    key={route.id}
+                    route={route}
+                    selected={isSelected}
+                    disabled={cardDisabled}
+                    onPick={() => onPickRoute(route.id)}
+                  />
+                );
+              })}
           </div>
         )}
       </div>
@@ -180,7 +218,7 @@ function Cell({ icon, label, value }) {
 
 function ChatInput({ phase, onSubmit }) {
   const [value, setValue] = useState('');
-  const disabled = phase !== 'awaiting_destination';
+  const disabled = !TEXT_INPUT_PHASES.includes(phase);
 
   const submit = e => {
     e.preventDefault();
@@ -189,17 +227,21 @@ function ChatInput({ phase, onSubmit }) {
     setValue('');
   };
 
+  const placeholder = phase === 'awaiting_destination'
+    ? 'Ange destination…'
+    : phase === 'awaiting_edit'
+    ? 'Beskriv ändring (t.ex. "byt tid till 16:00")…'
+    : phase === 'route_selected' || phase === 'outreach_complete'
+    ? 'Klar · tryck ↻ för ny plan'
+    : 'Välj ett alternativ ovan…';
+
   return (
     <form onSubmit={submit} className="border-t border-gray-100 p-2.5 flex items-center gap-2 bg-white flex-shrink-0">
       <input
         type="text"
         value={value}
         onChange={e => setValue(e.target.value)}
-        placeholder={
-          disabled
-            ? phase === 'route_selected' ? 'Rutt låst · tryck ↻ för ny plan' : 'Välj ett alternativ ovan…'
-            : 'Ange destination…'
-        }
+        placeholder={placeholder}
         disabled={disabled}
         className="flex-1 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-xs text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-einride/50 focus:bg-white disabled:opacity-50 transition"
       />

@@ -53,6 +53,49 @@ describe('Chat-first route planner', () => {
       await screen.findByText(/Locked in Route B · Balanced backhaul/)
     ).toBeInTheDocument();
 
-    // Confirmation bubble is shown — route is locked in.
+    // Chat continues by asking about supplier outreach.
+    expect(
+      await screen.findByText(/Should I contact the suppliers/i)
+    ).toBeInTheDocument();
+  });
+
+  it('walks the per-shipper outreach draft loop', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(await screen.findByRole('button', { name: 'Stockholm' }));
+    await user.click(await screen.findByRole('button', { name: 'Yes' }));
+    await user.click(await screen.findByText(/Route B · Balanced backhaul/));
+
+    // Confirm outreach walkthrough.
+    await user.click(await screen.findByRole('button', { name: 'Yes' }));
+
+    // First draft shown with Send / Skip / Edit controls.
+    expect(await screen.findByText(/First up: Husqvarna AB/)).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'Send' }).length).toBeGreaterThan(0);
+
+    // Start editing the first draft.
+    await user.click(screen.getByRole('button', { name: 'Edit' }));
+    expect(
+      await screen.findByText(/What would you like to change/)
+    ).toBeInTheDocument();
+
+    // Submit an edit — time change routes through the mock rewriter.
+    const input = screen.getByPlaceholderText(/Beskriv ändring/i);
+    await user.type(input, 'Change pickup to 16:00');
+    await user.keyboard('{Enter}');
+    expect(
+      await screen.findByText(/Updated draft for Husqvarna AB/)
+    ).toBeInTheDocument();
+
+    // Send the updated draft — walkthrough advances to the next shipper.
+    const sendButtons = await screen.findAllByRole('button', { name: 'Send' });
+    await user.click(sendButtons[sendButtons.length - 1]);
+    expect(
+      await screen.findByText(/Sent to Husqvarna AB/)
+    ).toBeInTheDocument();
+    expect(
+      await screen.findByText(/Next: Toyota Material Handling/)
+    ).toBeInTheDocument();
   });
 });
