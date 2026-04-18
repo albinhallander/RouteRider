@@ -66,6 +66,38 @@ function buildUrl(coords) {
   };
 }
 
+// Per-attempt deadline. Browser default is ~30s which is a poor UX when the
+// OSRM public demo hangs — 7s then one retry keeps the full worst-case under
+// ~18s and means straight-line fallback appears promptly.
+const REQUEST_TIMEOUT_MS = 7000;
+const MAX_ATTEMPTS = 2;
+
+async function fetchWithTimeout(url, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, { signal: ctrl.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function tryFetchRoute(url, source, waypoints) {
+  const res = await fetchWithTimeout(url, REQUEST_TIMEOUT_MS);
+  if (!res.ok) throw new Error(`${source} ${res.status}`);
+  const data = await res.json();
+  const route = data.routes?.[0];
+  if (!route) throw new Error(`${source}: no route returned`);
+
+  const geometry = (route.geometry?.coordinates || []).map(([lng, lat]) => [lat, lng]);
+  return {
+    durationMin: Math.round(route.duration / 60),
+    distanceKm: Math.round(route.distance / 1000),
+    geometry: geometry.length ? geometry : waypoints,
+    source
+  };
+}
+
 export async function fetchDrivingRoute(waypoints) {
   if (!waypoints || waypoints.length < 2) return fallbackResult(waypoints || []);
 
@@ -75,28 +107,24 @@ export async function fetchDrivingRoute(waypoints) {
   const coords = waypoints.map(([lat, lng]) => `${lng},${lat}`).join(';');
   const { url, source } = buildUrl(coords);
 
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`${source} ${res.status}`);
-    const data = await res.json();
-    const route = data.routes?.[0];
-    if (!route) throw new Error(`${source}: no route returned`);
-
-    const geometry = (route.geometry?.coordinates || []).map(([lng, lat]) => [lat, lng]);
-    const result = {
-      durationMin: Math.round(route.duration / 60),
-      distanceKm: Math.round(route.distance / 1000),
-      geometry: geometry.length ? geometry : waypoints,
-      source
-    };
-    cache.set(key, result);
-    return result;
-  } catch (err) {
-    console.warn(`[routing] ${source} failed, using haversine fallback:`, err.message);
-    const fb = fallbackResult(waypoints);
-    cache.set(key, fb);
-    return fb;
+  let lastErr;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      const result = await tryFetchRoute(url, source, waypoints);
+      cache.set(key, result);
+      return result;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < MAX_ATTEMPTS) {
+        console.warn(`[routing] ${source} attempt ${attempt} failed (${err.name === 'AbortError' ? 'timeout' : err.message}), retrying…`);
+      }
+    }
   }
+
+  console.warn(`[routing] ${source} gave up after ${MAX_ATTEMPTS} attempts, using haversine fallback:`, lastErr?.message);
+  const fb = fallbackResult(waypoints);
+  cache.set(key, fb);
+  return fb;
 }
 
 // Test seams.

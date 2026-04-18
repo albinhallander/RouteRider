@@ -55,7 +55,13 @@ function useLogistics() {
     return { ok: true, ts };
   }, []);
 
-  return { shippers, activeRoute, outreachLogs, sendOutreach };
+  // User marks each contacted shipper's response. `null` clears. The greedy
+  // planner consumes the `saidYes === 'yes'` subset.
+  const setSaidYes = useCallback((shipperId, value) => {
+    setShippers(prev => prev.map(s => (s.id === shipperId ? { ...s, saidYes: value } : s)));
+  }, []);
+
+  return { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes };
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -177,16 +183,16 @@ function restStopIcon(n) {
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
-  const { shippers, activeRoute, outreachLogs, sendOutreach } = useLogistics();
+  const { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes } = useLogistics();
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
-  const chat = useChatPlanner(shippers, activeRoute, sendOutreach);
+  const chat = useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes);
   const { selectedRoute } = chat;
 
   const [showAllStations, setShowAllStations] = useState(false);
   const [skippedIds, setSkippedIds] = useState(new Set());
-  const [activeFilter, setActiveFilter] = useState('possible');
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
   const unskipShipper = useCallback(id => {
@@ -232,17 +238,26 @@ export default function App() {
     [showingSuggestions, planningCoords, showAllStations]
   );
 
-  // Viable backhaul candidates for the locked route, route-picks sorted first.
+  // Sidebar list = feasible shippers from the chat planner (score-sorted).
+  // Once a route is planned, the accepted shippers surface at the top in
+  // pickup order. Shippers carry the live `saidYes` + `contacted` flags
+  // straight from useLogistics (chat.feasibleShippers rebuilds on every
+  // shipper update because it pulls from `shippers`).
   const candidateShippers = useMemo(() => {
-    if (!selectedRoute?.candidateIds?.length) return [];
-    return shippers
-      .filter(s => selectedRoute.candidateIds.includes(s.id))
-      .sort((a, b) => {
-        const aOn = selectedRoute.shipperIds.includes(a.id) ? 0 : 1;
-        const bOn = selectedRoute.shipperIds.includes(b.id) ? 0 : 1;
-        return aOn - bOn || b.score - a.score;
-      });
-  }, [selectedRoute, shippers]);
+    const feas = (chat.feasibleShippers ?? []).map(fs => {
+      const live = shippers.find(s => s.id === fs.id);
+      return live ? { ...fs, saidYes: live.saidYes, contacted: live.contacted } : fs;
+    });
+    if (!selectedRoute) return feas;
+    const order = selectedRoute.shipperIds;
+    return [...feas].sort((a, b) => {
+      const ai = order.indexOf(a.id), bi = order.indexOf(b.id);
+      if (ai !== -1 && bi === -1) return -1;
+      if (ai === -1 && bi !== -1) return 1;
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      return b.score - a.score;
+    });
+  }, [chat.feasibleShippers, shippers, selectedRoute]);
 
   const prioCount = useMemo(
     () => candidateShippers.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
@@ -444,17 +459,17 @@ export default function App() {
                 </div>
               )}
 
-              {/* Shippers list — only shown once a route is locked */}
-              {!routeLocked ? (
+              {/* Shippers list — appears as soon as feasibility is computed.
+                  Shows a phase-aware placeholder while the chat is still
+                  waiting on origin/destination or the OSRM batch. */}
+              {candidateShippers.length === 0 ? (
                 <div className="flex-1 flex items-center justify-center px-6">
                   <p className="text-xs text-gray-400 text-center leading-relaxed">
-                    Pick a route to see which shippers along the corridor you should contact.
-                  </p>
-                </div>
-              ) : candidateShippers.length === 0 ? (
-                <div className="flex-1 flex items-center justify-center px-6">
-                  <p className="text-xs text-gray-400 text-center leading-relaxed">
-                    No backhaul on this route — no shippers to contact.
+                    {chat.phase === 'awaiting_origin' || chat.phase === 'awaiting_destination'
+                      ? 'Enter origin and destination in the chat to see eligible shippers.'
+                      : chat.phase === 'computing_feasibility'
+                      ? 'Checking which shippers fit within the 6 h cap…'
+                      : 'No shippers fit within the 6 h cap on this return leg.'}
                   </p>
                 </div>
               ) : (
@@ -498,11 +513,9 @@ export default function App() {
                           key={s.id}
                           shipper={s}
                           onClick={() => setSelected({ type: 'shipper', data: s })}
-                          onSkip={skipShipper}
-                          onUnskip={unskipShipper}
-                          isSkipped={skippedIds.has(s.id)}
-                          onRoute={selectedRoute.shipperIds.includes(s.id)}
-                          routeStop={selectedRoute.shipperIds.indexOf(s.id) + 1}
+                          onSetSaidYes={setSaidYes}
+                          onRoute={selectedRoute?.shipperIds?.includes(s.id)}
+                          routeStop={(selectedRoute?.shipperIds?.indexOf(s.id) ?? -1) + 1}
                         />
                       ))
                     )}
@@ -691,14 +704,9 @@ export default function App() {
           selectedRouteId={chat.selectedRouteId}
           onSubmitOrigin={chat.submitOrigin}
           onSubmitDestination={chat.submitDestination}
-          onConfirmBackhaul={chat.confirmBackhaul}
-          onPickRoute={chat.pickRoute}
-          onConfirmOutreach={chat.confirmOutreach}
-          onSendCurrentDraft={chat.sendCurrentDraft}
-          onSkipCurrentDraft={chat.skipCurrentDraft}
-          onStartEdit={chat.startEdit}
-          onSubmitEdit={chat.submitEdit}
-          onChangeRoute={chat.changeRoute}
+          onSendOutreachToAll={chat.sendOutreachToAll}
+          onDeclineSendAll={chat.declineSendAll}
+          onRequestPlan={chat.requestPlan}
           onReset={chat.reset}
         />
       </aside>
@@ -723,60 +731,67 @@ export default function App() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped, onRoute, routeStop }) {
+function ShipperRow({ shipper, onClick, onSetSaidYes, onRoute, routeStop }) {
+  const said = shipper.saidYes;
+  const delta = typeof shipper.addedMin === 'number' ? `+${Math.round(shipper.addedMin)} min` : null;
+
   return (
-    <button
+    <div
       onClick={onClick}
-      className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition group"
+      role="button"
+      tabIndex={0}
+      className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition group cursor-pointer"
     >
       <span
         className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
-        style={{ background: shipper.contacted ? '#9CA3AF' : isSkipped ? '#e5e7eb' : tierColor(shipper.tier) }}
+        style={{ background: onRoute ? '#2563eb' : said === 'yes' ? '#10b981' : said === 'no' ? '#d1d5db' : shipper.contacted ? '#9CA3AF' : tierColor(shipper.tier) }}
       />
       <div className="flex-1 min-w-0">
-        <div className={`text-sm font-medium truncate ${isSkipped ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+        <div className={`text-sm font-medium truncate ${said === 'no' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
           {shipper.company}
         </div>
-        <div className="text-xs text-gray-500">{shipper.location} · {shipper.distanceFromE4} km off E4</div>
+        <div className="text-xs text-gray-500">
+          {shipper.location}
+          {delta ? ` · ${delta} detour` : ''}
+        </div>
       </div>
       <div className="flex-shrink-0 flex items-center gap-1">
-        {!isSkipped && !shipper.contacted && (
-          <span
-            role="button"
-            tabIndex={0}
-            onClick={e => { e.stopPropagation(); onSkip(shipper.id); }}
-            onKeyDown={e => e.key === 'Enter' && (e.stopPropagation(), onSkip(shipper.id))}
-            className="opacity-0 group-hover:opacity-100 p-0.5 rounded hover:bg-gray-200 transition text-gray-400 hover:text-gray-600 cursor-pointer"
-            aria-label="Skip"
-          >
-            <X size={12} />
-          </span>
-        )}
-        {isSkipped ? (
-          <span
-            role="button"
-            tabIndex={0}
-            onClick={e => { e.stopPropagation(); onUnskip(shipper.id); }}
-            onKeyDown={e => e.key === 'Enter' && (e.stopPropagation(), onUnskip(shipper.id))}
-            className="text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded-full font-medium hover:bg-gray-200 transition cursor-pointer"
-          >
-            Undo
-          </span>
-        ) : onRoute ? (
+        {onRoute ? (
           <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
             {routeStop}
           </span>
         ) : shipper.contacted ? (
-          <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
-            <CheckCircle2 size={10} /> Sent
-          </span>
+          <>
+            <button
+              onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'yes' ? null : 'yes'); }}
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
+                said === 'yes'
+                  ? 'bg-emerald-500 border-emerald-500 text-white'
+                  : 'bg-white border-emerald-200 text-emerald-700 hover:bg-emerald-50'
+              }`}
+              aria-label="Said yes"
+            >
+              Yes
+            </button>
+            <button
+              onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'no' ? null : 'no'); }}
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
+                said === 'no'
+                  ? 'bg-gray-500 border-gray-500 text-white'
+                  : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'
+              }`}
+              aria-label="Said no"
+            >
+              No
+            </button>
+          </>
         ) : (
           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${tierBadgeStyle(shipper.tier)}`}>
             {shipper.score}
           </span>
         )}
       </div>
-    </button>
+    </div>
   );
 }
 

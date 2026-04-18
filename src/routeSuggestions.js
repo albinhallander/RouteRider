@@ -271,3 +271,167 @@ export async function enrichSuggestionsWithMapbox(
   const filtered = enriched.filter((r, i) => i === 0 || r.addedMin <= MAX_ADDED_MIN);
   return filtered.length > 0 ? filtered : [enriched[0]];
 }
+
+// ─── New flow: feasibility + greedy planner ─────────────────────────────────
+
+// Returns the subset of `shippers` whose individual detour (adding THIS
+// shipper alone to the direct dest → origin backhaul + 40 min dwell) stays
+// within the 6-hour cap. Feasible shippers come back score-sorted (highest
+// first) with `addedMin` attached so the UI can surface the delay cost.
+//
+// Also returns the resolved origin/dest (so the caller doesn't have to
+// re-geocode) and the baseline driving minutes (needed by planRouteFromYes).
+export async function filterFeasibleShippers(
+  destinationInput,
+  originInput,
+  shippers,
+  { maxAddedMin = MAX_ADDED_MIN, fetchFn = fetchDrivingRoute } = {}
+) {
+  const [dest, origin] = await Promise.all([
+    resolvePlace(destinationInput, { label: 'Stockholm', coords: [59.3293, 18.0686] }),
+    resolvePlace(originInput,      { label: 'Göteborg',  coords: GOTHENBURG })
+  ]);
+
+  const baseline = await fetchFn([dest.coords, origin.coords]);
+  const baselineDriving = baseline.durationMin;
+
+  // Cheap haversine pre-filter. Haversine always *underestimates* real
+  // road distance, so if the straight-line detour already blows the cap
+  // the real trip definitely does too — we can safely drop the shipper
+  // without asking OSRM. For 236 companies on a GBG → STO return this
+  // typically leaves ~30–80 candidates, keeping the OSRM fan-out under
+  // the public demo's rate limits.
+  const directHaversineKm = haversineKm(dest.coords, origin.coords);
+  const preFiltered = shippers.filter(s => {
+    const viaKm =
+      haversineKm(dest.coords, s.position) +
+      haversineKm(s.position, origin.coords);
+    const detourKm = Math.max(0, viaKm - directHaversineKm);
+    // 0.8 min/km ≈ 75 km/h free-flow pace; plus the 40 min stop dwell.
+    const estAddedMin = detourKm * 0.8 + STOP_MIN;
+    return estAddedMin <= maxAddedMin;
+  });
+
+  const perShipper = await Promise.all(
+    preFiltered.map(s => fetchFn([dest.coords, s.position, origin.coords]))
+  );
+
+  const evaluated = preFiltered.map((s, i) => {
+    const drivingMin = perShipper[i].durationMin;
+    const addedMin = Math.max(0, (drivingMin + STOP_MIN) - baselineDriving);
+    return { ...s, addedMin, drivingMin, feasible: addedMin <= maxAddedMin };
+  });
+
+  return {
+    origin,
+    dest,
+    baselineDriving,
+    feasible: evaluated.filter(s => s.feasible).sort((a, b) => b.score - a.score),
+    infeasible: evaluated.filter(s => !s.feasible),
+    evaluatedCount: preFiltered.length,
+    totalCount: shippers.length
+  };
+}
+
+// Greedy route planner. Walks `yesShippers` top-to-bottom (caller's order —
+// typically score-desc) and accepts each one if adding it keeps the total
+// backhaul detour (driving + dwell) within the 6-hour cap. Within the
+// accepted set the actual stop sequence is ordered closest-to-destination
+// first so the truck doesn't zig-zag. Returns a fully-shaped route object
+// compatible with the existing map rendering (routeCoords, etaMin, etc.).
+export async function planRouteFromYes(
+  origin,
+  dest,
+  yesShippers,
+  baselineDriving,
+  { maxAddedMin = MAX_ADDED_MIN, fetchFn = fetchDrivingRoute } = {}
+) {
+  const accepted = [];
+  let lastOk = null;
+
+  for (const candidate of yesShippers) {
+    const trial = [...accepted, candidate]
+      .map(s => ({ ...s, _distFromDest: haversineKm(dest.coords, s.position) }))
+      .sort((a, b) => a._distFromDest - b._distFromDest);
+
+    const coords = [dest.coords, ...trial.map(s => s.position), origin.coords];
+    const r = await fetchFn(coords);
+    const stopMin = trial.length * STOP_MIN;
+    const etaMin = r.durationMin + stopMin;
+    const addedMin = Math.max(0, etaMin - baselineDriving);
+
+    if (addedMin > maxAddedMin) continue; // skip this one, try next
+
+    accepted.push(candidate);
+    lastOk = {
+      trial,
+      driving: r,
+      etaMin,
+      addedMin,
+      stopMin
+    };
+  }
+
+  // If nothing fit, hand back the direct baseline so the map still has a
+  // route to draw.
+  if (!lastOk) {
+    const r = await fetchFn([dest.coords, origin.coords]);
+    return {
+      id: 'PLAN',
+      color: '#2563eb',
+      label: 'Planned route · direct',
+      tagline: `Direct return — no shippers fit within the ${Math.round(maxAddedMin / 60)} h cap.`,
+      shipperIds: [],
+      skippedIds: yesShippers.map(s => s.id),
+      originLabel: origin.label,
+      originCoords: origin.coords,
+      destinationLabel: dest.label,
+      destinationCoords: dest.coords,
+      routeCoords: r.geometry?.length ? r.geometry : [dest.coords, origin.coords],
+      drivingMin: r.durationMin,
+      stopMin: 0,
+      etaMin: r.durationMin,
+      addedMin: 0,
+      detourKm: r.distanceKm,
+      routingSource: r.source,
+      direction: `Return to ${origin.label} from ${dest.label}`,
+      sustainScore: 60,
+      revenueSek: 0
+    };
+  }
+
+  const acceptedIds = new Set(accepted.map(s => s.id));
+  const skipped = yesShippers.filter(s => !acceptedIds.has(s.id));
+  const revenueSek = accepted.reduce(
+    (sum, s) => sum + Math.round(REVENUE_PER_STOP * (s.score / 90)),
+    0
+  );
+
+  return {
+    id: 'PLAN',
+    color: '#2563eb',
+    label: `Planned route · ${accepted.length} pickup${accepted.length === 1 ? '' : 's'}`,
+    tagline:
+      skipped.length === 0
+        ? `All yes-shippers fit within the ${Math.round(maxAddedMin / 60)} h cap.`
+        : `${accepted.length} fit, ${skipped.length} skipped to stay under ${Math.round(maxAddedMin / 60)} h.`,
+    shipperIds: lastOk.trial.map(s => s.id),
+    skippedIds: skipped.map(s => s.id),
+    originLabel: origin.label,
+    originCoords: origin.coords,
+    destinationLabel: dest.label,
+    destinationCoords: dest.coords,
+    routeCoords: lastOk.driving.geometry?.length
+      ? lastOk.driving.geometry
+      : [dest.coords, ...lastOk.trial.map(s => s.position), origin.coords],
+    drivingMin: lastOk.driving.durationMin,
+    stopMin: lastOk.stopMin,
+    etaMin: lastOk.etaMin,
+    addedMin: lastOk.addedMin,
+    detourKm: lastOk.driving.distanceKm,
+    routingSource: lastOk.driving.source,
+    direction: `${accepted.length} backhaul pickup${accepted.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}`,
+    sustainScore: Math.min(100, 60 + accepted.length * 8),
+    revenueSek
+  };
+}
