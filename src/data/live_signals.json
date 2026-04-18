@@ -3,13 +3,15 @@
     "cdp_scope3": { "pressure": "medium", "reason": "DHL runs its own fleet — backhaul on Einride reduces their own Scope 3 reporting gap." }
   },
   "556084-0976": {
-    "cdp_scope3": { "pressure": "high", "reason": "Scania faces direct customer pressure on transport emissions — TRATON SBTi target 2030." }
+    "cdp_scope3": { "pressure": "high", "reason": "Scania faces direct customer pressure on transport emissions — TRATON SBTi target 2030." },
+    "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-17", "reason": "18 EUR-pallar motordelar, Södertälje → Göteborg hamn, FTL, upphämtning 2026-04-18, Företag." }
   },
   "556011-7482": {
     "cdp_scope3": { "pressure": "high", "reason": "AstraZeneca reports Scope 3 to CDP and has a net-zero 2045 target for logistics." }
   },
   "802416-3696": {
-    "cdp_scope3": { "pressure": "high", "reason": "SSAB is under intense pressure from Volvo/SSAB green-steel supply chain — Scope 3 Category 4 transport is a key reporting line." }
+    "cdp_scope3": { "pressure": "high", "reason": "SSAB is under intense pressure from Volvo/SSAB green-steel supply chain — Scope 3 Category 4 transport is a key reporting line." },
+    "load_board": { "platform": "Trans.eu", "frequency": "medium", "last_post_date": "2026-04-16", "reason": "Plåtämnen 19 ton, Oxelösund → Göteborg, FTL, flexibel datum v.17, Företag." }
   },
   "556259-3532": {
     "cdp_scope3": { "pressure": "medium", "reason": "Schneider Electric reports to CDP — 2025 target to reduce transport intensity by 25%." }
@@ -18,13 +20,15 @@
     "cdp_scope3": { "pressure": "medium", "reason": "Ena Energi subject to grid infrastructure reporting — green transport aligns with ESG disclosure." }
   },
   "556032-6158": {
-    "cdp_scope3": { "pressure": "medium", "reason": "Paper/pulp sector (SNI 17) faces Scope 3 Category 4 reporting from major retail buyers — IKEA supplier." }
+    "cdp_scope3": { "pressure": "medium", "reason": "Paper/pulp sector (SNI 17) faces Scope 3 Category 4 reporting from major retail buyers — IKEA supplier." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "medium", "last_post_date": "2026-04-15", "reason": "20 EUR-pallar papper/kartong, Norrköping → Göteborg, LTL ok, upphämtning v.17, Företag." }
   },
   "802537-0589": {
     "cdp_scope3": { "pressure": "high", "reason": "Biofuel sector faces EU ETS and Swedish climate reporting." }
   },
   "502096-0794": {
-    "cdp_scope3": { "pressure": "low", "reason": "Kühne & Nagel is the 3PL — Einride reduces their reported Category 4 transport emissions for clients." }
+    "cdp_scope3": { "pressure": "low", "reason": "Kühne & Nagel is the 3PL — Einride reduces their reported Category 4 transport emissions for clients." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "high", "last_post_date": "2026-04-18", "reason": "22 EUR-pallar styckegods, Norrköping → Göteborg, önskat upphämtning 2026-04-19, Företag." }
   },
   "556602-0698": {
     "cdp_scope3": { "pressure": "high", "reason": "Nyby bruk (metals/steel, SNI 24) — SSAB and Outokumpu supply chain, SBTi pressure from downstream OEMs." }
@@ -39,10 +43,12 @@
     "cdp_scope3": { "pressure": "medium", "reason": "Concrete production (SNI 23) — cement Scope 3 reporting by major construction clients (Skanska, NCC)." }
   },
   "559135-5549": {
-    "cdp_scope3": { "pressure": "medium", "reason": "Martin & Servera: food distribution (SNI 46) — major restaurant chains require green transport documentation." }
+    "cdp_scope3": { "pressure": "medium", "reason": "Martin & Servera: food distribution (SNI 46) — major restaurant chains require green transport documentation." },
+    "load_board": { "platform": "Fraktjakt", "frequency": "high", "last_post_date": "2026-04-18", "reason": "14 EUR-pallar livsmedel (kylt +4°), Linköping → Stockholm, upphämtning 2026-04-19 07:00, Företag." }
   },
   "556433-6690": {
-    "cdp_scope3": { "pressure": "high", "reason": "Fergas AB (industrial gases) — EU Industrial Emissions Directive drives green transport procurement." }
+    "cdp_scope3": { "pressure": "high", "reason": "Fergas AB (industrial gases) — EU Industrial Emissions Directive drives green transport procurement." },
+    "load_board": { "platform": "TimoCom", "frequency": "high", "last_post_date": "2026-04-18", "reason": "ADR gasflaskor (klass 2), 8 pallar, Linköping → Stockholm, kräver ADR-intyg, upphämtning 2026-04-19, Företag." }
   },
   "556036-5677": {
     "cdp_scope3": { "pressure": "medium", "reason": "Industrial estate (Jursla) with logistics/manufacturing tenants facing collective Scope 3 reporting requirements." }

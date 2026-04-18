@@ -53,6 +53,22 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     });
   }, []);
 
+  // Defined early so any negative-response callback ("Not now", "Skip", …)
+  // can restart the conversation without forward-reference gymnastics.
+  const reset = useCallback(() => {
+    opId.current++; // cancel any pending async
+    resolved.current = null;
+    setPhase('awaiting_origin');
+    setMessages(INITIAL_MESSAGES);
+    setOrigin(null);
+    setDestination(null);
+    setPalletCapacity(null);
+    setMaxWeightKg(null);
+    setFeasibleIds([]);
+    setFeasibleMeta({});
+    setPlannedRoute(null);
+  }, []);
+
   const submitOrigin = useCallback(text => {
     const value = (text ?? '').trim();
     if (!value) return;
@@ -188,12 +204,10 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
   }, [feasibleIds, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
 
   const declineSendAll = useCallback(() => {
-    appendMessages([
-      { role: 'user', text: 'Not now' },
-      { role: 'assistant', text: "OK — no outreach sent. Say 'plan route' whenever you're ready." }
-    ]);
-    setPhase('outreach_sent'); // user can still plan from any yes-marked shippers
-  }, [appendMessages]);
+    // "Not now" abandons the outreach flow → restart from the beginning
+    // so the user can pick a new origin/destination cleanly.
+    reset();
+  }, [reset]);
 
   const requestPlan = useCallback(async () => {
     if (!resolved.current) return;
@@ -293,26 +307,9 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
   }, [plannedRoute, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
 
   const skipConfirmations = useCallback(() => {
-    appendMessages([
-      { role: 'user', text: 'Skip' },
-      { role: 'assistant', text: "OK — no confirmations sent. You can reach out manually any time." }
-    ]);
-    setPhase('route_planned');
-  }, [appendMessages]);
-
-  const reset = useCallback(() => {
-    opId.current++; // cancel any pending async
-    resolved.current = null;
-    setPhase('awaiting_origin');
-    setMessages(INITIAL_MESSAGES);
-    setOrigin(null);
-    setDestination(null);
-    setPalletCapacity(null);
-    setMaxWeightKg(null);
-    setFeasibleIds([]);
-    setFeasibleMeta({});
-    setPlannedRoute(null);
-  }, []);
+    // "Skip" on the confirmation step also bails the flow → restart.
+    reset();
+  }, [reset]);
 
   // Derived: the list of shippers the sidebar should show. Feasible ones in
   // score order; empty before destination is submitted.
