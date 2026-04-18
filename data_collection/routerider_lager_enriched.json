@@ -6680,9 +6680,11 @@
       "name": "Kullbergs",
       "shop": "stationery"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556309-3292",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Magnus Kullberg",
+    "allabolag_url": "https://www.allabolag.se/foretag/kullbergs-mur-och-bygg-aktiebolag/ronneby/byggm%C3%A4stare/2K04E98I5YDDT",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6817,9 +6819,11 @@
       "building": "industrial",
       "name": "Harsco"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556177-2566",
+    "omsattning_kr": 216000,
+    "bransch": "Verkställande direktör Lars Ove Lindqvist",
+    "allabolag_url": "https://www.allabolag.se/foretag/harsco-metals-sweden-ab/norberg/avfallshantering/2JZC36EI63IOK",
+    "godspotential": 0.2
   },
   {
     "source": "openstreetmap",
@@ -6837,9 +6841,11 @@
       "building": "industrial",
       "name": "Foria"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556069-1684",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Jonas Lars Skovgaard",
+    "allabolag_url": "https://www.allabolag.se/foretag/foria-ab-publ/s%C3%B6dert%C3%A4lje/transportf%C3%B6rmedling/2JYOX5WI5YI2J",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -6936,9 +6942,11 @@
       "landuse": "industrial",
       "name": "Björshult Skrot & Mek AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556639-6940",
+    "omsattning_kr": 2024000,
+    "bransch": "Ledamot Mats Olov Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/bj%C3%B6rshult-skrot-mek-ab/nyk%C3%B6ping/avfallshantering/2K237D8I63IOK",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7128,9 +7136,11 @@
       "landuse": "industrial",
       "name": "Hults Bruk"
     },
-    "org_nr": "",
+    "org_nr": "802464-3531",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94990 Verksamhet i diverse övriga intresseorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/hults-bruks-smidescentrum/norrk%C3%B6ping/f%C3%B6reningar/3OPNYKRI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7148,9 +7158,11 @@
       "landuse": "industrial",
       "name": "Jursla industriområde"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556036-5677",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Simon Karl Ragnar Tjäder",
+    "allabolag_url": "https://www.allabolag.se/foretag/evergreen-garden-care-sverige-ab/%C3%A5by/kemikalier-industrikemikalier/2JYHXM5I5YEXO",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7169,9 +7181,11 @@
       "name": "Fiskeby",
       "source": "Yahoo"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556032-6158",
+    "omsattning_kr": 378000,
+    "bransch": "Verkställande direktör John Mattias Wahlgren",
+    "allabolag_url": "https://www.allabolag.se/foretag/fiskeby-board-ab/norrk%C3%B6ping/producenter/2JYH34EI63IK3",
+    "godspotential": 0.4
   },
   {
     "source": "openstreetmap",
@@ -7310,9 +7324,11 @@
       "landuse": "industrial",
       "name": "Agroetanol"
     },
-    "org_nr": "",
+    "org_nr": "802537-0589",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "allabolag_url": "https://www.allabolag.se/foretag/unionen-p%C3%A5-lantm%C3%A4nnen-agroetanol-ab/norrk%C3%B6ping/f%C3%B6reningar/3OQ3JKTI63IGG",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7354,9 +7370,11 @@
       "building": "industrial",
       "name": "Martin & Servera"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559135-5549",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7461,9 +7479,11 @@
       "name": "Kühne & Nagel",
       "office": "logistics"
     },
-    "org_nr": "",
+    "org_nr": "502096-0794",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "52260 Annan stödverksamhet avseende transport",
+    "allabolag_url": "https://www.allabolag.se/foretag/k%C3%BChne-nagel-ag-co.-kg/-/transportf%C3%B6rmedling/2B1CM56I5YI2J",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -7509,9 +7529,11 @@
       "building": "industrial",
       "name": "Jens S. Transmissioner"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556043-7005",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Johan Fredrik Benzler",
+    "allabolag_url": "https://www.allabolag.se/foretag/jens-s.-transmissioner-ab/norrk%C3%B6ping/insatsvaror/2JYJGNHI63IHE",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7593,9 +7615,11 @@
       "building": "warehouse",
       "name": "CEOS"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556712-3319",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Karl Johan Ludvig Dalin",
+    "allabolag_url": "https://www.allabolag.se/foretag/ceos-fritzoe-ab/n%C3%A4ssj%C3%B6/tr%C3%A4-och-byggvaror-grossist/2K2IRUFI63IL2",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7749,9 +7773,11 @@
       "name": "TvNo",
       "source": "Bing sat"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556194-6152",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Anna Karin Elisabet Andersson",
+    "allabolag_url": "https://www.allabolag.se/foretag/tvno-textilservice-aktiebolag/norrk%C3%B6ping/tv%C3%A4tterier/2JZFT48I5YI7I",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -7884,9 +7910,11 @@
       "landuse": "industrial",
       "name": "Polyproject"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556908-6282",
+    "omsattning_kr": 2025000,
+    "bransch": "Extern verkställande direktör Isabell Inger Ramona Lindahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/polyproject-environment-ab/kolm%C3%A5rden/milj%C3%B6teknik/2K3OUH6I5YGC3",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -8048,9 +8076,11 @@
       "name": "Columbia Elektronik",
       "website": "https://www.columbia.se/"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556174-9317",
+    "omsattning_kr": 918000,
+    "bransch": "Verkställande direktör Mats Göran Klarholm",
+    "allabolag_url": "https://www.allabolag.se/foretag/columbia-elektronik-aktiebolag/kolm%C3%A5rden/elektronik-legotillverkning/2JZBL8LI5YDXQ",
+    "godspotential": 0.9
   },
   {
     "source": "openstreetmap",
