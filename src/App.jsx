@@ -75,6 +75,28 @@ function tierBadgeStyle(tier) {
   return 'bg-gray-50 text-gray-500 border-gray-200';
 }
 
+function geoDistKm([la1, lo1], [la2, lo2]) {
+  const R = 6371, toR = d => d * Math.PI / 180;
+  const dLat = toR(la2 - la1), dLon = toR(lo2 - lo1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toR(la1)) * Math.cos(toR(la2)) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.asin(Math.sqrt(a));
+}
+
+function clusterCandidates(shippers, radiusKm = 20) {
+  const assigned = new Set();
+  const clusters = [];
+  for (const s of shippers) {
+    if (assigned.has(s.id)) continue;
+    const members = shippers.filter(o => !assigned.has(o.id) && geoDistKm(s.position, o.position) <= radiusKm);
+    members.forEach(m => assigned.add(m.id));
+    const lat = members.reduce((sum, m) => sum + m.position[0], 0) / members.length;
+    const lng = members.reduce((sum, m) => sum + m.position[1], 0) / members.length;
+    const topTier = members.some(m => m.tier === 'prio') ? 'prio' : 'possible';
+    clusters.push({ members, centroid: [lat, lng], count: members.length, topTier });
+  }
+  return clusters;
+}
+
 // ─── Leaflet icons ────────────────────────────────────────────────────────────
 function stopIcon(n) {
   return L.divIcon({
@@ -129,6 +151,18 @@ function chargingStopIcon(n) {
   });
 }
 
+function candidateClusterIcon(count, topTier) {
+  const bg = topTier === 'prio' ? '#10b981' : '#4264FB';
+  const size = count === 1 ? 20 : count < 5 ? 24 : count < 10 ? 28 : 34;
+  const fs = count === 1 ? 9 : 11;
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:${size}px;height:${size}px;background:${bg};border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.22);font-size:${fs}px;font-weight:700;color:#fff;font-family:system-ui;opacity:0.85">${count}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
+  });
+}
+
 function restStopIcon(n) {
   return L.divIcon({
     className: '',
@@ -152,7 +186,7 @@ export default function App() {
 
   const [showAllStations, setShowAllStations] = useState(false);
   const [skippedIds, setSkippedIds] = useState(new Set());
-  const [activeFilter, setActiveFilter] = useState('prio');
+  const [activeFilter, setActiveFilter] = useState('possible');
 
   const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
   const unskipShipper = useCallback(id => {
@@ -162,7 +196,7 @@ export default function App() {
   const hasSuggestions = chat.suggestions.length > 0;
   const routeLocked = !!selectedRoute;
   const showingSuggestions = hasSuggestions && !routeLocked;
-  const SELECTED_COLOR = '#10b981';
+  const SELECTED_COLOR = '#2563eb'; // Einride blue — shown only once a route is locked
 
   const effectiveActiveRoute = useMemo(() => {
     if (!selectedRoute) return activeRoute;
@@ -198,34 +232,48 @@ export default function App() {
     [showingSuggestions, planningCoords, showAllStations]
   );
 
-  // Tier counts for filter chips
+  // Viable backhaul candidates for the locked route, route-picks sorted first.
+  const candidateShippers = useMemo(() => {
+    if (!selectedRoute?.candidateIds?.length) return [];
+    return shippers
+      .filter(s => selectedRoute.candidateIds.includes(s.id))
+      .sort((a, b) => {
+        const aOn = selectedRoute.shipperIds.includes(a.id) ? 0 : 1;
+        const bOn = selectedRoute.shipperIds.includes(b.id) ? 0 : 1;
+        return aOn - bOn || b.score - a.score;
+      });
+  }, [selectedRoute, shippers]);
+
   const prioCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
-    [shippers, skippedIds]
+    () => candidateShippers.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
+    [candidateShippers, skippedIds]
   );
   const possibleCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'possible').length,
-    [shippers, skippedIds]
+    () => candidateShippers.filter(s => !skippedIds.has(s.id) && s.tier === 'possible').length,
+    [candidateShippers, skippedIds]
   );
   const allNonSkippedCount = useMemo(
-    () => shippers.filter(s => !skippedIds.has(s.id)).length,
-    [shippers, skippedIds]
+    () => candidateShippers.filter(s => !skippedIds.has(s.id)).length,
+    [candidateShippers, skippedIds]
   );
 
+  // Cluster non-stop candidates for the map (20 km radius).
+  const candidateClusters = useMemo(() => {
+    if (!routeLocked || !candidateShippers.length) return [];
+    const nonStop = candidateShippers.filter(
+      s => !selectedRoute.shipperIds.includes(s.id) && !skippedIds.has(s.id)
+    );
+    return clusterCandidates(nonStop, 20);
+  }, [routeLocked, candidateShippers, selectedRoute, skippedIds]);
+
   const displayedShippers = useMemo(() => {
-    if (selectedRoute) {
-      const base = shippers.filter(s => selectedRoute.shipperIds.includes(s.id));
-      return activeFilter === 'skipped'
-        ? base.filter(s => skippedIds.has(s.id))
-        : base.filter(s => !skippedIds.has(s.id));
-    }
-    const pool = shippers.filter(s =>
+    const pool = candidateShippers.filter(s =>
       activeFilter === 'skipped' ? skippedIds.has(s.id) : !skippedIds.has(s.id)
     );
     if (activeFilter === 'prio') return pool.filter(s => s.tier === 'prio');
     if (activeFilter === 'possible') return pool.filter(s => s.tier === 'possible');
     return pool;
-  }, [selectedRoute, shippers, skippedIds, activeFilter]);
+  }, [candidateShippers, skippedIds, activeFilter]);
 
   useEffect(() => {
     if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
@@ -393,11 +441,22 @@ export default function App() {
                 </div>
               )}
 
-              {/* Shippers list */}
-              <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
-
-                {/* Filter chips — only before route is locked */}
-                {!routeLocked && (
+              {/* Shippers list — only shown once a route is locked */}
+              {!routeLocked ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                  <p className="text-xs text-gray-400 text-center leading-relaxed">
+                    Pick a route to see which shippers along the corridor you should contact.
+                  </p>
+                </div>
+              ) : candidateShippers.length === 0 ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                  <p className="text-xs text-gray-400 text-center leading-relaxed">
+                    No backhaul on this route — no shippers to contact.
+                  </p>
+                </div>
+              ) : (
+                <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
+                  {/* Filter chips */}
                   <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
                     {[
                       { key: 'prio',     label: 'Prio',     count: prioCount },
@@ -418,36 +477,38 @@ export default function App() {
                       </button>
                     ))}
                   </div>
-                )}
 
-                <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
-                  <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                    Shippers · {contactedCount}/{displayedShippers.length} contacted
-                  </span>
+                  <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
+                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
+                      Shippers · {contactedCount}/{displayedShippers.length} contacted
+                    </span>
+                  </div>
+
+                  <div className="divide-y divide-gray-50">
+                    {displayedShippers.length === 0 ? (
+                      <div className="px-4 py-6 text-xs text-gray-400 text-center">
+                        No shippers in this filter.
+                      </div>
+                    ) : (
+                      displayedShippers.map(s => (
+                        <ShipperRow
+                          key={s.id}
+                          shipper={s}
+                          onClick={() => setSelected({ type: 'shipper', data: s })}
+                          onSkip={skipShipper}
+                          onUnskip={unskipShipper}
+                          isSkipped={skippedIds.has(s.id)}
+                          onRoute={selectedRoute.shipperIds.includes(s.id)}
+                          routeStop={selectedRoute.shipperIds.indexOf(s.id) + 1}
+                        />
+                      ))
+                    )}
+                  </div>
+
+                  {/* Carriers on this lane — self-contained section */}
+                  <CarrierSection selectedRoute={selectedRoute} activeRoute={effectiveActiveRoute} />
                 </div>
-
-                <div className="divide-y divide-gray-50">
-                  {displayedShippers.length === 0 ? (
-                    <div className="px-4 py-6 text-xs text-gray-400 text-center">
-                      No shippers in this filter.
-                    </div>
-                  ) : (
-                    displayedShippers.map(s => (
-                      <ShipperRow
-                        key={s.id}
-                        shipper={s}
-                        onClick={() => setSelected({ type: 'shipper', data: s })}
-                        onSkip={skipShipper}
-                        onUnskip={unskipShipper}
-                        isSkipped={skippedIds.has(s.id)}
-                      />
-                    ))
-                  )}
-                </div>
-
-                {/* Åkerier på sträckan — självständig sektion */}
-                <CarrierSection selectedRoute={selectedRoute} activeRoute={effectiveActiveRoute} />
-              </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
@@ -473,7 +534,7 @@ export default function App() {
             }}
           >
             <Zap size={11} />
-            {showAllStations ? 'Alla EV' : 'HGV'}
+            {showAllStations ? 'All EV' : 'HGV'}
           </button>
         )}
         <MapContainer
@@ -490,30 +551,36 @@ export default function App() {
             maxZoom={20}
           />
 
-          {hasSuggestions && chat.suggestions.map(route => {
-            const isSelected = routeLocked && route.id === selectedRoute.id;
-            const dimmed = routeLocked && !isSelected;
-            const color = isSelected ? SELECTED_COLOR : route.color;
-            return (
-              <Fragment key={route.id}>
-                {isSelected && (
+          {/* Nothing renders until the chat produces suggestions — map is a
+              blank canvas that responds to the conversation. */}
+
+          {/* Planning: draw every suggestion in its own color. Once one is
+              locked, hide the rest and turn the winner Einride blue with a
+              halo — the map becomes a single clean route. */}
+          {hasSuggestions && chat.suggestions
+            .filter(route => !routeLocked || route.id === selectedRoute.id)
+            .map(route => {
+              const isSelected = routeLocked && route.id === selectedRoute.id;
+              const color = isSelected ? SELECTED_COLOR : route.color;
+              return (
+                <Fragment key={route.id}>
+                  {isSelected && (
+                    <Polyline positions={route.routeCoords}
+                      pathOptions={{ color: SELECTED_COLOR, weight: 12, opacity: 0.22, lineJoin: 'round', lineCap: 'round' }}
+                    />
+                  )}
                   <Polyline positions={route.routeCoords}
-                    pathOptions={{ color: SELECTED_COLOR, weight: 11, opacity: 0.28, lineJoin: 'round', lineCap: 'round' }}
+                    pathOptions={{
+                      color,
+                      weight: isSelected ? 5 : 4,
+                      opacity: 0.9,
+                      lineJoin: 'round',
+                      lineCap: 'round'
+                    }}
                   />
-                )}
-                <Polyline positions={route.routeCoords}
-                  pathOptions={{
-                    color,
-                    weight: isSelected ? 5 : 4,
-                    opacity: dimmed ? 0.18 : 0.9,
-                    dashArray: dimmed ? '4 6' : undefined,
-                    lineJoin: 'round',
-                    lineCap: 'round'
-                  }}
-                />
-              </Fragment>
-            );
-          })}
+                </Fragment>
+              );
+            })}
 
           {/* Charging stations — shown during route selection */}
           {nearbyStations.map((station, i) => (
@@ -563,11 +630,13 @@ export default function App() {
             );
           })}
 
-          {/* Locked route: origin/destination + numbered backhaul stops */}
+          {/* Locked route: origin/destination + route stops + candidate clusters */}
           {routeLocked && (
             <>
               <Marker position={selectedRoute.originCoords} icon={originIcon} />
               <Marker position={selectedRoute.destinationCoords} icon={destIcon} />
+
+              {/* Planned pickup stops — numbered blue circles */}
               {selectedRoute.shipperIds.map((id, i) => {
                 const s = shippers.find(sh => sh.id === id);
                 if (!s) return null;
@@ -577,17 +646,23 @@ export default function App() {
                   />
                 );
               })}
+
+              {/* Candidate clusters — all other viable backhaul companies */}
+              {candidateClusters.map((cluster, i) => (
+                <Marker
+                  key={`ccluster-${i}`}
+                  position={cluster.centroid}
+                  icon={candidateClusterIcon(cluster.count, cluster.topTier)}
+                  eventHandlers={{ click: () => setSelected({ type: 'shipper', data: cluster.members[0] }) }}
+                />
+              ))}
+
+              {/* Non-candidate shippers — very dim context dots */}
               {shippers
-                .filter(s => !selectedRoute.shipperIds.includes(s.id))
+                .filter(s => !selectedRoute.candidateIds?.includes(s.id))
                 .map(s => (
-                  <CircleMarker key={s.id} center={s.position} radius={4}
-                    pathOptions={{
-                      color: '#fff',
-                      weight: 1,
-                      fillColor: skippedIds.has(s.id) ? '#f3f4f6' : '#d1d5db',
-                      fillOpacity: skippedIds.has(s.id) ? 0.2 : 0.45
-                    }}
-                    eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+                  <CircleMarker key={s.id} center={s.position} radius={3}
+                    pathOptions={{ color: 'transparent', weight: 0, fillColor: '#d1d5db', fillOpacity: 0.25 }}
                   />
                 ))}
             </>
@@ -618,6 +693,7 @@ export default function App() {
           onSkipCurrentDraft={chat.skipCurrentDraft}
           onStartEdit={chat.startEdit}
           onSubmitEdit={chat.submitEdit}
+          onChangeRoute={chat.changeRoute}
           onReset={chat.reset}
         />
       </aside>
@@ -642,7 +718,7 @@ export default function App() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
+function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped, onRoute, routeStop }) {
   return (
     <button
       onClick={onClick}
@@ -680,6 +756,10 @@ function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
             className="text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded-full font-medium hover:bg-gray-200 transition cursor-pointer"
           >
             Undo
+          </span>
+        ) : onRoute ? (
+          <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
+            {routeStop}
           </span>
         ) : shipper.contacted ? (
           <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">

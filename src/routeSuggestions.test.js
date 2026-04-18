@@ -25,7 +25,7 @@ function mockFetch(durationMinByStops) {
 
 describe('enrichSuggestionsWithMapbox', () => {
   it('applies 40 min dwell per stop and drops suggestions >6h over baseline', async () => {
-    const base = buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
+    const base = await buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
     expect(base.length).toBeGreaterThanOrEqual(2);
 
     // Baseline direct = 300 min. 3-stop route returns 800 min driving + 3×40 dwell = 920 min.
@@ -44,7 +44,7 @@ describe('enrichSuggestionsWithMapbox', () => {
   });
 
   it('keeps suggestions within the 6h cap and computes etaMin = driving + 40×stops', async () => {
-    const base = buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
+    const base = await buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
 
     // Driving rises slightly per stop, well under the cap.
     const fetchFn = mockFetch({ 0: 300, 1: 340, 2: 370, 3: 400, 4: 430, 5: 460 });
@@ -61,7 +61,7 @@ describe('enrichSuggestionsWithMapbox', () => {
   });
 
   it('always returns at least one route even if all would be filtered', async () => {
-    const base = buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
+    const base = await buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
     // Pathological: even direct is huge, but we always keep route A.
     const fetchFn = mockFetch({ 0: 9999, 1: 9999, 2: 9999, 3: 9999, 4: 9999, 5: 9999 });
     const enriched = await enrichSuggestionsWithMapbox(base, { fetchFn });
@@ -70,7 +70,7 @@ describe('enrichSuggestionsWithMapbox', () => {
   });
 
   it('swaps routeCoords for Mapbox geometry when returned', async () => {
-    const base = buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
+    const base = await buildRouteSuggestions('Stockholm', shippers, 'Göteborg');
     const roadGeom = [[57.7, 11.9], [58.0, 13.5], [59.3, 18.0]];
     const fetchFn = () => Promise.resolve({
       durationMin: 200, distanceKm: 460, geometry: roadGeom, source: 'mock'

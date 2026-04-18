@@ -5,6 +5,7 @@
 // sit roughly on the destination→origin line and ordered along that return leg.
 
 import { fetchDrivingRoute } from './mapboxRouting.js';
+import { geocodeCity } from './geocode.js';
 
 export const GOTHENBURG = [57.7088, 11.9746];
 
@@ -35,10 +36,22 @@ export const QUICK_DESTINATIONS = [
   { label: 'Hamburg',     coords: [53.5511, 9.9937] }
 ];
 
-function resolvePlace(input, fallback) {
-  const q = (input ?? '').trim().toLowerCase();
-  const match = PLACES.find(p => p.label.toLowerCase() === q);
-  return match ?? { label: (input ?? '').trim() || fallback.label, coords: fallback.coords };
+// Resolve a user-typed city name to coordinates. Tries the local PLACES
+// list first (fast, no network), then Nominatim. Falls back to the caller's
+// `fallback` city only when geocoding returns nothing so the trip is still
+// plannable rather than erroring out.
+async function resolvePlace(input, fallback) {
+  const q = (input ?? '').trim();
+  if (!q) return { label: fallback.label, coords: fallback.coords };
+
+  const local = PLACES.find(p => p.label.toLowerCase() === q.toLowerCase());
+  if (local) return { label: local.label, coords: local.coords };
+
+  const geo = await geocodeCity(q);
+  if (geo) return { label: geo.label, coords: geo.coords };
+
+  console.warn(`[routeSuggestions] Could not resolve "${q}" — using fallback ${fallback.label}.`);
+  return { label: q, coords: fallback.coords };
 }
 
 const R_KM = 6371;
@@ -96,7 +109,7 @@ function orderForReturn(candidates) {
     .map(c => c.shipper);
 }
 
-function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
+function buildRoute({ id, color, label, tagline, origin, dest, shippers, candidateIds = [] }) {
   // Backhaul leg only: destination → pickups → origin. The outbound leg
   // (origin → destination) is assumed sunk-cost — the truck is going there
   // regardless to deliver primary cargo — so all durations, distances, and
@@ -122,6 +135,7 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
     label,
     tagline,
     shipperIds: shippers.map(s => s.id),
+    candidateIds,
     originLabel: origin.label,
     originCoords: origin.coords,
     destinationLabel: dest.label,
@@ -134,18 +148,41 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
   };
 }
 
-export function buildRouteSuggestions(destinationInput, shippers, originInput) {
-  const dest = resolvePlace(destinationInput, {
-    label: 'Stockholm',
-    coords: [59.3293, 18.0686]
+// All shippers within maxKm of any point on the route polyline.
+// Densifies the polyline first so sparse routes (e.g. Route A with just 2 pts)
+// still produce a proper corridor.
+export function getShippersNearRoute(routeCoords, shippers, maxKm = 40) {
+  if (!routeCoords || routeCoords.length < 2) return [];
+
+  const dense = [routeCoords[0]];
+  for (let i = 1; i < routeCoords.length; i++) {
+    const [la1, lo1] = routeCoords[i - 1];
+    const [la2, lo2] = routeCoords[i];
+    const totalKm = haversineKm([la1, lo1], [la2, lo2]);
+    const steps = Math.max(1, Math.ceil(totalKm / 20));
+    for (let s = 1; s <= steps; s++) {
+      const t = s / steps;
+      dense.push([la1 + (la2 - la1) * t, lo1 + (lo2 - lo1) * t]);
+    }
+  }
+
+  return shippers.filter(s => {
+    for (const [lat, lng] of dense) {
+      if (haversineKm(s.position, [lat, lng]) <= maxKm) return true;
+    }
+    return false;
   });
-  const origin = resolvePlace(originInput, {
-    label: 'Göteborg',
-    coords: GOTHENBURG
-  });
+}
+
+export async function buildRouteSuggestions(destinationInput, shippers, originInput) {
+  const [dest, origin] = await Promise.all([
+    resolvePlace(destinationInput, { label: 'Stockholm', coords: [59.3293, 18.0686] }),
+    resolvePlace(originInput,      { label: 'Göteborg',  coords: GOTHENBURG })
+  ]);
 
   const candidates = backhaulCandidates(origin, dest, shippers);
   const byScore = [...candidates].sort((a, b) => b.shipper.score - a.shipper.score);
+  const allCandidateIds = byScore.map(c => c.shipper.id);
 
   const routeA = buildRoute({
     id: 'A',
@@ -154,7 +191,8 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     tagline: `Direct return to ${origin.label} from ${dest.label} — no backhaul.`,
     origin,
     dest,
-    shippers: []
+    shippers: [],
+    candidateIds: []
   });
 
   const balancedPicks = orderForReturn(byScore.slice(0, 3));
@@ -168,10 +206,11 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
         : `Top ${balancedPicks.length} shipper${balancedPicks.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}.`,
     origin,
     dest,
-    shippers: balancedPicks
+    shippers: balancedPicks,
+    candidateIds: allCandidateIds
   });
 
-  const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN); // keep addedMin ≤ cap
+  const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN);
   const fullPicks = orderForReturn(candidates).slice(0, maxStops);
   const routeC = buildRoute({
     id: 'C',
@@ -180,7 +219,8 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     tagline: `Every viable backhaul pickup on return to ${origin.label} from ${dest.label} (${fullPicks.length} total).`,
     origin,
     dest,
-    shippers: fullPicks
+    shippers: fullPicks,
+    candidateIds: allCandidateIds
   });
 
   if (candidates.length === 0) return [routeA];

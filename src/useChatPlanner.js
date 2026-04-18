@@ -72,7 +72,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
 
   const confirmBackhaul = useCallback(async yes => {
     if (!destination) return;
-    const all = buildRouteSuggestions(destination, shippers, origin);
+    const all = await buildRouteSuggestions(destination, shippers, origin);
     const initial = yes ? all : all.slice(0, 1);
 
     // Show the user reply + a planning bubble immediately; the real route
@@ -264,6 +264,21 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     setPhase('drafting_outreach');
   }, [currentIdx, outreachQueue, shippers, appendMessages]);
 
+  const changeRoute = useCallback(() => {
+    setSelectedRouteId(null);
+    setOutreachQueue([]);
+    setCurrentIdx(0);
+    appendMessages([
+      { role: 'user', text: 'Change route' },
+      {
+        role: 'assistant',
+        text: 'Sure — pick a different route:',
+        suggestionIds: suggestions.map(r => r.id)
+      }
+    ]);
+    setPhase('showing_suggestions');
+  }, [suggestions, appendMessages]);
+
   const reset = useCallback(() => {
     setPhase('awaiting_origin');
     setMessages(INITIAL_MESSAGES);
@@ -297,6 +312,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     skipCurrentDraft,
     startEdit,
     submitEdit,
+    changeRoute,
     reset
   };
 }

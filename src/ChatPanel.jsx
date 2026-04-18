@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail
+  Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail, ArrowLeftRight
 } from 'lucide-react';
 import { formatEta } from './routeSuggestions.js';
 
@@ -22,6 +22,7 @@ export default function ChatPanel({
   onSkipCurrentDraft,
   onStartEdit,
   onSubmitEdit,
+  onChangeRoute,
   onReset,
 }) {
   const scrollRef = useRef(null);
@@ -60,6 +61,15 @@ export default function ChatPanel({
           <div className="text-[10px] uppercase tracking-[0.25em] text-einride font-semibold leading-none">Route planner</div>
           <div className="text-xs font-semibold text-gray-800 mt-0.5">Backhaul Assistant</div>
         </div>
+        {selectedRouteId && suggestions.length > 1 && (
+          <button
+            onClick={onChangeRoute}
+            title="Change route"
+            className="p-1.5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition"
+          >
+            <ArrowLeftRight size={13} />
+          </button>
+        )}
         {TERMINAL_PHASES.includes(phase) && (
           <button
             onClick={onReset}
