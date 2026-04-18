@@ -74,6 +74,28 @@ function tierBadgeStyle(tier) {
   return 'bg-gray-50 text-gray-500 border-gray-200';
 }
 
+function geoDistKm([la1, lo1], [la2, lo2]) {
+  const R = 6371, toR = d => d * Math.PI / 180;
+  const dLat = toR(la2 - la1), dLon = toR(lo2 - lo1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toR(la1)) * Math.cos(toR(la2)) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.asin(Math.sqrt(a));
+}
+
+function clusterCandidates(shippers, radiusKm = 20) {
+  const assigned = new Set();
+  const clusters = [];
+  for (const s of shippers) {
+    if (assigned.has(s.id)) continue;
+    const members = shippers.filter(o => !assigned.has(o.id) && geoDistKm(s.position, o.position) <= radiusKm);
+    members.forEach(m => assigned.add(m.id));
+    const lat = members.reduce((sum, m) => sum + m.position[0], 0) / members.length;
+    const lng = members.reduce((sum, m) => sum + m.position[1], 0) / members.length;
+    const topTier = members.some(m => m.tier === 'prio') ? 'prio' : 'possible';
+    clusters.push({ members, centroid: [lat, lng], count: members.length, topTier });
+  }
+  return clusters;
+}
+
 // ─── Leaflet icons ────────────────────────────────────────────────────────────
 function stopIcon(n) {
   return L.divIcon({
@@ -125,6 +147,18 @@ function chargingStopIcon(n) {
     </div>`,
     iconSize: [30, 30],
     iconAnchor: [15, 15]
+  });
+}
+
+function candidateClusterIcon(count, topTier) {
+  const bg = topTier === 'prio' ? '#10b981' : '#4264FB';
+  const size = count === 1 ? 20 : count < 5 ? 24 : count < 10 ? 28 : 34;
+  const fs = count === 1 ? 9 : 11;
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:${size}px;height:${size}px;background:${bg};border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.22);font-size:${fs}px;font-weight:700;color:#fff;font-family:system-ui;opacity:0.85">${count}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
   });
 }
 
@@ -221,6 +255,15 @@ export default function App() {
     () => candidateShippers.filter(s => !skippedIds.has(s.id)).length,
     [candidateShippers, skippedIds]
   );
+
+  // Cluster non-stop candidates for the map (20 km radius).
+  const candidateClusters = useMemo(() => {
+    if (!routeLocked || !candidateShippers.length) return [];
+    const nonStop = candidateShippers.filter(
+      s => !selectedRoute.shipperIds.includes(s.id) && !skippedIds.has(s.id)
+    );
+    return clusterCandidates(nonStop, 20);
+  }, [routeLocked, candidateShippers, selectedRoute, skippedIds]);
 
   const displayedShippers = useMemo(() => {
     const pool = candidateShippers.filter(s =>
@@ -583,11 +626,13 @@ export default function App() {
             );
           })}
 
-          {/* Locked route: origin/destination + numbered backhaul stops */}
+          {/* Locked route: origin/destination + route stops + candidate clusters */}
           {routeLocked && (
             <>
               <Marker position={selectedRoute.originCoords} icon={originIcon} />
               <Marker position={selectedRoute.destinationCoords} icon={destIcon} />
+
+              {/* Planned pickup stops — numbered blue circles */}
               {selectedRoute.shipperIds.map((id, i) => {
                 const s = shippers.find(sh => sh.id === id);
                 if (!s) return null;
@@ -597,17 +642,23 @@ export default function App() {
                   />
                 );
               })}
+
+              {/* Candidate clusters — all other viable backhaul companies */}
+              {candidateClusters.map((cluster, i) => (
+                <Marker
+                  key={`ccluster-${i}`}
+                  position={cluster.centroid}
+                  icon={candidateClusterIcon(cluster.count, cluster.topTier)}
+                  eventHandlers={{ click: () => setSelected({ type: 'shipper', data: cluster.members[0] }) }}
+                />
+              ))}
+
+              {/* Non-candidate shippers — very dim context dots */}
               {shippers
-                .filter(s => !selectedRoute.shipperIds.includes(s.id))
+                .filter(s => !selectedRoute.candidateIds?.includes(s.id))
                 .map(s => (
-                  <CircleMarker key={s.id} center={s.position} radius={4}
-                    pathOptions={{
-                      color: '#fff',
-                      weight: 1,
-                      fillColor: skippedIds.has(s.id) ? '#f3f4f6' : '#d1d5db',
-                      fillOpacity: skippedIds.has(s.id) ? 0.2 : 0.45
-                    }}
-                    eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+                  <CircleMarker key={s.id} center={s.position} radius={3}
+                    pathOptions={{ color: 'transparent', weight: 0, fillColor: '#d1d5db', fillOpacity: 0.25 }}
                   />
                 ))}
             </>
