@@ -127,7 +127,6 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
-  const [tab, setTab] = useState('chat');
   const chat = useChatPlanner(shippers);
   const { selectedRoute } = chat;
 
@@ -221,58 +220,29 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Tabs */}
-              <div className="flex border-b border-gray-100 flex-shrink-0">
-                {[['chat', 'Planera'], ['shippers', 'Avsändare']].map(([key, label]) => (
-                  <button
-                    key={key}
-                    onClick={() => setTab(key)}
-                    className={`flex-1 py-2.5 text-xs font-semibold transition ${
-                      tab === key
-                        ? 'text-gray-900 border-b-2 border-gray-900'
-                        : 'text-gray-400 hover:text-gray-600'
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              {tab === 'chat' ? (
-                <ChatPanel
-                  phase={chat.phase}
-                  messages={chat.messages}
-                  suggestions={chat.suggestions}
-                  selectedRouteId={chat.selectedRouteId}
-                  onSubmitDestination={chat.submitDestination}
-                  onConfirmBackhaul={chat.confirmBackhaul}
-                  onPickRoute={chat.pickRoute}
-                  onReset={chat.reset}
-                />
-              ) : (
-                <div className="flex-1 overflow-y-auto">
-                  <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
-                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                      {contactedCount}/{effectiveShippers.length} kontaktade
-                    </span>
-                  </div>
-                  <div className="divide-y divide-gray-50">
-                    {effectiveShippers.map(s => (
-                      <ShipperRow
-                        key={s.id}
-                        shipper={s}
-                        onClick={() => setSelected({ type: 'shipper', data: s })}
-                      />
-                    ))}
-                  </div>
+              {/* Shippers list */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
+                  <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
+                    Avsändare · {contactedCount}/{effectiveShippers.length} kontaktade
+                  </span>
                 </div>
-              )}
+                <div className="divide-y divide-gray-50">
+                  {effectiveShippers.map(s => (
+                    <ShipperRow
+                      key={s.id}
+                      shipper={s}
+                      onClick={() => setSelected({ type: 'shipper', data: s })}
+                    />
+                  ))}
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </aside>
 
-      {/* ── Map + chat ── */}
+      {/* ── Map ── */}
       <div className="flex-1 relative">
         <MapContainer
           center={[58.5, 15.5]}
@@ -287,39 +257,35 @@ export default function App() {
             subdomains="abcd"
             maxZoom={20}
           />
-
-          {/* Route */}
           <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 16, opacity: 0.18 }} />
           <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 4, opacity: 1 }} />
-
-          {/* Charging hubs */}
           {CHARGING_HUBS.map(hub => (
-            <Marker
-              key={hub.id}
-              position={hub.position}
-              icon={chargingIcon}
+            <Marker key={hub.id} position={hub.position} icon={chargingIcon}
               eventHandlers={{ click: () => setSelected({ type: 'hub', data: hub }) }}
             />
           ))}
-
-          {/* Shippers */}
           {effectiveShippers.map(s => (
-            <CircleMarker
-              key={s.id}
-              center={s.position}
-              radius={9}
-              pathOptions={{
-                color: '#fff',
-                weight: 2.5,
-                fillColor: s.contacted ? '#5DC1E0' : '#10B981',
-                fillOpacity: 0.95
-              }}
+            <CircleMarker key={s.id} center={s.position} radius={9}
+              pathOptions={{ color: '#fff', weight: 2.5, fillColor: s.contacted ? '#5DC1E0' : '#10B981', fillOpacity: 0.95 }}
               eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
         </MapContainer>
-
       </div>
+
+      {/* ── Chat panel (right) ── */}
+      <aside className="w-72 flex-shrink-0 flex flex-col bg-white border-l border-gray-200 shadow-lg z-10 overflow-hidden">
+        <ChatPanel
+          phase={chat.phase}
+          messages={chat.messages}
+          suggestions={chat.suggestions}
+          selectedRouteId={chat.selectedRouteId}
+          onSubmitDestination={chat.submitDestination}
+          onConfirmBackhaul={chat.confirmBackhaul}
+          onPickRoute={chat.pickRoute}
+          onReset={chat.reset}
+        />
+      </aside>
 
       {/* Toast */}
       <AnimatePresence>
