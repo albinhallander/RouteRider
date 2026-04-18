@@ -302,16 +302,8 @@ export default function App() {
             maxZoom={20}
           />
 
-          {/* Idle: base E4 corridor before any plan is built */}
-          {!hasSuggestions && (
-            <>
-              <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }} />
-              <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
-            </>
-          )}
-
-          {/* Planning: draw every suggestion in its own color. When one is
-              locked, fade the rest and turn the winner green with a halo. */}
+          {/* Nothing renders until the chat produces suggestions — the map is
+              a blank canvas that responds to the conversation. */}
           {hasSuggestions && chat.suggestions.map(route => {
             const isSelected = routeLocked && route.id === selectedRoute.id;
             const dimmed = routeLocked && !isSelected;
@@ -337,18 +329,10 @@ export default function App() {
             );
           })}
 
-          {/* Charging hubs */}
-          {CHARGING_HUBS.map(hub => (
+          {/* Charging hubs appear alongside the planned routes, not on the empty map. */}
+          {hasSuggestions && CHARGING_HUBS.map(hub => (
             <Marker key={hub.id} position={hub.position} icon={chargingIcon}
               eventHandlers={{ click: () => setSelected({ type: 'hub', data: hub }) }}
-            />
-          ))}
-
-          {/* Idle shippers: plain circles */}
-          {!hasSuggestions && shippers.map(s => (
-            <CircleMarker key={s.id} center={s.position} radius={8}
-              pathOptions={{ color: '#fff', weight: 2, fillColor: s.contacted ? '#9ca3af' : '#4264FB', fillOpacity: 1 }}
-              eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
 
