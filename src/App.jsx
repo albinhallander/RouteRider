@@ -28,11 +28,18 @@ import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 
 // ─── Route (E4 corridor, south → north) ─────────────────────────────────────
 const ROUTE = [
-  [57.7088, 11.9746], // Gothenburg (start)
+  [57.7088, 11.9746], // Gothenburg
+  [57.7400, 12.6000],
+  [57.7600, 13.1000],
   [57.7826, 14.1618], // Jönköping
+  [57.9800, 14.5000],
+  [58.1800, 14.9000],
   [58.4108, 15.6214], // Linköping
+  [58.7000, 16.4000],
+  [59.0000, 17.0000],
   [59.1955, 17.6252], // Södertälje
-  [59.3293, 18.0686]  // Stockholm (end)
+  [59.2500, 17.8000],
+  [59.3293, 18.0686]  // Stockholm
 ];
 
 const CHARGING_HUBS = [
@@ -122,13 +129,13 @@ const destIcon = L.divIcon({
 const chargingIcon = L.divIcon({
   className: '',
   html: `
-    <div style="width:36px;height:36px;background:#fff;border:2px solid #4264FB;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#4264FB">
+    <div style="width:26px;height:26px;background:#fff;border:2px solid #4264FB;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,0.18);">
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="#4264FB">
         <path d="M13 2L3 14h7l-1 8 11-14h-7z"/>
       </svg>
     </div>`,
-  iconSize: [36, 36],
-  iconAnchor: [18, 18]
+  iconSize: [26, 26],
+  iconAnchor: [13, 13]
 });
 
 // ─── App ──────────────────────────────────────────────────────────────────────
