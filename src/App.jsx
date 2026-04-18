@@ -22,6 +22,8 @@ import {
   Clock,
   ChevronLeft
 } from 'lucide-react';
+import ChatPanel from './ChatPanel.jsx';
+import { useChatPlanner } from './useChatPlanner.js';
 
 // ─── Route (E4 corridor, south → north) ─────────────────────────────────────
 const ROUTE = [
@@ -125,6 +127,15 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
+  const [chatCollapsed, setChatCollapsed] = useState(false);
+
+  const chat = useChatPlanner(shippers);
+  const { selectedRoute } = chat;
+
+  const effectiveRoute = selectedRoute?.routeCoords ?? ROUTE;
+  const effectiveShippers = selectedRoute
+    ? shippers.filter(s => selectedRoute.shipperIds.includes(s.id))
+    : shippers;
 
   const progressPct = activeRoute.soc;
 
@@ -140,7 +151,7 @@ export default function App() {
     window.setTimeout(() => setToast(null), 3200);
   };
 
-  const contactedCount = shippers.filter(s => s.contacted).length;
+  const contactedCount = effectiveShippers.filter(s => s.contacted).length;
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
@@ -206,7 +217,9 @@ export default function App() {
                   Einride · Backhaul
                 </div>
                 <div className="text-xl font-bold text-gray-900 mt-0.5">RouteRider</div>
-                <div className="text-xs text-gray-400">E4 · Göteborg → Stockholm</div>
+                <div className="text-xs text-gray-400">
+                  {selectedRoute ? selectedRoute.direction : 'E4 · Göteborg → Stockholm'}
+                </div>
               </div>
 
               {/* Truck card */}
@@ -227,7 +240,7 @@ export default function App() {
                   <div className="flex gap-4 text-xs text-gray-500 mb-2.5">
                     <span className="flex items-center gap-1"><Gauge size={11} />{activeRoute.soc}% SoC</span>
                     <span className="flex items-center gap-1"><Clock size={11} />ETA {activeRoute.etaMin} min</span>
-                    <span className="flex items-center gap-1"><Mail size={11} />{contactedCount}/{shippers.length}</span>
+                    <span className="flex items-center gap-1"><Mail size={11} />{contactedCount}/{effectiveShippers.length}</span>
                   </div>
                   <div className="flex items-center justify-between text-[10px] text-gray-400 mb-1">
                     <span>Route progress</span>
@@ -250,11 +263,11 @@ export default function App() {
               <div className="flex-1 overflow-y-auto">
                 <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
                   <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                    Shippers · {contactedCount}/{shippers.length} contacted
+                    Shippers · {contactedCount}/{effectiveShippers.length} contacted
                   </span>
                 </div>
                 <div className="divide-y divide-gray-50">
-                  {shippers.map(s => (
+                  {effectiveShippers.map(s => (
                     <ShipperRow
                       key={s.id}
                       shipper={s}
@@ -298,7 +311,7 @@ export default function App() {
         </AnimatePresence>
       </aside>
 
-      {/* ── Map ── */}
+      {/* ── Map + chat ── */}
       <div className="flex-1 relative">
         <MapContainer
           center={[58.5, 15.5]}
@@ -315,8 +328,8 @@ export default function App() {
           />
 
           {/* Route */}
-          <Polyline positions={ROUTE} pathOptions={{ color: '#5DC1E0', weight: 16, opacity: 0.18 }} />
-          <Polyline positions={ROUTE} pathOptions={{ color: '#5DC1E0', weight: 4, opacity: 1 }} />
+          <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 16, opacity: 0.18 }} />
+          <Polyline positions={effectiveRoute} pathOptions={{ color: '#5DC1E0', weight: 4, opacity: 1 }} />
 
           {/* Charging hubs */}
           {CHARGING_HUBS.map(hub => (
@@ -329,7 +342,7 @@ export default function App() {
           ))}
 
           {/* Shippers */}
-          {shippers.map(s => (
+          {effectiveShippers.map(s => (
             <CircleMarker
               key={s.id}
               center={s.position}
@@ -344,6 +357,20 @@ export default function App() {
             />
           ))}
         </MapContainer>
+
+        {/* Chat panel — overlays the map pane */}
+        <ChatPanel
+          phase={chat.phase}
+          messages={chat.messages}
+          suggestions={chat.suggestions}
+          selectedRouteId={chat.selectedRouteId}
+          onSubmitDestination={chat.submitDestination}
+          onConfirmBackhaul={chat.confirmBackhaul}
+          onPickRoute={chat.pickRoute}
+          onReset={chat.reset}
+          collapsed={chatCollapsed}
+          onToggleCollapse={() => setChatCollapsed(c => !c)}
+        />
       </div>
 
       {/* Toast */}
