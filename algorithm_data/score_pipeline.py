@@ -151,7 +151,7 @@ def geo_score(
         detour_ratio = (detour_km - direct_km) / direct_km
         score = max(0.0, 1.0 - detour_ratio / 0.30)
         return round(score, 3), False
-    except Exception:
+    except (requests.RequestException, ValueError, OSError):
         return 0.0, True
 
 

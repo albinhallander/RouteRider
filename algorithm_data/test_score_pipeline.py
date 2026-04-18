@@ -111,7 +111,8 @@ def test_geo_score_large_detour():
 
 def test_geo_score_osrm_failure():
     from score_pipeline import geo_score
-    with patch("score_pipeline.osrm_distance_km", side_effect=Exception("timeout")):
+    import requests as req
+    with patch("score_pipeline.osrm_distance_km", side_effect=req.RequestException("timeout")):
         score, err = geo_score(
             {"lat": 58.5, "lng": 15.0},
             origin=(57.7089, 11.9746),
