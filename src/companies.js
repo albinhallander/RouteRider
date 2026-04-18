@@ -32,6 +32,12 @@ function distFromE4(pos) {
   return Math.round(Math.min(...E4.map(wp => haversineKm(pos, wp))));
 }
 
+function calcTier(score, dist, hasOrgNr) {
+  if (score >= 75 && dist <= 5 && hasOrgNr) return 'prio';
+  if (score >= 60 || dist <= 15) return 'possible';
+  return 'skip';
+}
+
 const TYP_SCORE = {
   lager: 20,
   distributionscenter: 18,
@@ -79,13 +85,16 @@ export const COMPANIES = rawData
   .map((d, i) => {
     const pos = [d.lat, d.lng];
     const id = d.org_nr ? `s-${d.org_nr.replace('-', '')}` : `s-${i}`;
+    const score = calcScore(d);
+    const dist = distFromE4(pos);
     return {
       id,
       company: d.name,
       location: formatLocation(d),
       position: pos,
-      score: calcScore(d),
-      distanceFromE4: distFromE4(pos),
+      score,
+      distanceFromE4: dist,
+      tier: calcTier(score, dist, !!d.org_nr),
       contact: d.allabolag_url || d.hemsida || '',
       cargo: formatCargo(d),
       orgnr: d.org_nr,

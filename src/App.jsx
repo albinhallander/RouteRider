@@ -20,12 +20,15 @@ import {
   Radio,
   Gauge,
   Clock,
-  ChevronLeft
+  ChevronLeft,
+  Coffee,
+  X
 } from 'lucide-react';
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js';
+import { getRecommendedRestStops } from './restStops.js';
 import { formatEta } from './routeSuggestions.js';
 import { COMPANIES } from './companies.js';
 
@@ -57,6 +60,18 @@ function useLogistics() {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function generateEmail(shipper, activeRoute) {
   return draftPickupEmail(shipper, activeRoute, suggestedPickupTime(0));
+}
+
+function tierColor(tier) {
+  if (tier === 'prio') return '#10b981';
+  if (tier === 'possible') return '#4264FB';
+  return '#d1d5db';
+}
+
+function tierBadgeStyle(tier) {
+  if (tier === 'prio') return 'bg-emerald-50 text-emerald-700 border-emerald-100';
+  if (tier === 'possible') return 'bg-blue-50 text-blue-700 border-blue-100';
+  return 'bg-gray-50 text-gray-500 border-gray-200';
 }
 
 // ─── Leaflet icons ────────────────────────────────────────────────────────────
@@ -113,6 +128,18 @@ function chargingStopIcon(n) {
   });
 }
 
+function restStopIcon(n) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="width:28px;height:28px;background:#d97706;border:2.5px solid #fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 7px rgba(0,0,0,0.25);">
+      <span style="font-size:10px;font-weight:900;color:#fff;font-family:system-ui;line-height:1">P</span>
+      <span style="font-size:7px;font-weight:800;color:#fff;line-height:1;font-family:system-ui">${n}</span>
+    </div>`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 14]
+  });
+}
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const { shippers, activeRoute, outreachLogs, sendOutreach } = useLogistics();
@@ -123,14 +150,19 @@ export default function App() {
   const { selectedRoute } = chat;
 
   const [showAllStations, setShowAllStations] = useState(false);
+  const [skippedIds, setSkippedIds] = useState(new Set());
+  const [activeFilter, setActiveFilter] = useState('prio');
+
+  const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
+  const unskipShipper = useCallback(id => {
+    setSkippedIds(prev => { const n = new Set(prev); n.delete(id); return n; });
+  }, []);
 
   const hasSuggestions = chat.suggestions.length > 0;
   const routeLocked = !!selectedRoute;
   const showingSuggestions = hasSuggestions && !routeLocked;
   const SELECTED_COLOR = '#10b981';
 
-  // Effective active route for email drafting — enriches with the user's
-  // origin/destination so outreach copy matches the actual trip.
   const effectiveActiveRoute = useMemo(() => {
     if (!selectedRoute) return activeRoute;
     return {
@@ -147,8 +179,11 @@ export default function App() {
     [routeLocked, selectedRoute]
   );
 
-  // Stations near the *user's* planned routes — only while suggestions are on
-  // screen. No fallback to the hardcoded E4 corridor.
+  const recommendedRestStops = useMemo(
+    () => (routeLocked ? getRecommendedRestStops(selectedRoute.routeCoords) : []),
+    [routeLocked, selectedRoute]
+  );
+
   const planningCoords = useMemo(
     () => (hasSuggestions ? chat.suggestions.flatMap(r => r.routeCoords) : []),
     [hasSuggestions, chat.suggestions]
@@ -162,9 +197,34 @@ export default function App() {
     [showingSuggestions, planningCoords, showAllStations]
   );
 
-  const effectiveShippers = selectedRoute
-    ? shippers.filter(s => selectedRoute.shipperIds.includes(s.id))
-    : shippers;
+  // Tier counts for filter chips
+  const prioCount = useMemo(
+    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'prio').length,
+    [shippers, skippedIds]
+  );
+  const possibleCount = useMemo(
+    () => shippers.filter(s => !skippedIds.has(s.id) && s.tier === 'possible').length,
+    [shippers, skippedIds]
+  );
+  const allNonSkippedCount = useMemo(
+    () => shippers.filter(s => !skippedIds.has(s.id)).length,
+    [shippers, skippedIds]
+  );
+
+  const displayedShippers = useMemo(() => {
+    if (selectedRoute) {
+      const base = shippers.filter(s => selectedRoute.shipperIds.includes(s.id));
+      return activeFilter === 'skipped'
+        ? base.filter(s => skippedIds.has(s.id))
+        : base.filter(s => !skippedIds.has(s.id));
+    }
+    const pool = shippers.filter(s =>
+      activeFilter === 'skipped' ? skippedIds.has(s.id) : !skippedIds.has(s.id)
+    );
+    if (activeFilter === 'prio') return pool.filter(s => s.tier === 'prio');
+    if (activeFilter === 'possible') return pool.filter(s => s.tier === 'possible');
+    return pool;
+  }, [selectedRoute, shippers, skippedIds, activeFilter]);
 
   useEffect(() => {
     if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
@@ -178,7 +238,7 @@ export default function App() {
     window.setTimeout(() => setToast(null), 3200);
   };
 
-  const contactedCount = effectiveShippers.filter(s => s.contacted).length;
+  const contactedCount = displayedShippers.filter(s => s.contacted).length;
 
   const [leftW, setLeftW] = useState(320);
   const [rightW, setRightW] = useState(288);
@@ -225,6 +285,7 @@ export default function App() {
                 </button>
                 <span className="text-sm font-semibold text-gray-800 truncate">
                   {selected.type === 'shipper' ? selected.data.company
+                    : selected.type === 'restarea' ? selected.data.name
                     : selected.type === 'hub' ? selected.data.name
                     : activeRoute.truckId}
                 </span>
@@ -240,6 +301,7 @@ export default function App() {
                   />
                 )}
                 {selected.type === 'hub' && <HubPanel hub={selected.data} />}
+                {selected.type === 'restarea' && <RestAreaPanel area={selected.data} />}
                 {selected.type === 'truck' && <TruckPanel route={selected.data} />}
               </div>
             </motion.div>
@@ -267,7 +329,36 @@ export default function App() {
                 )}
               </div>
 
-              {/* Charging plan — only when route is locked */}
+              {/* Rastplan — shown when route is locked */}
+              {routeLocked && recommendedRestStops.length > 0 && (
+                <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
+                  <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <Coffee size={10} className="text-amber-500" />
+                    Rastplan · {recommendedRestStops.length} stopp
+                  </div>
+                  <div className="space-y-1.5">
+                    {recommendedRestStops.map(stop => (
+                      <button
+                        key={`rest-plan-${stop.stopIndex}`}
+                        onClick={() => setSelected({ type: 'restarea', data: stop })}
+                        className="w-full flex items-center gap-2 text-left hover:bg-gray-50 rounded-md px-1.5 py-1 transition"
+                      >
+                        <span className="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
+                          {stop.stopIndex}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs font-medium text-gray-800 truncate">{stop.name}</div>
+                          <div className="text-[10px] text-gray-400">
+                            {stop.city} · 45 min · vid ~{stop.kmAtStop} km
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Laddplan — shown when route is locked */}
               {routeLocked && (
                 <div className="px-4 py-3 border-b border-gray-100 flex-shrink-0">
                   <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -302,20 +393,55 @@ export default function App() {
               )}
 
               {/* Shippers list */}
-              <div className="flex-1 overflow-y-auto">
-                <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
+              <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
+
+                {/* Filter chips — only before route is locked */}
+                {!routeLocked && (
+                  <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
+                    {[
+                      { key: 'prio',     label: 'Prio',     count: prioCount },
+                      { key: 'possible', label: 'Möjliga',  count: possibleCount },
+                      { key: 'all',      label: 'Alla',     count: allNonSkippedCount },
+                      { key: 'skipped',  label: 'Skippade', count: skippedIds.size },
+                    ].map(tab => (
+                      <button
+                        key={tab.key}
+                        onClick={() => setActiveFilter(tab.key)}
+                        className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
+                          activeFilter === tab.key
+                            ? 'bg-einride text-black'
+                            : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                        }`}
+                      >
+                        {tab.label} {tab.count}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
                   <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
-                    Avsändare · {contactedCount}/{effectiveShippers.length} kontaktade
+                    Avsändare · {contactedCount}/{displayedShippers.length} kontaktade
                   </span>
                 </div>
+
                 <div className="divide-y divide-gray-50">
-                  {effectiveShippers.map(s => (
-                    <ShipperRow
-                      key={s.id}
-                      shipper={s}
-                      onClick={() => setSelected({ type: 'shipper', data: s })}
-                    />
-                  ))}
+                  {displayedShippers.length === 0 ? (
+                    <div className="px-4 py-6 text-xs text-gray-400 text-center">
+                      Inga avsändare i detta filter.
+                    </div>
+                  ) : (
+                    displayedShippers.map(s => (
+                      <ShipperRow
+                        key={s.id}
+                        shipper={s}
+                        onClick={() => setSelected({ type: 'shipper', data: s })}
+                        onSkip={skipShipper}
+                        onUnskip={unskipShipper}
+                        isSkipped={skippedIds.has(s.id)}
+                      />
+                    ))
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -332,7 +458,6 @@ export default function App() {
 
       {/* ── Map ── */}
       <div className="flex-1 relative">
-        {/* Charging station toggle — only while the user is weighing suggestions. */}
         {showingSuggestions && (
           <button
             onClick={() => setShowAllStations(v => !v)}
@@ -361,11 +486,6 @@ export default function App() {
             maxZoom={20}
           />
 
-          {/* Nothing renders until the chat produces suggestions — map is a
-              blank canvas that responds to the conversation. */}
-
-          {/* Planning: draw every suggestion in its own color. When one is
-              locked, fade the rest and turn the winner green with a halo. */}
           {hasSuggestions && chat.suggestions.map(route => {
             const isSelected = routeLocked && route.id === selectedRoute.id;
             const dimmed = routeLocked && !isSelected;
@@ -391,7 +511,7 @@ export default function App() {
             );
           })}
 
-          {/* Charging stations — shown when no route is locked */}
+          {/* Charging stations — shown during route selection */}
           {nearbyStations.map((station, i) => (
             <Marker
               key={station.osm_id ?? station.ocm_id ?? station.nobil_id ?? i}
@@ -401,7 +521,7 @@ export default function App() {
             />
           ))}
 
-          {/* Recommended charging stops — shown when a route is locked */}
+          {/* Recommended charging stops — shown when route is locked */}
           {recommendedStops.map(stop => (
             <Marker
               key={`rec-${stop.stopIndex}`}
@@ -411,18 +531,35 @@ export default function App() {
             />
           ))}
 
-          {/* While choosing: highlight any shipper touched by at least one suggestion. */}
+          {/* Mandatory rest stops — shown when route is locked */}
+          {recommendedRestStops.map(stop => (
+            <Marker
+              key={`rest-${stop.stopIndex}`}
+              position={[stop.lat, stop.lng]}
+              icon={restStopIcon(stop.stopIndex)}
+              eventHandlers={{ click: () => setSelected({ type: 'restarea', data: stop }) }}
+            />
+          ))}
+
+          {/* While choosing: highlight shippers touched by suggestions */}
           {showingSuggestions && shippers.map(s => {
             const inAnyRoute = chat.suggestions.some(r => r.shipperIds.includes(s.id));
+            const isSkipped = skippedIds.has(s.id);
             return (
-              <CircleMarker key={s.id} center={s.position} radius={inAnyRoute ? 8 : 5}
-                pathOptions={{ color: '#fff', weight: 2, fillColor: inAnyRoute ? '#4264FB' : '#d1d5db', fillOpacity: inAnyRoute ? 1 : 0.6 }}
+              <CircleMarker key={s.id} center={s.position}
+                radius={inAnyRoute && !isSkipped ? 8 : 5}
+                pathOptions={{
+                  color: '#fff',
+                  weight: 2,
+                  fillColor: isSkipped ? '#e5e7eb' : (inAnyRoute ? tierColor(s.tier) : '#d1d5db'),
+                  fillOpacity: isSkipped ? 0.25 : (inAnyRoute ? 1 : 0.6)
+                }}
                 eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
               />
             );
           })}
 
-          {/* Locked route: origin/destination pins + numbered backhaul stops; other shippers dimmed. */}
+          {/* Locked route: origin/destination + numbered backhaul stops */}
           {routeLocked && (
             <>
               <Marker position={selectedRoute.originCoords} icon={originIcon} />
@@ -440,7 +577,12 @@ export default function App() {
                 .filter(s => !selectedRoute.shipperIds.includes(s.id))
                 .map(s => (
                   <CircleMarker key={s.id} center={s.position} radius={4}
-                    pathOptions={{ color: '#fff', weight: 1, fillColor: '#d1d5db', fillOpacity: 0.45 }}
+                    pathOptions={{
+                      color: '#fff',
+                      weight: 1,
+                      fillColor: skippedIds.has(s.id) ? '#f3f4f6' : '#d1d5db',
+                      fillOpacity: skippedIds.has(s.id) ? 0.2 : 0.45
+                    }}
                     eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
                   />
                 ))}
@@ -496,44 +638,56 @@ export default function App() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-function ShipperRow({ shipper, onClick }) {
+function ShipperRow({ shipper, onClick, onSkip, onUnskip, isSkipped }) {
   return (
     <button
       onClick={onClick}
-      className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition"
+      className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition group"
     >
       <span
         className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
-        style={{ background: shipper.contacted ? '#9CA3AF' : '#4264FB' }}
+        style={{ background: shipper.contacted ? '#9CA3AF' : isSkipped ? '#e5e7eb' : tierColor(shipper.tier) }}
       />
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-medium text-gray-900 truncate">{shipper.company}</div>
+        <div className={`text-sm font-medium truncate ${isSkipped ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+          {shipper.company}
+        </div>
         <div className="text-xs text-gray-500">{shipper.location} · {shipper.distanceFromE4} km off E4</div>
       </div>
-      <div className="flex-shrink-0">
-        {shipper.contacted ? (
+      <div className="flex-shrink-0 flex items-center gap-1">
+        {!isSkipped && !shipper.contacted && (
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={e => { e.stopPropagation(); onSkip(shipper.id); }}
+            onKeyDown={e => e.key === 'Enter' && (e.stopPropagation(), onSkip(shipper.id))}
+            className="opacity-0 group-hover:opacity-100 p-0.5 rounded hover:bg-gray-200 transition text-gray-400 hover:text-gray-600 cursor-pointer"
+            aria-label="Skip"
+          >
+            <X size={12} />
+          </span>
+        )}
+        {isSkipped ? (
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={e => { e.stopPropagation(); onUnskip(shipper.id); }}
+            onKeyDown={e => e.key === 'Enter' && (e.stopPropagation(), onUnskip(shipper.id))}
+            className="text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded-full font-medium hover:bg-gray-200 transition cursor-pointer"
+          >
+            Ångra
+          </span>
+        ) : shipper.contacted ? (
           <span className="text-[10px] bg-einride/10 text-einride px-1.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
             <CheckCircle2 size={10} /> Sent
           </span>
         ) : (
-          <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded-full font-medium border border-green-100">
+          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${tierBadgeStyle(shipper.tier)}`}>
             {shipper.score}
           </span>
         )}
       </div>
     </button>
-  );
-}
-
-function LegendRow({ color, label, square }) {
-  return (
-    <div className="flex items-center gap-2">
-      <span
-        style={{ background: color }}
-        className={`w-3 h-3 ${square ? 'rounded-sm' : 'rounded-full'} ring-1 ring-black/10`}
-      />
-      <span className="text-xs text-gray-500">{label}</span>
-    </div>
   );
 }
 
@@ -644,6 +798,45 @@ function HubPanel({ hub }) {
           <div className="text-sm text-gray-700">{hub.address}{hub.postcode ? `, ${hub.postcode}` : ''}</div>
         </div>
       )}
+    </div>
+  );
+}
+
+function RestAreaPanel({ area }) {
+  return (
+    <div className="space-y-4">
+      <header className="flex items-start gap-3">
+        <div className="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center flex-shrink-0">
+          <Coffee size={18} className="text-amber-500" />
+        </div>
+        <div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Rastplats</div>
+          <h2 className="text-base font-bold text-gray-900 leading-tight">{area.name}</h2>
+          <div className="text-xs text-gray-500">{area.city} · E4</div>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-2 gap-2">
+        <Tile icon={<Clock size={12} />} label="Obligatorisk rast" value="45 min" highlight />
+        <Tile icon={<Activity size={12} />} label="Vid km" value={area.kmAtStop ? `~${area.kmAtStop} km` : '—'} />
+      </div>
+
+      {area.facilities?.length > 0 && (
+        <div>
+          <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Faciliteter</div>
+          <div className="flex flex-wrap gap-1.5">
+            {area.facilities.map(f => (
+              <span key={f} className="text-xs bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded-full">
+                {f}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="text-xs text-gray-500 bg-gray-50 border border-gray-100 rounded-lg p-3 leading-relaxed">
+        EU 561/2006 kräver 45 min rast efter 4,5h körning. Kan delas upp: 15 + 30 min.
+      </div>
     </div>
   );
 }
