@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 vi.mock('react-leaflet', () => {
@@ -37,9 +37,8 @@ describe('Chat-first route planner', () => {
       await screen.findByText(/Want me to find backhaul shipments/i)
     ).toBeInTheDocument();
 
-    // Baseline outreach count before route selection.
-    const hudBefore = screen.getByText('Outreach').closest('div').parentElement;
-    const countBefore = within(hudBefore).getByText(/\d+\/\d+/).textContent;
+    // Baseline: sidebar header shows all shippers, none contacted.
+    expect(screen.getByText(/Shippers · 0\/7 contacted/)).toBeInTheDocument();
 
     // Confirm yes.
     await user.click(screen.getByRole('button', { name: 'Yes' }));
@@ -57,9 +56,9 @@ describe('Chat-first route planner', () => {
       await screen.findByText(/Locked in Route B · Balanced backhaul/)
     ).toBeInTheDocument();
 
-    // Outreach logistics state is unchanged (filtering is a view concern only).
-    const hudAfter = screen.getByText('Outreach').closest('div').parentElement;
-    const countAfter = within(hudAfter).getByText(/\d+\/\d+/).textContent;
-    expect(countAfter.startsWith(countBefore.split('/')[0] + '/')).toBe(true);
+    // Sidebar header now reflects Route B's filtered shipper subset (3 of the
+    // original 7) — contacted count stays at 0, proving filtering does not
+    // mutate logistics state.
+    expect(await screen.findByText(/Shippers · 0\/3 contacted/)).toBeInTheDocument();
   });
 });
