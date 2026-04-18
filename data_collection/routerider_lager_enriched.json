@@ -8293,9 +8293,11 @@
       "building": "warehouse",
       "name": "DSV"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556250-3630",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Tomas Erik Johansson",
+    "allabolag_url": "https://www.allabolag.se/foretag/dsv-road-ab/g%C3%B6teborg/transportf%C3%B6rmedling/2JZRR9QI5YI2J",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -8373,7 +8375,9 @@
     },
     "org_nr": "",
     "omsattning_kr": 0,
-    "bransch": ""
+    "bransch": "Innehavare Peter Christian Falksäter",
+    "allabolag_url": "https://www.allabolag.se/foretag/pm63-charlottenberg/charlottenberg/h%C3%A4lsotj%C3%A4nster/7VJQ7FKSRI63IHB",
+    "godspotential": 0.0
   },
   {
     "source": "openstreetmap",
@@ -8744,9 +8748,11 @@
       "name": "Postnord",
       "operator": "PostNord TPL AB"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556711-5695",
+    "omsattning_kr": 29916000,
+    "bransch": "Extern verkställande direktör Peter Davids Gisel-Ekdahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/postnord-sverige-ab/solna/kurirverksamhet/2K2ILYNI5YFN0",
+    "godspotential": 29.9
   },
   {
     "source": "openstreetmap",
@@ -8881,9 +8887,11 @@
       "building": "warehouse",
       "name": "martin&servera"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559135-5549",
+    "omsattning_kr": 2024000,
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -9091,9 +9099,11 @@
       "name": "SGS Analytics",
       "office": "company"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556152-0916",
+    "omsattning_kr": 2024000,
+    "bransch": "Verkställande direktör Lars Mikael Löfdahl",
+    "allabolag_url": "https://www.allabolag.se/foretag/sgs-analytics-sweden-ab/link%C3%B6ping/teknisk-provning-och-analys/2JZ6P04I63IKV",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -9323,9 +9333,11 @@
       "name": "Silon",
       "source": "survey"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "559314-2952",
+    "omsattning_kr": 2025000,
+    "bransch": "Verkställande direktör Helen Margareta Öström",
+    "allabolag_url": "https://www.allabolag.se/foretag/silon-consulting-ab/sollentuna/f%C3%B6retagsutveckling/2KI0GQ0I5YEHU",
+    "godspotential": 2.0
   },
   {
     "source": "openstreetmap",
@@ -9438,9 +9450,11 @@
       "roof:shape": "flat",
       "source": "Bing"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556433-6690",
+    "omsattning_kr": 7901000,
+    "bransch": "Extern verkställande direktör Patrik Jonny Jonsson",
+    "allabolag_url": "https://www.allabolag.se/foretag/fergas-north-europe-ab/link%C3%B6ping/maskinf%C3%B6rn%C3%B6denheter/2K0V1O2I5YG68",
+    "godspotential": 7.9
   },
   {
     "source": "openstreetmap",
@@ -10224,9 +10238,11 @@
       "building:levels": "4",
       "name": "Tekniska verken"
     },
-    "org_nr": "",
-    "omsattning_kr": 0,
-    "bransch": ""
+    "org_nr": "556004-9727",
+    "omsattning_kr": 905000,
+    "bransch": "Extern verkställande direktör Bror Conny Udd",
+    "allabolag_url": "https://www.allabolag.se/foretag/tekniska-verken-i-link%C3%B6ping-ab-publ/link%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JYB5TRI63IG2",
+    "godspotential": 0.9
   },
   {
     "source": "openstreetmap",
