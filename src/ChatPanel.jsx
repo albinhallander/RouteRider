@@ -6,7 +6,7 @@ import {
 import { formatEta } from './routeSuggestions.js';
 
 const TERMINAL_PHASES = ['route_planned'];
-const TEXT_INPUT_PHASES = ['awaiting_origin', 'awaiting_destination'];
+const TEXT_INPUT_PHASES = ['awaiting_origin', 'awaiting_destination', 'awaiting_pallet_capacity', 'awaiting_weight_kg'];
 const LOADING_PHASES = ['computing_feasibility', 'planning_route'];
 
 export default function ChatPanel({
@@ -16,6 +16,8 @@ export default function ChatPanel({
   selectedRouteId,
   onSubmitOrigin,
   onSubmitDestination,
+  onSubmitPalletCapacity,
+  onSubmitWeightKg,
   onSendOutreachToAll,
   onDeclineSendAll,
   onRequestPlan,
@@ -31,6 +33,8 @@ export default function ChatPanel({
   const handleQuickReply = text => {
     if (phase === 'awaiting_origin') return onSubmitOrigin?.(text);
     if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
+    if (phase === 'awaiting_pallet_capacity') return onSubmitPalletCapacity?.(text);
+    if (phase === 'awaiting_weight_kg') return onSubmitWeightKg?.(text);
     if (text === 'Send to all') return onSendOutreachToAll?.();
     if (text === 'Not now')     return onDeclineSendAll?.();
     if (text === 'Plan route')  return onRequestPlan?.();
@@ -40,6 +44,8 @@ export default function ChatPanel({
   const handleTextSubmit = text => {
     if (phase === 'awaiting_origin') return onSubmitOrigin?.(text);
     if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
+    if (phase === 'awaiting_pallet_capacity') return onSubmitPalletCapacity?.(text);
+    if (phase === 'awaiting_weight_kg') return onSubmitWeightKg?.(text);
   };
 
   return (
@@ -213,6 +219,10 @@ function ChatInput({ phase, onSubmit }) {
     ? 'Enter origin…'
     : phase === 'awaiting_destination'
     ? 'Enter destination…'
+    : phase === 'awaiting_pallet_capacity'
+    ? 'Number of EUR pallets…'
+    : phase === 'awaiting_weight_kg'
+    ? 'Max cargo weight in kg…'
     : phase === 'awaiting_edit'
     ? 'Describe change (e.g. "change time to 16:00")…'
     : phase === 'route_selected' || phase === 'outreach_complete'

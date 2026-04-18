@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { buildRouteSuggestions, enrichSuggestionsWithMapbox } from './routeSuggestions.js';
+import {
+  buildRouteSuggestions,
+  enrichSuggestionsWithMapbox,
+  planRouteFromYes
+} from './routeSuggestions.js';
 
 const shippers = [
   { id: 's-1', position: [56.5512, 14.1418], score: 92 },
@@ -78,5 +82,43 @@ describe('enrichSuggestionsWithMapbox', () => {
     const enriched = await enrichSuggestionsWithMapbox(base, { fetchFn });
     expect(enriched[0].routeCoords).toEqual(roadGeom);
     expect(enriched[0].routingSource).toBe('mock');
+  });
+});
+
+describe('planRouteFromYes capacity caps', () => {
+  const origin = { label: 'Göteborg',  coords: [57.7088, 11.9746] };
+  const dest   = { label: 'Stockholm', coords: [59.3293, 18.0686] };
+  const fetchFn = () => Promise.resolve({
+    durationMin: 100, distanceKm: 150, geometry: [origin.coords, dest.coords], source: 'mock'
+  });
+
+  const yes = [
+    { id: 'y-1', position: [58.4, 15.6], score: 95, pallets: 15, weightKg: 10000 },
+    { id: 'y-2', position: [58.5, 15.5], score: 90, pallets: 15, weightKg: 8000  },
+    { id: 'y-3', position: [58.6, 15.4], score: 85, pallets: 10, weightKg: 5000  }
+  ];
+
+  it('drops candidates that would push pallet count over capacity', async () => {
+    const route = await planRouteFromYes(origin, dest, yes, 200, {
+      palletCapacity: 30,
+      maxWeightKg: 99999,
+      fetchFn
+    });
+    expect(route.palletsUsed).toBeLessThanOrEqual(30);
+    expect(route.shipperIds).toContain('y-1');
+    expect(route.shipperIds).toContain('y-2'); // 15 + 15 = 30, exactly the cap
+    expect(route.shipperIds).not.toContain('y-3'); // would push to 40
+  });
+
+  it('drops candidates that would push cargo weight over cap', async () => {
+    const route = await planRouteFromYes(origin, dest, yes, 200, {
+      palletCapacity: 99,
+      maxWeightKg: 15000,
+      fetchFn
+    });
+    expect(route.weightKgUsed).toBeLessThanOrEqual(15000);
+    expect(route.shipperIds).toContain('y-1'); // 10000
+    expect(route.shipperIds).toContain('y-3'); // 10000 + 5000 = 15000
+    expect(route.shipperIds).not.toContain('y-2'); // 10000 + 8000 would overflow
   });
 });

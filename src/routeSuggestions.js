@@ -334,9 +334,13 @@ export async function filterFeasibleShippers(
 }
 
 // Greedy route planner. Walks `yesShippers` top-to-bottom (caller's order —
-// typically score-desc) and accepts each one if adding it keeps the total
-// backhaul detour (driving + dwell) within the 6-hour cap. Within the
-// accepted set the actual stop sequence is ordered closest-to-destination
+// typically score-desc) and accepts each one only if, with this candidate
+// added, all three caps still hold:
+//   • total backhaul detour (driving + dwell) ≤ maxAddedMin   (time)
+//   • cumulative pallets ≤ palletCapacity                     (volume)
+//   • cumulative cargo weight ≤ maxWeightKg                    (mass)
+// Capacity caps are optional — omit them and only the time cap applies.
+// Within the accepted set the stop sequence is ordered closest-to-destination
 // first so the truck doesn't zig-zag. Returns a fully-shaped route object
 // compatible with the existing map rendering (routeCoords, etaMin, etc.).
 export async function planRouteFromYes(
@@ -344,12 +348,26 @@ export async function planRouteFromYes(
   dest,
   yesShippers,
   baselineDriving,
-  { maxAddedMin = MAX_ADDED_MIN, fetchFn = fetchDrivingRoute } = {}
+  {
+    maxAddedMin = MAX_ADDED_MIN,
+    palletCapacity = Infinity,
+    maxWeightKg = Infinity,
+    fetchFn = fetchDrivingRoute
+  } = {}
 ) {
   const accepted = [];
+  let cumulativePallets = 0;
+  let cumulativeWeightKg = 0;
   let lastOk = null;
 
   for (const candidate of yesShippers) {
+    const cPallets = Number(candidate.pallets) || 0;
+    const cWeight  = Number(candidate.weightKg) || 0;
+
+    // Cheap checks first — skip the OSRM call if cargo alone blows either cap.
+    if (cumulativePallets + cPallets > palletCapacity) continue;
+    if (cumulativeWeightKg + cWeight > maxWeightKg)   continue;
+
     const trial = [...accepted, candidate]
       .map(s => ({ ...s, _distFromDest: haversineKm(dest.coords, s.position) }))
       .sort((a, b) => a._distFromDest - b._distFromDest);
@@ -360,15 +378,19 @@ export async function planRouteFromYes(
     const etaMin = r.durationMin + stopMin;
     const addedMin = Math.max(0, etaMin - baselineDriving);
 
-    if (addedMin > maxAddedMin) continue; // skip this one, try next
+    if (addedMin > maxAddedMin) continue;
 
     accepted.push(candidate);
+    cumulativePallets += cPallets;
+    cumulativeWeightKg += cWeight;
     lastOk = {
       trial,
       driving: r,
       etaMin,
       addedMin,
-      stopMin
+      stopMin,
+      palletsUsed: cumulativePallets,
+      weightKgUsed: cumulativeWeightKg
     };
   }
 
@@ -430,6 +452,10 @@ export async function planRouteFromYes(
     addedMin: lastOk.addedMin,
     detourKm: lastOk.driving.distanceKm,
     routingSource: lastOk.driving.source,
+    palletsUsed: lastOk.palletsUsed,
+    weightKgUsed: lastOk.weightKgUsed,
+    palletCapacity: Number.isFinite(palletCapacity) ? palletCapacity : null,
+    maxWeightKg:    Number.isFinite(maxWeightKg)    ? maxWeightKg    : null,
     direction: `${accepted.length} backhaul pickup${accepted.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}`,
     sustainScore: Math.min(100, 60 + accepted.length * 8),
     revenueSek

@@ -12,13 +12,16 @@ export function draftPickupEmail(shipper, activeRoute, pickupTime) {
   const originLabel = activeRoute.originLabel ?? 'Gothenburg';
   const destinationLabel = activeRoute.destinationLabel ?? 'Stockholm';
   const directionLine = (activeRoute.direction ?? `Heading to ${destinationLabel}`).toLowerCase();
+  const pallets = activeRoute.palletCapacity ?? 22;
+  const weightKg = activeRoute.maxWeightKg ?? 24000;
+  const tonLabel = `${(weightKg / 1000).toFixed(weightKg % 1000 === 0 ? 0 : 1)} ton`;
   return `Subject: Backhaul capacity ${originLabel} → ${destinationLabel} · ${today}
 
 Hi ${shipper.company} team,
 
 We're operating a zero-emission 40-ton electric truck (${activeRoute.truckId}) currently ${directionLine}. Based on your location in ${shipper.location} (${shipper.distanceFromE4} km off corridor), we can offer a same-day backhaul slot at ~35% below standard freight.
 
-  Capacity:  up to 22 EUR pallets / 24 ton
+  Capacity:  up to ${pallets} EUR pallet${pallets === 1 ? '' : 's'} / ${tonLabel}
   Pickup:    today, ${pickupTime}
   CO₂:       0 g tailpipe — sustainability uplift score ${shipper.score}/100
   Cargo fit: ${shipper.cargo}

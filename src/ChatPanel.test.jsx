@@ -44,6 +44,14 @@ describe('Chat-first backhaul planner', () => {
 
     await user.click(await screen.findByRole('button', { name: 'Stockholm' }));
 
+    // Pallet capacity question
+    expect(await screen.findByText(/How many EUR pallets/i)).toBeInTheDocument();
+    await user.click(await screen.findByRole('button', { name: '33' }));
+
+    // Max weight question
+    expect(await screen.findByText(/maximum cargo weight/i)).toBeInTheDocument();
+    await user.click(await screen.findByRole('button', { name: '24000' }));
+
     // Feasibility message references eligible shippers and offers Send to all.
     expect(
       await screen.findByText(/eligible shipper/i, {}, { timeout: 5000 })

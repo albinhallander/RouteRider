@@ -15,7 +15,12 @@
 
 const MAPBOX_TOKEN = import.meta.env?.VITE_MAPBOX_TOKEN;
 const MAPBOX_URL = 'https://api.mapbox.com/directions/v5/mapbox/driving-traffic';
-const OSRM_URL = 'https://router.project-osrm.org/route/v1/driving';
+// FOSSGIS-hosted OSRM. Identical API to router.project-osrm.org (same
+// OSRM codebase) but on different infrastructure — useful when the
+// project-osrm demo is rate-limiting or unreachable from the user's
+// network. `routed-car` is the car profile; `routed-foot` / `routed-bike`
+// also exist here if needed later.
+const OSRM_URL = 'https://routing.openstreetmap.de/routed-car/route/v1/driving';
 const FALLBACK_MIN_PER_KM = 0.8; // ~75 km/h — used only when both providers fail
 
 const R_KM = 6371;

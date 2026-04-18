@@ -9,14 +9,16 @@ import {
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 
 // Phases:
-//   awaiting_origin        — waiting for user's origin city
-//   awaiting_destination   — waiting for destination
-//   computing_feasibility  — OSRM in flight, figuring out who fits
-//   showing_feasible_list  — list displayed; user reviews, can trigger "send to all"
-//   sending_outreach       — bulk emails firing (microsecond — state just reflects intent)
-//   outreach_sent          — user is marking yes/no on shippers; chat offers "plan route"
-//   planning_route         — greedy planner running
-//   route_planned          — final locked route visible on map
+//   awaiting_origin           — waiting for user's origin city
+//   awaiting_destination      — waiting for destination
+//   awaiting_pallet_capacity  — waiting for capacity in EUR pallets
+//   awaiting_weight_kg        — waiting for max cargo weight in kg
+//   computing_feasibility     — OSRM in flight, figuring out who fits
+//   showing_feasible_list     — list displayed; user reviews, can trigger "send to all"
+//   sending_outreach          — bulk emails firing (microsecond — state just reflects intent)
+//   outreach_sent             — user is marking yes/no on shippers; chat offers "plan route"
+//   planning_route            — greedy planner running
+//   route_planned             — final locked route visible on map
 const INITIAL_MESSAGES = [
   {
     id: 'm-greet-1',
@@ -31,6 +33,8 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
+  const [palletCapacity, setPalletCapacity] = useState(null);
+  const [maxWeightKg, setMaxWeightKg] = useState(null);
 
   // Resolved geocoded origin/dest + baseline driving from filterFeasibleShippers
   // — held in a ref so we don't re-geocode for the final route plan.
@@ -64,18 +68,60 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     setPhase('awaiting_destination');
   }, [appendMessages]);
 
-  const submitDestination = useCallback(async text => {
+  const submitDestination = useCallback(text => {
     const value = (text ?? '').trim();
     if (!value) return;
     setDestination(value);
     appendMessages([
       { role: 'user', text: value },
-      { role: 'assistant', text: `Heading to ${value}. Checking which shippers fit within a 6 h detour…` }
+      {
+        role: 'assistant',
+        text: `Heading to ${value}. How many EUR pallets can you carry on the backhaul leg?`,
+        quickReplies: ['22', '33', '44']
+      }
+    ]);
+    setPhase('awaiting_pallet_capacity');
+  }, [appendMessages]);
+
+  const submitPalletCapacity = useCallback(text => {
+    const n = parseInt(String(text ?? '').replace(/\D+/g, ''), 10);
+    if (!Number.isFinite(n) || n <= 0) {
+      appendMessages([
+        { role: 'user', text: String(text ?? '') },
+        { role: 'assistant', text: "That didn't look like a pallet count — give me a whole number (e.g. 33).", quickReplies: ['22', '33', '44'] }
+      ]);
+      return;
+    }
+    setPalletCapacity(n);
+    appendMessages([
+      { role: 'user', text: `${n} pallets` },
+      {
+        role: 'assistant',
+        text: `Got it — ${n} pallet${n === 1 ? '' : 's'} of capacity. What's the maximum cargo weight you can carry, in kg?`,
+        quickReplies: ['12000', '18000', '24000']
+      }
+    ]);
+    setPhase('awaiting_weight_kg');
+  }, [appendMessages]);
+
+  const submitWeightKg = useCallback(async text => {
+    const n = parseInt(String(text ?? '').replace(/\D+/g, ''), 10);
+    if (!Number.isFinite(n) || n <= 0) {
+      appendMessages([
+        { role: 'user', text: String(text ?? '') },
+        { role: 'assistant', text: "I need a weight in kg as a number (e.g. 24000).", quickReplies: ['12000', '18000', '24000'] }
+      ]);
+      return;
+    }
+    setMaxWeightKg(n);
+    appendMessages([
+      { role: 'user', text: `${n.toLocaleString('sv-SE')} kg` },
+      { role: 'assistant', text: `Max ${n.toLocaleString('sv-SE')} kg noted. Checking which shippers fit within a 6 h detour…` }
     ]);
     setPhase('computing_feasibility');
 
     const myId = ++opId.current;
-    const result = await filterFeasibleShippers(value, origin, shippers);
+    const result = await filterFeasibleShippers(destination, origin, shippers);
     if (myId !== opId.current) return;
 
     resolved.current = {
@@ -100,7 +146,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       }
     ]);
     setPhase('showing_feasible_list');
-  }, [origin, shippers, appendMessages]);
+  }, [destination, origin, shippers, appendMessages]);
 
   const sendOutreachToAll = useCallback(() => {
     if (!resolved.current) return;
@@ -109,7 +155,9 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       ...activeRoute,
       originLabel: o.label,
       destinationLabel: d.label,
-      direction: `Return to ${o.label} from ${d.label}`
+      direction: `Return to ${o.label} from ${d.label}`,
+      palletCapacity,
+      maxWeightKg
     };
 
     let sentCount = 0;
@@ -130,7 +178,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
       }
     ]);
     setPhase('outreach_sent');
-  }, [feasibleIds, shippers, activeRoute, sendOutreach, appendMessages]);
+  }, [feasibleIds, shippers, activeRoute, sendOutreach, appendMessages, palletCapacity, maxWeightKg]);
 
   const declineSendAll = useCallback(() => {
     appendMessages([
@@ -144,39 +192,56 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     if (!resolved.current) return;
     const { origin: o, dest: d, baselineDriving } = resolved.current;
 
-    const yesShippers = feasibleIds
+    // Yes-shippers must have cargo filled in (pallets + weight) — otherwise
+    // the planner can't evaluate the capacity caps. We quietly drop any that
+    // are incomplete and tell the user about them in the summary.
+    const allYes = feasibleIds
       .map(id => shippers.find(s => s.id === id))
       .filter(Boolean)
       .filter(s => s.saidYes === 'yes');
+    const withCargo = allYes.filter(
+      s => Number.isFinite(Number(s.pallets)) && Number.isFinite(Number(s.weightKg))
+    );
+    const missingCargoCount = allYes.length - withCargo.length;
 
     appendMessages([
       { role: 'user', text: 'Plan route' },
       {
         role: 'assistant',
         text:
-          yesShippers.length === 0
-            ? 'No shippers marked "yes" yet — I\'ll plan the direct return leg.'
-            : `Planning a route that picks up as many of the ${yesShippers.length} yes-shipper${yesShippers.length === 1 ? '' : 's'} as the 6 h cap allows…`
+          withCargo.length === 0
+            ? 'No yes-shippers with cargo filled in yet — planning the direct return leg.'
+            : `Planning a route across ${withCargo.length} yes-shipper${withCargo.length === 1 ? '' : 's'}, capped at 6 h detour · ${palletCapacity ?? '∞'} pallets · ${(maxWeightKg ?? 0).toLocaleString('sv-SE')} kg…`
       }
     ]);
     setPhase('planning_route');
 
     const myId = ++opId.current;
-    const route = await planRouteFromYes(o, d, yesShippers, baselineDriving);
+    const route = await planRouteFromYes(o, d, withCargo, baselineDriving, {
+      palletCapacity: palletCapacity ?? Infinity,
+      maxWeightKg:    maxWeightKg    ?? Infinity
+    });
     if (myId !== opId.current) return;
 
     setPlannedRoute(route);
-    appendMessages([
-      {
-        role: 'assistant',
-        text: `Locked in · ${route.shipperIds.length} pickup${route.shipperIds.length === 1 ? '' : 's'}, ETA ${formatEta(route.etaMin)} (${formatEta(route.addedMin)} over direct).` +
-          (route.skippedIds.length > 0
-            ? ` Skipped ${route.skippedIds.length} to stay under 6 h.`
-            : '')
-      }
-    ]);
+
+    const parts = [
+      `Locked in · ${route.shipperIds.length} pickup${route.shipperIds.length === 1 ? '' : 's'}`,
+      `ETA ${formatEta(route.etaMin)} (${formatEta(route.addedMin)} over direct)`
+    ];
+    if (route.palletsUsed != null && route.palletCapacity != null) {
+      parts.push(`${route.palletsUsed}/${route.palletCapacity} pallets`);
+    }
+    if (route.weightKgUsed != null && route.maxWeightKg != null) {
+      parts.push(`${route.weightKgUsed.toLocaleString('sv-SE')}/${route.maxWeightKg.toLocaleString('sv-SE')} kg`);
+    }
+    let summary = parts.join(' · ') + '.';
+    if (route.skippedIds.length > 0) summary += ` Skipped ${route.skippedIds.length} to respect the caps.`;
+    if (missingCargoCount > 0) summary += ` ${missingCargoCount} yes-shipper${missingCargoCount === 1 ? '' : 's'} ignored — no cargo filled in.`;
+
+    appendMessages([{ role: 'assistant', text: summary }]);
     setPhase('route_planned');
-  }, [feasibleIds, shippers, appendMessages]);
+  }, [feasibleIds, shippers, appendMessages, palletCapacity, maxWeightKg]);
 
   const reset = useCallback(() => {
     opId.current++; // cancel any pending async
@@ -185,6 +250,8 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     setMessages(INITIAL_MESSAGES);
     setOrigin(null);
     setDestination(null);
+    setPalletCapacity(null);
+    setMaxWeightKg(null);
     setFeasibleIds([]);
     setFeasibleMeta({});
     setPlannedRoute(null);
@@ -207,6 +274,8 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     messages,
     origin,
     destination,
+    palletCapacity,
+    maxWeightKg,
     feasibleShippers,
     plannedRoute,
     // Back-compat aliases so App.jsx / ChatPanel don't need a big rewrite:
@@ -215,6 +284,8 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     selectedRouteId: plannedRoute?.id ?? null,
     submitOrigin,
     submitDestination,
+    submitPalletCapacity,
+    submitWeightKg,
     sendOutreachToAll,
     declineSendAll,
     requestPlan,

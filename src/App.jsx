@@ -55,13 +55,26 @@ function useLogistics() {
     return { ok: true, ts };
   }, []);
 
-  // User marks each contacted shipper's response. `null` clears. The greedy
-  // planner consumes the `saidYes === 'yes'` subset.
+  // User marks each contacted shipper's response. `null` clears. Toggling
+  // away from 'yes' also clears the cargo payload — it's only meaningful
+  // when the shipper has said yes.
   const setSaidYes = useCallback((shipperId, value) => {
-    setShippers(prev => prev.map(s => (s.id === shipperId ? { ...s, saidYes: value } : s)));
+    setShippers(prev => prev.map(s => {
+      if (s.id !== shipperId) return s;
+      if (value === 'yes') return { ...s, saidYes: 'yes' };
+      return { ...s, saidYes: value, pallets: undefined, weightKg: undefined };
+    }));
   }, []);
 
-  return { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes };
+  // Cargo payload the shipper wants to ship. Only set after user has ticked
+  // Yes and entered pallets + weight.
+  const setCargo = useCallback((shipperId, { pallets, weightKg }) => {
+    setShippers(prev => prev.map(s =>
+      s.id === shipperId ? { ...s, pallets, weightKg } : s
+    ));
+  }, []);
+
+  return { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes, setCargo };
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -183,7 +196,7 @@ function restStopIcon(n) {
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
-  const { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes } = useLogistics();
+  const { shippers, activeRoute, outreachLogs, sendOutreach, setSaidYes, setCargo } = useLogistics();
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
@@ -514,6 +527,7 @@ export default function App() {
                           shipper={s}
                           onClick={() => setSelected({ type: 'shipper', data: s })}
                           onSetSaidYes={setSaidYes}
+                          onSetCargo={setCargo}
                           onRoute={selectedRoute?.shipperIds?.includes(s.id)}
                           routeStop={(selectedRoute?.shipperIds?.indexOf(s.id) ?? -1) + 1}
                         />
@@ -704,6 +718,8 @@ export default function App() {
           selectedRouteId={chat.selectedRouteId}
           onSubmitOrigin={chat.submitOrigin}
           onSubmitDestination={chat.submitDestination}
+          onSubmitPalletCapacity={chat.submitPalletCapacity}
+          onSubmitWeightKg={chat.submitWeightKg}
           onSendOutreachToAll={chat.sendOutreachToAll}
           onDeclineSendAll={chat.declineSendAll}
           onRequestPlan={chat.requestPlan}
@@ -731,67 +747,125 @@ export default function App() {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-function ShipperRow({ shipper, onClick, onSetSaidYes, onRoute, routeStop }) {
+function ShipperRow({ shipper, onClick, onSetSaidYes, onSetCargo, onRoute, routeStop }) {
   const said = shipper.saidYes;
   const delta = typeof shipper.addedMin === 'number' ? `+${Math.round(shipper.addedMin)} min` : null;
+  const hasCargo = shipper.pallets != null && shipper.weightKg != null;
+  const needsCargoInput = said === 'yes' && !hasCargo;
 
   return (
-    <div
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition group cursor-pointer"
-    >
-      <span
-        className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
-        style={{ background: onRoute ? '#2563eb' : said === 'yes' ? '#10b981' : said === 'no' ? '#d1d5db' : shipper.contacted ? '#9CA3AF' : tierColor(shipper.tier) }}
-      />
-      <div className="flex-1 min-w-0">
-        <div className={`text-sm font-medium truncate ${said === 'no' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
-          {shipper.company}
+    <div>
+      <div
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        className="w-full px-4 py-3 flex items-start gap-3 hover:bg-gray-50 text-left transition group cursor-pointer"
+      >
+        <span
+          className="mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0"
+          style={{ background: onRoute ? '#2563eb' : said === 'yes' ? '#10b981' : said === 'no' ? '#d1d5db' : shipper.contacted ? '#9CA3AF' : tierColor(shipper.tier) }}
+        />
+        <div className="flex-1 min-w-0">
+          <div className={`text-sm font-medium truncate ${said === 'no' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+            {shipper.company}
+          </div>
+          <div className="text-xs text-gray-500">
+            {shipper.location}
+            {delta ? ` · ${delta} detour` : ''}
+            {hasCargo ? ` · ${shipper.pallets} pal · ${shipper.weightKg.toLocaleString('sv-SE')} kg` : ''}
+          </div>
         </div>
-        <div className="text-xs text-gray-500">
-          {shipper.location}
-          {delta ? ` · ${delta} detour` : ''}
+        <div className="flex-shrink-0 flex items-center gap-1">
+          {onRoute ? (
+            <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
+              {routeStop}
+            </span>
+          ) : shipper.contacted ? (
+            <>
+              <button
+                onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'yes' ? null : 'yes'); }}
+                className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
+                  said === 'yes'
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : 'bg-white border-emerald-200 text-emerald-700 hover:bg-emerald-50'
+                }`}
+                aria-label="Said yes"
+              >
+                Yes
+              </button>
+              <button
+                onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'no' ? null : 'no'); }}
+                className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
+                  said === 'no'
+                    ? 'bg-gray-500 border-gray-500 text-white'
+                    : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'
+                }`}
+                aria-label="Said no"
+              >
+                No
+              </button>
+            </>
+          ) : (
+            <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${tierBadgeStyle(shipper.tier)}`}>
+              {shipper.score}
+            </span>
+          )}
         </div>
       </div>
-      <div className="flex-shrink-0 flex items-center gap-1">
-        {onRoute ? (
-          <span className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0">
-            {routeStop}
-          </span>
-        ) : shipper.contacted ? (
-          <>
-            <button
-              onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'yes' ? null : 'yes'); }}
-              className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
-                said === 'yes'
-                  ? 'bg-emerald-500 border-emerald-500 text-white'
-                  : 'bg-white border-emerald-200 text-emerald-700 hover:bg-emerald-50'
-              }`}
-              aria-label="Said yes"
-            >
-              Yes
-            </button>
-            <button
-              onClick={e => { e.stopPropagation(); onSetSaidYes?.(shipper.id, said === 'no' ? null : 'no'); }}
-              className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold border transition ${
-                said === 'no'
-                  ? 'bg-gray-500 border-gray-500 text-white'
-                  : 'bg-white border-gray-200 text-gray-500 hover:bg-gray-50'
-              }`}
-              aria-label="Said no"
-            >
-              No
-            </button>
-          </>
-        ) : (
-          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${tierBadgeStyle(shipper.tier)}`}>
-            {shipper.score}
-          </span>
-        )}
-      </div>
+
+      {needsCargoInput && (
+        <CargoForm
+          onSubmit={(pallets, weightKg) => onSetCargo?.(shipper.id, { pallets, weightKg })}
+        />
+      )}
     </div>
+  );
+}
+
+function CargoForm({ onSubmit }) {
+  const [pallets, setPallets] = useState('');
+  const [weight, setWeight] = useState('');
+
+  const submit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const p = parseInt(pallets, 10);
+    const w = parseInt(weight, 10);
+    if (!Number.isFinite(p) || p <= 0 || !Number.isFinite(w) || w <= 0) return;
+    onSubmit(p, w);
+  };
+
+  return (
+    <form
+      onSubmit={submit}
+      onClick={e => e.stopPropagation()}
+      className="px-4 pb-3 -mt-1 flex items-center gap-1.5"
+    >
+      <input
+        type="number"
+        min="1"
+        placeholder="Pallets"
+        value={pallets}
+        onChange={e => setPallets(e.target.value)}
+        className="w-16 text-[11px] border border-gray-200 rounded px-2 py-1 focus:outline-none focus:border-einride/60"
+      />
+      <input
+        type="number"
+        min="1"
+        placeholder="Total kg"
+        title="Total cargo weight for the whole shipment, in kg"
+        value={weight}
+        onChange={e => setWeight(e.target.value)}
+        className="w-20 text-[11px] border border-gray-200 rounded px-2 py-1 focus:outline-none focus:border-einride/60"
+      />
+      <button
+        type="submit"
+        disabled={!pallets || !weight}
+        className="text-[11px] bg-einride text-black font-semibold rounded px-2 py-1 disabled:bg-gray-100 disabled:text-gray-400"
+      >
+        Save
+      </button>
+    </form>
   );
 }
 
