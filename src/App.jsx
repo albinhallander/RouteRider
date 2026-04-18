@@ -748,9 +748,11 @@ export default function App() {
             );
           })}
 
-          {/* Locked route: origin/destination + route stops + candidate clusters.
-              Key on selectedRouteId forces full remount when route switches so
-              stale Leaflet markers never ghost on the map. */}
+          {/* Locked route: only origin/destination + the selected pickup stops.
+              Non-selected shippers (candidate clusters, dim context dots) are
+              hidden — once the route is locked the map should show only the
+              committed plan. Key on selectedRouteId forces full remount when
+              the route switches so stale Leaflet markers never ghost on the map. */}
           {routeLocked && (
             <Fragment key={`locked-${chat.selectedRouteId}`}>
               <Marker position={selectedRoute.originCoords} icon={originIcon} />
@@ -766,25 +768,6 @@ export default function App() {
                   />
                 );
               })}
-
-              {/* Candidate clusters — viable backhaul companies NOT on this route */}
-              {candidateClusters.map((cluster, i) => (
-                <Marker
-                  key={`ccluster-${i}`}
-                  position={cluster.centroid}
-                  icon={candidateClusterIcon(cluster.count, cluster.topTier)}
-                  eventHandlers={{ click: () => setSelected({ type: 'shipper', data: cluster.members[0] }) }}
-                />
-              ))}
-
-              {/* Non-candidate shippers — very dim context dots */}
-              {shippers
-                .filter(s => !selectedRoute.candidateIds?.includes(s.id))
-                .map(s => (
-                  <CircleMarker key={s.id} center={s.position} radius={3}
-                    pathOptions={{ color: 'transparent', weight: 0, fillColor: '#d1d5db', fillOpacity: 0.25 }}
-                  />
-                ))}
             </Fragment>
           )}
         </MapContainer>
