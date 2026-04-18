@@ -23,9 +23,8 @@ import {
   ChevronLeft,
   Coffee,
   X,
-  FileText,
-  Package,
   TreePine,
+  Package,
 } from 'lucide-react';
 import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
@@ -211,6 +210,7 @@ export default function App() {
   const [skippedIds, setSkippedIds] = useState(new Set());
   const [activeFilter, setActiveFilter] = useState('all');
   const [sidebarTab, setSidebarTab] = useState('shippers'); // 'shippers' | 'carriers'
+  const [showLoadBoardOnly, setShowLoadBoardOnly] = useState(false);
 
   const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
   const unskipShipper = useCallback(id => {
@@ -306,10 +306,17 @@ export default function App() {
     const pool = candidateShippers.filter(s =>
       activeFilter === 'skipped' ? skippedIds.has(s.id) : !skippedIds.has(s.id)
     );
-    if (activeFilter === 'prio') return pool.filter(s => s.tier === 'prio');
-    if (activeFilter === 'possible') return pool.filter(s => s.tier === 'possible');
-    return pool;
-  }, [candidateShippers, skippedIds, activeFilter]);
+    const tiered = activeFilter === 'prio' ? pool.filter(s => s.tier === 'prio')
+      : activeFilter === 'possible' ? pool.filter(s => s.tier === 'possible')
+      : pool;
+    if (!showLoadBoardOnly) return tiered;
+    return tiered.filter(s => s.signals?.some(sig => sig.type === 'load_board'));
+  }, [candidateShippers, skippedIds, activeFilter, showLoadBoardOnly]);
+
+  const loadBoardCount = useMemo(
+    () => candidateShippers.filter(s => !skippedIds.has(s.id) && s.signals?.some(sig => sig.type === 'load_board')).length,
+    [candidateShippers, skippedIds]
+  );
 
   useEffect(() => {
     if (selected?.type === 'shipper') setEmailBody(generateEmail(selected.data, effectiveActiveRoute));
@@ -580,6 +587,17 @@ export default function App() {
                         {tab.label} {tab.count}
                       </button>
                     ))}
+                    <button
+                      onClick={() => setShowLoadBoardOnly(v => !v)}
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold transition ${
+                        showLoadBoardOnly
+                          ? 'bg-amber-400 text-black'
+                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                      }`}
+                    >
+                      <Package size={10} />
+                      Lastbörs {loadBoardCount}
+                    </button>
                   </div>
 
                   <div className="px-4 py-2.5 bg-white border-b border-gray-100 flex-shrink-0">

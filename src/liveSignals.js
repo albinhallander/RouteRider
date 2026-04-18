@@ -8,22 +8,6 @@ export function getLiveSignals(orgnr) {
 export function buildSignalList(sig) {
   if (!sig) return [];
   const list = [];
-  if (sig.ted) {
-    list.push({
-      type: 'ted',
-      label: 'Contract expiring',
-      detail: sig.ted.description,
-      expiry: sig.ted.expiry_month,
-      valueSek: sig.ted.value_sek,
-    });
-  }
-  if (sig.load_board?.active) {
-    list.push({
-      type: 'load_board',
-      label: 'Active load posting',
-      detail: `${sig.load_board.pallets} pallets · ${sig.load_board.direction}`,
-    });
-  }
   if (sig.cdp_scope3) {
     list.push({
       type: 'cdp',
@@ -32,15 +16,24 @@ export function buildSignalList(sig) {
       pressure: sig.cdp_scope3.pressure,
     });
   }
+  if (sig.load_board) {
+    list.push({
+      type: 'load_board',
+      label: `Aktiv på ${sig.load_board.platform}`,
+      detail: sig.load_board.reason,
+      frequency: sig.load_board.frequency,
+      lastPostDate: sig.load_board.last_post_date,
+    });
+  }
   return list;
 }
 
 export function signalScoreBonus(sig) {
   if (!sig) return 0;
   let bonus = 0;
-  if (sig.ted) bonus += 15;
-  if (sig.load_board?.active) bonus += 12;
   if (sig.cdp_scope3?.pressure === 'high') bonus += 10;
   if (sig.cdp_scope3?.pressure === 'medium') bonus += 5;
+  if (sig.load_board?.frequency === 'high') bonus += 8;
+  if (sig.load_board?.frequency === 'medium') bonus += 4;
   return bonus;
 }
