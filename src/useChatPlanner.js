@@ -1,5 +1,11 @@
-import { useState, useCallback, useMemo } from 'react';
-import { buildRouteSuggestions, QUICK_DESTINATIONS, QUICK_ORIGINS } from './routeSuggestions.js';
+import { useState, useCallback, useMemo, useRef } from 'react';
+import {
+  buildRouteSuggestions,
+  enrichSuggestionsWithMapbox,
+  formatEta,
+  QUICK_DESTINATIONS,
+  QUICK_ORIGINS
+} from './routeSuggestions.js';
 import { draftPickupEmail, suggestedPickupTime, applyUserNote } from './emailDraft.js';
 
 const INITIAL_MESSAGES = [
@@ -22,6 +28,10 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
   // Outreach walkthrough state
   const [outreachQueue, setOutreachQueue] = useState([]); // [{ shipperId, draftBody }]
   const [currentIdx, setCurrentIdx] = useState(0);
+
+  // Monotonic token so a stale Mapbox enrichment never overwrites a fresher
+  // set of suggestions (e.g. user picks Yes then quickly toggles back).
+  const enrichmentId = useRef(0);
 
   const appendMessages = useCallback((newMsgs) => {
     setMessages(prev => {
@@ -60,33 +70,35 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     setPhase('awaiting_backhaul_confirm');
   }, [appendMessages]);
 
-  const confirmBackhaul = useCallback(yes => {
+  const confirmBackhaul = useCallback(async yes => {
     if (!destination) return;
-    if (yes) {
-      const built = buildRouteSuggestions(destination, shippers, origin);
-      setSuggestions(built);
-      appendMessages([
-        { role: 'user', text: 'Yes' },
-        {
-          role: 'assistant',
-          text: 'Here are round-trip options with backhaul pickups on the way home. Pick one to lock it in.',
-          suggestionIds: built.map(r => r.id)
-        }
-      ]);
-      setPhase('showing_suggestions');
-    } else {
-      const direct = buildRouteSuggestions(destination, shippers, origin).slice(0, 1);
-      setSuggestions(direct);
-      appendMessages([
-        { role: 'user', text: 'No' },
-        {
-          role: 'assistant',
-          text: 'No problem — here is the direct round-trip.',
-          suggestionIds: direct.map(r => r.id)
-        }
-      ]);
-      setPhase('showing_suggestions');
-    }
+    const all = buildRouteSuggestions(destination, shippers, origin);
+    const initial = yes ? all : all.slice(0, 1);
+
+    // Show the user reply + a planning bubble immediately; the real route
+    // cards are withheld until the routing provider returns so we never
+    // paint straight-line, wrong-ETA placeholders.
+    appendMessages([
+      { role: 'user', text: yes ? 'Yes' : 'No' },
+      { role: 'assistant', text: 'Planning real driving times…' }
+    ]);
+    setPhase('planning');
+
+    const myId = ++enrichmentId.current;
+    const enriched = await enrichSuggestionsWithMapbox(initial);
+    if (myId !== enrichmentId.current) return; // a newer request replaced us
+
+    setSuggestions(enriched);
+    appendMessages([
+      {
+        role: 'assistant',
+        text: yes
+          ? 'Here are round-trip options with backhaul pickups on the way home. Pick one to lock it in.'
+          : 'No problem — here is the direct round-trip.',
+        suggestionIds: enriched.map(r => r.id)
+      }
+    ]);
+    setPhase('showing_suggestions');
   }, [destination, origin, shippers, appendMessages]);
 
   const pickRoute = useCallback(id => {
@@ -99,7 +111,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
       { role: 'user', text: `Pick ${route.label}` },
       {
         role: 'assistant',
-        text: `Locked in ${route.label} — ${route.shipperIds.length} pickup${route.shipperIds.length === 1 ? '' : 's'}, ETA ${route.etaMin} min.`
+        text: `Locked in ${route.label} — ${route.shipperIds.length} pickup${route.shipperIds.length === 1 ? '' : 's'}, ETA ${formatEta(route.etaMin)}.`
       },
       ...(hasShippers
         ? [{

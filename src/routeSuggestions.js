@@ -4,6 +4,8 @@
 // picking up return loads on the way home. Shippers are filtered to those that
 // sit roughly on the destination→origin line and ordered along that return leg.
 
+import { fetchDrivingRoute } from './mapboxRouting.js';
+
 export const GOTHENBURG = [57.7088, 11.9746];
 
 const PLACES = [
@@ -57,10 +59,21 @@ function totalRouteKm(points) {
   return sum;
 }
 
-// Tuning knobs for the mock.
+// Human-readable duration. Returns "—" when the route hasn't been enriched
+// yet (etaMin is null/undefined) so the UI never prints "undefined min".
+export function formatEta(min) {
+  if (min == null || Number.isNaN(min)) return '—';
+  const m = Math.max(0, Math.round(min));
+  if (m < 60) return `${m} min`;
+  const h = Math.floor(m / 60);
+  const rem = m % 60;
+  return rem === 0 ? `${h}h` : `${h}h ${rem}m`;
+}
+
+// Tuning knobs.
 const BACKHAUL_DETOUR_TOLERANCE = 0.35; // shipper allowed if via-detour ≤ 35% of direct round-trip leg
-const MIN_PER_KM = 0.27;                // ~133 km/h doesn't exist; this tracks the old mock's ETA scale
-const STOP_MIN = 8;                     // pickup dwell time
+const STOP_MIN = 40;                    // pickup dwell time (min per stop)
+const MAX_ADDED_MIN = 360;              // hard cap on reroute overhead: 6 hours
 const REVENUE_PER_STOP = 14000;         // SEK, scaled by shipper score
 
 function backhaulCandidates(origin, dest, shippers) {
@@ -84,16 +97,14 @@ function orderForReturn(candidates) {
 }
 
 function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
+  // Waypoints only — distance, duration, and road geometry are filled in by
+  // enrichSuggestionsWithMapbox using a real routing provider.
   const routeCoords = [
     origin.coords,
     dest.coords,
     ...shippers.map(s => s.position),
     origin.coords
   ];
-  const totalKm = totalRouteKm(routeCoords);
-  const directRoundKm = 2 * haversineKm(origin.coords, dest.coords);
-  const detourKm = Math.max(0, Math.round(totalKm - directRoundKm));
-  const etaMin = Math.round(totalKm * MIN_PER_KM + shippers.length * STOP_MIN);
   const revenueSek = shippers.reduce(
     (sum, s) => sum + Math.round(REVENUE_PER_STOP * (s.score / 90)),
     0
@@ -115,11 +126,10 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
     destinationLabel: dest.label,
     destinationCoords: dest.coords,
     routeCoords,
-    detourKm,
-    etaMin,
     sustainScore,
     revenueSek,
     direction
+    // etaMin, drivingMin, stopMin, addedMin, detourKm, routingSource: set in enrichSuggestionsWithMapbox
   };
 }
 
@@ -174,4 +184,48 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
   if (candidates.length === 0) return [routeA];
   if (candidates.length < 4) return [routeA, routeB];
   return [routeA, routeB, routeC];
+}
+
+// Replace each suggestion's `etaMin` and `routeCoords` with real driving
+// durations + road-following geometry from Mapbox (traffic-aware). Also
+// filters out any suggestion whose detour + dwell exceeds MAX_ADDED_MIN
+// (6 hours) above the direct origin→destination→origin round trip.
+// Route A (no stops) is always kept — it defines the baseline and the UI
+// must never be empty.
+//
+// Injection hook: tests pass { fetchFn } to bypass the real network call.
+export async function enrichSuggestionsWithMapbox(
+  suggestions,
+  { fetchFn = fetchDrivingRoute } = {}
+) {
+  if (!suggestions || suggestions.length === 0) return [];
+
+  const results = await Promise.all(
+    suggestions.map(route => fetchFn(route.routeCoords))
+  );
+
+  const routeA = suggestions[0];
+  const baselineDriving = results[0]?.durationMin ?? 0;
+
+  const enriched = suggestions.map((route, i) => {
+    const r = results[i] || { durationMin: route.etaMin, geometry: route.routeCoords, distanceKm: 0 };
+    const drivingMin = r.durationMin;
+    const stopMin = route.shipperIds.length * STOP_MIN;
+    const etaMin = drivingMin + stopMin;
+    const addedMin = Math.max(0, etaMin - baselineDriving);
+    return {
+      ...route,
+      drivingMin,
+      stopMin,
+      etaMin,
+      addedMin,
+      detourKm: r.distanceKm || route.detourKm,
+      routeCoords: r.geometry?.length ? r.geometry : route.routeCoords,
+      routingSource: r.source || 'fallback'
+    };
+  });
+
+  // Keep route A regardless; drop others that exceed the 6 h cap.
+  const filtered = enriched.filter((r, i) => i === 0 || r.addedMin <= MAX_ADDED_MIN);
+  return filtered.length > 0 ? filtered : [enriched[0]];
 }

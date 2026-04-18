@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send, Bot, User, Leaf, Clock, Truck, Coins, RotateCcw, Mail
 } from 'lucide-react';
+import { formatEta } from './routeSuggestions.js';
 
 const TERMINAL_PHASES = ['route_selected', 'outreach_complete'];
 const TEXT_INPUT_PHASES = ['awaiting_origin', 'awaiting_destination', 'awaiting_edit'];
@@ -199,7 +200,7 @@ function SuggestionCard({ route, selected, disabled, onPick }) {
       </div>
       <div className="text-[11px] text-gray-400 mb-2">{route.tagline}</div>
       <div className="grid grid-cols-2 gap-1">
-        <Cell icon={<Clock size={10} />} label="ETA" value={`${route.etaMin} min`} />
+        <Cell icon={<Clock size={10} />} label="ETA" value={formatEta(route.etaMin)} />
         <Cell icon={<Truck size={10} />} label="Stopp" value={route.shipperIds.length} />
         <Cell icon={<Leaf size={10} />} label="Hållb." value={`${route.sustainScore}/100`} />
         <Cell icon={<Coins size={10} />} label="Intäkt" value={`${route.revenueSek.toLocaleString('sv-SE')} kr`} />

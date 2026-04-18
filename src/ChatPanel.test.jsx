@@ -17,6 +17,19 @@ vi.mock('leaflet', () => ({
   default: { divIcon: () => ({}) }
 }));
 
+// Route enrichment hits OSRM over the network in real use. Tests stub it so
+// `confirmBackhaul` resolves on the next microtask and route cards appear
+// without waiting on (or reaching) the internet.
+vi.mock('./mapboxRouting.js', () => ({
+  fetchDrivingRoute: (waypoints) =>
+    Promise.resolve({
+      durationMin: 300,
+      distanceKm: 480,
+      geometry: waypoints,
+      source: 'test'
+    })
+}));
+
 import App from './App.jsx';
 
 describe('Chat-first route planner', () => {

@@ -139,6 +139,20 @@ function haversineKm(lat1, lon1, lat2, lon2) {
   return 2 * R_KM * Math.asin(Math.sqrt(h));
 }
 
+// Linear interpolation between two waypoints at ~stepKm spacing so the
+// range-based charging-stop walker has enough granularity on long legs.
+function densifySegment([lat1, lng1], [lat2, lng2], stepKm = 10) {
+  const totalKm = haversineKm(lat1, lng1, lat2, lng2);
+  if (totalKm <= stepKm) return [[lat2, lng2]];
+  const steps = Math.ceil(totalKm / stepKm);
+  const out = [];
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    out.push([lat1 + (lat2 - lat1) * t, lng1 + (lng2 - lng1) * t]);
+  }
+  return out;
+}
+
 export function getStationsNearRoute(routeCoords, { maxKm = 30, hgvOnly = true, liveOnly = false } = {}) {
   let candidates = hgvOnly
     ? CHARGING_STATIONS.filter(s => s.hgv_compatible)
@@ -167,7 +181,7 @@ export function getRecommendedStops(routeCoords, { rangeKm = 200, searchRadiusKm
     dense.push(...densifySegment(routeCoords[i - 1], routeCoords[i]));
   }
 
-  const hgvStations = ALL_STATIONS.filter(s => s.hgv_compatible);
+  const hgvStations = CHARGING_STATIONS.filter(s => s.hgv_compatible);
   const stops = [];
   const usedKeys = new Set();
   let distSinceCharge = 0;

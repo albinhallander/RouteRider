@@ -26,23 +26,7 @@ import ChatPanel from './ChatPanel.jsx';
 import { useChatPlanner } from './useChatPlanner.js';
 import { draftPickupEmail, suggestedPickupTime } from './emailDraft.js';
 import { getStationsNearRoute, getRecommendedStops } from './chargingStations.js';
-
-// ─── Route (E4 corridor, south → north) ─────────────────────────────────────
-const ROUTE = [
-  [57.7088, 11.9746], // Gothenburg
-  [57.7400, 12.6000],
-  [57.7600, 13.1000],
-  [57.7826, 14.1618], // Jönköping
-  [57.9800, 14.5000],
-  [58.1800, 14.9000],
-  [58.4108, 15.6214], // Linköping
-  [58.7000, 16.4000],
-  [59.0000, 17.0000],
-  [59.1955, 17.6252], // Södertälje
-  [59.2500, 17.8000],
-  [59.3293, 18.0686]  // Stockholm
-];
-
+import { formatEta } from './routeSuggestions.js';
 
 const INITIAL_SHIPPERS = [
   { id: 's-1', company: 'IKEA Distribution',       location: 'Älmhult',    position: [56.5512, 14.1418], score: 92, distanceFromE4: 12, contact: 'logistics@ikea.se',                 cargo: 'Flat-pack furniture · 18 EUR pallets' },
@@ -689,7 +673,7 @@ function TruckPanel({ route }) {
       <div className="grid grid-cols-2 gap-2">
         <Tile icon={<Radio size={12} />} label="Status" value={route.status} highlight />
         <Tile icon={<Gauge size={12} />} label="SoC" value={`${route.soc}%`} />
-        <Tile icon={<Clock size={12} />} label="ETA" value={`${route.etaMin} min`} />
+        <Tile icon={<Clock size={12} />} label="ETA" value={formatEta(route.etaMin)} />
         <Tile icon={<Activity size={12} />} label="Progress" value={`${route.progressPct ?? 0}%`} />
       </div>
 
