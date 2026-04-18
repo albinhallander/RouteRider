@@ -151,7 +151,7 @@ export default function App() {
 
   const [showAllStations, setShowAllStations] = useState(false);
   const [skippedIds, setSkippedIds] = useState(new Set());
-  const [activeFilter, setActiveFilter] = useState('prio');
+  const [activeFilter, setActiveFilter] = useState('possible');
 
   const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
   const unskipShipper = useCallback(id => {

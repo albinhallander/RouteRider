@@ -135,9 +135,25 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
 }
 
 // All shippers within maxKm of any point on the route polyline.
+// Densifies the polyline first so sparse routes (e.g. Route A with just 2 pts)
+// still produce a proper corridor.
 export function getShippersNearRoute(routeCoords, shippers, maxKm = 40) {
+  if (!routeCoords || routeCoords.length < 2) return [];
+
+  const dense = [routeCoords[0]];
+  for (let i = 1; i < routeCoords.length; i++) {
+    const [la1, lo1] = routeCoords[i - 1];
+    const [la2, lo2] = routeCoords[i];
+    const totalKm = haversineKm([la1, lo1], [la2, lo2]);
+    const steps = Math.max(1, Math.ceil(totalKm / 20));
+    for (let s = 1; s <= steps; s++) {
+      const t = s / steps;
+      dense.push([la1 + (la2 - la1) * t, lo1 + (lo2 - lo1) * t]);
+    }
+  }
+
   return shippers.filter(s => {
-    for (const [lat, lng] of routeCoords) {
+    for (const [lat, lng] of dense) {
       if (haversineKm(s.position, [lat, lng]) <= maxKm) return true;
     }
     return false;

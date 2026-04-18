@@ -32,9 +32,9 @@ function distFromE4(pos) {
   return Math.round(Math.min(...E4.map(wp => haversineKm(pos, wp))));
 }
 
-function calcTier(score, dist, hasOrgNr) {
-  if (score >= 75 && dist <= 5 && hasOrgNr) return 'prio';
-  if (score >= 60 || dist <= 15) return 'possible';
+function calcTier(score, dist) {
+  if (score >= 70 && dist <= 15) return 'prio';
+  if (score >= 58 || dist <= 25) return 'possible';
   return 'skip';
 }
 
@@ -94,7 +94,7 @@ export const COMPANIES = rawData
       position: pos,
       score,
       distanceFromE4: dist,
-      tier: calcTier(score, dist, !!d.org_nr),
+      tier: calcTier(score, dist),
       contact: d.allabolag_url || d.hemsida || '',
       cargo: formatCargo(d),
       orgnr: d.org_nr,
