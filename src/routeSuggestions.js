@@ -109,7 +109,7 @@ function orderForReturn(candidates) {
     .map(c => c.shipper);
 }
 
-function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
+function buildRoute({ id, color, label, tagline, origin, dest, shippers, candidateIds = [] }) {
   // Backhaul leg only: destination → pickups → origin. The outbound leg
   // (origin → destination) is assumed sunk-cost — the truck is going there
   // regardless to deliver primary cargo — so all durations, distances, and
@@ -135,6 +135,7 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
     label,
     tagline,
     shipperIds: shippers.map(s => s.id),
+    candidateIds,
     originLabel: origin.label,
     originCoords: origin.coords,
     destinationLabel: dest.label,
@@ -181,6 +182,7 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
 
   const candidates = backhaulCandidates(origin, dest, shippers);
   const byScore = [...candidates].sort((a, b) => b.shipper.score - a.shipper.score);
+  const allCandidateIds = byScore.map(c => c.shipper.id);
 
   const routeA = buildRoute({
     id: 'A',
@@ -189,7 +191,8 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
     tagline: `Direct return to ${origin.label} from ${dest.label} — no backhaul.`,
     origin,
     dest,
-    shippers: []
+    shippers: [],
+    candidateIds: []
   });
 
   const balancedPicks = orderForReturn(byScore.slice(0, 3));
@@ -203,10 +206,11 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
         : `Top ${balancedPicks.length} shipper${balancedPicks.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}.`,
     origin,
     dest,
-    shippers: balancedPicks
+    shippers: balancedPicks,
+    candidateIds: allCandidateIds
   });
 
-  const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN); // keep addedMin ≤ cap
+  const maxStops = Math.floor(MAX_ADDED_MIN / STOP_MIN);
   const fullPicks = orderForReturn(candidates).slice(0, maxStops);
   const routeC = buildRoute({
     id: 'C',
@@ -215,7 +219,8 @@ export async function buildRouteSuggestions(destinationInput, shippers, originIn
     tagline: `Every viable backhaul pickup on return to ${origin.label} from ${dest.label} (${fullPicks.length} total).`,
     origin,
     dest,
-    shippers: fullPicks
+    shippers: fullPicks,
+    candidateIds: allCandidateIds
   });
 
   if (candidates.length === 0) return [routeA];
