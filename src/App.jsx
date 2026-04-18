@@ -32,6 +32,7 @@ import { getRecommendedRestStops } from './restStops.js';
 import { formatEta } from './routeSuggestions.js';
 import { COMPANIES } from './companies.js';
 import CarrierSection from './CarrierSection.jsx';
+import { suggestCarriers } from './carrierSuggestions.js';
 
 
 // ─── useLogistics ────────────────────────────────────────────────────────────
@@ -206,6 +207,7 @@ export default function App() {
   const [showAllStations, setShowAllStations] = useState(false);
   const [skippedIds, setSkippedIds] = useState(new Set());
   const [activeFilter, setActiveFilter] = useState('all');
+  const [sidebarTab, setSidebarTab] = useState('shippers'); // 'shippers' | 'carriers'
 
   const skipShipper = useCallback(id => setSkippedIds(prev => new Set([...prev, id])), []);
   const unskipShipper = useCallback(id => {
@@ -472,10 +474,78 @@ export default function App() {
                 </div>
               )}
 
-              {/* Shippers list — appears as soon as feasibility is computed.
-                  Shows a phase-aware placeholder while the chat is still
-                  waiting on origin/destination or the OSRM batch. */}
-              {candidateShippers.length === 0 ? (
+              {/* Sidebar tabs separate carriers from shippers — only one is
+                  visible at a time so the two lists never read as one. */}
+              {(() => {
+                // Carriers are shown as soon as origin + destination exist —
+                // the user doesn't need to lock a route to see who runs the lane.
+                const carrierOrigin = selectedRoute?.originLabel ?? chat.origin ?? null;
+                const carrierDest   = selectedRoute?.destinationLabel ?? chat.destination ?? null;
+                const carrierLabelsKnown = !!(carrierOrigin && carrierDest);
+                const carrierCount = carrierLabelsKnown
+                  ? suggestCarriers(carrierOrigin, carrierDest).length
+                  : 0;
+                return (
+                  <>
+                    <div className="flex border-b border-gray-100 flex-shrink-0">
+                      <button
+                        onClick={() => setSidebarTab('shippers')}
+                        className={`flex-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-wider transition ${
+                          sidebarTab === 'shippers'
+                            ? 'text-einride border-b-2 border-einride bg-einride/5'
+                            : 'text-gray-500 hover:text-gray-700 border-b-2 border-transparent'
+                        }`}
+                      >
+                        Shippers · {candidateShippers.length}
+                      </button>
+                      <button
+                        onClick={() => setSidebarTab('carriers')}
+                        disabled={!carrierLabelsKnown}
+                        className={`flex-1 px-3 py-2 text-[11px] font-semibold uppercase tracking-wider transition ${
+                          sidebarTab === 'carriers'
+                            ? 'text-einride border-b-2 border-einride bg-einride/5'
+                            : !carrierLabelsKnown
+                            ? 'text-gray-300 border-b-2 border-transparent cursor-not-allowed'
+                            : 'text-gray-500 hover:text-gray-700 border-b-2 border-transparent'
+                        }`}
+                        title={!carrierLabelsKnown ? 'Enter origin and destination to see matching carriers' : undefined}
+                      >
+                        Carriers · {carrierCount}
+                      </button>
+                    </div>
+
+                    {sidebarTab === 'carriers' ? (
+                      /* Carriers tab — owns its own header + list internally. */
+                      carrierLabelsKnown ? (
+                        carrierCount > 0 ? (
+                          <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
+                            <CarrierSection
+                              originLabel={carrierOrigin}
+                              destinationLabel={carrierDest}
+                              activeRoute={effectiveActiveRoute}
+                            />
+                          </div>
+                        ) : (
+                          <div className="flex-1 flex items-center justify-center px-6">
+                            <p className="text-xs text-gray-400 text-center leading-relaxed">
+                              No carriers in our dataset run the {carrierOrigin} ⇄ {carrierDest} lane regularly.
+                            </p>
+                          </div>
+                        )
+                      ) : (
+                        <div className="flex-1 flex items-center justify-center px-6">
+                          <p className="text-xs text-gray-400 text-center leading-relaxed">
+                            Enter origin and destination in the chat to see matching carriers on the lane.
+                          </p>
+                        </div>
+                      )
+                    ) : null}
+                  </>
+                );
+              })()}
+
+              {sidebarTab === 'carriers' ? null : candidateShippers.length === 0 ? (
+                /* Shippers tab — empty state */
                 <div className="flex-1 flex items-center justify-center px-6">
                   <p className="text-xs text-gray-400 text-center leading-relaxed">
                     {chat.phase === 'awaiting_origin' || chat.phase === 'awaiting_destination'
@@ -486,8 +556,8 @@ export default function App() {
                   </p>
                 </div>
               ) : (
+                /* Shippers tab — filter chips + list (carriers no longer rendered here) */
                 <div className="flex-1 overflow-y-auto flex flex-col min-h-0">
-                  {/* Filter chips */}
                   <div className="px-3 py-2 border-b border-gray-100 flex gap-1.5 flex-wrap flex-shrink-0">
                     {[
                       { key: 'prio',     label: 'Prio',     count: prioCount },
@@ -509,7 +579,7 @@ export default function App() {
                     ))}
                   </div>
 
-                  <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10 flex-shrink-0">
+                  <div className="px-4 py-2.5 bg-white border-b border-gray-100 flex-shrink-0">
                     <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
                       Shippers · {contactedCount}/{displayedShippers.length} contacted
                     </span>
@@ -534,9 +604,6 @@ export default function App() {
                       ))
                     )}
                   </div>
-
-                  {/* Carriers on this lane — self-contained section */}
-                  <CarrierSection selectedRoute={selectedRoute} activeRoute={effectiveActiveRoute} />
                 </div>
               )}
             </motion.div>

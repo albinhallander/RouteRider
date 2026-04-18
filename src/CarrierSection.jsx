@@ -6,31 +6,31 @@ import { useState, useEffect } from 'react';
 import { Truck, Send, CheckCircle2, ChevronLeft } from 'lucide-react';
 import { suggestCarriers, draftCarrierCollabEmail } from './carrierSuggestions.js';
 
-export default function CarrierSection({ selectedRoute, activeRoute }) {
+export default function CarrierSection({ originLabel, destinationLabel, activeRoute }) {
   const [selected, setSelected] = useState(null);
   const [body, setBody] = useState('');
   const [contacted, setContacted] = useState({});
   const [toast, setToast] = useState(null);
 
-  const carriers = selectedRoute
-    ? suggestCarriers(selectedRoute.originLabel, selectedRoute.destinationLabel)
+  const carriers = (originLabel && destinationLabel)
+    ? suggestCarriers(originLabel, destinationLabel)
     : [];
 
   useEffect(() => {
-    if (selected && selectedRoute) {
+    if (selected && originLabel && destinationLabel) {
       setBody(draftCarrierCollabEmail(
         selected,
-        selectedRoute.originLabel,
-        selectedRoute.destinationLabel,
+        originLabel,
+        destinationLabel,
         activeRoute
       ));
     }
-  }, [selected, selectedRoute, activeRoute]);
+  }, [selected, originLabel, destinationLabel, activeRoute]);
 
-  // Reset detail view if the selected route changes
-  useEffect(() => { setSelected(null); }, [selectedRoute?.id]);
+  // Reset detail view if the lane changes.
+  useEffect(() => { setSelected(null); }, [originLabel, destinationLabel]);
 
-  if (!selectedRoute || carriers.length === 0) return null;
+  if (carriers.length === 0) return null;
 
   const handleSend = () => {
     if (!selected) return;
@@ -82,7 +82,7 @@ export default function CarrierSection({ selectedRoute, activeRoute }) {
             <div className="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Typical corridors</div>
             <div className="flex flex-wrap gap-1">
               {selected.corridors.map(city => {
-                const isEndpoint = city === selectedRoute.originLabel || city === selectedRoute.destinationLabel;
+                const isEndpoint = city === originLabel || city === destinationLabel;
                 return (
                   <span
                     key={city}
@@ -140,7 +140,7 @@ export default function CarrierSection({ selectedRoute, activeRoute }) {
           Carriers on this lane · {carriers.length}
         </div>
         <div className="text-[10px] text-gray-400 mt-0.5 normal-case tracking-normal font-normal">
-          Regularly run {selectedRoute.originLabel} ⇄ {selectedRoute.destinationLabel}
+          Regularly run {originLabel} ⇄ {destinationLabel}
         </div>
       </div>
       <div className="divide-y divide-gray-50">
