@@ -252,9 +252,9 @@ export default function App() {
                   Einride · Backhaul
                 </div>
                 <div className="text-lg font-bold text-gray-900 mt-0.5">RouteRider</div>
-                <div className="text-xs text-gray-400">
-                  {selectedRoute ? selectedRoute.direction : 'E4 · Göteborg → Stockholm'}
-                </div>
+                {selectedRoute && (
+                  <div className="text-xs text-gray-400">{selectedRoute.direction}</div>
+                )}
               </div>
 
               {/* Shippers list */}

@@ -101,8 +101,8 @@ function buildRoute({ id, color, label, tagline, origin, dest, shippers }) {
   const sustainScore = Math.min(100, 60 + shippers.length * 8);
   const direction =
     shippers.length === 0
-      ? `Direct round-trip ${origin.label} → ${dest.label}`
-      : `${shippers.length} backhaul pickup${shippers.length === 1 ? '' : 's'} on return from ${dest.label}`;
+      ? `Return to ${origin.label} from ${dest.label}`
+      : `${shippers.length} backhaul pickup${shippers.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}`;
 
   return {
     id,
@@ -138,7 +138,7 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     id: 'A',
     color: '#6b7280',
     label: 'Route A · Direct',
-    tagline: `Direct round-trip ${origin.label} ⇄ ${dest.label} — no backhaul.`,
+    tagline: `Direct return to ${origin.label} from ${dest.label} — no backhaul.`,
     origin,
     dest,
     shippers: []
@@ -151,8 +151,8 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     label: 'Route B · Balanced backhaul',
     tagline:
       balancedPicks.length === 0
-        ? `No plausible backhaul on the ${dest.label} → ${origin.label} leg.`
-        : `Top ${balancedPicks.length} shipper${balancedPicks.length === 1 ? '' : 's'} on the return from ${dest.label}.`,
+        ? `No plausible backhaul on return to ${origin.label} from ${dest.label}.`
+        : `Top ${balancedPicks.length} shipper${balancedPicks.length === 1 ? '' : 's'} on return to ${origin.label} from ${dest.label}.`,
     origin,
     dest,
     shippers: balancedPicks
@@ -163,7 +163,7 @@ export function buildRouteSuggestions(destinationInput, shippers, originInput) {
     id: 'C',
     color: '#10b981',
     label: 'Route C · Max revenue',
-    tagline: `Every viable backhaul pickup on the return from ${dest.label} (${fullPicks.length} total).`,
+    tagline: `Every viable backhaul pickup on return to ${origin.label} from ${dest.label} (${fullPicks.length} total).`,
     origin,
     dest,
     shippers: fullPicks
