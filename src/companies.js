@@ -1,4 +1,5 @@
 import rawData from './data/companies.json';
+import { getLiveSignals, buildSignalList, signalScoreBonus } from './liveSignals.js';
 
 // E4-korridoren waypoints — speglar ROUTE i App.jsx
 const E4 = [
@@ -85,14 +86,21 @@ export const COMPANIES = rawData
   .map((d, i) => {
     const pos = [d.lat, d.lng];
     const id = d.org_nr ? `s-${d.org_nr.replace('-', '')}` : `s-${i}`;
-    const score = calcScore(d);
+    const baseScore = calcScore(d);
     const dist = distFromE4(pos);
+
+    const sig = getLiveSignals(d.org_nr);
+    const bonus = signalScoreBonus(sig);
+    const score = Math.min(100, baseScore + bonus);
+    const signals = buildSignalList(sig);
+
     return {
       id,
       company: d.name,
       location: formatLocation(d),
       position: pos,
       score,
+      baseScore,
       distanceFromE4: dist,
       tier: calcTier(score, dist),
       contact: d.allabolag_url || d.hemsida || '',
@@ -100,6 +108,7 @@ export const COMPANIES = rawData
       orgnr: d.org_nr,
       bransch: d.bransch,
       typ: d.typ,
+      signals,
     };
   })
   .filter(c => {

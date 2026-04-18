@@ -116,7 +116,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     setMaxWeightKg(n);
     appendMessages([
       { role: 'user', text: `${n.toLocaleString('sv-SE')} kg` },
-      { role: 'assistant', text: `Max ${n.toLocaleString('sv-SE')} kg noted. Checking which shippers fit within a 6 h detour…` }
+      { role: 'assistant', text: `Max ${n.toLocaleString('sv-SE')} kg noted. Checking which shippers fit within a 6 h detour and scanning live freight signals…` }
     ]);
     setPhase('computing_feasibility');
 
@@ -138,10 +138,17 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach, setSaidYes) 
     appendMessages([
       {
         role: 'assistant',
-        text:
-          result.feasible.length === 0
-            ? `No shippers fit within a 6 h detour on the return to ${result.origin.label}.`
-            : `Found ${result.feasible.length} eligible shipper${result.feasible.length === 1 ? '' : 's'} on the return to ${result.origin.label} (sorted by score, all within the 6 h cap). Draft and send an outreach email to all of them?`,
+        text: (() => {
+          if (result.feasible.length === 0) {
+            return `No shippers fit within a 6 h detour on the return to ${result.origin.label}.`;
+          }
+          const withSignals = result.feasible.filter(s => {
+            const sh = shippers.find(x => x.id === s.id);
+            return sh?.signals?.length > 0;
+          }).length;
+          const signalNote = withSignals > 0 ? ` (${withSignals} with live freight signals)` : '';
+          return `Found ${result.feasible.length} eligible shipper${result.feasible.length === 1 ? '' : 's'}${signalNote} on the return to ${result.origin.label}. Draft and send outreach to all of them?`;
+        })(),
         quickReplies: result.feasible.length ? ['Send to all', 'Not now'] : ['Start over']
       }
     ]);
