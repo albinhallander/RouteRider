@@ -127,6 +127,7 @@ export default function App() {
   const [selected, setSelected] = useState(null);
   const [emailBody, setEmailBody] = useState('');
   const [toast, setToast] = useState(null);
+  const [tab, setTab] = useState('chat');
   const chat = useChatPlanner(shippers);
   const { selectedRoute } = chat;
 
@@ -220,17 +221,52 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Chat fills remaining space */}
-              <ChatPanel
-                phase={chat.phase}
-                messages={chat.messages}
-                suggestions={chat.suggestions}
-                selectedRouteId={chat.selectedRouteId}
-                onSubmitDestination={chat.submitDestination}
-                onConfirmBackhaul={chat.confirmBackhaul}
-                onPickRoute={chat.pickRoute}
-                onReset={chat.reset}
-              />
+              {/* Tabs */}
+              <div className="flex border-b border-gray-100 flex-shrink-0">
+                {[['chat', 'Planera'], ['shippers', 'Avsändare']].map(([key, label]) => (
+                  <button
+                    key={key}
+                    onClick={() => setTab(key)}
+                    className={`flex-1 py-2.5 text-xs font-semibold transition ${
+                      tab === key
+                        ? 'text-gray-900 border-b-2 border-gray-900'
+                        : 'text-gray-400 hover:text-gray-600'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {tab === 'chat' ? (
+                <ChatPanel
+                  phase={chat.phase}
+                  messages={chat.messages}
+                  suggestions={chat.suggestions}
+                  selectedRouteId={chat.selectedRouteId}
+                  onSubmitDestination={chat.submitDestination}
+                  onConfirmBackhaul={chat.confirmBackhaul}
+                  onPickRoute={chat.pickRoute}
+                  onReset={chat.reset}
+                />
+              ) : (
+                <div className="flex-1 overflow-y-auto">
+                  <div className="px-4 py-2.5 sticky top-0 bg-white border-b border-gray-100 z-10">
+                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
+                      {contactedCount}/{effectiveShippers.length} kontaktade
+                    </span>
+                  </div>
+                  <div className="divide-y divide-gray-50">
+                    {effectiveShippers.map(s => (
+                      <ShipperRow
+                        key={s.id}
+                        shipper={s}
+                        onClick={() => setSelected({ type: 'shipper', data: s })}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
