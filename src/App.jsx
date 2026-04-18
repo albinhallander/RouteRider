@@ -973,7 +973,70 @@ function Tile({ icon, label, value, highlight }) {
   );
 }
 
+function scoreInsights(shipper) {
+  const insights = [];
+
+  if (shipper?.tier === 'prio') insights.push('High-priority match for this return leg.');
+  if (shipper?.tier === 'possible') insights.push('A plausible match on this return leg.');
+
+  const dist = Number(shipper?.distanceFromE4);
+  if (Number.isFinite(dist)) {
+    if (dist <= 15) insights.push('Located right along the return corridor.');
+    else if (dist <= 25) insights.push('Located near the return corridor.');
+  }
+
+  const sitesTotal = Array.isArray(shipper?.sites) ? shipper.sites.length : 0;
+  const sitesNear = Number(shipper?.sitesNearRoute);
+  if (Number.isFinite(sitesNear) && sitesNear >= 2) {
+    insights.push('Has multiple locations along our route corridor.');
+  } else if (Number.isFinite(sitesNear) && sitesNear === 1 && sitesTotal > 1) {
+    insights.push('Has several locations, and at least one sits along the corridor.');
+  } else if (sitesTotal > 1) {
+    insights.push('Operates multiple locations, which increases routing flexibility.');
+  }
+
+  const cdp = (shipper?.signals ?? []).find(s => s.type === 'cdp');
+  if (cdp?.pressure === 'high') {
+    insights.push('Under strong sustainability pressure — likely prioritizes lower-emission transport.');
+  } else if (cdp?.pressure === 'medium') {
+    insights.push('Has active sustainability pressure driving transport decisions.');
+  }
+
+  const loadBoard = (shipper?.signals ?? []).find(s => s.type === 'load_board');
+  if (loadBoard) {
+    if (loadBoard.frequency === 'high') {
+      insights.push('Actively sourcing transport capacity — signals frequent shipments.');
+    } else if (loadBoard.frequency === 'medium') {
+      insights.push('Regularly active on load boards — suggests ongoing shipments.');
+    } else {
+      insights.push('Appears on load boards — suggests active transport needs.');
+    }
+  } else {
+    const typ = String(shipper?.typ || '').toLowerCase();
+    const bransch = String(shipper?.bransch || '');
+    const sni = bransch.match(/\d{2}/)?.[0] ?? '';
+    if (typ === 'lager' || typ === 'distributionscenter' || sni === '52') {
+      insights.push('Warehousing/distribution operations typically ship frequently.');
+    } else if (typ === 'fabrik' || typ === 'industri' || sni === '10' || sni === '29') {
+      insights.push('Industrial operations often have regular outbound freight flows.');
+    } else if (sni === '46') {
+      insights.push('Wholesale operations often have recurring transport demand.');
+    }
+  }
+
+  const added = Number(shipper?.addedMin);
+  if (Number.isFinite(added)) {
+    if (added <= 90) insights.push('Adds only a small detour to the return leg.');
+    else if (added <= 180) insights.push('Requires a moderate detour to pick up.');
+    else insights.push('Requires a larger detour — still within the feasibility cap.');
+  }
+
+  // De-dupe while preserving order.
+  return [...new Set(insights)].slice(0, 5);
+}
+
 function ShipperPanel({ shipper, body, setBody, onSend, alreadySent }) {
+  const insights = scoreInsights(shipper);
   return (
     <div className="space-y-4">
       <header className="flex items-start gap-3">
@@ -997,6 +1060,19 @@ function ShipperPanel({ shipper, body, setBody, onSend, alreadySent }) {
         <Tile icon={<Activity size={12} />} label="Off E4" value={`${shipper.distanceFromE4} km`} />
         <Tile icon={<Mail size={12} />} label="Status" value={alreadySent ? 'Contacted' : 'Open lead'} highlight={alreadySent} />
       </div>
+
+      {insights.length > 0 && (
+        <div className="space-y-1.5">
+          <div className="text-[10px] uppercase tracking-widest text-gray-400">Why this scores well</div>
+          <div className="rounded-lg border border-gray-100 bg-gray-50 px-3 py-2 text-xs text-gray-600">
+            <ul className="list-disc pl-4 space-y-1">
+              {insights.map((t, i) => (
+                <li key={`${shipper.id}-insight-${i}`}>{t}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
 
       {(shipper.signals ?? []).length > 0 && (
         <motion.div
