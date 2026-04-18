@@ -5,13 +5,14 @@ import {
 } from 'lucide-react';
 
 const TERMINAL_PHASES = ['route_selected', 'outreach_complete'];
-const TEXT_INPUT_PHASES = ['awaiting_destination', 'awaiting_edit'];
+const TEXT_INPUT_PHASES = ['awaiting_origin', 'awaiting_destination', 'awaiting_edit'];
 
 export default function ChatPanel({
   phase,
   messages,
   suggestions,
   selectedRouteId,
+  onSubmitOrigin,
   onSubmitDestination,
   onConfirmBackhaul,
   onPickRoute,
@@ -30,6 +31,7 @@ export default function ChatPanel({
   }, [messages, suggestions]);
 
   const handleQuickReply = text => {
+    if (phase === 'awaiting_origin') return onSubmitOrigin?.(text);
     if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
     if (phase === 'awaiting_backhaul_confirm') return onConfirmBackhaul?.(text === 'Yes');
     if (phase === 'awaiting_outreach_confirm') return onConfirmOutreach?.(text === 'Yes');
@@ -41,6 +43,7 @@ export default function ChatPanel({
   };
 
   const handleTextSubmit = text => {
+    if (phase === 'awaiting_origin') return onSubmitOrigin?.(text);
     if (phase === 'awaiting_destination') return onSubmitDestination?.(text);
     if (phase === 'awaiting_edit') return onSubmitEdit?.(text);
   };
@@ -227,7 +230,9 @@ function ChatInput({ phase, onSubmit }) {
     setValue('');
   };
 
-  const placeholder = phase === 'awaiting_destination'
+  const placeholder = phase === 'awaiting_origin'
+    ? 'Ange startpunkt…'
+    : phase === 'awaiting_destination'
     ? 'Ange destination…'
     : phase === 'awaiting_edit'
     ? 'Beskriv ändring (t.ex. "byt tid till 16:00")…'

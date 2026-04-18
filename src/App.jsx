@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { Fragment, useState, useEffect, useCallback, useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -147,8 +147,10 @@ export default function App() {
   const chat = useChatPlanner(shippers, activeRoute, sendOutreach);
   const { selectedRoute } = chat;
 
-  const showingSuggestions = chat.phase === 'showing_suggestions';
-  const routeLocked = chat.phase === 'route_selected';
+  const hasSuggestions = chat.suggestions.length > 0;
+  const routeLocked = !!selectedRoute;
+  const showingSuggestions = hasSuggestions && !routeLocked;
+  const SELECTED_COLOR = '#10b981';
 
   const effectiveShippers = selectedRoute
     ? shippers.filter(s => selectedRoute.shipperIds.includes(s.id))
@@ -300,32 +302,40 @@ export default function App() {
             maxZoom={20}
           />
 
-          {/* Idle state: show base E4 route */}
-          {!showingSuggestions && !routeLocked && (
+          {/* Idle: base E4 corridor before any plan is built */}
+          {!hasSuggestions && (
             <>
               <Polyline positions={ROUTE} pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }} />
               <Polyline positions={ROUTE} pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }} />
             </>
           )}
 
-          {/* Suggestions phase: show all 3 routes */}
-          {showingSuggestions && chat.suggestions.map((route, i) => (
-            <Polyline key={route.id} positions={route.routeCoords}
-              pathOptions={{ color: '#4264FB', weight: 4, opacity: i === 0 ? 1 : 0.4, lineJoin: 'round', lineCap: 'round' }}
-            />
-          ))}
-
-          {/* Locked route: Google Maps style solid blue */}
-          {routeLocked && selectedRoute && (
-            <>
-              <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: '#6b8ef5', weight: 10, opacity: 0.22 }}
-              />
-              <Polyline positions={selectedRoute.routeCoords}
-                pathOptions={{ color: '#4264FB', weight: 4, opacity: 1, lineJoin: 'round', lineCap: 'round' }}
-              />
-            </>
-          )}
+          {/* Planning: draw every suggestion in its own color. When one is
+              locked, fade the rest and turn the winner green with a halo. */}
+          {hasSuggestions && chat.suggestions.map(route => {
+            const isSelected = routeLocked && route.id === selectedRoute.id;
+            const dimmed = routeLocked && !isSelected;
+            const color = isSelected ? SELECTED_COLOR : route.color;
+            return (
+              <Fragment key={route.id}>
+                {isSelected && (
+                  <Polyline positions={route.routeCoords}
+                    pathOptions={{ color: SELECTED_COLOR, weight: 11, opacity: 0.28, lineJoin: 'round', lineCap: 'round' }}
+                  />
+                )}
+                <Polyline positions={route.routeCoords}
+                  pathOptions={{
+                    color,
+                    weight: isSelected ? 5 : 4,
+                    opacity: dimmed ? 0.18 : 0.9,
+                    dashArray: dimmed ? '4 6' : undefined,
+                    lineJoin: 'round',
+                    lineCap: 'round'
+                  }}
+                />
+              </Fragment>
+            );
+          })}
 
           {/* Charging hubs */}
           {CHARGING_HUBS.map(hub => (
@@ -335,14 +345,14 @@ export default function App() {
           ))}
 
           {/* Idle shippers: plain circles */}
-          {!showingSuggestions && !routeLocked && shippers.map(s => (
+          {!hasSuggestions && shippers.map(s => (
             <CircleMarker key={s.id} center={s.position} radius={8}
               pathOptions={{ color: '#fff', weight: 2, fillColor: s.contacted ? '#9ca3af' : '#4264FB', fillOpacity: 1 }}
               eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
             />
           ))}
 
-          {/* Suggestions phase: highlight shippers involved in each route */}
+          {/* While choosing: highlight any shipper touched by at least one suggestion. */}
           {showingSuggestions && shippers.map(s => {
             const inAnyRoute = chat.suggestions.some(r => r.shipperIds.includes(s.id));
             return (
@@ -353,12 +363,11 @@ export default function App() {
             );
           })}
 
-          {/* Locked route: numbered stop markers + origin/dest pins */}
-          {routeLocked && selectedRoute && (
+          {/* Locked route: origin/destination pins + numbered backhaul stops; other shippers dimmed. */}
+          {routeLocked && (
             <>
-              {/* Origin */}
-              <Marker position={selectedRoute.routeCoords[0]} icon={originIcon} />
-              {/* Numbered pickup stops */}
+              <Marker position={selectedRoute.originCoords} icon={originIcon} />
+              <Marker position={selectedRoute.destinationCoords} icon={destIcon} />
               {selectedRoute.shipperIds.map((id, i) => {
                 const s = shippers.find(sh => sh.id === id);
                 if (!s) return null;
@@ -368,8 +377,14 @@ export default function App() {
                   />
                 );
               })}
-              {/* Destination */}
-              <Marker position={selectedRoute.routeCoords[selectedRoute.routeCoords.length - 1]} icon={destIcon} />
+              {shippers
+                .filter(s => !selectedRoute.shipperIds.includes(s.id))
+                .map(s => (
+                  <CircleMarker key={s.id} center={s.position} radius={4}
+                    pathOptions={{ color: '#fff', weight: 1, fillColor: '#d1d5db', fillOpacity: 0.45 }}
+                    eventHandlers={{ click: () => setSelected({ type: 'shipper', data: s }) }}
+                  />
+                ))}
             </>
           )}
         </MapContainer>
@@ -389,6 +404,7 @@ export default function App() {
           messages={chat.messages}
           suggestions={chat.suggestions}
           selectedRouteId={chat.selectedRouteId}
+          onSubmitOrigin={chat.submitOrigin}
           onSubmitDestination={chat.submitDestination}
           onConfirmBackhaul={chat.confirmBackhaul}
           onPickRoute={chat.pickRoute}

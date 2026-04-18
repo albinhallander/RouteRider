@@ -20,17 +20,25 @@ vi.mock('leaflet', () => ({
 import App from './App.jsx';
 
 describe('Chat-first route planner', () => {
-  it('walks destination → backhaul confirm → pick route', async () => {
+  it('walks origin → destination → backhaul confirm → pick route', async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    // Greeting renders.
+    // Greeting now asks for origin first.
     expect(
-      screen.getByText(/Where are you going today/i)
+      screen.getByText(/Where are you coming from/i)
     ).toBeInTheDocument();
 
-    // Pick the Stockholm quick-reply chip.
-    await user.click(screen.getByRole('button', { name: 'Stockholm' }));
+    // Pick origin (Göteborg).
+    await user.click(screen.getByRole('button', { name: 'Göteborg' }));
+
+    // Assistant now asks for destination.
+    expect(
+      await screen.findByText(/where are you headed/i)
+    ).toBeInTheDocument();
+
+    // Pick destination (Stockholm).
+    await user.click(await screen.findByRole('button', { name: 'Stockholm' }));
 
     // Assistant asks about backhaul.
     expect(
@@ -63,6 +71,7 @@ describe('Chat-first route planner', () => {
     const user = userEvent.setup();
     render(<App />);
 
+    await user.click(await screen.findByRole('button', { name: 'Göteborg' }));
     await user.click(await screen.findByRole('button', { name: 'Stockholm' }));
     await user.click(await screen.findByRole('button', { name: 'Yes' }));
     await user.click(await screen.findByText(/Route B · Balanced backhaul/));
@@ -70,8 +79,10 @@ describe('Chat-first route planner', () => {
     // Confirm outreach walkthrough.
     await user.click(await screen.findByRole('button', { name: 'Yes' }));
 
-    // First draft shown with Send / Skip / Edit controls.
-    expect(await screen.findByText(/First up: Husqvarna AB/)).toBeInTheDocument();
+    // First draft shown with Send / Skip / Edit controls. Backhaul order for
+    // Göteborg → Stockholm puts Scania first (top score, closest to Stockholm
+    // on the return leg), then AstraZeneca, then Husqvarna.
+    expect(await screen.findByText(/First up: Scania Logistics/)).toBeInTheDocument();
     expect(screen.getAllByRole('button', { name: 'Send' }).length).toBeGreaterThan(0);
 
     // Start editing the first draft.
@@ -85,17 +96,17 @@ describe('Chat-first route planner', () => {
     await user.type(input, 'Change pickup to 16:00');
     await user.keyboard('{Enter}');
     expect(
-      await screen.findByText(/Updated draft for Husqvarna AB/)
+      await screen.findByText(/Updated draft for Scania Logistics/)
     ).toBeInTheDocument();
 
     // Send the updated draft — walkthrough advances to the next shipper.
     const sendButtons = await screen.findAllByRole('button', { name: 'Send' });
     await user.click(sendButtons[sendButtons.length - 1]);
     expect(
-      await screen.findByText(/Sent to Husqvarna AB/)
+      await screen.findByText(/Sent to Scania Logistics/)
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/Next: Toyota Material Handling/)
+      await screen.findByText(/Next: AstraZeneca/)
     ).toBeInTheDocument();
   });
 });

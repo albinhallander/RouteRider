@@ -1,19 +1,20 @@
 import { useState, useCallback, useMemo } from 'react';
-import { buildRouteSuggestions, QUICK_DESTINATIONS } from './routeSuggestions.js';
+import { buildRouteSuggestions, QUICK_DESTINATIONS, QUICK_ORIGINS } from './routeSuggestions.js';
 import { draftPickupEmail, suggestedPickupTime, applyUserNote } from './emailDraft.js';
 
 const INITIAL_MESSAGES = [
   {
     id: 'm-greet-1',
     role: 'assistant',
-    text: "Hi — I'm RouteRider. Where are you going today?",
-    quickReplies: QUICK_DESTINATIONS.map(d => d.label)
+    text: "Hi — I'm RouteRider. Where are you coming from?",
+    quickReplies: QUICK_ORIGINS.map(d => d.label)
   }
 ];
 
 export function useChatPlanner(shippers, activeRoute, sendOutreach) {
-  const [phase, setPhase] = useState('awaiting_destination');
+  const [phase, setPhase] = useState('awaiting_origin');
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
+  const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [selectedRouteId, setSelectedRouteId] = useState(null);
@@ -29,6 +30,21 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     });
   }, []);
 
+  const submitOrigin = useCallback(text => {
+    const value = (text ?? '').trim();
+    if (!value) return;
+    setOrigin(value);
+    appendMessages([
+      { role: 'user', text: value },
+      {
+        role: 'assistant',
+        text: `Got it — starting from ${value}. And where are you headed?`,
+        quickReplies: QUICK_DESTINATIONS.map(d => d.label)
+      }
+    ]);
+    setPhase('awaiting_destination');
+  }, [appendMessages]);
+
   const submitDestination = useCallback(text => {
     const value = (text ?? '').trim();
     if (!value) return;
@@ -37,7 +53,7 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
       { role: 'user', text: value },
       {
         role: 'assistant',
-        text: `Nice — heading to ${value}. Want me to find backhaul shipments along the way?`,
+        text: `Nice — heading to ${value}. Want me to find backhaul shipments for the trip home?`,
         quickReplies: ['Yes', 'No']
       }
     ]);
@@ -47,31 +63,31 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
   const confirmBackhaul = useCallback(yes => {
     if (!destination) return;
     if (yes) {
-      const built = buildRouteSuggestions(destination, shippers);
+      const built = buildRouteSuggestions(destination, shippers, origin);
       setSuggestions(built);
       appendMessages([
         { role: 'user', text: 'Yes' },
         {
           role: 'assistant',
-          text: 'Here are three routes with backhaul shippers. Pick one to lock it in.',
+          text: 'Here are round-trip options with backhaul pickups on the way home. Pick one to lock it in.',
           suggestionIds: built.map(r => r.id)
         }
       ]);
       setPhase('showing_suggestions');
     } else {
-      const direct = buildRouteSuggestions(destination, shippers).slice(0, 1);
+      const direct = buildRouteSuggestions(destination, shippers, origin).slice(0, 1);
       setSuggestions(direct);
       appendMessages([
         { role: 'user', text: 'No' },
         {
           role: 'assistant',
-          text: 'No problem — here is the direct run.',
+          text: 'No problem — here is the direct round-trip.',
           suggestionIds: direct.map(r => r.id)
         }
       ]);
       setPhase('showing_suggestions');
     }
-  }, [destination, shippers, appendMessages]);
+  }, [destination, origin, shippers, appendMessages]);
 
   const pickRoute = useCallback(id => {
     const route = suggestions.find(r => r.id === id);
@@ -230,8 +246,9 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
   }, [currentIdx, outreachQueue, shippers, appendMessages]);
 
   const reset = useCallback(() => {
-    setPhase('awaiting_destination');
+    setPhase('awaiting_origin');
     setMessages(INITIAL_MESSAGES);
+    setOrigin(null);
     setDestination(null);
     setSuggestions([]);
     setSelectedRouteId(null);
@@ -250,6 +267,9 @@ export function useChatPlanner(shippers, activeRoute, sendOutreach) {
     suggestions,
     selectedRouteId,
     selectedRoute,
+    origin,
+    destination,
+    submitOrigin,
     submitDestination,
     confirmBackhaul,
     pickRoute,
