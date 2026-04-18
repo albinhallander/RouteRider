@@ -257,14 +257,17 @@ export default function App() {
     [candidateShippers, skippedIds]
   );
 
-  // Cluster non-stop candidates for the map (20 km radius).
+  // Cluster all candidates NOT already shown as numbered route stops (20 km radius).
+  // Always clusters the full candidate pool minus the explicit shipperIds so that
+  // all three routes show candidate bubbles; Route C's stops still get their own
+  // numbered blue markers on top.
   const candidateClusters = useMemo(() => {
     if (!routeLocked || !candidateShippers.length) return [];
     const nonStop = candidateShippers.filter(
-      s => !selectedRoute.shipperIds.includes(s.id) && !skippedIds.has(s.id)
+      s => !selectedRoute.shipperIds.includes(s.id)
     );
     return clusterCandidates(nonStop, 20);
-  }, [routeLocked, candidateShippers, selectedRoute, skippedIds]);
+  }, [routeLocked, candidateShippers, selectedRoute]);
 
   const displayedShippers = useMemo(() => {
     const pool = candidateShippers.filter(s =>
@@ -630,9 +633,11 @@ export default function App() {
             );
           })}
 
-          {/* Locked route: origin/destination + route stops + candidate clusters */}
+          {/* Locked route: origin/destination + route stops + candidate clusters.
+              Key on selectedRouteId forces full remount when route switches so
+              stale Leaflet markers never ghost on the map. */}
           {routeLocked && (
-            <>
+            <Fragment key={`locked-${chat.selectedRouteId}`}>
               <Marker position={selectedRoute.originCoords} icon={originIcon} />
               <Marker position={selectedRoute.destinationCoords} icon={destIcon} />
 
@@ -647,7 +652,7 @@ export default function App() {
                 );
               })}
 
-              {/* Candidate clusters — all other viable backhaul companies */}
+              {/* Candidate clusters — viable backhaul companies NOT on this route */}
               {candidateClusters.map((cluster, i) => (
                 <Marker
                   key={`ccluster-${i}`}
@@ -665,7 +670,7 @@ export default function App() {
                     pathOptions={{ color: 'transparent', weight: 0, fillColor: '#d1d5db', fillOpacity: 0.25 }}
                   />
                 ))}
-            </>
+            </Fragment>
           )}
         </MapContainer>
       </div>
