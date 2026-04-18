@@ -8,3 +8,4 @@ coverage
 .env.local
 __pycache__/
 *.pyc
+.claude/scheduled_tasks.lock

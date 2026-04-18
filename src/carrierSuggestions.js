@@ -1,150 +1,27 @@
-// Kuraterad dataset över åkerier som typiskt kör vissa korridorer.
-// För prototypen: hand-plockat från TED-tilldelningar, branchorganisationer
-// och publika åkerilistor i Norden + DACH. Byt mot data från
-// data_collection/routerider_ted_awards.json när full integration är klar.
+// Carriers typically running specific corridors. Hand-curated for the
+// prototype from TED awards, industry associations, and public carrier lists
+// across the Nordics + DACH. Swap for data_collection/routerider_ted_awards.json
+// once full integration is wired up.
 
-const CARRIERS = [
-  // Sverige
-  {
-    id: 'c-dsv-se',
-    name: 'DSV Road AB',
-    hq: 'Landskrona',
-    country: 'SE',
-    fleetTrucks: 900,
-    corridors: ['Göteborg', 'Stockholm', 'Malmö', 'Jönköping', 'Hamburg', 'Köpenhamn'],
-    specialty: 'General cargo · groupage',
-    contact: 'road.se@dsv.com',
-  },
-  {
-    id: 'c-schenker-se',
-    name: 'DB Schenker Sverige',
-    hq: 'Göteborg',
-    country: 'SE',
-    fleetTrucks: 1200,
-    corridors: ['Göteborg', 'Stockholm', 'Malmö', 'Oslo', 'Hamburg', 'Köpenhamn', 'Jönköping'],
-    specialty: 'Road freight · contract logistics',
-    contact: 'transport.sverige@dbschenker.com',
-  },
-  {
-    id: 'c-postnord-se',
-    name: 'PostNord Sverige AB',
-    hq: 'Solna',
-    country: 'SE',
-    fleetTrucks: 2500,
-    corridors: ['Stockholm', 'Göteborg', 'Malmö', 'Köpenhamn', 'Jönköping', 'Södertälje'],
-    specialty: 'Pallet + parcel · daily lines',
-    contact: 'foretag@postnord.com',
-  },
-  {
-    id: 'c-ntex',
-    name: 'NTEX AB',
-    hq: 'Göteborg',
-    country: 'SE',
-    fleetTrucks: 450,
-    corridors: ['Göteborg', 'Stockholm', 'Oslo', 'Malmö', 'Hamburg'],
-    specialty: 'International road freight',
-    contact: 'info@ntex.se',
-  },
-  {
-    id: 'c-alltransport',
-    name: 'Alltransport i Östergötland AB',
-    hq: 'Norrköping',
-    country: 'SE',
-    fleetTrucks: 220,
-    corridors: ['Linköping', 'Stockholm', 'Göteborg', 'Jönköping'],
-    specialty: 'Bulk + groupage · Östergötland',
-    contact: 'info@alltransport.se',
-  },
-  {
-    id: 'c-ahola',
-    name: 'Ahola Transport AB',
-    hq: 'Göteborg',
-    country: 'SE',
-    fleetTrucks: 380,
-    corridors: ['Göteborg', 'Stockholm', 'Hamburg', 'Köpenhamn', 'Oslo'],
-    specialty: 'Finland-Sweden scheduled lines',
-    contact: 'sweden@aholatransport.com',
-  },
-  {
-    id: 'c-tgm',
-    name: 'TGM Åkeri AB',
-    hq: 'Kungälv',
-    country: 'SE',
-    fleetTrucks: 140,
-    corridors: ['Göteborg', 'Oslo', 'Malmö', 'Jönköping'],
-    specialty: 'Temperature-controlled · west coast',
-    contact: 'info@tgm.se',
-  },
-  // Norden
-  {
-    id: 'c-bring-no',
-    name: 'Bring (Posten Norge)',
-    hq: 'Oslo',
-    country: 'NO',
-    fleetTrucks: 1800,
-    corridors: ['Oslo', 'Göteborg', 'Stockholm', 'Köpenhamn'],
-    specialty: 'Nordic lines · pallet + parcel',
-    contact: 'kundeservice.no@bring.com',
-  },
-  {
-    id: 'c-dhl-dk',
-    name: 'DHL Freight Danmark',
-    hq: 'Brøndby',
-    country: 'DK',
-    fleetTrucks: 650,
-    corridors: ['Köpenhamn', 'Malmö', 'Hamburg', 'Göteborg'],
-    specialty: 'LTL/FTL Nordic ↔ DACH',
-    contact: 'info.dk@dhl.com',
-  },
-  // DACH
-  {
-    id: 'c-dachser',
-    name: 'Dachser SE',
-    hq: 'Kempten',
-    country: 'DE',
-    fleetTrucks: 9000,
-    corridors: ['Hamburg', 'Köpenhamn', 'Göteborg', 'Stockholm', 'Oslo', 'Gdansk'],
-    specialty: 'European Logistics network',
-    contact: 'info@dachser.com',
-  },
-  {
-    id: 'c-rhenus',
-    name: 'Rhenus Logistics',
-    hq: 'Holzwickede',
-    country: 'DE',
-    fleetTrucks: 7500,
-    corridors: ['Hamburg', 'Köpenhamn', 'Stockholm', 'Oslo', 'Gdansk'],
-    specialty: 'Multimodal · Baltic flows',
-    contact: 'info@rhenus.com',
-  },
-  {
-    id: 'c-gw-at',
-    name: 'Gebrüder Weiss',
-    hq: 'Lauterach',
-    country: 'AT',
-    fleetTrucks: 3200,
-    corridors: ['Wien', 'Hamburg', 'Köpenhamn', 'Stockholm', 'Gdansk'],
-    specialty: 'CEE + Alpine · groupage',
-    contact: 'info@gw-world.com',
-  },
-  {
-    id: 'c-hellmann',
-    name: 'Hellmann Worldwide Logistics',
-    hq: 'Osnabrück',
-    country: 'DE',
-    fleetTrucks: 4200,
-    corridors: ['Hamburg', 'Köpenhamn', 'Göteborg', 'Stockholm', 'Wien'],
-    specialty: 'European road network',
-    contact: 'road@hellmann.com',
-  },
-];
+import carriersData from './data/carriers.json';
+
+const CARRIERS = carriersData;
+
+// Sustainability bonus applied on top of matchScore. Categories are written by
+// data_collection/sustainability_enrich.py from a mix of website scrape, news
+// mentions, and LLM classification. Unknown/missing data stays neutral.
+const SUSTAIN_BONUS = { leader: 10, active: 5, mentioned: 2, silent: -3, unknown: 0 };
+
+function sustainBonus(entity) {
+  return SUSTAIN_BONUS[entity?.sustainability?.category] ?? 0;
+}
 
 function normalize(s) {
   return (s ?? '').trim().toLowerCase();
 }
 
-// Poängsätt åkerier baserat på om deras korridorer matchar origin/dest.
-// full match (båda städerna) > partial match (en stad) > ingen träff.
+// Rank carriers by corridor match (full > partial) with a small sustainability
+// nudge so that otherwise-equal carriers with stronger ESG signals rise.
 export function suggestCarriers(originLabel, destinationLabel, limit = 6) {
   const origin = normalize(originLabel);
   const dest = normalize(destinationLabel);
@@ -154,14 +31,18 @@ export function suggestCarriers(originLabel, destinationLabel, limit = 6) {
     const corridor = c.corridors.map(normalize);
     const hasOrigin = corridor.some(x => x === origin);
     const hasDest = corridor.some(x => x === dest);
-    let score = 0;
-    if (hasOrigin && hasDest) score = 100;
-    else if (hasOrigin || hasDest) score = 55;
-    return { ...c, matchScore: score, matchType: hasOrigin && hasDest ? 'full' : (hasOrigin || hasDest) ? 'partial' : 'none' };
+    let base = 0;
+    if (hasOrigin && hasDest) base = 100;
+    else if (hasOrigin || hasDest) base = 55;
+    return {
+      ...c,
+      matchScore: base + sustainBonus(c),
+      matchType: hasOrigin && hasDest ? 'full' : (hasOrigin || hasDest) ? 'partial' : 'none',
+    };
   });
 
   return scored
-    .filter(c => c.matchScore > 0)
+    .filter(c => c.matchType !== 'none')
     .sort((a, b) => b.matchScore - a.matchScore || b.fleetTrucks - a.fleetTrucks)
     .slice(0, limit);
 }

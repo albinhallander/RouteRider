@@ -865,6 +865,17 @@ function ShipperRow({ shipper, onClick, onSetSaidYes, onSetCargo, onRoute, route
   const hasCargo = shipper.pallets != null && shipper.weightKg != null;
   const needsCargoInput = said === 'yes' && !hasCargo;
 
+  const sustainCat = shipper.sustainability?.category;
+  // Only show the web-sourced leaf when CDP has nothing — CDP's TreePine takes priority.
+  const showLeaf = !shipper.hasCdp && (sustainCat === 'leader' || sustainCat === 'active');
+  const sustainTip = showLeaf
+    ? [
+        sustainCat === 'leader' ? 'Sustainability leader' : 'Sustainability active',
+        shipper.sustainability.evidence?.[0],
+        shipper.sustainability.source,
+      ].filter(Boolean).join(' — ')
+    : '';
+
   return (
     <div>
       <div
@@ -878,8 +889,16 @@ function ShipperRow({ shipper, onClick, onSetSaidYes, onSetCargo, onRoute, route
           style={{ background: onRoute ? '#2563eb' : said === 'yes' ? '#10b981' : said === 'no' ? '#d1d5db' : shipper.contacted ? '#9CA3AF' : tierColor(shipper.tier) }}
         />
         <div className="flex-1 min-w-0">
-          <div className={`text-sm font-medium truncate ${said === 'no' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
-            {shipper.company}
+          <div className={`text-sm font-medium truncate flex items-center gap-1 ${said === 'no' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+            <span className="truncate">{shipper.company}</span>
+            {showLeaf && (
+              <span className="flex-shrink-0" title={sustainTip}>
+                <Leaf
+                  size={11}
+                  className={sustainCat === 'leader' ? 'text-emerald-600' : 'text-green-500'}
+                />
+              </span>
+            )}
           </div>
           <div className="text-xs text-gray-500">
             {shipper.location}

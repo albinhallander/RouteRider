@@ -1,0 +1,343 @@
+[
+  {
+    "id": "c-dsv-se",
+    "name": "DSV Road AB",
+    "hq": "Landskrona",
+    "country": "SE",
+    "fleetTrucks": 900,
+    "corridors": [
+      "Göteborg",
+      "Stockholm",
+      "Malmö",
+      "Jönköping",
+      "Hamburg",
+      "Köpenhamn"
+    ],
+    "specialty": "General cargo · groupage",
+    "contact": "road.se@dsv.com",
+    "website": "https://www.dsv.com/sv-se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Strävar efter att minska vår miljöpåverkan genom att testa och skala upp beprövade lösningar.",
+        "Vidareutvecklar hållbarhetsredovisning inom viktiga områden som miljö, CSR, arbetsmiljö, säkerhet och kvalitet."
+      ],
+      "source": "https://www.dsv.com/sv-se/hallbarhet-esg",
+      "checkedAt": "2026-04-18T13:26:10Z"
+    }
+  },
+  {
+    "id": "c-schenker-se",
+    "name": "DB Schenker Sverige",
+    "hq": "Göteborg",
+    "country": "SE",
+    "fleetTrucks": 1200,
+    "corridors": [
+      "Göteborg",
+      "Stockholm",
+      "Malmö",
+      "Oslo",
+      "Hamburg",
+      "Köpenhamn",
+      "Jönköping"
+    ],
+    "specialty": "Road freight · contract logistics",
+    "contact": "transport.sverige@dbschenker.com",
+    "website": "https://www.dbschenker.com/se-sv",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Hållbarhetsredovisning suggests dedicated sustainability reports are available.",
+        "Eldriven HCT-lastbil signifies progress towards sustainable transportation."
+      ],
+      "source": "https://www.dbschenker.com/sv-se/hallbarhet-esg",
+      "checkedAt": "2026-04-18T13:26:13Z"
+    }
+  },
+  {
+    "id": "c-postnord-se",
+    "name": "PostNord Sverige AB",
+    "hq": "Solna",
+    "country": "SE",
+    "fleetTrucks": 2500,
+    "corridors": [
+      "Stockholm",
+      "Göteborg",
+      "Malmö",
+      "Köpenhamn",
+      "Jönköping",
+      "Södertälje"
+    ],
+    "specialty": "Pallet + parcel · daily lines",
+    "contact": "foretag@postnord.com",
+    "website": "https://www.postnord.se",
+    "sustainability": {
+      "score": 40,
+      "category": "active",
+      "evidence": [
+        "Nu åker 400 nya elektriska postbilar ut på vägarna - postnord.se."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbmdLUnVZUk1RU1hraTVUM0YxbkwweTlrNzB4MjBsbVJVX09",
+      "checkedAt": "2026-04-18T13:26:17Z"
+    }
+  },
+  {
+    "id": "c-ntex",
+    "name": "NTEX AB",
+    "hq": "Göteborg",
+    "country": "SE",
+    "fleetTrucks": 450,
+    "corridors": [
+      "Göteborg",
+      "Stockholm",
+      "Oslo",
+      "Malmö",
+      "Hamburg"
+    ],
+    "specialty": "International road freight",
+    "contact": "info@ntex.se",
+    "website": "https://www.ntex.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Ambition to achieve net-zero emissions by 2050 with a 50% reduction by 2040.",
+        "Working continuously to optimize transport logistics and invest in biofuels and other fossil-free alternatives."
+      ],
+      "source": "https://www.ntex.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:26:22Z"
+    }
+  },
+  {
+    "id": "c-alltransport",
+    "name": "Alltransport i Östergötland AB",
+    "hq": "Norrköping",
+    "country": "SE",
+    "fleetTrucks": 220,
+    "corridors": [
+      "Linköping",
+      "Stockholm",
+      "Göteborg",
+      "Jönköping"
+    ],
+    "specialty": "Bulk + groupage · Östergötland",
+    "contact": "info@alltransport.se",
+    "website": "https://www.alltransport.se",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "Alltransport är certifierad enligt ISO 14001:2015.",
+        "Koncernen har följt upp och beräknat utsläpp sedan början av 2000-talet.",
+        "Alltransport driver 6 drivmedelsanläggningar varav två laddstationer för el."
+      ],
+      "source": "https://www.alltransport.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:26:28Z"
+    }
+  },
+  {
+    "id": "c-ahola",
+    "name": "Ahola Transport AB",
+    "hq": "Göteborg",
+    "country": "SE",
+    "fleetTrucks": 380,
+    "corridors": [
+      "Göteborg",
+      "Stockholm",
+      "Hamburg",
+      "Köpenhamn",
+      "Oslo"
+    ],
+    "specialty": "Finland-Sweden scheduled lines",
+    "contact": "sweden@aholatransport.com",
+    "website": "https://www.aholatransport.com",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Sustainability is a fundamental part of Ahola group's strategy, and we are committed to being responsible in everything we do."
+      ],
+      "source": "https://www.aholagroup.com/sustainability/",
+      "checkedAt": "2026-04-18T13:26:32Z"
+    }
+  },
+  {
+    "id": "c-tgm",
+    "name": "TGM Åkeri AB",
+    "hq": "Kungälv",
+    "country": "SE",
+    "fleetTrucks": 140,
+    "corridors": [
+      "Göteborg",
+      "Oslo",
+      "Malmö",
+      "Jönköping"
+    ],
+    "specialty": "Temperature-controlled · west coast",
+    "contact": "info@tgm.se",
+    "website": "https://www.tgm.se",
+    "sustainability": {
+      "score": 40,
+      "category": "active",
+      "evidence": [
+        "TGM Åkeri AB is ISO-certified according to ISO 14001.",
+        "The company has joined Fair Transport to promote sustainable practices in the transport industry."
+      ],
+      "source": "https://www.tgm.se/?page_id=240",
+      "checkedAt": "2026-04-18T13:26:39Z"
+    }
+  },
+  {
+    "id": "c-bring-no",
+    "name": "Bring (Posten Norge)",
+    "hq": "Oslo",
+    "country": "NO",
+    "fleetTrucks": 1800,
+    "corridors": [
+      "Oslo",
+      "Göteborg",
+      "Stockholm",
+      "Köpenhamn"
+    ],
+    "specialty": "Nordic lines · pallet + parcel",
+    "contact": "kundeservice.no@bring.com",
+    "website": "https://www.bring.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "https://bring.com",
+      "checkedAt": "2026-04-18T13:26:42Z"
+    }
+  },
+  {
+    "id": "c-dhl-dk",
+    "name": "DHL Freight Danmark",
+    "hq": "Brøndby",
+    "country": "DK",
+    "fleetTrucks": 650,
+    "corridors": [
+      "Köpenhamn",
+      "Malmö",
+      "Hamburg",
+      "Göteborg"
+    ],
+    "specialty": "LTL/FTL Nordic ↔ DACH",
+    "contact": "info.dk@dhl.com",
+    "website": "https://www.dhl.com/dk-en/home/freight.html",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "https://www.dhl.com/dk-en/home/freight.html",
+      "checkedAt": "2026-04-18T13:27:02Z"
+    }
+  },
+  {
+    "id": "c-dachser",
+    "name": "Dachser SE",
+    "hq": "Kempten",
+    "country": "DE",
+    "fleetTrucks": 9000,
+    "corridors": [
+      "Hamburg",
+      "Köpenhamn",
+      "Göteborg",
+      "Stockholm",
+      "Oslo",
+      "Gdansk"
+    ],
+    "specialty": "European Logistics network",
+    "contact": "info@dachser.com",
+    "website": "https://www.dachser.com",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "https://www.dachser.com",
+      "checkedAt": "2026-04-18T13:27:04Z"
+    }
+  },
+  {
+    "id": "c-rhenus",
+    "name": "Rhenus Logistics",
+    "hq": "Holzwickede",
+    "country": "DE",
+    "fleetTrucks": 7500,
+    "corridors": [
+      "Hamburg",
+      "Köpenhamn",
+      "Stockholm",
+      "Oslo",
+      "Gdansk"
+    ],
+    "specialty": "Multimodal · Baltic flows",
+    "contact": "info@rhenus.com",
+    "website": "https://www.rhenus.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:27:07Z"
+    }
+  },
+  {
+    "id": "c-gw-at",
+    "name": "Gebrüder Weiss",
+    "hq": "Lauterach",
+    "country": "AT",
+    "fleetTrucks": 3200,
+    "corridors": [
+      "Wien",
+      "Hamburg",
+      "Köpenhamn",
+      "Stockholm",
+      "Gdansk"
+    ],
+    "specialty": "CEE + Alpine · groupage",
+    "contact": "info@gw-world.com",
+    "website": "https://www.gw-world.com",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "We aim to gradually reduce our CO2 footprint towards zero in the coming years.",
+        "We’re on the way: Responsibility. Transformation. Impact.",
+        "In 2024, we produced 13.00 Megawatt-hours of electricity from 34 photovoltaic plants."
+      ],
+      "source": "https://publications.gw-world.com/sustainability-report-2024/",
+      "checkedAt": "2026-04-18T13:27:14Z"
+    }
+  },
+  {
+    "id": "c-hellmann",
+    "name": "Hellmann Worldwide Logistics",
+    "hq": "Osnabrück",
+    "country": "DE",
+    "fleetTrucks": 4200,
+    "corridors": [
+      "Hamburg",
+      "Köpenhamn",
+      "Göteborg",
+      "Stockholm",
+      "Wien"
+    ],
+    "specialty": "European road network",
+    "contact": "road@hellmann.com",
+    "website": "https://www.hellmann.com",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "https://www.hellmann.com",
+      "checkedAt": "2026-04-18T13:27:15Z"
+    }
+  }
+]

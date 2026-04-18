@@ -1,1 +1,4941 @@
-[{"name":"COOP Fryslager Enköping","lat":59.640111,"lng":17.157649,"city":"Enköping","adress":"Varggatan","postnr":"74940","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Haga tegelbruk","lat":59.602641,"lng":17.058164,"city":"Enköping","adress":"Tegelbruksvägen","postnr":"74593","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Ena Energi","lat":59.628202,"lng":17.077532,"city":"Enköping","adress":"Kaptensgatan","postnr":"74935","typ":"industri","bransch":"Extern verkställande direktör Torbjörn Gunnar Claesson","org_nr":"556153-8389","allabolag_url":"https://www.allabolag.se/foretag/ena-energi-ab/enk%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JZ72HHI63IG2","hemsida":""},{"name":"Nyby bruk","lat":59.430352,"lng":16.464365,"city":"Eskilstuna","adress":"Andbäcksvägen","postnr":"64431","typ":"industri","bransch":"Ordförande Mats Oscar Johan Broling","org_nr":"556602-0698","allabolag_url":"https://www.allabolag.se/foretag/nyby-bruk-ab/gnosj%C3%B6/metaller-legeringar/2K1V522I5YGAN","hemsida":""},{"name":"Grönsta industriområde","lat":59.378239,"lng":16.578878,"city":"Eskilstuna","adress":"Vägmästarvägen","postnr":"63502","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Eklunda industriområde","lat":59.411878,"lng":16.470641,"city":"Eskilstuna","adress":"Såggatan","postnr":"64430","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"EKTAB","lat":59.348139,"lng":16.475861,"city":"Eskilstuna","adress":"Montörgatan 1","postnr":"63232","typ":"industrilokal","bransch":"Ledamot Per Ola Eifrém","org_nr":"556631-8902","allabolag_url":"https://www.allabolag.se/foretag/ekab-entreprenad-i-gr%C3%B6dinge-ab/s%C3%B6dert%C3%A4lje/entrepren%C3%B6rer/2K21J5II63IFX","hemsida":""},{"name":"DHL","lat":59.387365,"lng":16.45003,"city":"Eskilstuna","adress":"Folkestaleden 7","postnr":"63223","typ":"industri","bransch":"Verkställande direktör Robert Kenth Zander","org_nr":"556103-0437","allabolag_url":"https://www.allabolag.se/foretag/dhl-freight-sweden-ab/solna/transportf%C3%B6rmedling/2JYW6JPI5YI2J","hemsida":""},{"name":"Eskilstuna Handelsstål AB","lat":59.400904,"lng":16.429443,"city":"Eskilstuna","adress":"E 20","postnr":"63239","typ":"industrilokal","bransch":"Extern verkställande direktör Esa Tapio Ahonen","org_nr":"556583-6227","allabolag_url":"https://www.allabolag.se/foretag/eskilstuna-handelsst%C3%A5l-ab/eskilstuna/metaller-legeringar/2K1R6PVI5YGAN","hemsida":""},{"name":"Volvo Demofält","lat":59.411693,"lng":16.429511,"city":"Eskilstuna","adress":"Bolindervägen","postnr":"63239","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"EPC Sverige AB","lat":59.366663,"lng":16.62663,"city":"Eskilstuna","adress":"Hugelsta","postnr":"635 02","typ":"fabrik","bransch":"Verkställande direktör Nils Edvin Patrik Norén","org_nr":"556588-7857","allabolag_url":"https://www.allabolag.se/foretag/epc-sverige-ab/eskilstuna/kemikalier-industrikemikalier-tillverkning/2K1SAK1I63IHZ","hemsida":"https://www.epc-groupe.se/"},{"name":"Bilskrot","lat":59.336005,"lng":17.048187,"city":"Strängnäs","adress":"Malmbyvägen","postnr":"64547","typ":"industri","bransch":"Extern verkställande direktör Oscar Eric Bjurhovd","org_nr":"556123-5325","allabolag_url":"https://www.allabolag.se/foretag/aktiebolaget-harrys-bilskrot/malm%C3%B6/bilar/2JZ0KN1I5YCZW","hemsida":""},{"name":"Strängnäs Bilskrot","lat":59.335816,"lng":17.05494,"city":"Strängnäs","adress":"Malmbyvägen","postnr":"64547","typ":"industri","bransch":"Ledamot Ali Rahimi","org_nr":"556911-5750","allabolag_url":"https://www.allabolag.se/foretag/str%C3%A4ngn%C3%A4s-bil-skrot-aktiebolag/str%C3%A4ngn%C3%A4s/avfallshantering/2K3PH7QI63IOK","hemsida":""},{"name":"Finja Betong AB","lat":59.324311,"lng":17.063071,"city":"Strängnäs","adress":"Betongvägen 15","postnr":"64594","typ":"fabrik","bransch":"Extern verkställande direktör Kjell Daniel Jonsson","org_nr":"556101-6840","allabolag_url":"https://www.allabolag.se/foretag/finja-betong-ab/finja/betong-betongvaror-produktion/2JYVW20I63IMB","hemsida":""},{"name":"Sandåsa Träförädling","lat":59.347435,"lng":17.122943,"city":"Strängnäs","adress":"","postnr":"64594","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.sandasa.se"},{"name":"Malmby Bilskrot","lat":59.32262,"lng":17.076144,"city":"Strängnäs","adress":"D 900","postnr":"64594","typ":"industri","bransch":"Ledamot Ali Tahsin Fattah","org_nr":"556259-7566","allabolag_url":"https://www.allabolag.se/foretag/malmby-bilskrot-aktiebolag/str%C3%A4ngn%C3%A4s/transportf%C3%B6rmedling/2JZTRR2I5YI2J","hemsida":""},{"name":"Sundby gamla vattentorn","lat":59.384214,"lng":17.049236,"city":"Strängnäs","adress":"Vattentornsbacken","postnr":"64551","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Åsporten","lat":58.982718,"lng":16.231999,"city":"Katrineholm","adress":"Eriksbergsvägen","postnr":"64132","typ":"industri","bransch":"Verkställande direktör Mats Erik Sven Gillstam","org_nr":"556569-5367","allabolag_url":"https://www.allabolag.se/foretag/%C3%A5sporten-f%C3%B6rvaltning-ab/katrineholm/fastighetsbolag-lokaler/2K1O613I5YDUJ","hemsida":""},{"name":"Stibo Complete","lat":58.995564,"lng":16.180809,"city":"Katrineholm","adress":"Högmossevägen","postnr":"64136","typ":"industri","bransch":"Extern verkställande direktör Palle Jacobsen","org_nr":"559049-4968","allabolag_url":"https://www.allabolag.se/foretag/stibo-complete-ab/katrineholm/tryckerier/2KGFPIWI5YI3L","hemsida":""},{"name":"AWS eu-north-1 Availability Zone K","lat":58.996416,"lng":16.235174,"city":"Katrineholm","adress":"Terminalgatan","postnr":"64149","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Energihuset","lat":59.010021,"lng":16.204937,"city":"Katrineholm","adress":"","postnr":"64146","typ":"industrilokal","bransch":"Verkställande direktör Tom Charles Lynbech","org_nr":"556566-3639","allabolag_url":"https://www.allabolag.se/foretag/energihuset-i-vimmerby-ab/vimmerby/j%C3%A4rnvaror/2K1NHJRI5YEU5","hemsida":""},{"name":"Igelstaverket","lat":59.176899,"lng":17.666481,"city":"Södertälje","adress":"","postnr":"15257","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Almnäs","lat":59.170878,"lng":17.530213,"city":"Södertälje","adress":"Kaserngatan","postnr":"15166","typ":"industri","bransch":"Verkställande direktör Hans Uno Mickael Thomas Berglund","org_nr":"556307-3468","allabolag_url":"https://www.allabolag.se/foretag/almn%C3%A4s-bruk-ab/hjo/jordbruk/2K03YYKI63IHJ","hemsida":""},{"name":"AVL","lat":59.17551,"lng":17.618926,"city":"Södertälje","adress":"Transmissionsvägen","postnr":"15147","typ":"industrilokal","bransch":"Extern verkställande direktör Dan Mikael Lilja","org_nr":"556765-3786","allabolag_url":"https://www.allabolag.se/foretag/nordv%C3%A4stra-sk%C3%A5nes-vatten-och-avlopp-ab/helsingborg/vvs-arbeten-material-och-produkter/2K2U55MI5YILC","hemsida":""},{"name":"Scania","lat":59.164562,"lng":17.644431,"city":"Södertälje","adress":"Verkstadsvägen","postnr":"15138","typ":"industri","bransch":"Verkställande direktör Rolf Christian Levin","org_nr":"556084-0976","allabolag_url":"https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW","hemsida":""},{"name":"Scania","lat":59.159194,"lng":17.644398,"city":"Södertälje","adress":"Sydgatan 5","postnr":"15138","typ":"industri","bransch":"Verkställande direktör Rolf Christian Levin","org_nr":"556084-0976","allabolag_url":"https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW","hemsida":""},{"name":"Hovsjö industriområde","lat":59.181224,"lng":17.587175,"city":"Södertälje","adress":"Gesällvägen","postnr":"15165","typ":"industri","bransch":"77390 Uthyrning och leasing av diverse övrig utrustning samt diverse övriga maskiner och materiella tillgångar","org_nr":"717910-4596","allabolag_url":"https://www.allabolag.se/foretag/domsj%C3%B6-industriomr%C3%A5de-samf%C3%A4llighetsf%C3%B6rening/%C3%B6rnsk%C3%B6ldsvik/uthyrning/3AQ94K4I5YIEZ","hemsida":""},{"name":"106","lat":59.169766,"lng":17.635979,"city":"Södertälje","adress":"Nyköpingsvägen","postnr":"15187","typ":"industri","bransch":"Ordförande Ulf Mathias Aronsson","org_nr":"556975-5589","allabolag_url":"https://www.allabolag.se/foretag/wallenstam-fastigheter-106-ab/g%C3%B6teborg/fastighetsbolag-lokaler/2K436X1I5YDUJ","hemsida":""},{"name":"AstraZeneca","lat":59.203728,"lng":17.614817,"city":"Södertälje","adress":"Forskargatan 13","postnr":"15136","typ":"industri","bransch":"Verkställande direktör Per David Alfredsson","org_nr":"556011-7482","allabolag_url":"https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF","hemsida":""},{"name":"Brandalsunds skola","lat":59.116489,"lng":17.640888,"city":"Södertälje","adress":"Nyköpingsvägen","postnr":"15139","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"102","lat":59.167545,"lng":17.635228,"city":"Södertälje","adress":"Granparksvägen","postnr":"15187","typ":"industrilokal","bransch":"Verkställande direktör Bo Christer Lundstedt","org_nr":"556640-0262","allabolag_url":"https://www.allabolag.se/foretag/hedern-fastigheter-102-ab/sundsvall/fastighetsbolag-lokaler/2K239XII5YDUJ","hemsida":""},{"name":"Tekniska Kontoret","lat":59.205784,"lng":17.751892,"city":"Södertälje","adress":"Förrådsvägen 6","postnr":"144 40","typ":"industrilokal","bransch":"Ledamot Jenz Robert Åberg","org_nr":"556501-1938","allabolag_url":"https://www.allabolag.se/foretag/teknik-kontor-servrar-i-%C3%B6rebro-ab/%C3%B6rebro/datorer-kringutrustningar/2K19IOYI5YCUH","hemsida":""},{"name":"Skarlunda","lat":59.171098,"lng":17.724676,"city":"Södertälje","adress":"Sörmlandsleden","postnr":"14463","typ":"industri","bransch":"68209 Övrig förvaltning av egna eller arrenderade fastigheter","org_nr":"802447-2204","allabolag_url":"https://www.allabolag.se/foretag/skarlunda-v%C3%A4gf%C3%B6rening/s%C3%B6dert%C3%A4lje/fastighetsbolag-lokaler/3OPKADOI5YDUJ","hemsida":""},{"name":"Mörby","lat":59.184362,"lng":17.4673,"city":"Södertälje","adress":"Norra Gärdet","postnr":"15534","typ":"industri","bransch":"Extern verkställande direktör Per Niclas Stephani","org_nr":"556528-7629","allabolag_url":"https://www.allabolag.se/foretag/m%C3%B6rbyl%C3%A5nga-bostads-aktiebolag/m%C3%B6rbyl%C3%A5nga/fastighetsbolag-lokaler/2K1FFF1I5YDUJ","hemsida":""},{"name":"Volkswagen Group Sverige AB","lat":59.179336,"lng":17.480145,"city":"Södertälje","adress":"Mörbyvägen","postnr":"15534","typ":"industrilokal","bransch":"Verkställande direktör Claes Peter Jerveland","org_nr":"556084-0968","allabolag_url":"https://www.allabolag.se/foretag/volkswagen-group-sverige/s%C3%B6dert%C3%A4lje/bilar/2JYS4COI5YCZW","hemsida":""},{"name":"AstraZeneca","lat":59.177094,"lng":17.679609,"city":"Södertälje","adress":"","postnr":"15257","typ":"industri","bransch":"Verkställande direktör Per David Alfredsson","org_nr":"556011-7482","allabolag_url":"https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF","hemsida":""},{"name":"Geneta Panncentral","lat":59.194735,"lng":17.590837,"city":"Södertälje","adress":"Prästgårdsvägen","postnr":"15161","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Igelsta Hamn","lat":59.174903,"lng":17.66471,"city":"Södertälje","adress":"Nynäsvägen","postnr":"15257","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Racehall Stockholm AB","lat":59.162324,"lng":17.739991,"city":"Södertälje","adress":"Sörmlandsleden","postnr":"14463","typ":"lager","bransch":"Extern verkställande direktör Peter Vindbæk Skjødt-Jacobsen","org_nr":"559451-4241","allabolag_url":"https://www.allabolag.se/foretag/racehall-stockholm-ab/gr%C3%B6dinge/motorbanor/2KITUTDI63IUD","hemsida":""},{"name":"Bolmängens industriområde","lat":59.063182,"lng":16.587506,"city":"Flen","adress":"Bolmängsgatan","postnr":"64232","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Talja Södra","lat":59.074103,"lng":16.610925,"city":"Flen","adress":"Taljavägen","postnr":"64233","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Talja Södra","lat":59.072846,"lng":16.600138,"city":"Flen","adress":"Taljavägen","postnr":"64233","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Talja Norra","lat":59.079543,"lng":16.604987,"city":"Flen","adress":"Blockvägen","postnr":"64233","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Volvo Group Trucks Operations","lat":59.05698,"lng":16.580845,"city":"Flen","adress":"Drottninggatan","postnr":"64237","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Magnum ICC Sweden Supply AB (GB Glace)","lat":59.059371,"lng":16.58675,"city":"Flen","adress":"Storgatan 11","postnr":"64237","typ":"fabrik","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Momento AB","lat":59.056528,"lng":16.615919,"city":"Flen","adress":"Kungsvägen","postnr":"64233","typ":"industri","bransch":"Verkställande direktör Nils Torbjörn Palmberg","org_nr":"556475-6848","allabolag_url":"https://www.allabolag.se/foretag/ab-momento/flen/verktyg-och-redskap/2K141V4I63IL9","hemsida":""},{"name":"Företagsby","lat":59.040186,"lng":16.591383,"city":"Flen","adress":"Öjavägen","postnr":"64234","typ":"industri","bransch":"Ordförande Kjell Emanuel Nilsberg","org_nr":"556176-9521","allabolag_url":"https://www.allabolag.se/foretag/vallentuna-f%C3%B6retagsby-aktiebolag/vallentuna/fastighetsbolag-lokaler/2JZC0TTI5YDUJ","hemsida":""},{"name":"Volvo Group Trucks Operations","lat":59.077783,"lng":16.607041,"city":"Flen","adress":"Blockvägen","postnr":"64233","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Idbäcken","lat":58.747773,"lng":16.995177,"city":"Nyköping","adress":"Åkerbärsvägen","postnr":"61130","typ":"industri","bransch":"Ledamot Carl Jakob Johansson","org_nr":"556857-0088","allabolag_url":"https://www.allabolag.se/foretag/fastighets-ab-idb%C3%A4cken/stockholm/fastighetsbolag-lokaler/2K3DS6GI5YDUJ","hemsida":""},{"name":"Hall 9, Hall 10","lat":58.683241,"lng":17.122426,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"SSAB Oxelösund","lat":58.674166,"lng":17.126991,"city":"Nyköping","adress":"","postnr":"61331","typ":"industri","bransch":"94200 Intressebevakning inom arbetstagarorganisationer","org_nr":"802416-3696","allabolag_url":"https://www.allabolag.se/foretag/cf-klubben-ssab-oxel%C3%B6sund/oxel%C3%B6sund/f%C3%B6reningar/3OPDOC0I63IGG","hemsida":""},{"name":"Idbäckens Kraftvärmeverk","lat":58.742861,"lng":17.000611,"city":"Nyköping","adress":"Idbäcksvägen","postnr":"61129","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Heda Skandinavien AB","lat":58.771635,"lng":17.031461,"city":"Nyköping","adress":"Svärtavägen","postnr":"61166","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Eberspächer","lat":58.714244,"lng":17.02322,"city":"Nyköping","adress":"Flättnaleden","postnr":"61145","typ":"industrilokal","bransch":"Extern verkställande direktör Karl Gunnar Stålheim Geijer","org_nr":"556012-4561","allabolag_url":"https://www.allabolag.se/foretag/ebersp%C3%A4cher-aktiebolag/trollh%C3%A4ttan/detaljhandel/2JYCRKHI63ILU","hemsida":""},{"name":"Schneider Electric","lat":58.765441,"lng":16.987187,"city":"Nyköping","adress":"Mejerivägen","postnr":"61155","typ":"industrilokal","bransch":"Verkställande direktör Anna Kristina Andersson","org_nr":"556259-3532","allabolag_url":"https://www.allabolag.se/foretag/schneider-electric-sverige-ab/solna/elektronik-och-telekommunikationsutrustning/2JZTON0I63IFR","hemsida":""},{"name":"Perioden","lat":58.760017,"lng":17.005791,"city":"Nyköping","adress":"Periodgången","postnr":"61133","typ":"industrilokal","bransch":"Ledamot Farouk Eskander","org_nr":"559501-6329","allabolag_url":"https://www.allabolag.se/foretag/periodent-ab/h%C3%A4sselby/h%C3%A4lsotj%C3%A4nster/2KJ4M89I63IHB","hemsida":""},{"name":"Bara industriområde","lat":58.684329,"lng":17.065456,"city":"Nyköping","adress":"Baravägen 5","postnr":"61341","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Tegelladan","lat":58.693486,"lng":17.041126,"city":"Nyköping","adress":"Lastuddsvägen","postnr":"61338","typ":"industri","bransch":"Ordförande Lena Birgitta Sköld","org_nr":"769606-2764","allabolag_url":"https://www.allabolag.se/foretag/bostadsr%C3%A4ttsf%C3%B6reningen-tegelladan-1/sundsvall/fastighetsbolag-lokaler/3JA1C18I5YDUJ","hemsida":""},{"name":"Orio AB","lat":58.716024,"lng":17.01638,"city":"Nyköping","adress":"Flättnaleden","postnr":"61145","typ":"lager","bransch":"Extern verkställande direktör Jesper Otto Qvist-Pedersen","org_nr":"556193-6294","allabolag_url":"https://www.allabolag.se/foretag/orion-pharma-aktiebolag/danderyd/apoteksvaror-l%C3%A4kemedel-partihandel/2JZFLIEI63IM3","hemsida":""},{"name":"Höglager MTB","lat":58.684666,"lng":17.126559,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Sjoklagret","lat":58.685256,"lng":17.130577,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"Ledamot Jan Magnus Gustafsson","org_nr":"559160-7899","allabolag_url":"https://www.allabolag.se/foretag/hjolagret-ab/hjo/k%C3%B6ksinredningar-agentur-och-grossist/2KH3K9NI63IIE","hemsida":""},{"name":"Brandkärr värmecentral","lat":58.768709,"lng":17.023404,"city":"Nyköping","adress":"Brandkärrsvägen","postnr":"61165","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Kullbergs","lat":58.748779,"lng":17.019984,"city":"Nyköping","adress":"Ringvägen","postnr":"61135","typ":"industrilokal","bransch":"Ledamot Magnus Kullberg","org_nr":"556309-3292","allabolag_url":"https://www.allabolag.se/foretag/kullbergs-mur-och-bygg-aktiebolag/ronneby/byggm%C3%A4stare/2K04E98I5YDDT","hemsida":""},{"name":"Harsco","lat":58.685994,"lng":17.132846,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"Verkställande direktör Lars Ove Lindqvist","org_nr":"556177-2566","allabolag_url":"https://www.allabolag.se/foretag/harsco-metals-sweden-ab/norberg/avfallshantering/2JZC36EI63IOK","hemsida":""},{"name":"Foria","lat":58.682395,"lng":17.137789,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"Extern verkställande direktör Jonas Lars Skovgaard","org_nr":"556069-1684","allabolag_url":"https://www.allabolag.se/foretag/foria-ab-publ/s%C3%B6dert%C3%A4lje/transportf%C3%B6rmedling/2JYOX5WI5YI2J","hemsida":""},{"name":"Blå tältet","lat":58.681336,"lng":17.117988,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"OT60","lat":58.685581,"lng":17.123108,"city":"Nyköping","adress":"","postnr":"61331","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Björshult Skrot & Mek AB","lat":58.709317,"lng":16.996393,"city":"Nyköping","adress":"Sörmlandsleden","postnr":"61145","typ":"industri","bransch":"Ledamot Mats Olov Andersson","org_nr":"556639-6940","allabolag_url":"https://www.allabolag.se/foretag/bj%C3%B6rshult-skrot-mek-ab/nyk%C3%B6ping/avfallshantering/2K237D8I63IOK","hemsida":""},{"name":"Econova Jordfabrik","lat":58.652148,"lng":16.180452,"city":"Norrköping","adress":"","postnr":"61630","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hults Bruk","lat":58.67279,"lng":16.12963,"city":"Norrköping","adress":"","postnr":"61634","typ":"industri","bransch":"94990 Verksamhet i diverse övriga intresseorganisationer","org_nr":"802464-3531","allabolag_url":"https://www.allabolag.se/foretag/hults-bruks-smidescentrum/norrk%C3%B6ping/f%C3%B6reningar/3OPNYKRI63IGG","hemsida":""},{"name":"Jursla industriområde","lat":58.65222,"lng":16.173555,"city":"Norrköping","adress":"Hydraulvägen 5","postnr":"61632","typ":"industri","bransch":"Verkställande direktör Simon Karl Ragnar Tjäder","org_nr":"556036-5677","allabolag_url":"https://www.allabolag.se/foretag/evergreen-garden-care-sverige-ab/%C3%A5by/kemikalier-industrikemikalier/2JYHXM5I5YEXO","hemsida":""},{"name":"Fiskeby","lat":58.593239,"lng":16.115358,"city":"Norrköping","adress":"Fiskebyvägen","postnr":"60376","typ":"industri","bransch":"Verkställande direktör John Mattias Wahlgren","org_nr":"556032-6158","allabolag_url":"https://www.allabolag.se/foretag/fiskeby-board-ab/norrk%C3%B6ping/producenter/2JYH34EI63IK3","hemsida":""},{"name":"Strömma Företagscenter","lat":58.59842,"lng":16.135132,"city":"Norrköping","adress":"Fiskebyvägen","postnr":"60210","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bravikens pappersbruk","lat":58.637434,"lng":16.254133,"city":"Norrköping","adress":"Östra Bravikenvägen","postnr":"60365","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Loddby f.d. sulfitfabrik","lat":58.63583,"lng":16.182504,"city":"Norrköping","adress":"Loddbyvägen","postnr":"61630","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Agroetanol","lat":58.615124,"lng":16.227268,"city":"Norrköping","adress":"","postnr":"60238","typ":"industri","bransch":"94200 Intressebevakning inom arbetstagarorganisationer","org_nr":"802537-0589","allabolag_url":"https://www.allabolag.se/foretag/unionen-p%C3%A5-lantm%C3%A4nnen-agroetanol-ab/norrk%C3%B6ping/f%C3%B6reningar/3OQ3JKTI63IGG","hemsida":""},{"name":"Martin & Servera","lat":58.613607,"lng":16.162912,"city":"Norrköping","adress":"Blygatan 25","postnr":"602 23","typ":"industrilokal","bransch":"Extern verkställande direktör Irene Waldemarson","org_nr":"559135-5549","allabolag_url":"https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD","hemsida":""},{"name":"Yara AB - gamla superfosfatfabriken","lat":58.60629,"lng":16.190911,"city":"Norrköping","adress":"Kommendantvägen","postnr":"60119","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Kühne & Nagel","lat":58.618048,"lng":16.21524,"city":"Norrköping","adress":"Bravikenvägen 10","postnr":"60238","typ":"lager","bransch":"52260 Annan stödverksamhet avseende transport","org_nr":"502096-0794","allabolag_url":"https://www.allabolag.se/foretag/k%C3%BChne-nagel-ag-co.-kg/-/transportf%C3%B6rmedling/2B1CM56I5YI2J","hemsida":""},{"name":"Skrotfrag i Norrköping AB","lat":58.605993,"lng":16.19464,"city":"Norrköping","adress":"Kommendantvägen 10","postnr":"60119","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Jens S. Transmissioner","lat":58.615072,"lng":16.154263,"city":"Norrköping","adress":"Koppargatan 9","postnr":"60223","typ":"industrilokal","bransch":"Verkställande direktör Johan Fredrik Benzler","org_nr":"556043-7005","allabolag_url":"https://www.allabolag.se/foretag/jens-s.-transmissioner-ab/norrk%C3%B6ping/insatsvaror/2JYJGNHI63IHE","hemsida":""},{"name":"GSF Tryck","lat":58.586698,"lng":16.206795,"city":"Norrköping","adress":"Verksvägen","postnr":"60228","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"CEOS","lat":58.604492,"lng":16.206148,"city":"Norrköping","adress":"Blixholmsvägen 5","postnr":"60238","typ":"lager","bransch":"Extern verkställande direktör Karl Johan Ludvig Dalin","org_nr":"556712-3319","allabolag_url":"https://www.allabolag.se/foretag/ceos-fritzoe-ab/n%C3%A4ssj%C3%B6/tr%C3%A4-och-byggvaror-grossist/2K2IRUFI63IL2","hemsida":""},{"name":"Karstorps bildemontering","lat":58.547618,"lng":16.161537,"city":"Norrköping","adress":"Björkebergavägen","postnr":"60595","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Kungsängens företagspark","lat":58.579787,"lng":16.233375,"city":"Norrköping","adress":"Svärmaregatan 1","postnr":"60361","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"TvNo","lat":58.614792,"lng":16.145787,"city":"Norrköping","adress":"Tenngatan","postnr":"60209","typ":"industrilokal","bransch":"Extern verkställande direktör Anna Karin Elisabet Andersson","org_nr":"556194-6152","allabolag_url":"https://www.allabolag.se/foretag/tvno-textilservice-aktiebolag/norrk%C3%B6ping/tv%C3%A4tterier/2JZFT48I5YI7I","hemsida":""},{"name":"Holmen Timber Braviken","lat":58.638861,"lng":16.232668,"city":"Norrköping","adress":"","postnr":"60365","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Polyproject","lat":58.690991,"lng":16.345607,"city":"Norrköping","adress":"Gamla Krokeksvägen","postnr":"61833","typ":"industri","bransch":"Extern verkställande direktör Isabell Inger Ramona Lindahl","org_nr":"556908-6282","allabolag_url":"https://www.allabolag.se/foretag/polyproject-environment-ab/kolm%C3%A5rden/milj%C3%B6teknik/2K3OUH6I5YGC3","hemsida":""},{"name":"PM51 PM52","lat":58.639941,"lng":16.261325,"city":"Norrköping","adress":"Östra Bravikenvägen","postnr":"60365","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Fiskeby kraftverk","lat":58.593861,"lng":16.121465,"city":"Norrköping","adress":"Vattenverksvägen","postnr":"60210","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Strömsfors industriområde","lat":58.68601,"lng":16.341344,"city":"Norrköping","adress":"Hagalundsvägen","postnr":"61833","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Columbia Elektronik","lat":58.671842,"lng":16.36331,"city":"Norrköping","adress":"Sjöviksvägen","postnr":"61830","typ":"industrilokal","bransch":"Verkställande direktör Mats Göran Klarholm","org_nr":"556174-9317","allabolag_url":"https://www.allabolag.se/foretag/columbia-elektronik-aktiebolag/kolm%C3%A5rden/elektronik-legotillverkning/2JZBL8LI5YDXQ","hemsida":"https://www.columbia.se/"},{"name":"DSV","lat":58.608148,"lng":16.224857,"city":"Norrköping","adress":"Hanholmsvägen 50","postnr":"60238","typ":"lager","bransch":"Extern verkställande direktör Tomas Erik Johansson","org_nr":"556250-3630","allabolag_url":"https://www.allabolag.se/foretag/dsv-road-ab/g%C3%B6teborg/transportf%C3%B6rmedling/2JZRR9QI5YI2J","hemsida":""},{"name":"PM53","lat":58.641419,"lng":16.262418,"city":"Norrköping","adress":"Östra Bravikenvägen","postnr":"60365","typ":"industrilokal","bransch":"Innehavare Peter Christian Falksäter","org_nr":"","allabolag_url":"https://www.allabolag.se/foretag/pm63-charlottenberg/charlottenberg/h%C3%A4lsotj%C3%A4nster/7VJQ7FKSRI63IHB","hemsida":""},{"name":"Loddby betong","lat":58.503032,"lng":16.238365,"city":"Norrköping","adress":"","postnr":"61492","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Rusta Lager","lat":58.637983,"lng":16.216218,"city":"Norrköping","adress":"Logistikvägen","postnr":"60238","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Händelöverket","lat":58.620648,"lng":16.23194,"city":"Norrköping","adress":"Oceangatan","postnr":"60365","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Postnord","lat":58.646627,"lng":16.20855,"city":"Norrköping","adress":"Speditionsvägen","postnr":"61690","typ":"lager","bransch":"Extern verkställande direktör Peter Davids Gisel-Ekdahl","org_nr":"556711-5695","allabolag_url":"https://www.allabolag.se/foretag/postnord-sverige-ab/solna/kurirverksamhet/2K2ILYNI5YFN0","hemsida":""},{"name":"Rusta Lager","lat":58.642092,"lng":16.213689,"city":"Norrköping","adress":"Östra Bravikenvägen","postnr":"61690","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Ingelsta Hetvattencentral","lat":58.611723,"lng":16.171432,"city":"Norrköping","adress":"Kiselgatan","postnr":"60119","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"martin&servera","lat":58.641225,"lng":16.171057,"city":"Norrköping","adress":"Ströbogatan","postnr":"61634","typ":"lager","bransch":"Extern verkställande direktör Irene Waldemarson","org_nr":"559135-5549","allabolag_url":"https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD","hemsida":""},{"name":"Köpetorps industriområde","lat":58.413934,"lng":15.663745,"city":"Linköping","adress":"Köpetorpsgatan 8","postnr":"58278","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Berggårdens vattenverk","lat":58.420336,"lng":15.555569,"city":"Linköping","adress":"Berggårdsvägen","postnr":"58437","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Östra Malmskogen industriområde","lat":58.427084,"lng":15.707446,"city":"Linköping","adress":"Linghemsvägen","postnr":"58272","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"SGS Analytics","lat":58.398239,"lng":15.57247,"city":"Linköping","adress":"Olaus Magnus väg 27A","postnr":"58183","typ":"industrilokal","bransch":"Verkställande direktör Lars Mikael Löfdahl","org_nr":"556152-0916","allabolag_url":"https://www.allabolag.se/foretag/sgs-analytics-sweden-ab/link%C3%B6ping/teknisk-provning-och-analys/2JZ6P04I63IKV","hemsida":""},{"name":"Tornby Teknikgård","lat":58.429404,"lng":15.61193,"city":"Linköping","adress":"Gottorpsgatan","postnr":"58277","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Odenfors Kraftstation","lat":58.446533,"lng":15.466534,"city":"Linköping","adress":"","postnr":"58662","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Tannefors vattenkraftstation","lat":58.400576,"lng":15.649985,"city":"Linköping","adress":"Stationsgatan 2C","postnr":"58721","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Kallerstads industriområde","lat":58.419331,"lng":15.638385,"city":"Linköping","adress":"Åsbjörnsgatan 1","postnr":"58252","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Silon","lat":58.437435,"lng":15.796133,"city":"Linköping","adress":"Tellbovägen 32","postnr":"58564","typ":"lager","bransch":"Verkställande direktör Helen Margareta Öström","org_nr":"559314-2952","allabolag_url":"https://www.allabolag.se/foretag/silon-consulting-ab/sollentuna/f%C3%B6retagsutveckling/2KI0GQ0I5YEHU","hemsida":""},{"name":"Fergas AB","lat":58.418151,"lng":15.665531,"city":"Linköping","adress":"Harstenagatan 2","postnr":"582 78","typ":"industrilokal","bransch":"Extern verkställande direktör Patrik Jonny Jonsson","org_nr":"556433-6690","allabolag_url":"https://www.allabolag.se/foretag/fergas-north-europe-ab/link%C3%B6ping/maskinf%C3%B6rn%C3%B6denheter/2K0V1O2I5YG68","hemsida":""},{"name":"Tekniska verken","lat":58.42035,"lng":15.633906,"city":"Linköping","adress":"Brogatan 1","postnr":"58252","typ":"industrilokal","bransch":"Extern verkställande direktör Bror Conny Udd","org_nr":"556004-9727","allabolag_url":"https://www.allabolag.se/foretag/tekniska-verken-i-link%C3%B6ping-ab-publ/link%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JYB5TRI63IG2","hemsida":""},{"name":"rallye.se garage","lat":58.419292,"lng":15.602117,"city":"Linköping","adress":"Slöjdgatan 31","postnr":"58231","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Rörvik Timber","lat":58.440615,"lng":15.7763,"city":"Linköping","adress":"E 1064","postnr":"58564","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"http://www.rtimber.se/sv/om-rorvik/bolagsinformation/linghem-ab/"},{"name":"Tannefors Center","lat":58.408232,"lng":15.648371,"city":"Linköping","adress":"Gamla Tanneforsvägen 17","postnr":"58254","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Armaturen","lat":58.406058,"lng":15.650086,"city":"Linköping","adress":"Gelbgjutaregatan 2","postnr":"58187","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"TitanX","lat":58.427506,"lng":15.606288,"city":"Linköping","adress":"Roxtorpsgatan 13","postnr":"58277","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.werksta.se/"},{"name":"TK Traktordelar","lat":58.418094,"lng":15.767687,"city":"Linköping","adress":"E 757","postnr":"58565","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"ServiStore","lat":58.400717,"lng":15.549273,"city":"Linköping","adress":"Jägarvallsvägen 4","postnr":"584 22","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://servistore.se/sv/anlaggningar/linkoping"},{"name":"Svartåfors kraftstation","lat":58.45119,"lng":15.49205,"city":"Linköping","adress":"","postnr":"58577","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Shurgard Self-Storage","lat":58.419912,"lng":15.594993,"city":"Linköping","adress":"Lärlingsgatan 6","postnr":"582 39","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.shurgard.com/sv-se/hyra-forrad/ostergotland/linkoping"},{"name":"Mottagningsstation M11","lat":58.396518,"lng":15.620627,"city":"Linköping","adress":"Garnisonsvägen","postnr":"58751","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Svensk Biogas i Linköping","lat":58.430504,"lng":15.635431,"city":"Linköping","adress":"Ullevileden","postnr":"58221","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.svenskbiogas.se/"},{"name":"Axfood Snabbgross","lat":58.427438,"lng":15.599874,"city":"Linköping","adress":"Attorpsgatan 6A","postnr":"58273","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.snabbgross.se/"},{"name":"Beyond Gravity","lat":58.4122,"lng":15.6781,"city":"Linköping","adress":"Pilotgatan","postnr":"58725","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.beyondgravity.com"},{"name":"Vreta kloster bryggeri","lat":58.489813,"lng":15.501593,"city":"Linköping","adress":"Blåsvädersgatan 7","postnr":"585 73","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Salam livs lager","lat":58.392115,"lng":15.706786,"city":"Linköping","adress":"Landerydsvägen","postnr":"58941","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Posti","lat":57.684134,"lng":14.155205,"city":"Jönköping","adress":"Möbelvägen 21","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Electrolux","lat":57.686258,"lng":14.157293,"city":"Jönköping","adress":"Spisvägen 6","postnr":"55650","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"IKEA Lager","lat":57.685133,"lng":14.147336,"city":"Jönköping","adress":"Möbelvägen 14","postnr":"55652","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"DB Schenker","lat":57.750437,"lng":14.166508,"city":"Jönköping","adress":"Industrigatan 19","postnr":"55302","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"L&L Distribution AB","lat":57.752399,"lng":14.165642,"city":"Jönköping","adress":"Kabelvägen 7","postnr":"55302","typ":"distributionscenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hedenstorp norra","lat":57.769341,"lng":14.092048,"city":"Jönköping","adress":"Västersjövägen","postnr":"55593","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hedenstorp södra","lat":57.766171,"lng":14.088358,"city":"Jönköping","adress":"Mogölsvägen 11","postnr":"55593","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Posti","lat":57.683347,"lng":14.159884,"city":"Jönköping","adress":"Möbelvägen 23","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"MOBIS","lat":57.692984,"lng":14.144632,"city":"Jönköping","adress":"Logistikvägen 1","postnr":"55652","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Gripen Wheels","lat":57.694998,"lng":14.143351,"city":"Jönköping","adress":"Logistikvägen 2","postnr":"55652","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Petcare","lat":57.694338,"lng":14.139678,"city":"Jönköping","adress":"Logistikvägen 4","postnr":"55652","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Huskvarna Härdverkstad","lat":57.783913,"lng":14.314672,"city":"Jönköping","adress":"Hakarpsvägen 123 D","postnr":"56140","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Albins Krom","lat":57.758731,"lng":14.143721,"city":"Jönköping","adress":"Kindgrensgatan 1","postnr":"55474","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"http://www.albinskrom.se/"},{"name":"Haga Industriområde","lat":57.756881,"lng":14.142023,"city":"Jönköping","adress":"Kindgrensgatan 6","postnr":"55474","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"DHL Freight","lat":57.738177,"lng":14.165508,"city":"Jönköping","adress":"Verktygsvägen 19","postnr":"55614","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Arla","lat":57.740493,"lng":14.164845,"city":"Jönköping","adress":"Verktygsvägen 21","postnr":"55614","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"XL-BYGG Edvardssons","lat":57.887921,"lng":14.360471,"city":"Jönköping","adress":"Larssons väg 3","postnr":"56191","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Postnord Paketterminal Torsvik","lat":57.67568,"lng":14.158953,"city":"Jönköping","adress":"Stolsvägen 1","postnr":"55652","typ":"distributionscenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bring Express","lat":57.673587,"lng":14.160953,"city":"Jönköping","adress":"Bordsvägen 3","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Ekmans Jönköping","lat":57.688619,"lng":14.164601,"city":"Jönköping","adress":"Momarken 3","postnr":"55650","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Vuab","lat":57.690899,"lng":14.152069,"city":"Jönköping","adress":"Alfavägen 2","postnr":"55650","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bubs Godis","lat":57.69172,"lng":14.148986,"city":"Jönköping","adress":"Betavägen 4","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"DB Scehnker","lat":57.749249,"lng":14.169973,"city":"Jönköping","adress":"Skruvgatan 1","postnr":"55302","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Däckia Jönköping","lat":57.756347,"lng":14.162156,"city":"Jönköping","adress":"Industrigatan 12","postnr":"55302","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Tenhults Möbler Lager","lat":57.701205,"lng":14.329089,"city":"Jönköping","adress":"Centrumvägen","postnr":"56029","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Ebbes kraftstation","lat":57.785564,"lng":14.293615,"city":"Jönköping","adress":"Ådalsvägen","postnr":"56141","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Danish Crown","lat":57.696611,"lng":14.137001,"city":"Jönköping","adress":"Barnarpsvägen 102","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hobby Fritid","lat":57.70587,"lng":14.317501,"city":"Jönköping","adress":"Mjälarydsvägen","postnr":"56029","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Haga Galvanisering","lat":57.759476,"lng":14.140297,"city":"Jönköping","adress":"Hagaleden 35","postnr":"55474","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"V-TAB","lat":57.70115,"lng":14.116097,"city":"Jönköping","adress":"Hammarvägen 39","postnr":"56232","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Habil AB","lat":57.784088,"lng":14.230031,"city":"Jönköping","adress":"Sankt Göransvägen","postnr":"55454","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Dagab","lat":57.697987,"lng":14.138289,"city":"Jönköping","adress":"Barnarpsvägen 100","postnr":"56232","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Stena Recycling AB","lat":57.676646,"lng":14.186927,"city":"Jönköping","adress":"Lovsjövägen 41","postnr":"555 92","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Tabergs Åkeri","lat":57.683213,"lng":14.122855,"city":"Jönköping","adress":"Målövägen 8","postnr":"56233","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hedin Bil","lat":57.774608,"lng":14.21299,"city":"Jönköping","adress":"Bataljonsgatan","postnr":"55453","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Lyreco","lat":57.865972,"lng":14.130187,"city":"Jönköping","adress":"Sjöåkravägen 27","postnr":"56434","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Edeskvarna kraftstation","lat":57.871809,"lng":14.273933,"city":"Jönköping","adress":"E 4","postnr":"56146","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Beijers Bygg","lat":57.760669,"lng":14.161092,"city":"Jönköping","adress":"Materialvägen","postnr":"55302","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Wettersol AB","lat":57.869,"lng":14.113381,"city":"Jönköping","adress":"Tallvägen 4","postnr":"563 35","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Thunderful","lat":57.68666,"lng":14.15364,"city":"Jönköping","adress":"Möbelvägen","postnr":"55652","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"M2","lat":58.381682,"lng":13.856145,"city":"Skövde","adress":"","postnr":"54136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"F-Fabriken","lat":58.379212,"lng":13.859573,"city":"Skövde","adress":"","postnr":"54136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"A-Fabriken","lat":58.383848,"lng":13.85432,"city":"Skövde","adress":"","postnr":"54136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"M1","lat":58.383097,"lng":13.856711,"city":"Skövde","adress":"","postnr":"54136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Gjuteriet","lat":58.385564,"lng":13.855937,"city":"Skövde","adress":"John G. Grönvalls plats","postnr":"54137","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"D2","lat":58.38574,"lng":13.850498,"city":"Skövde","adress":"","postnr":"54136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Logent","lat":58.382277,"lng":13.878048,"city":"Skövde","adress":"Södra Aspelundsvägen 7","postnr":"54134","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Aspelund","lat":58.396006,"lng":13.891232,"city":"Skövde","adress":"Storängsvägen 22","postnr":"54134","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Poståkeriet","lat":58.385807,"lng":13.875919,"city":"Skövde","adress":"Bäckaskogsvägen 10","postnr":"54134","typ":"logistikcenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"KosterFiskarn","lat":58.386843,"lng":13.880825,"city":"Skövde","adress":"Bäckaskogsvägen 3","postnr":"54134","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.kosterfiskarn.se/"},{"name":"Skövde Värmeverk","lat":58.384352,"lng":13.884977,"city":"Skövde","adress":"Energivägen","postnr":"54134","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Cementa","lat":58.385233,"lng":13.826833,"city":"Skövde","adress":"Skaravägen","postnr":"54152","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Leax Arkivator","lat":58.165996,"lng":13.54111,"city":"Falköping","adress":"Göteborgsvägen 4","postnr":"52130","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Falköpings Mejeri","lat":58.165306,"lng":13.546948,"city":"Falköping","adress":"Frejagatan 6","postnr":"52143","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Pellviks","lat":58.148979,"lng":13.563553,"city":"Falköping","adress":"Agnestadsgatan 2","postnr":"52140","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Falköpings Bokbinderi","lat":58.172034,"lng":13.581552,"city":"Falköping","adress":"Sikagårdsgatan 6","postnr":"521 34","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"PR Slamsugning","lat":58.1605,"lng":13.544103,"city":"Falköping","adress":"Mossvägen 39","postnr":"521 30","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Falköpings Bildemontering","lat":58.16322,"lng":13.542146,"city":"Falköping","adress":"Mossvägen 38","postnr":"521 30","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Falköpings Tak","lat":58.165602,"lng":13.543985,"city":"Falköping","adress":"Mossvägen 21","postnr":"521 30","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Fonus kistfabrik","lat":58.165319,"lng":13.576505,"city":"Falköping","adress":"Midfalegatan","postnr":"52145","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Marjarpsverket","lat":58.1848,"lng":13.573035,"city":"Falköping","adress":"Energigatan 4","postnr":"52136","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"C&D Snickeri","lat":58.17962,"lng":13.568748,"city":"Falköping","adress":"Sidvallsgatan 4","postnr":"521 36","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"JB Villan","lat":58.225473,"lng":13.565102,"city":"Falköping","adress":"Solhemsvägen 4","postnr":"52174","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Arla","lat":58.183016,"lng":13.575935,"city":"Falköping","adress":"Energigatan 6","postnr":"52136","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bronäs","lat":57.799654,"lng":13.415367,"city":"Ulricehamn","adress":"Tegelbruksgatan 7","postnr":"52344","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Vist","lat":57.832261,"lng":13.423439,"city":"Ulricehamn","adress":"Industrivägen 12","postnr":"52390","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.bolon.com/"},{"name":"AP&T Sweden AB","lat":57.805438,"lng":13.458091,"city":"Ulricehamn","adress":"Rönnåsgatan","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.aptgroup.com/"},{"name":"LK Pex","lat":57.803699,"lng":13.456747,"city":"Ulricehamn","adress":"Rönnåsgatan 4","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Wernersson Ost AB","lat":57.831459,"lng":13.420779,"city":"Ulricehamn","adress":"Industrivägen 5","postnr":"52390","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Scand Trade Scandinavia AB","lat":57.807179,"lng":13.404774,"city":"Ulricehamn","adress":"Dalstigen 6","postnr":"52337","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://scantrade.se/"},{"name":"Vandewiele","lat":57.808517,"lng":13.408523,"city":"Ulricehamn","adress":"Karlsnäsvägen 7","postnr":"52337","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.iroab.com/"},{"name":"Bergman & Beving Logistics","lat":57.808219,"lng":13.413882,"city":"Ulricehamn","adress":"Vistaforsvägen 3","postnr":"52337","typ":"logistikcenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Jobro Plåtkomponenter AB","lat":57.809948,"lng":13.409043,"city":"Ulricehamn","adress":"Karlsnäsvägen 9","postnr":"52337","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Viab Ulricehamn AB","lat":57.802446,"lng":13.414382,"city":"Ulricehamn","adress":"Bronäsgatan 10","postnr":"52337","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.viabplast.se/"},{"name":"Craft of Scandinavia","lat":57.83624,"lng":13.424704,"city":"Ulricehamn","adress":"Industrivägen 24","postnr":"52390","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Myhre Miljöprodukter","lat":57.835721,"lng":13.421674,"city":"Ulricehamn","adress":"Industrivägen 15","postnr":"52390","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Mastec Components AB","lat":57.834113,"lng":13.421402,"city":"Ulricehamn","adress":"Industrivägen 7","postnr":"52390","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Botek Systems AB","lat":57.804284,"lng":13.463613,"city":"Ulricehamn","adress":"Rönnåsgatan 5A","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Emballator Ulricehamn","lat":57.800135,"lng":13.446514,"city":"Ulricehamn","adress":"Maskinvägen 10","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.emballator.com/"},{"name":"Bogelack AB","lat":57.800839,"lng":13.443532,"city":"Ulricehamn","adress":"Hillaredsvägen 12","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.bogelack.se/"},{"name":"Ulricehamns Fixturteknik AB","lat":57.802246,"lng":13.441503,"city":"Ulricehamn","adress":"Hillaredsvägen 8","postnr":"52338","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"http://www.fixturteknik.se/"},{"name":"Engtex AB","lat":57.838561,"lng":13.424368,"city":"Ulricehamn","adress":"Industrivägen 32","postnr":"52390","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Lager 157 Logistics","lat":57.801437,"lng":13.469315,"city":"Ulricehamn","adress":"Rönnåsliden 1A","postnr":"52338","typ":"logistikcenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Logistikpartner AB","lat":57.800886,"lng":13.462194,"city":"Ulricehamn","adress":"Rönnåsliden 4","postnr":"52338","typ":"logistikcenter","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Viared","lat":57.69906,"lng":12.84091,"city":"Borås","adress":"Viaredsvägen 18","postnr":"50464","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Mekonomen","lat":57.716635,"lng":12.95889,"city":"Borås","adress":"Enedalsgatan 11","postnr":"50452","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"DB Schenker","lat":57.689014,"lng":12.821809,"city":"Borås","adress":"Ryssnäsgatan 15","postnr":"50464","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"TK PAC","lat":57.701707,"lng":12.841956,"city":"Borås","adress":"Företagsgatan 62","postnr":"50464","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://tkpac.se/"},{"name":"Scania","lat":57.709421,"lng":12.864801,"city":"Borås","adress":"Viaredsvägen 6","postnr":"50464","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hus 2","lat":57.716002,"lng":12.890202,"city":"Borås","adress":"Brinellgatan","postnr":"50462","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hus 3","lat":57.717085,"lng":12.892181,"city":"Borås","adress":"Brinellgatan","postnr":"50470","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Hus 24","lat":57.715065,"lng":12.892654,"city":"Borås","adress":"Brinellgatan","postnr":"50470","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"ABC Vent","lat":57.720479,"lng":12.879948,"city":"Borås","adress":"Industrigatan 6","postnr":"504 62","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.abcvent.se/"},{"name":"Viared västra","lat":57.688152,"lng":12.803704,"city":"Borås","adress":"Prognosgatan","postnr":"51832","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Eton Systems","lat":57.695402,"lng":13.04261,"city":"Borås","adress":"","postnr":"50771","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.marksom.se"},{"name":"Brunngård","lat":57.702117,"lng":12.829858,"city":"Borås","adress":"Elementgatan 10A","postnr":"50464","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.brunngard.com"},{"name":"Hus 38","lat":57.71409,"lng":12.890438,"city":"Borås","adress":"Brinellgatan","postnr":"50470","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Sobacken kraftvärmeverk","lat":57.654416,"lng":12.909368,"city":"Borås","adress":"41","postnr":"51591","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.borasem.se/webb/omborasenergiochmiljo/varaanlaggningar/energiochmiljocenter/kraftvarmeverket.4.1544b908169955a8b1a4a05d.html"},{"name":"NELLY.COM","lat":57.750596,"lng":12.961714,"city":"Borås","adress":"Bergkantsgatan 6","postnr":"506 49","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Rydboholms kraftverk","lat":57.651336,"lng":12.888756,"city":"Borås","adress":"Sven Eriksons väg 8B","postnr":"51570","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Byggmax","lat":57.732177,"lng":12.92303,"city":"Borås","adress":"Getängsvägen","postnr":"50468","typ":"lager","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Dalsjöfors Kött","lat":57.703574,"lng":13.067809,"city":"Borås","adress":"","postnr":"51690","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://dalsjöfors.com"},{"name":"Borås Energi och Miljö - Värmecentral Viared 1","lat":57.708905,"lng":12.851672,"city":"Borås","adress":"Företagsgatan 36","postnr":"50464","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Sävelund","lat":57.940559,"lng":12.563854,"city":"Alingsås","adress":"Sävelundsgatan","postnr":"44138","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"EDGE Emballage","lat":57.981389,"lng":12.593704,"city":"Alingsås","adress":"Vänersborgsvägen","postnr":"44192","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":"https://www.edgeemballage.se/"},{"name":"Hallorstorp","lat":57.992639,"lng":12.652084,"city":"Alingsås","adress":"","postnr":"44192","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bolltorp","lat":57.949921,"lng":12.530345,"city":"Alingsås","adress":"","postnr":"44158","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Rubena Produkter AB","lat":57.910126,"lng":12.51722,"city":"Alingsås","adress":"Rothoffkärrsvägen 20","postnr":"44142","typ":"industrilokal","bransch":"","org_nr":"","allabolag_url":"","hemsida":""},{"name":"Bussgaraget Alingsås","lat":57.936439,"lng":12.572121,"city":"Alingsås","adress":"Kastellgatan","postnr":"44138","typ":"industri","bransch":"","org_nr":"","allabolag_url":"","hemsida":""}]
+[
+  {
+    "name": "COOP Fryslager Enköping",
+    "lat": 59.640111,
+    "lng": 17.157649,
+    "city": "Enköping",
+    "adress": "Varggatan",
+    "postnr": "74940",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:16Z"
+    }
+  },
+  {
+    "name": "Haga tegelbruk",
+    "lat": 59.602641,
+    "lng": 17.058164,
+    "city": "Enköping",
+    "adress": "Tegelbruksvägen",
+    "postnr": "74593",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:18Z"
+    }
+  },
+  {
+    "name": "Ena Energi",
+    "lat": 59.628202,
+    "lng": 17.077532,
+    "city": "Enköping",
+    "adress": "Kaptensgatan",
+    "postnr": "74935",
+    "typ": "industri",
+    "bransch": "Extern verkställande direktör Torbjörn Gunnar Claesson",
+    "org_nr": "556153-8389",
+    "allabolag_url": "https://www.allabolag.se/foretag/ena-energi-ab/enk%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JZ72HHI63IG2",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPaG1yZU4zRU1odG1IQUU4UU4xdUV2ZllQSWJvUEdJWXBfRjB4NFZROTFjT0FlMGtka3BBM2pqLVNJODd5N1Y2dnhrWFFnZlRGMjhtUmhUYm1lR180MFVweTJxWXRyU3lyUU5tQWtQZ2QtblZoa0NHT2dzeXJ3dldwZVRhclZwY19lMmJ1dGRCT2dLdw?oc=5",
+      "checkedAt": "2026-04-18T13:27:20Z"
+    }
+  },
+  {
+    "name": "Nyby bruk",
+    "lat": 59.430352,
+    "lng": 16.464365,
+    "city": "Eskilstuna",
+    "adress": "Andbäcksvägen",
+    "postnr": "64431",
+    "typ": "industri",
+    "bransch": "Ordförande Mats Oscar Johan Broling",
+    "org_nr": "556602-0698",
+    "allabolag_url": "https://www.allabolag.se/foretag/nyby-bruk-ab/gnosj%C3%B6/metaller-legeringar/2K1V522I5YGAN",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:21Z"
+    }
+  },
+  {
+    "name": "Grönsta industriområde",
+    "lat": 59.378239,
+    "lng": 16.578878,
+    "city": "Eskilstuna",
+    "adress": "Vägmästarvägen",
+    "postnr": "63502",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:23Z"
+    }
+  },
+  {
+    "name": "Eklunda industriområde",
+    "lat": 59.411878,
+    "lng": 16.470641,
+    "city": "Eskilstuna",
+    "adress": "Såggatan",
+    "postnr": "64430",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:24Z"
+    }
+  },
+  {
+    "name": "EKTAB",
+    "lat": 59.348139,
+    "lng": 16.475861,
+    "city": "Eskilstuna",
+    "adress": "Montörgatan 1",
+    "postnr": "63232",
+    "typ": "industrilokal",
+    "bransch": "Ledamot Per Ola Eifrém",
+    "org_nr": "556631-8902",
+    "allabolag_url": "https://www.allabolag.se/foretag/ekab-entreprenad-i-gr%C3%B6dinge-ab/s%C3%B6dert%C3%A4lje/entrepren%C3%B6rer/2K21J5II63IFX",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:25Z"
+    }
+  },
+  {
+    "name": "DHL",
+    "lat": 59.387365,
+    "lng": 16.45003,
+    "city": "Eskilstuna",
+    "adress": "Folkestaleden 7",
+    "postnr": "63223",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Robert Kenth Zander",
+    "org_nr": "556103-0437",
+    "allabolag_url": "https://www.allabolag.se/foretag/dhl-freight-sweden-ab/solna/transportf%C3%B6rmedling/2JYW6JPI5YI2J",
+    "hemsida": "",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "DHL aims for net zero emissions by 2050.",
+        "Collaboration with ABB and Scania for the electrification of the transport chain in Finland."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQUnI2cUVCbVhnaWxfei1RcnFlWFRMTXJVbFlqOUNIY1hqVmRGdndsNHAwb05vOHFuampSaU56Q3M3N2RVWGVueC12VU9PMTk2WE80ZHVsb2VfckxRR09Z",
+      "checkedAt": "2026-04-18T13:27:30Z"
+    }
+  },
+  {
+    "name": "Eskilstuna Handelsstål AB",
+    "lat": 59.400904,
+    "lng": 16.429443,
+    "city": "Eskilstuna",
+    "adress": "E 20",
+    "postnr": "63239",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Esa Tapio Ahonen",
+    "org_nr": "556583-6227",
+    "allabolag_url": "https://www.allabolag.se/foretag/eskilstuna-handelsst%C3%A5l-ab/eskilstuna/metaller-legeringar/2K1R6PVI5YGAN",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:31Z"
+    }
+  },
+  {
+    "name": "Volvo Demofält",
+    "lat": 59.411693,
+    "lng": 16.429511,
+    "city": "Eskilstuna",
+    "adress": "Bolindervägen",
+    "postnr": "63239",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.volvo.com",
+    "sustainability": {
+      "score": 35,
+      "category": "mentioned",
+      "evidence": [
+        "Volvo emphasizes sustainability principles of REDUCE, REUSE, RESTORE without specific numerical targets or actions.",
+        "The construction of the World of Volvo building uses sustainable materials and features green spaces."
+      ],
+      "source": "https://www.worldofvolvo.com/en/sustainability/",
+      "checkedAt": "2026-04-18T13:27:36Z"
+    }
+  },
+  {
+    "name": "EPC Sverige AB",
+    "lat": 59.366663,
+    "lng": 16.62663,
+    "city": "Eskilstuna",
+    "adress": "Hugelsta",
+    "postnr": "635 02",
+    "typ": "fabrik",
+    "bransch": "Verkställande direktör Nils Edvin Patrik Norén",
+    "org_nr": "556588-7857",
+    "allabolag_url": "https://www.allabolag.se/foretag/epc-sverige-ab/eskilstuna/kemikalier-industrikemikalier-tillverkning/2K1SAK1I63IHZ",
+    "hemsida": "https://www.epc-groupe.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.epc-groupe.se/",
+      "checkedAt": "2026-04-18T13:27:39Z"
+    }
+  },
+  {
+    "name": "Bilskrot",
+    "lat": 59.336005,
+    "lng": 17.048187,
+    "city": "Strängnäs",
+    "adress": "Malmbyvägen",
+    "postnr": "64547",
+    "typ": "industri",
+    "bransch": "Extern verkställande direktör Oscar Eric Bjurhovd",
+    "org_nr": "556123-5325",
+    "allabolag_url": "https://www.allabolag.se/foretag/aktiebolaget-harrys-bilskrot/malm%C3%B6/bilar/2JZ0KN1I5YCZW",
+    "hemsida": "",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Recent news article mentions the importance of sustainability in the scrap business."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1oQzhLYjhWRkpvRkFQS3J5RlZUeFlnblFmMERYU0lWRHlrYVhYZkt3alBtbG9Yb0IyZ3FMLTF4NlhraWZyU0FOc2lJRmxlSlk5bjBYZ2ZnWFpGaENUQ1NpQWFfRlJ1TGc?oc=5",
+      "checkedAt": "2026-04-18T13:27:43Z"
+    }
+  },
+  {
+    "name": "Strängnäs Bilskrot",
+    "lat": 59.335816,
+    "lng": 17.05494,
+    "city": "Strängnäs",
+    "adress": "Malmbyvägen",
+    "postnr": "64547",
+    "typ": "industri",
+    "bransch": "Ledamot Ali Rahimi",
+    "org_nr": "556911-5750",
+    "allabolag_url": "https://www.allabolag.se/foretag/str%C3%A4ngn%C3%A4s-bil-skrot-aktiebolag/str%C3%A4ngn%C3%A4s/avfallshantering/2K3PH7QI63IOK",
+    "hemsida": "https://www.strangnasbilskrot.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "We try to be as environmentally friendly as possible in our work.",
+        "We continuously work to minimize our impact on nature."
+      ],
+      "source": "https://www.strangnasbilskrot.se/om-oss",
+      "checkedAt": "2026-04-18T13:27:54Z"
+    }
+  },
+  {
+    "name": "Finja Betong AB",
+    "lat": 59.324311,
+    "lng": 17.063071,
+    "city": "Strängnäs",
+    "adress": "Betongvägen 15",
+    "postnr": "64594",
+    "typ": "fabrik",
+    "bransch": "Extern verkställande direktör Kjell Daniel Jonsson",
+    "org_nr": "556101-6840",
+    "allabolag_url": "https://www.allabolag.se/foretag/finja-betong-ab/finja/betong-betongvaror-produktion/2JYVW20I63IMB",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:27:55Z"
+    }
+  },
+  {
+    "name": "Sandåsa Träförädling",
+    "lat": 59.347435,
+    "lng": 17.122943,
+    "city": "Strängnäs",
+    "adress": "",
+    "postnr": "64594",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.sandasa.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Sandåsa Timber is committed to sustainable forestry and responsible production processes.",
+        "They follow PEFC and FSC certification standards to ensure sustainable sourcing."
+      ],
+      "source": "https://www.sandasa.se/miljopolicy/",
+      "checkedAt": "2026-04-18T13:28:05Z"
+    }
+  },
+  {
+    "name": "Malmby Bilskrot",
+    "lat": 59.32262,
+    "lng": 17.076144,
+    "city": "Strängnäs",
+    "adress": "D 900",
+    "postnr": "64594",
+    "typ": "industri",
+    "bransch": "Ledamot Ali Tahsin Fattah",
+    "org_nr": "556259-7566",
+    "allabolag_url": "https://www.allabolag.se/foretag/malmby-bilskrot-aktiebolag/str%C3%A4ngn%C3%A4s/transportf%C3%B6rmedling/2JZTRR2I5YI2J",
+    "hemsida": "https://malmbybilskrot.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Vi skrotar din bil idag – helt kostnadsfritt. Genom att skrota din skrotbil hos oss kan du vara säker på bilens miljöfarliga material tas om hand på ett säkert sätt.",
+        "Vi återvinner alla metaller på rätt sätt, vilket minskar behovet av nyproduktion."
+      ],
+      "source": "https://malmbybilskrot.se",
+      "checkedAt": "2026-04-18T13:28:09Z"
+    }
+  },
+  {
+    "name": "Sundby gamla vattentorn",
+    "lat": 59.384214,
+    "lng": 17.049236,
+    "city": "Strängnäs",
+    "adress": "Vattentornsbacken",
+    "postnr": "64551",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:10Z"
+    }
+  },
+  {
+    "name": "Åsporten",
+    "lat": 58.982718,
+    "lng": 16.231999,
+    "city": "Katrineholm",
+    "adress": "Eriksbergsvägen",
+    "postnr": "64132",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Mats Erik Sven Gillstam",
+    "org_nr": "556569-5367",
+    "allabolag_url": "https://www.allabolag.se/foretag/%C3%A5sporten-f%C3%B6rvaltning-ab/katrineholm/fastighetsbolag-lokaler/2K1O613I5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:12Z"
+    }
+  },
+  {
+    "name": "Stibo Complete",
+    "lat": 58.995564,
+    "lng": 16.180809,
+    "city": "Katrineholm",
+    "adress": "Högmossevägen",
+    "postnr": "64136",
+    "typ": "industri",
+    "bransch": "Extern verkställande direktör Palle Jacobsen",
+    "org_nr": "559049-4968",
+    "allabolag_url": "https://www.allabolag.se/foretag/stibo-complete-ab/katrineholm/tryckerier/2KGFPIWI5YI3L",
+    "hemsida": "https://www.stibo.com",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "The company has sustainability-linked documents available, but lacks concrete sustainability actions or numeric targets."
+      ],
+      "source": "https://www.stibo.com/_files/ugd/31c9b5_5d67666ee95844efb314b9fe7264959e.pdf",
+      "checkedAt": "2026-04-18T13:28:15Z"
+    }
+  },
+  {
+    "name": "AWS eu-north-1 Availability Zone K",
+    "lat": 58.996416,
+    "lng": 16.235174,
+    "city": "Katrineholm",
+    "adress": "Terminalgatan",
+    "postnr": "64149",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:17Z"
+    }
+  },
+  {
+    "name": "Energihuset",
+    "lat": 59.010021,
+    "lng": 16.204937,
+    "city": "Katrineholm",
+    "adress": "",
+    "postnr": "64146",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Tom Charles Lynbech",
+    "org_nr": "556566-3639",
+    "allabolag_url": "https://www.allabolag.se/foretag/energihuset-i-vimmerby-ab/vimmerby/j%C3%A4rnvaror/2K1NHJRI5YEU5",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:18Z"
+    }
+  },
+  {
+    "name": "Igelstaverket",
+    "lat": 59.176899,
+    "lng": 17.666481,
+    "city": "Södertälje",
+    "adress": "",
+    "postnr": "15257",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPN0hYSUZxN293YTVTN09TeVJORG5vd2ZsdVk5RE9MYldHV1VZeGhBeTJ0MnhNRjMyWFMtdWdNeGN6Nl9iSkt3TkhjRXM3UVhhOXFVREJBajJfN0hzcGt3Nk5XY0ZvRHY2S1VVOXllY2Rsa1Qyb0F6b3lsSWJaSFFoX041b05Ja1hjZGl2VEV6WmpUWkZIbVJ1bU90NjFBc1VFUlkwcjRSNGZpXzhESEtpbzRB?oc=5",
+      "checkedAt": "2026-04-18T13:28:20Z"
+    }
+  },
+  {
+    "name": "Almnäs",
+    "lat": 59.170878,
+    "lng": 17.530213,
+    "city": "Södertälje",
+    "adress": "Kaserngatan",
+    "postnr": "15166",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Hans Uno Mickael Thomas Berglund",
+    "org_nr": "556307-3468",
+    "allabolag_url": "https://www.allabolag.se/foretag/almn%C3%A4s-bruk-ab/hjo/jordbruk/2K03YYKI63IHJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQNjVQamxRbkNyRVRIUUJkTFNUTnlsRlBVaGJ2b2VDYW1lUDkzM2NpUlB3Ym9YMVFjb1FnRTlQX2F5bHJNaUlqTGJEWUVSS25sRkVGd0J6MUp2SnlVUEw0RHFwN3JBUFFrYUZxd0lQckdhTlpwUzlYZzd1QkpMSEYySXp4elNsVFVqODdrTUVfTDhHY1EtRE9Oc1FyQ2lmbHJpQVhtVmhpVlVOWnNPbUM1SVgyb3dIS2FWcDVwdnRSdl9vU3ZkQVRjVk84SQ?oc=5",
+      "checkedAt": "2026-04-18T13:28:23Z"
+    }
+  },
+  {
+    "name": "AVL",
+    "lat": 59.17551,
+    "lng": 17.618926,
+    "city": "Södertälje",
+    "adress": "Transmissionsvägen",
+    "postnr": "15147",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Dan Mikael Lilja",
+    "org_nr": "556765-3786",
+    "allabolag_url": "https://www.allabolag.se/foretag/nordv%C3%A4stra-sk%C3%A5nes-vatten-och-avlopp-ab/helsingborg/vvs-arbeten-material-och-produkter/2K2U55MI5YILC",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:24Z"
+    }
+  },
+  {
+    "name": "Scania",
+    "lat": 59.164562,
+    "lng": 17.644431,
+    "city": "Södertälje",
+    "adress": "Verkstadsvägen",
+    "postnr": "15138",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Rolf Christian Levin",
+    "org_nr": "556084-0976",
+    "allabolag_url": "https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW",
+    "hemsida": "https://www.scania.com/se/sv/home.html",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "Scania has made progress in sustainability and is working on reporting.",
+        "Developed an electric truck but has faced market adoption challenges."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOYjdRZWhNYXNDek5kMjF0UlFveWdKVDkxWXIxSXFhbDFlcjdXclJOcGJCaHNQSjY0S0xCOC13dmhIVkpMeVdMSkJ5bllTSk1ETjg0blNZeVZ6QWpDLWFkaFdZVThkSFRMeVh1enQ5QnM5OUtZYmZIWmJzTmRCMWdERkpaenlvYzFLcTJ3dDM1TndHTy16TVpELXh3SGdobkNBX1Y1SDJ0Q29xVmxyZkZsbnlfZ1RsbzlLQjBBZUFFejFEc29aeHJYaFNDbG8wdUs4Z3Utal82SWFpNm9jUFZnYnJEYWwzWm5Xanc?oc=5",
+      "checkedAt": "2026-04-18T13:28:32Z"
+    }
+  },
+  {
+    "name": "Scania",
+    "lat": 59.159194,
+    "lng": 17.644398,
+    "city": "Södertälje",
+    "adress": "Sydgatan 5",
+    "postnr": "15138",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Rolf Christian Levin",
+    "org_nr": "556084-0976",
+    "allabolag_url": "https://www.allabolag.se/foretag/scania-cv-aktiebolag/s%C3%B6dert%C3%A4lje/bilar/2JYS4CWI5YCZW",
+    "hemsida": "https://www.scania.se",
+    "sustainability": {
+      "score": 40,
+      "category": "active",
+      "evidence": [
+        "Scania has developed an electric truck that has received praise but lacks market demand.",
+        "Recent news highlights Scania's sustainability successes and efforts to clean up their supplier base."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUHZoeXU1RE45M2FqUlgyUjd5enZmNkd2cHczQUhDYV8zRUtkU0tac3dfaWNrWGtaSFZxUXJuTURpMFZ3TXJsTTFiMGRGeFNDSUhBcDRCbHA5NFdMcGZ",
+      "checkedAt": "2026-04-18T13:28:36Z"
+    }
+  },
+  {
+    "name": "Hovsjö industriområde",
+    "lat": 59.181224,
+    "lng": 17.587175,
+    "city": "Södertälje",
+    "adress": "Gesällvägen",
+    "postnr": "15165",
+    "typ": "industri",
+    "bransch": "77390 Uthyrning och leasing av diverse övrig utrustning samt diverse övriga maskiner och materiella tillgångar",
+    "org_nr": "717910-4596",
+    "allabolag_url": "https://www.allabolag.se/foretag/domsj%C3%B6-industriomr%C3%A5de-samf%C3%A4llighetsf%C3%B6rening/%C3%B6rnsk%C3%B6ldsvik/uthyrning/3AQ94K4I5YIEZ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:37Z"
+    }
+  },
+  {
+    "name": "106",
+    "lat": 59.169766,
+    "lng": 17.635979,
+    "city": "Södertälje",
+    "adress": "Nyköpingsvägen",
+    "postnr": "15187",
+    "typ": "industri",
+    "bransch": "Ordförande Ulf Mathias Aronsson",
+    "org_nr": "556975-5589",
+    "allabolag_url": "https://www.allabolag.se/foretag/wallenstam-fastigheter-106-ab/g%C3%B6teborg/fastighetsbolag-lokaler/2K436X1I5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:28:40Z"
+    }
+  },
+  {
+    "name": "AstraZeneca",
+    "lat": 59.203728,
+    "lng": 17.614817,
+    "city": "Södertälje",
+    "adress": "Forskargatan 13",
+    "postnr": "15136",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Per David Alfredsson",
+    "org_nr": "556011-7482",
+    "allabolag_url": "https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF",
+    "hemsida": "https://www.astrazeneca.se",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "AstraZeneca aims for net-zero emissions by reducing carbon footprint and restoring nature.",
+        "The company publishes sustainability and environmental reports.",
+        "Recent strategies were presented for a sustainable future."
+      ],
+      "source": "https://www.astrazeneca.se/hallbar-verksamhet/klimat-och-natur/miljo-och-hallbarhetsrapporter.html",
+      "checkedAt": "2026-04-18T13:28:47Z"
+    }
+  },
+  {
+    "name": "Brandalsunds skola",
+    "lat": 59.116489,
+    "lng": 17.640888,
+    "city": "Södertälje",
+    "adress": "Nyköpingsvägen",
+    "postnr": "15139",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:49Z"
+    }
+  },
+  {
+    "name": "102",
+    "lat": 59.167545,
+    "lng": 17.635228,
+    "city": "Södertälje",
+    "adress": "Granparksvägen",
+    "postnr": "15187",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Bo Christer Lundstedt",
+    "org_nr": "556640-0262",
+    "allabolag_url": "https://www.allabolag.se/foretag/hedern-fastigheter-102-ab/sundsvall/fastighetsbolag-lokaler/2K239XII5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOeUpUOG9zcV8yTTBBcFBRN2Zyc0NwR2RGMUxFcmNpa216OVlZV3FmSnNUdE9KUUtDZ2pRT0ZrSUQ5SUd4WDd1MENpWEJuSWV4TUpJRjlkVXBjcEw3bjhiX2xWZC1zZVRwZG9WdVFMbjhUSWdYbXp0QUIwVXloQTkzYjVUcC1vcGFLSXNZMUdSVkx4Q3BpMjZrNmpCd1A5bGtwVjMtUk5LZThmTm1MWTNWb2VfSkM5X2tlUkF1UThEVHVHZGMyak0yaHZJV2Rob05YYURHNllCZ2h3aVBJanpNR3FXZzh1azRNd3NaaTd1T0JxdzA?oc=5",
+      "checkedAt": "2026-04-18T13:28:51Z"
+    }
+  },
+  {
+    "name": "Tekniska Kontoret",
+    "lat": 59.205784,
+    "lng": 17.751892,
+    "city": "Södertälje",
+    "adress": "Förrådsvägen 6",
+    "postnr": "144 40",
+    "typ": "industrilokal",
+    "bransch": "Ledamot Jenz Robert Åberg",
+    "org_nr": "556501-1938",
+    "allabolag_url": "https://www.allabolag.se/foretag/teknik-kontor-servrar-i-%C3%B6rebro-ab/%C3%B6rebro/datorer-kringutrustningar/2K19IOYI5YCUH",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:52Z"
+    }
+  },
+  {
+    "name": "Skarlunda",
+    "lat": 59.171098,
+    "lng": 17.724676,
+    "city": "Södertälje",
+    "adress": "Sörmlandsleden",
+    "postnr": "14463",
+    "typ": "industri",
+    "bransch": "68209 Övrig förvaltning av egna eller arrenderade fastigheter",
+    "org_nr": "802447-2204",
+    "allabolag_url": "https://www.allabolag.se/foretag/skarlunda-v%C3%A4gf%C3%B6rening/s%C3%B6dert%C3%A4lje/fastighetsbolag-lokaler/3OPKADOI5YDUJ",
+    "hemsida": "https://www.skarlunda.se",
+    "sustainability": {
+      "score": 45,
+      "category": "mentioned",
+      "evidence": [
+        "Our operations comply with relevant legislation and aim for minimal environmental impact.",
+        "We prioritize reuse of parts from decommissioned cars and strive for high energy efficiency."
+      ],
+      "source": "https://skarlunda.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:28:58Z"
+    }
+  },
+  {
+    "name": "Mörby",
+    "lat": 59.184362,
+    "lng": 17.4673,
+    "city": "Södertälje",
+    "adress": "Norra Gärdet",
+    "postnr": "15534",
+    "typ": "industri",
+    "bransch": "Extern verkställande direktör Per Niclas Stephani",
+    "org_nr": "556528-7629",
+    "allabolag_url": "https://www.allabolag.se/foretag/m%C3%B6rbyl%C3%A5nga-bostads-aktiebolag/m%C3%B6rbyl%C3%A5nga/fastighetsbolag-lokaler/2K1FFF1I5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:28:59Z"
+    }
+  },
+  {
+    "name": "Volkswagen Group Sverige AB",
+    "lat": 59.179336,
+    "lng": 17.480145,
+    "city": "Södertälje",
+    "adress": "Mörbyvägen",
+    "postnr": "15534",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Claes Peter Jerveland",
+    "org_nr": "556084-0968",
+    "allabolag_url": "https://www.allabolag.se/foretag/volkswagen-group-sverige/s%C3%B6dert%C3%A4lje/bilar/2JYS4COI5YCZW",
+    "hemsida": "https://www.volkswagen.se",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "Volkswagen focuses on electrification with a range of electric vehicles including the ID. series.",
+        "The company mentions sustainability initiatives on their website with a dedicated section on sustainability."
+      ],
+      "source": "https://www.volkswagen.se/sv/om-volkswagen/hallbarhet.html",
+      "checkedAt": "2026-04-18T13:29:08Z"
+    }
+  },
+  {
+    "name": "AstraZeneca",
+    "lat": 59.177094,
+    "lng": 17.679609,
+    "city": "Södertälje",
+    "adress": "",
+    "postnr": "15257",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Per David Alfredsson",
+    "org_nr": "556011-7482",
+    "allabolag_url": "https://www.allabolag.se/foretag/astrazeneca-ab/s%C3%B6dert%C3%A4lje/l%C3%A4kemedel/2JYCM3UI5YFOF",
+    "hemsida": "https://www.astrazeneca.se",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "AstraZeneca works to reduce carbon dioxide emissions in their own operations and value chain.",
+        "They provide sustainability and climate action reports.",
+        "AstraZeneca has a sustainability update for 2025 mentioning milestones."
+      ],
+      "source": "https://www.astrazeneca.se/hallbar-verksamhet.html",
+      "checkedAt": "2026-04-18T13:29:13Z"
+    }
+  },
+  {
+    "name": "Geneta Panncentral",
+    "lat": 59.194735,
+    "lng": 17.590837,
+    "city": "Södertälje",
+    "adress": "Prästgårdsvägen",
+    "postnr": "15161",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:14Z"
+    }
+  },
+  {
+    "name": "Igelsta Hamn",
+    "lat": 59.174903,
+    "lng": 17.66471,
+    "city": "Södertälje",
+    "adress": "Nynäsvägen",
+    "postnr": "15257",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:15Z"
+    }
+  },
+  {
+    "name": "Racehall Stockholm AB",
+    "lat": 59.162324,
+    "lng": 17.739991,
+    "city": "Södertälje",
+    "adress": "Sörmlandsleden",
+    "postnr": "14463",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Peter Vindbæk Skjødt-Jacobsen",
+    "org_nr": "559451-4241",
+    "allabolag_url": "https://www.allabolag.se/foretag/racehall-stockholm-ab/gr%C3%B6dinge/motorbanor/2KITUTDI63IUD",
+    "hemsida": "https://racehall.se",
+    "sustainability": {
+      "score": 75,
+      "category": "active",
+      "evidence": [
+        "Vi använder bland annat giftfri specialbensin, LED-belysning, solceller och naturlig ventilation för att nå våra mål.",
+        "Vårt arbete har resulterat i att vår årliga CO2-utsläpp från våra två platser sammanlagt är cirka 220 ton CO2."
+      ],
+      "source": "https://racehall.com/sv/vart-klimatavtryck/",
+      "checkedAt": "2026-04-18T13:29:20Z"
+    }
+  },
+  {
+    "name": "Bolmängens industriområde",
+    "lat": 59.063182,
+    "lng": 16.587506,
+    "city": "Flen",
+    "adress": "Bolmängsgatan",
+    "postnr": "64232",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:21Z"
+    }
+  },
+  {
+    "name": "Talja Södra",
+    "lat": 59.074103,
+    "lng": 16.610925,
+    "city": "Flen",
+    "adress": "Taljavägen",
+    "postnr": "64233",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:23Z"
+    }
+  },
+  {
+    "name": "Talja Södra",
+    "lat": 59.072846,
+    "lng": 16.600138,
+    "city": "Flen",
+    "adress": "Taljavägen",
+    "postnr": "64233",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:24Z"
+    }
+  },
+  {
+    "name": "Talja Norra",
+    "lat": 59.079543,
+    "lng": 16.604987,
+    "city": "Flen",
+    "adress": "Blockvägen",
+    "postnr": "64233",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:25Z"
+    }
+  },
+  {
+    "name": "Volvo Group Trucks Operations",
+    "lat": 59.05698,
+    "lng": 16.580845,
+    "city": "Flen",
+    "adress": "Drottninggatan",
+    "postnr": "64237",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:26Z"
+    }
+  },
+  {
+    "name": "Magnum ICC Sweden Supply AB (GB Glace)",
+    "lat": 59.059371,
+    "lng": 16.58675,
+    "city": "Flen",
+    "adress": "Storgatan 11",
+    "postnr": "64237",
+    "typ": "fabrik",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:27Z"
+    }
+  },
+  {
+    "name": "Momento AB",
+    "lat": 59.056528,
+    "lng": 16.615919,
+    "city": "Flen",
+    "adress": "Kungsvägen",
+    "postnr": "64233",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Nils Torbjörn Palmberg",
+    "org_nr": "556475-6848",
+    "allabolag_url": "https://www.allabolag.se/foretag/ab-momento/flen/verktyg-och-redskap/2K141V4I63IL9",
+    "hemsida": "https://momento.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://momento.se",
+      "checkedAt": "2026-04-18T13:29:30Z"
+    }
+  },
+  {
+    "name": "Företagsby",
+    "lat": 59.040186,
+    "lng": 16.591383,
+    "city": "Flen",
+    "adress": "Öjavägen",
+    "postnr": "64234",
+    "typ": "industri",
+    "bransch": "Ordförande Kjell Emanuel Nilsberg",
+    "org_nr": "556176-9521",
+    "allabolag_url": "https://www.allabolag.se/foretag/vallentuna-f%C3%B6retagsby-aktiebolag/vallentuna/fastighetsbolag-lokaler/2JZC0TTI5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:31Z"
+    }
+  },
+  {
+    "name": "Volvo Group Trucks Operations",
+    "lat": 59.077783,
+    "lng": 16.607041,
+    "city": "Flen",
+    "adress": "Blockvägen",
+    "postnr": "64233",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:33Z"
+    }
+  },
+  {
+    "name": "Idbäcken",
+    "lat": 58.747773,
+    "lng": 16.995177,
+    "city": "Nyköping",
+    "adress": "Åkerbärsvägen",
+    "postnr": "61130",
+    "typ": "industri",
+    "bransch": "Ledamot Carl Jakob Johansson",
+    "org_nr": "556857-0088",
+    "allabolag_url": "https://www.allabolag.se/foretag/fastighets-ab-idb%C3%A4cken/stockholm/fastighetsbolag-lokaler/2K3DS6GI5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:34Z"
+    }
+  },
+  {
+    "name": "Hall 9, Hall 10",
+    "lat": 58.683241,
+    "lng": 17.122426,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:35Z"
+    }
+  },
+  {
+    "name": "SSAB Oxelösund",
+    "lat": 58.674166,
+    "lng": 17.126991,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industri",
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "org_nr": "802416-3696",
+    "allabolag_url": "https://www.allabolag.se/foretag/cf-klubben-ssab-oxel%C3%B6sund/oxel%C3%B6sund/f%C3%B6reningar/3OPDOC0I63IGG",
+    "hemsida": "https://www.ssab.com",
+    "sustainability": {
+      "score": 75,
+      "category": "active",
+      "evidence": [
+        "SSAB is transitioning to fossil-free steel production and has delivered the world's first fossil-free steel.",
+        "Dedicated sustainability section available on their website."
+      ],
+      "source": "https://www.ssab.com/en/company/sustainability",
+      "checkedAt": "2026-04-18T13:29:41Z"
+    }
+  },
+  {
+    "name": "Idbäckens Kraftvärmeverk",
+    "lat": 58.742861,
+    "lng": 17.000611,
+    "city": "Nyköping",
+    "adress": "Idbäcksvägen",
+    "postnr": "61129",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:43Z"
+    }
+  },
+  {
+    "name": "Heda Skandinavien AB",
+    "lat": 58.771635,
+    "lng": 17.031461,
+    "city": "Nyköping",
+    "adress": "Svärtavägen",
+    "postnr": "61166",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:44Z"
+    }
+  },
+  {
+    "name": "Eberspächer",
+    "lat": 58.714244,
+    "lng": 17.02322,
+    "city": "Nyköping",
+    "adress": "Flättnaleden",
+    "postnr": "61145",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Karl Gunnar Stålheim Geijer",
+    "org_nr": "556012-4561",
+    "allabolag_url": "https://www.allabolag.se/foretag/ebersp%C3%A4cher-aktiebolag/trollh%C3%A4ttan/detaljhandel/2JYCRKHI63ILU",
+    "hemsida": "https://www.eberspaecher.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No specific sustainability actions or metrics are provided on the website."
+      ],
+      "source": "https://www.eberspaecher.com/en/company/responsibility-and-sustainability/compliance/#c422310",
+      "checkedAt": "2026-04-18T13:29:50Z"
+    }
+  },
+  {
+    "name": "Schneider Electric",
+    "lat": 58.765441,
+    "lng": 16.987187,
+    "city": "Nyköping",
+    "adress": "Mejerivägen",
+    "postnr": "61155",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Anna Kristina Andersson",
+    "org_nr": "556259-3532",
+    "allabolag_url": "https://www.allabolag.se/foretag/schneider-electric-sverige-ab/solna/elektronik-och-telekommunikationsutrustning/2JZTON0I63IFR",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNbUFDNzB2VVBTMzdfNXlvQkt2VnIxeFJRYVBZTS1yZ2QxM2E5V01saDhoTzZsOXpmejJNOF9hZE15bzdwLXYwbUlzQ1NTVEFvMUE1elpwMmppbzZKZ1lndW9PNE02aVhBTUxZMTJFZWM0a0VYVGd4ZjNoMFBZNkdJeEswNDF2TWNQNkJaMmVoNEloN2JWMXp3dmhJODd2NkY3b1pQTmdGUHltZXoxNEVqUDAtTVdCZ0xtNXd3VUllb3lhQ0dDcllsSzFhcjZ5TXhhZnZrRUdYYkVVZkVnTFpqQw?oc=5",
+      "checkedAt": "2026-04-18T13:29:52Z"
+    }
+  },
+  {
+    "name": "Perioden",
+    "lat": 58.760017,
+    "lng": 17.005791,
+    "city": "Nyköping",
+    "adress": "Periodgången",
+    "postnr": "61133",
+    "typ": "industrilokal",
+    "bransch": "Ledamot Farouk Eskander",
+    "org_nr": "559501-6329",
+    "allabolag_url": "https://www.allabolag.se/foretag/periodent-ab/h%C3%A4sselby/h%C3%A4lsotj%C3%A4nster/2KJ4M89I63IHB",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website or in recent news."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOdHhORHBJLXN5SkhIMl9zRHFMYmhJTDZIbXB3X0hSQU55X0JxeEM3eEhCZndQSzVjNVoyX3lveWVCeWw1STRWM1hTc3JUZjdMZXdIeUVHaklxbkVFbUZ2VC1xLUZUQmlKeVY5Yl93V0YtdW84Ny1CWWgtUXI5a3lDLUszLUlXNWtiRkRUZnFMOFZ1MEJxMHViUlVqZ2lBZm8teEhhYlN6Z3o?oc=5",
+      "checkedAt": "2026-04-18T13:29:55Z"
+    }
+  },
+  {
+    "name": "Bara industriområde",
+    "lat": 58.684329,
+    "lng": 17.065456,
+    "city": "Nyköping",
+    "adress": "Baravägen 5",
+    "postnr": "61341",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:56Z"
+    }
+  },
+  {
+    "name": "Tegelladan",
+    "lat": 58.693486,
+    "lng": 17.041126,
+    "city": "Nyköping",
+    "adress": "Lastuddsvägen",
+    "postnr": "61338",
+    "typ": "industri",
+    "bransch": "Ordförande Lena Birgitta Sköld",
+    "org_nr": "769606-2764",
+    "allabolag_url": "https://www.allabolag.se/foretag/bostadsr%C3%A4ttsf%C3%B6reningen-tegelladan-1/sundsvall/fastighetsbolag-lokaler/3JA1C18I5YDUJ",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:57Z"
+    }
+  },
+  {
+    "name": "Orio AB",
+    "lat": 58.716024,
+    "lng": 17.01638,
+    "city": "Nyköping",
+    "adress": "Flättnaleden",
+    "postnr": "61145",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Jesper Otto Qvist-Pedersen",
+    "org_nr": "556193-6294",
+    "allabolag_url": "https://www.allabolag.se/foretag/orion-pharma-aktiebolag/danderyd/apoteksvaror-l%C3%A4kemedel-partihandel/2JZFLIEI63IM3",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:29:58Z"
+    }
+  },
+  {
+    "name": "Höglager MTB",
+    "lat": 58.684666,
+    "lng": 17.126559,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:00Z"
+    }
+  },
+  {
+    "name": "Sjoklagret",
+    "lat": 58.685256,
+    "lng": 17.130577,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "Ledamot Jan Magnus Gustafsson",
+    "org_nr": "559160-7899",
+    "allabolag_url": "https://www.allabolag.se/foretag/hjolagret-ab/hjo/k%C3%B6ksinredningar-agentur-och-grossist/2KH3K9NI63IIE",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:01Z"
+    }
+  },
+  {
+    "name": "Brandkärr värmecentral",
+    "lat": 58.768709,
+    "lng": 17.023404,
+    "city": "Nyköping",
+    "adress": "Brandkärrsvägen",
+    "postnr": "61165",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:02Z"
+    }
+  },
+  {
+    "name": "Kullbergs",
+    "lat": 58.748779,
+    "lng": 17.019984,
+    "city": "Nyköping",
+    "adress": "Ringvägen",
+    "postnr": "61135",
+    "typ": "industrilokal",
+    "bransch": "Ledamot Magnus Kullberg",
+    "org_nr": "556309-3292",
+    "allabolag_url": "https://www.allabolag.se/foretag/kullbergs-mur-och-bygg-aktiebolag/ronneby/byggm%C3%A4stare/2K04E98I5YDDT",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:04Z"
+    }
+  },
+  {
+    "name": "Harsco",
+    "lat": 58.685994,
+    "lng": 17.132846,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Lars Ove Lindqvist",
+    "org_nr": "556177-2566",
+    "allabolag_url": "https://www.allabolag.se/foretag/harsco-metals-sweden-ab/norberg/avfallshantering/2JZC36EI63IOK",
+    "hemsida": "https://www.harsco.com",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "16 million tons of waste recycled in 2024",
+        "Review our Environmental, Social and Governance (ESG) Reports for details on sustainability efforts."
+      ],
+      "source": "https://www.enviri.com/sustainability/",
+      "checkedAt": "2026-04-18T13:30:10Z"
+    }
+  },
+  {
+    "name": "Foria",
+    "lat": 58.682395,
+    "lng": 17.137789,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Jonas Lars Skovgaard",
+    "org_nr": "556069-1684",
+    "allabolag_url": "https://www.allabolag.se/foretag/foria-ab-publ/s%C3%B6dert%C3%A4lje/transportf%C3%B6rmedling/2JYOX5WI5YI2J",
+    "hemsida": "https://www.foria.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Sustainability is mentioned in marketing through statements like 'Med hållbarhet i tanken' (With sustainability in mind).",
+        "Recent news articles highlight sustainability initiatives but lack specific targets or actionable commitments."
+      ],
+      "source": "https://www.foria.se/miljoetjanster",
+      "checkedAt": "2026-04-18T13:30:16Z"
+    }
+  },
+  {
+    "name": "Blå tältet",
+    "lat": 58.681336,
+    "lng": 17.117988,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:18Z"
+    }
+  },
+  {
+    "name": "OT60",
+    "lat": 58.685581,
+    "lng": 17.123108,
+    "city": "Nyköping",
+    "adress": "",
+    "postnr": "61331",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:19Z"
+    }
+  },
+  {
+    "name": "Björshult Skrot & Mek AB",
+    "lat": 58.709317,
+    "lng": 16.996393,
+    "city": "Nyköping",
+    "adress": "Sörmlandsleden",
+    "postnr": "61145",
+    "typ": "industri",
+    "bransch": "Ledamot Mats Olov Andersson",
+    "org_nr": "556639-6940",
+    "allabolag_url": "https://www.allabolag.se/foretag/bj%C3%B6rshult-skrot-mek-ab/nyk%C3%B6ping/avfallshantering/2K237D8I63IOK",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:20Z"
+    }
+  },
+  {
+    "name": "Econova Jordfabrik",
+    "lat": 58.652148,
+    "lng": 16.180452,
+    "city": "Norrköping",
+    "adress": "",
+    "postnr": "61630",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.econova.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "Website not provided",
+      "checkedAt": "2026-04-18T13:30:23Z"
+    }
+  },
+  {
+    "name": "Hults Bruk",
+    "lat": 58.67279,
+    "lng": 16.12963,
+    "city": "Norrköping",
+    "adress": "",
+    "postnr": "61634",
+    "typ": "industri",
+    "bransch": "94990 Verksamhet i diverse övriga intresseorganisationer",
+    "org_nr": "802464-3531",
+    "allabolag_url": "https://www.allabolag.se/foretag/hults-bruks-smidescentrum/norrk%C3%B6ping/f%C3%B6reningar/3OPNYKRI63IGG",
+    "hemsida": "https://www.hultsbruk.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.hultsbruk.com",
+      "checkedAt": "2026-04-18T13:30:26Z"
+    }
+  },
+  {
+    "name": "Jursla industriområde",
+    "lat": 58.65222,
+    "lng": 16.173555,
+    "city": "Norrköping",
+    "adress": "Hydraulvägen 5",
+    "postnr": "61632",
+    "typ": "industri",
+    "bransch": "Verkställande direktör Simon Karl Ragnar Tjäder",
+    "org_nr": "556036-5677",
+    "allabolag_url": "https://www.allabolag.se/foretag/evergreen-garden-care-sverige-ab/%C3%A5by/kemikalier-industrikemikalier/2JYHXM5I5YEXO",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:28Z"
+    }
+  },
+  {
+    "name": "Fiskeby",
+    "lat": 58.593239,
+    "lng": 16.115358,
+    "city": "Norrköping",
+    "adress": "Fiskebyvägen",
+    "postnr": "60376",
+    "typ": "industri",
+    "bransch": "Verkställande direktör John Mattias Wahlgren",
+    "org_nr": "556032-6158",
+    "allabolag_url": "https://www.allabolag.se/foretag/fiskeby-board-ab/norrk%C3%B6ping/producenter/2JYH34EI63IK3",
+    "hemsida": "https://www.fiskeby.com",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "Fiskeby manufactures packaging cardboard using 100% recycled fiber.",
+        "Producing cardboard from recycled fiber is approximately 40% less energy-intensive than using fresh fiber.",
+        "Fiskeby focuses on a circular economy through three parallel cycles: fiber, energy, and water."
+      ],
+      "source": "https://www.fiskeby.com/hallbarhet/",
+      "checkedAt": "2026-04-18T13:30:36Z"
+    }
+  },
+  {
+    "name": "Strömma Företagscenter",
+    "lat": 58.59842,
+    "lng": 16.135132,
+    "city": "Norrköping",
+    "adress": "Fiskebyvägen",
+    "postnr": "60210",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://stromma.se",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "The website mentions 'sustainable tourism' but lacks specifics or measurable actions."
+      ],
+      "source": "https://stromma.se/sv-se/stockholm/om-oss/hallbar-turism/",
+      "checkedAt": "2026-04-18T13:30:40Z"
+    }
+  },
+  {
+    "name": "Bravikens pappersbruk",
+    "lat": 58.637434,
+    "lng": 16.254133,
+    "city": "Norrköping",
+    "adress": "Östra Bravikenvägen",
+    "postnr": "60365",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:41Z"
+    }
+  },
+  {
+    "name": "Loddby f.d. sulfitfabrik",
+    "lat": 58.63583,
+    "lng": 16.182504,
+    "city": "Norrköping",
+    "adress": "Loddbyvägen",
+    "postnr": "61630",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:42Z"
+    }
+  },
+  {
+    "name": "Agroetanol",
+    "lat": 58.615124,
+    "lng": 16.227268,
+    "city": "Norrköping",
+    "adress": "",
+    "postnr": "60238",
+    "typ": "industri",
+    "bransch": "94200 Intressebevakning inom arbetstagarorganisationer",
+    "org_nr": "802537-0589",
+    "allabolag_url": "https://www.allabolag.se/foretag/unionen-p%C3%A5-lantm%C3%A4nnen-agroetanol-ab/norrk%C3%B6ping/f%C3%B6reningar/3OQ3JKTI63IGG",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPX2ExTm1pcXBtbWp6QUwzMWpCQlE5Ny0wcVN5akVhZUVYWTR5U3A2Z2lNbllyaHpFeV9SUlFIZWtQUzlDZUdmWURjOU14dmNabndRczQ2WlU4M0l1OHRIQ1VKSFktbGpmNHFCUE8xWWpaeW9ZazktQTBLZy1LRk00MVB3R0hnaDg2QWtZcDJ3aDhMX2lJM01jWHVoUExKdmFxVjNjbEZiYw?oc=5",
+      "checkedAt": "2026-04-18T13:30:45Z"
+    }
+  },
+  {
+    "name": "Martin & Servera",
+    "lat": 58.613607,
+    "lng": 16.162912,
+    "city": "Norrköping",
+    "adress": "Blygatan 25",
+    "postnr": "602 23",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "org_nr": "559135-5549",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "hemsida": "https://www.martinservera.se",
+    "sustainability": {
+      "score": 25,
+      "category": "mentioned",
+      "evidence": [
+        "Martin & Servera når målet om halverat matsvinn.",
+        "Martin & Servera lanserar egen 50/50-färs för att bidra till restaurangbranschens förflyttning mot lägre klimatavtryck."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOUGJmTHQzYWUyVGg0b091bGMxbVFkQ2tHVFlaMU5Ec3ZiaVRRaDk5ckJ4bVFCQTdRdDd1WUVuVV9Lc055QTN1M3l6VGFudi1YT3VSQjNMOTJYbkV5ZnNPcUF4ZWhBUEJvRmVlOHVVWjVqTF9fMFk4",
+      "checkedAt": "2026-04-18T13:30:50Z"
+    }
+  },
+  {
+    "name": "Yara AB - gamla superfosfatfabriken",
+    "lat": 58.60629,
+    "lng": 16.190911,
+    "city": "Norrköping",
+    "adress": "Kommendantvägen",
+    "postnr": "60119",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.yara.se",
+    "sustainability": {
+      "score": 40,
+      "category": "mentioned",
+      "evidence": [
+        "Discussion of lower climate impact fertilizers and CCS without specific data.",
+        "Reference to climate certification but lacks detailed progress or metrics."
+      ],
+      "source": "https://www.yara.se/miljoframjande-losningar-och-kemikalier/",
+      "checkedAt": "2026-04-18T13:30:58Z"
+    }
+  },
+  {
+    "name": "Kühne & Nagel",
+    "lat": 58.618048,
+    "lng": 16.21524,
+    "city": "Norrköping",
+    "adress": "Bravikenvägen 10",
+    "postnr": "60238",
+    "typ": "lager",
+    "bransch": "52260 Annan stödverksamhet avseende transport",
+    "org_nr": "502096-0794",
+    "allabolag_url": "https://www.allabolag.se/foretag/k%C3%BChne-nagel-ag-co.-kg/-/transportf%C3%B6rmedling/2B1CM56I5YI2J",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:30:59Z"
+    }
+  },
+  {
+    "name": "Skrotfrag i Norrköping AB",
+    "lat": 58.605993,
+    "lng": 16.19464,
+    "city": "Norrköping",
+    "adress": "Kommendantvägen 10",
+    "postnr": "60119",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://skrotfrag.se",
+    "sustainability": {
+      "score": 40,
+      "category": "mentioned",
+      "evidence": [
+        "Skrotfrag states that recycling iron and steel helps to reduce the need for new mining, which contributes to energy savings.",
+        "They emphasize the importance of correctly handling and recycling electronic waste to minimize environmental impact."
+      ],
+      "source": "https://skrotfrag.se/sv/material/jarn/",
+      "checkedAt": "2026-04-18T13:31:05Z"
+    }
+  },
+  {
+    "name": "Jens S. Transmissioner",
+    "lat": 58.615072,
+    "lng": 16.154263,
+    "city": "Norrköping",
+    "adress": "Koppargatan 9",
+    "postnr": "60223",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Johan Fredrik Benzler",
+    "org_nr": "556043-7005",
+    "allabolag_url": "https://www.allabolag.se/foretag/jens-s.-transmissioner-ab/norrk%C3%B6ping/insatsvaror/2JYJGNHI63IHE",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:06Z"
+    }
+  },
+  {
+    "name": "GSF Tryck",
+    "lat": 58.586698,
+    "lng": 16.206795,
+    "city": "Norrköping",
+    "adress": "Verksvägen",
+    "postnr": "60228",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:08Z"
+    }
+  },
+  {
+    "name": "CEOS",
+    "lat": 58.604492,
+    "lng": 16.206148,
+    "city": "Norrköping",
+    "adress": "Blixholmsvägen 5",
+    "postnr": "60238",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Karl Johan Ludvig Dalin",
+    "org_nr": "556712-3319",
+    "allabolag_url": "https://www.allabolag.se/foretag/ceos-fritzoe-ab/n%C3%A4ssj%C3%B6/tr%C3%A4-och-byggvaror-grossist/2K2IRUFI63IL2",
+    "hemsida": "https://www.ceos.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://ceos.se/miljo-och-hallbarhet.html",
+      "checkedAt": "2026-04-18T13:31:14Z"
+    }
+  },
+  {
+    "name": "Karstorps bildemontering",
+    "lat": 58.547618,
+    "lng": 16.161537,
+    "city": "Norrköping",
+    "adress": "Björkebergavägen",
+    "postnr": "60595",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:15Z"
+    }
+  },
+  {
+    "name": "Kungsängens företagspark",
+    "lat": 58.579787,
+    "lng": 16.233375,
+    "city": "Norrköping",
+    "adress": "Svärmaregatan 1",
+    "postnr": "60361",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:17Z"
+    }
+  },
+  {
+    "name": "TvNo",
+    "lat": 58.614792,
+    "lng": 16.145787,
+    "city": "Norrköping",
+    "adress": "Tenngatan",
+    "postnr": "60209",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Anna Karin Elisabet Andersson",
+    "org_nr": "556194-6152",
+    "allabolag_url": "https://www.allabolag.se/foretag/tvno-textilservice-aktiebolag/norrk%C3%B6ping/tv%C3%A4tterier/2JZFT48I5YI7I",
+    "hemsida": "https://tvno.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:31:20Z"
+    }
+  },
+  {
+    "name": "Holmen Timber Braviken",
+    "lat": 58.638861,
+    "lng": 16.232668,
+    "city": "Norrköping",
+    "adress": "",
+    "postnr": "60365",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:21Z"
+    }
+  },
+  {
+    "name": "Polyproject",
+    "lat": 58.690991,
+    "lng": 16.345607,
+    "city": "Norrköping",
+    "adress": "Gamla Krokeksvägen",
+    "postnr": "61833",
+    "typ": "industri",
+    "bransch": "Extern verkställande direktör Isabell Inger Ramona Lindahl",
+    "org_nr": "556908-6282",
+    "allabolag_url": "https://www.allabolag.se/foretag/polyproject-environment-ab/kolm%C3%A5rden/milj%C3%B6teknik/2K3OUH6I5YGC3",
+    "hemsida": "https://polyproject.se",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Polyproject's environmental policy states they work for improved environmental conditions and minimize emissions."
+      ],
+      "source": "https://polyproject.com/miljopolicy/",
+      "checkedAt": "2026-04-18T13:31:25Z"
+    }
+  },
+  {
+    "name": "PM51 PM52",
+    "lat": 58.639941,
+    "lng": 16.261325,
+    "city": "Norrköping",
+    "adress": "Östra Bravikenvägen",
+    "postnr": "60365",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:26Z"
+    }
+  },
+  {
+    "name": "Fiskeby kraftverk",
+    "lat": 58.593861,
+    "lng": 16.121465,
+    "city": "Norrköping",
+    "adress": "Vattenverksvägen",
+    "postnr": "60210",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:28Z"
+    }
+  },
+  {
+    "name": "Strömsfors industriområde",
+    "lat": 58.68601,
+    "lng": 16.341344,
+    "city": "Norrköping",
+    "adress": "Hagalundsvägen",
+    "postnr": "61833",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:29Z"
+    }
+  },
+  {
+    "name": "Columbia Elektronik",
+    "lat": 58.671842,
+    "lng": 16.36331,
+    "city": "Norrköping",
+    "adress": "Sjöviksvägen",
+    "postnr": "61830",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Mats Göran Klarholm",
+    "org_nr": "556174-9317",
+    "allabolag_url": "https://www.allabolag.se/foretag/columbia-elektronik-aktiebolag/kolm%C3%A5rden/elektronik-legotillverkning/2JZBL8LI5YDXQ",
+    "hemsida": "https://www.columbia.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.columbia.se/about/#sustainability",
+      "checkedAt": "2026-04-18T13:31:35Z"
+    }
+  },
+  {
+    "name": "DSV",
+    "lat": 58.608148,
+    "lng": 16.224857,
+    "city": "Norrköping",
+    "adress": "Hanholmsvägen 50",
+    "postnr": "60238",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Tomas Erik Johansson",
+    "org_nr": "556250-3630",
+    "allabolag_url": "https://www.allabolag.se/foretag/dsv-road-ab/g%C3%B6teborg/transportf%C3%B6rmedling/2JZRR9QI5YI2J",
+    "hemsida": "https://www.dsv.com",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "We strive to reduce our environmental impact by testing and scaling proven solutions.",
+        "As a global leader, we play an important role in addressing the challenges of reduced carbon emissions in the transport and logistics sector."
+      ],
+      "source": "https://www.dsv.com/sv-se/hallbarhet-esg",
+      "checkedAt": "2026-04-18T13:31:40Z"
+    }
+  },
+  {
+    "name": "PM53",
+    "lat": 58.641419,
+    "lng": 16.262418,
+    "city": "Norrköping",
+    "adress": "Östra Bravikenvägen",
+    "postnr": "60365",
+    "typ": "industrilokal",
+    "bransch": "Innehavare Peter Christian Falksäter",
+    "org_nr": "",
+    "allabolag_url": "https://www.allabolag.se/foretag/pm63-charlottenberg/charlottenberg/h%C3%A4lsotj%C3%A4nster/7VJQ7FKSRI63IHB",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:42Z"
+    }
+  },
+  {
+    "name": "Loddby betong",
+    "lat": 58.503032,
+    "lng": 16.238365,
+    "city": "Norrköping",
+    "adress": "",
+    "postnr": "61492",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:43Z"
+    }
+  },
+  {
+    "name": "Rusta Lager",
+    "lat": 58.637983,
+    "lng": 16.216218,
+    "city": "Norrköping",
+    "adress": "Logistikvägen",
+    "postnr": "60238",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:31:44Z"
+    }
+  },
+  {
+    "name": "Händelöverket",
+    "lat": 58.620648,
+    "lng": 16.23194,
+    "city": "Norrköping",
+    "adress": "Oceangatan",
+    "postnr": "60365",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No sustainability content found on the website or within recent news."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPX2ExTm1pcXBtbWp6QUwzMWpCQlE5Ny0wcVN5akVhZUVYWTR5U3A2Z2lNbllyaHpFeV9SUlFIZWtQUzlDZUdmWURjOU14dmNabndRczQ2WlU4M0l1OHRIQ1VKSFktbGpmNHFCUE8xWWpaeW9ZazktQTBLZy1LRk00MVB3R0hnaDg2QWtZcDJ3aDhMX2lJM01jWHVoUExKdmFxVjNjbEZiYw?oc=5",
+      "checkedAt": "2026-04-18T13:31:49Z"
+    }
+  },
+  {
+    "name": "Postnord",
+    "lat": 58.646627,
+    "lng": 16.20855,
+    "city": "Norrköping",
+    "adress": "Speditionsvägen",
+    "postnr": "61690",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Peter Davids Gisel-Ekdahl",
+    "org_nr": "556711-5695",
+    "allabolag_url": "https://www.allabolag.se/foretag/postnord-sverige-ab/solna/kurirverksamhet/2K2ILYNI5YFN0",
+    "hemsida": "",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "PostNord is recognized as the most sustainable logistics company again.",
+        "Postnord is investing billions in 'sustainable terminals'."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPUGZoX1R3UmdsblF0bzM0X1NvdzNDdmhzU21OQm93eFZJaE1PaE9jVDFod2FldEhON0J4MktKOEJwaG0zZ3hqeGFLRkZtTnJqdG5mNHg4Wm5tSzZmR0JKc1RQMlFYWDU0eDlhNno4Y0NRRE5JT1VfS",
+      "checkedAt": "2026-04-18T13:31:55Z"
+    }
+  },
+  {
+    "name": "Rusta Lager",
+    "lat": 58.642092,
+    "lng": 16.213689,
+    "city": "Norrköping",
+    "adress": "Östra Bravikenvägen",
+    "postnr": "61690",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.rusta.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Hållbarhetsredovisningar I vår hållbarhetsredovisning kan du läsa mer om hur vi arbetar med hållbarhet i praktiken.",
+        "Som medlem i UN Global Compact åtar sig Rusta att arbeta utifrån ett antal riktlinjer ämnade att främja mänskliga rättigheter, arbetssätt och miljö- och hållbarhetsarbete."
+      ],
+      "source": "https://www.rusta.se/sv-se/hallbarhet-kvalitet",
+      "checkedAt": "2026-04-18T13:31:59Z"
+    }
+  },
+  {
+    "name": "Ingelsta Hetvattencentral",
+    "lat": 58.611723,
+    "lng": 16.171432,
+    "city": "Norrköping",
+    "adress": "Kiselgatan",
+    "postnr": "60119",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:00Z"
+    }
+  },
+  {
+    "name": "martin&servera",
+    "lat": 58.641225,
+    "lng": 16.171057,
+    "city": "Norrköping",
+    "adress": "Ströbogatan",
+    "postnr": "61634",
+    "typ": "lager",
+    "bransch": "Extern verkställande direktör Irene Waldemarson",
+    "org_nr": "559135-5549",
+    "allabolag_url": "https://www.allabolag.se/foretag/martin-servera-restauranghandel-ab/stockholm/livsmedel/2KGY5JXI5YFWD",
+    "hemsida": "https://www.martinservera.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.martinservera.se",
+      "checkedAt": "2026-04-18T13:32:02Z"
+    }
+  },
+  {
+    "name": "Köpetorps industriområde",
+    "lat": 58.413934,
+    "lng": 15.663745,
+    "city": "Linköping",
+    "adress": "Köpetorpsgatan 8",
+    "postnr": "58278",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:04Z"
+    }
+  },
+  {
+    "name": "Berggårdens vattenverk",
+    "lat": 58.420336,
+    "lng": 15.555569,
+    "city": "Linköping",
+    "adress": "Berggårdsvägen",
+    "postnr": "58437",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:05Z"
+    }
+  },
+  {
+    "name": "Östra Malmskogen industriområde",
+    "lat": 58.427084,
+    "lng": 15.707446,
+    "city": "Linköping",
+    "adress": "Linghemsvägen",
+    "postnr": "58272",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:06Z"
+    }
+  },
+  {
+    "name": "SGS Analytics",
+    "lat": 58.398239,
+    "lng": 15.57247,
+    "city": "Linköping",
+    "adress": "Olaus Magnus väg 27A",
+    "postnr": "58183",
+    "typ": "industrilokal",
+    "bransch": "Verkställande direktör Lars Mikael Löfdahl",
+    "org_nr": "556152-0916",
+    "allabolag_url": "https://www.allabolag.se/foretag/sgs-analytics-sweden-ab/link%C3%B6ping/teknisk-provning-och-analys/2JZ6P04I63IKV",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:08Z"
+    }
+  },
+  {
+    "name": "Tornby Teknikgård",
+    "lat": 58.429404,
+    "lng": 15.61193,
+    "city": "Linköping",
+    "adress": "Gottorpsgatan",
+    "postnr": "58277",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:09Z"
+    }
+  },
+  {
+    "name": "Odenfors Kraftstation",
+    "lat": 58.446533,
+    "lng": 15.466534,
+    "city": "Linköping",
+    "adress": "",
+    "postnr": "58662",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:10Z"
+    }
+  },
+  {
+    "name": "Tannefors vattenkraftstation",
+    "lat": 58.400576,
+    "lng": 15.649985,
+    "city": "Linköping",
+    "adress": "Stationsgatan 2C",
+    "postnr": "58721",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:12Z"
+    }
+  },
+  {
+    "name": "Kallerstads industriområde",
+    "lat": 58.419331,
+    "lng": 15.638385,
+    "city": "Linköping",
+    "adress": "Åsbjörnsgatan 1",
+    "postnr": "58252",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:13Z"
+    }
+  },
+  {
+    "name": "Silon",
+    "lat": 58.437435,
+    "lng": 15.796133,
+    "city": "Linköping",
+    "adress": "Tellbovägen 32",
+    "postnr": "58564",
+    "typ": "lager",
+    "bransch": "Verkställande direktör Helen Margareta Öström",
+    "org_nr": "559314-2952",
+    "allabolag_url": "https://www.allabolag.se/foretag/silon-consulting-ab/sollentuna/f%C3%B6retagsutveckling/2KI0GQ0I5YEHU",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website or in recent news."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNUkxSZ0R5NFJjRGRpanlreFVKN3V0a2FKZzNrNjhfQlhYT2NnSmN3b2FwV1hVeGJPYnotOWE5TlZVNGx5MWl4MmUzaF9lcW53N01JTUpTWEExeTNjZkxwWldPb3ZBZ08zcl96aE9HcG",
+      "checkedAt": "2026-04-18T13:32:18Z"
+    }
+  },
+  {
+    "name": "Fergas AB",
+    "lat": 58.418151,
+    "lng": 15.665531,
+    "city": "Linköping",
+    "adress": "Harstenagatan 2",
+    "postnr": "582 78",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Patrik Jonny Jonsson",
+    "org_nr": "556433-6690",
+    "allabolag_url": "https://www.allabolag.se/foretag/fergas-north-europe-ab/link%C3%B6ping/maskinf%C3%B6rn%C3%B6denheter/2K0V1O2I5YG68",
+    "hemsida": "https://www.fergas.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:32:21Z"
+    }
+  },
+  {
+    "name": "Tekniska verken",
+    "lat": 58.42035,
+    "lng": 15.633906,
+    "city": "Linköping",
+    "adress": "Brogatan 1",
+    "postnr": "58252",
+    "typ": "industrilokal",
+    "bransch": "Extern verkställande direktör Bror Conny Udd",
+    "org_nr": "556004-9727",
+    "allabolag_url": "https://www.allabolag.se/foretag/tekniska-verken-i-link%C3%B6ping-ab-publ/link%C3%B6ping/fj%C3%A4rrv%C3%A4rme/2JYB5TRI63IG2",
+    "hemsida": "https://www.tekniskaverken.se",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Vår verksamhet bygger på att skapa långsiktigt hållbara lösningar för ett väl fungerande samhälle med minsta möjliga belastning på miljön.",
+        "Tekniska verken satsar på säkert och hållbart datacenter i Mjärdevi."
+      ],
+      "source": "https://www.tekniskaverken.se/miljo/",
+      "checkedAt": "2026-04-18T13:32:26Z"
+    }
+  },
+  {
+    "name": "rallye.se garage",
+    "lat": 58.419292,
+    "lng": 15.602117,
+    "city": "Linköping",
+    "adress": "Slöjdgatan 31",
+    "postnr": "58231",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:27Z"
+    }
+  },
+  {
+    "name": "Rörvik Timber",
+    "lat": 58.440615,
+    "lng": 15.7763,
+    "city": "Linköping",
+    "adress": "E 1064",
+    "postnr": "58564",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "http://www.rtimber.se/sv/om-rorvik/bolagsinformation/linghem-ab/",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "http://www.rtimber.se/sv/om-rorvik/bolagsinformation/linghem-ab/",
+      "checkedAt": "2026-04-18T13:32:30Z"
+    }
+  },
+  {
+    "name": "Tannefors Center",
+    "lat": 58.408232,
+    "lng": 15.648371,
+    "city": "Linköping",
+    "adress": "Gamla Tanneforsvägen 17",
+    "postnr": "58254",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:31Z"
+    }
+  },
+  {
+    "name": "Armaturen",
+    "lat": 58.406058,
+    "lng": 15.650086,
+    "city": "Linköping",
+    "adress": "Gelbgjutaregatan 2",
+    "postnr": "58187",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNTlBMa095X0NGUEVyeHRrY0pfUHhHZDFvdzRxdVZjcVVjcVZqR3RER3U1cXd2b1VLR1oza1k2OE1KOFhrRVlsY29MOE04amxWbnp1aEdmRnV4aEZKR05ZXzVXS21RV0FnQVV3cnZ4dTNGbHdSN29XeF85NmdQMjVzNl90MzkzMVVUZndXcm1DdU9HNnlxVktPQ1RnRFBxYmEySm9sZU1jdDYtSXJNWGRSTDlZVTRtVk1VaU9tMTZjVUk4eUtJeFR4MVZkWDZEYjA0NHBxS1pEaVEzZw?oc=5",
+      "checkedAt": "2026-04-18T13:32:34Z"
+    }
+  },
+  {
+    "name": "TitanX",
+    "lat": 58.427506,
+    "lng": 15.606288,
+    "city": "Linköping",
+    "adress": "Roxtorpsgatan 13",
+    "postnr": "58277",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.werksta.se/",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "The site mentions they are actively working to minimize their environmental impact and ensure sustainable development."
+      ],
+      "source": "https://www.werksta.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:32:40Z"
+    }
+  },
+  {
+    "name": "TK Traktordelar",
+    "lat": 58.418094,
+    "lng": 15.767687,
+    "city": "Linköping",
+    "adress": "E 757",
+    "postnr": "58565",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.traktordelar.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:32:42Z"
+    }
+  },
+  {
+    "name": "ServiStore",
+    "lat": 58.400717,
+    "lng": 15.549273,
+    "city": "Linköping",
+    "adress": "Jägarvallsvägen 4",
+    "postnr": "584 22",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://servistore.se/sv/anlaggningar/linkoping",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://servistore.se/sv/anlaggningar/linkoping",
+      "checkedAt": "2026-04-18T13:32:49Z"
+    }
+  },
+  {
+    "name": "Svartåfors kraftstation",
+    "lat": 58.45119,
+    "lng": 15.49205,
+    "city": "Linköping",
+    "adress": "",
+    "postnr": "58577",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:50Z"
+    }
+  },
+  {
+    "name": "Shurgard Self-Storage",
+    "lat": 58.419912,
+    "lng": 15.594993,
+    "city": "Linköping",
+    "adress": "Lärlingsgatan 6",
+    "postnr": "582 39",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.shurgard.com/sv-se/hyra-forrad/ostergotland/linkoping",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Skydda miljön med Shurgard"
+      ],
+      "source": "https://www.shurgard.com/sv-se/vart-foretag/hallbarhet",
+      "checkedAt": "2026-04-18T13:32:54Z"
+    }
+  },
+  {
+    "name": "Mottagningsstation M11",
+    "lat": 58.396518,
+    "lng": 15.620627,
+    "city": "Linköping",
+    "adress": "Garnisonsvägen",
+    "postnr": "58751",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:32:56Z"
+    }
+  },
+  {
+    "name": "Svensk Biogas i Linköping",
+    "lat": 58.430504,
+    "lng": 15.635431,
+    "city": "Linköping",
+    "adress": "Ullevileden",
+    "postnr": "58221",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.svenskbiogas.se/",
+    "sustainability": {
+      "score": 40,
+      "category": "mentioned",
+      "evidence": [
+        "Minska era koldioxidutsläpp med upp till 95 % med det förnybara bränslet flytande biogas, LBG.",
+        "Biogas är, till skillnad från bensin och diesel, ett förnybart drivmedel som ingår i naturens kretslopp."
+      ],
+      "source": "https://www.svenskbiogas.se/biogas-miljo/",
+      "checkedAt": "2026-04-18T13:33:02Z"
+    }
+  },
+  {
+    "name": "Axfood Snabbgross",
+    "lat": 58.427438,
+    "lng": 15.599874,
+    "city": "Linköping",
+    "adress": "Attorpsgatan 6A",
+    "postnr": "58273",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.snabbgross.se/",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "Fasande ut burhönsägg för ett mer etiskt och miljövänligt alternativ.",
+        "Erbjudande om endast ekologiskt odlade bananer i sortimentet.",
+        "Konceptet 'Svinntorget' för minskat matsvinn."
+      ],
+      "source": "https://www.snabbgross.se/hallbarhet",
+      "checkedAt": "2026-04-18T13:33:07Z"
+    }
+  },
+  {
+    "name": "Beyond Gravity",
+    "lat": 58.4122,
+    "lng": 15.6781,
+    "city": "Linköping",
+    "adress": "Pilotgatan",
+    "postnr": "58725",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.beyondgravity.com",
+    "sustainability": {
+      "score": 15,
+      "category": "mentioned",
+      "evidence": [
+        "Sustainability topic surfaces in marketing but lacks concrete actions or numeric targets."
+      ],
+      "source": "https://www.beyondgravity.com/en/sustainability",
+      "checkedAt": "2026-04-18T13:33:13Z"
+    }
+  },
+  {
+    "name": "Vreta kloster bryggeri",
+    "lat": 58.489813,
+    "lng": 15.501593,
+    "city": "Linköping",
+    "adress": "Blåsvädersgatan 7",
+    "postnr": "585 73",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website or in news articles."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQblhxdmQ1OENoWW1mU2Z1a0pRcGFYdV8wMUFNNmUwWjFPWDB3V1R2UmJiQjBBN0ItYmtLY0RrNXhwYmZWUkVzMXllVU1rYzBLcW9STjlLcXAtc3BiOHpfUGRpQlpISWdteFl3d3c0WkptTTBwcnA2QTY5VWhzcWplUFRuSUdoVXJheGR2bXQxNnNSM2dQUlNtY0RKbm9xdHFQczliQlpTTE5GMGVmbFdxcGV1djhuZWdNX3NMRFVscDVqeGx1UDlBMDdRQzBjYl9UUEY3YVVIRkNTclZCNXdQbDJ0NG9BV1NS?oc=5",
+      "checkedAt": "2026-04-18T13:33:16Z"
+    }
+  },
+  {
+    "name": "Salam livs lager",
+    "lat": 58.392115,
+    "lng": 15.706786,
+    "city": "Linköping",
+    "adress": "Landerydsvägen",
+    "postnr": "58941",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:17Z"
+    }
+  },
+  {
+    "name": "Posti",
+    "lat": 57.684134,
+    "lng": 14.155205,
+    "city": "Jönköping",
+    "adress": "Möbelvägen 21",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.posti.se",
+    "sustainability": {
+      "score": 75,
+      "category": "active",
+      "evidence": [
+        "Posti delivers over 10 million fossil-free packages per year in Finland.",
+        "They committed to transporting all items fossil-free by 2030.",
+        "Posti became the world's first carbon-neutral postal service in 2011."
+      ],
+      "source": "https://www.posti.se/for-foretag/vara-tjanster/skicka-paket",
+      "checkedAt": "2026-04-18T13:33:22Z"
+    }
+  },
+  {
+    "name": "Electrolux",
+    "lat": 57.686258,
+    "lng": 14.157293,
+    "city": "Jönköping",
+    "adress": "Spisvägen 6",
+    "postnr": "55650",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Electrolux Group Sustainability Report 2023 mentions phasing out high global warming gases from 97% of products with refrigerants.",
+        "Electrolux Group launches industry-leading targets in their latest sustainability reporting."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNOVF2V09ZZ2N3aFdTcUhrXzdrTFhfbFZfTEdtMlVoMGR3LXFsdVF4ZFU0WDVBMFhpbHlWSFVpWUtFaEZuSXVhYkF5dmZXVDlOcy1BNmc1WTZscmUxQ",
+      "checkedAt": "2026-04-18T13:33:28Z"
+    }
+  },
+  {
+    "name": "IKEA Lager",
+    "lat": 57.685133,
+    "lng": 14.147336,
+    "city": "Jönköping",
+    "adress": "Möbelvägen 14",
+    "postnr": "55652",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.ikea.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Offer tips for conscious choices at home, such as saving water and energy.",
+        "Suggests making sustainable food choices and reducing waste."
+      ],
+      "source": "https://www.ikea.com/se/sv/ideas/tips-for-more-sustainable-living/",
+      "checkedAt": "2026-04-18T13:33:37Z"
+    }
+  },
+  {
+    "name": "DB Schenker",
+    "lat": 57.750437,
+    "lng": 14.166508,
+    "city": "Jönköping",
+    "adress": "Industrigatan 19",
+    "postnr": "55302",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTV9uT0s5YXAya3cyZDh3VzljLWZXSEtZdDZLdl8wS1ZqMGFVM1NaZUx6eHREVjV6QTlSTVJnY21XWXYxenRNbmVfeXlIa05uSGFOdTd4eVFfLVJKeHR3OUZmNUJFaDZyZ2h5ek1sWUVrZzkwclFwNWdnRTJxZlFqa0cyMTBFTjhpS1FvdUhR?oc=5",
+      "checkedAt": "2026-04-18T13:33:39Z"
+    }
+  },
+  {
+    "name": "L&L Distribution AB",
+    "lat": 57.752399,
+    "lng": 14.165642,
+    "city": "Jönköping",
+    "adress": "Kabelvägen 7",
+    "postnr": "55302",
+    "typ": "distributionscenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:41Z"
+    }
+  },
+  {
+    "name": "Hedenstorp norra",
+    "lat": 57.769341,
+    "lng": 14.092048,
+    "city": "Jönköping",
+    "adress": "Västersjövägen",
+    "postnr": "55593",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:42Z"
+    }
+  },
+  {
+    "name": "Hedenstorp södra",
+    "lat": 57.766171,
+    "lng": 14.088358,
+    "city": "Jönköping",
+    "adress": "Mogölsvägen 11",
+    "postnr": "55593",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:43Z"
+    }
+  },
+  {
+    "name": "Posti",
+    "lat": 57.683347,
+    "lng": 14.159884,
+    "city": "Jönköping",
+    "adress": "Möbelvägen 23",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.posti.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Posti delivers over 10 million fossil-free packages per year in Finland, with a commitment to transport everything fossil-free by 2030.",
+        "Posti became the world's first carbon-neutral postal service in 2011."
+      ],
+      "source": "https://www.posti.se/for-foretag/vara-tjanster/skicka-paket",
+      "checkedAt": "2026-04-18T13:33:47Z"
+    }
+  },
+  {
+    "name": "MOBIS",
+    "lat": 57.692984,
+    "lng": 14.144632,
+    "city": "Jönköping",
+    "adress": "Logistikvägen 1",
+    "postnr": "55652",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:48Z"
+    }
+  },
+  {
+    "name": "Gripen Wheels",
+    "lat": 57.694998,
+    "lng": 14.143351,
+    "city": "Jönköping",
+    "adress": "Logistikvägen 2",
+    "postnr": "55652",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.gripenwheels.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.gripenwheels.com",
+      "checkedAt": "2026-04-18T13:33:51Z"
+    }
+  },
+  {
+    "name": "Petcare",
+    "lat": 57.694338,
+    "lng": 14.139678,
+    "city": "Jönköping",
+    "adress": "Logistikvägen 4",
+    "postnr": "55652",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:52Z"
+    }
+  },
+  {
+    "name": "Huskvarna Härdverkstad",
+    "lat": 57.783913,
+    "lng": 14.314672,
+    "city": "Jönköping",
+    "adress": "Hakarpsvägen 123 D",
+    "postnr": "56140",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:54Z"
+    }
+  },
+  {
+    "name": "Albins Krom",
+    "lat": 57.758731,
+    "lng": 14.143721,
+    "city": "Jönköping",
+    "adress": "Kindgrensgatan 1",
+    "postnr": "55474",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "http://www.albinskrom.se/",
+    "sustainability": {
+      "score": 10,
+      "category": "mentioned",
+      "evidence": [
+        "Strävar ständigt efter att ligga i framkant sett till miljöaspekten."
+      ],
+      "source": "http://www.albinskrom.se/milj",
+      "checkedAt": "2026-04-18T13:33:57Z"
+    }
+  },
+  {
+    "name": "Haga Industriområde",
+    "lat": 57.756881,
+    "lng": 14.142023,
+    "city": "Jönköping",
+    "adress": "Kindgrensgatan 6",
+    "postnr": "55474",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:33:58Z"
+    }
+  },
+  {
+    "name": "DHL Freight",
+    "lat": 57.738177,
+    "lng": 14.165508,
+    "city": "Jönköping",
+    "adress": "Verktygsvägen 19",
+    "postnr": "55614",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "DHL Freight reducerar CO2-utsläpp med 54% per tonkm",
+        "Minska alla logistikrelaterade utsläpp till noll"
+      ],
+      "source": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdGRsczFncnd3cTEzbk9NY1JnWkFzMGFCckVETU9acmFkdTBxejVJOF81aEJzVWtLbHNwb050aFAxRnRyTWR5RmhmTFFJaDQ3Um9uLVYxLUoyMk5fT2Y1RmdaTEkzelFobnAwOVBPYXRQMzFvWW1LRVI",
+      "checkedAt": "2026-04-18T13:34:03Z"
+    }
+  },
+  {
+    "name": "Arla",
+    "lat": 57.740493,
+    "lng": 14.164845,
+    "city": "Jönköping",
+    "adress": "Verktygsvägen 21",
+    "postnr": "55614",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.arla.se",
+    "sustainability": {
+      "score": 65,
+      "category": "active",
+      "evidence": [
+        "Goal to reduce greenhouse gas emissions from production by 63% by 2030.",
+        "Own transport operations in Sweden have been fossil-free since 2018.",
+        "Certificates of complete recyclability of packaging by 2025."
+      ],
+      "source": "https://www.arla.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:34:20Z"
+    }
+  },
+  {
+    "name": "XL-BYGG Edvardssons",
+    "lat": 57.887921,
+    "lng": 14.360471,
+    "city": "Jönköping",
+    "adress": "Larssons väg 3",
+    "postnr": "56191",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:22Z"
+    }
+  },
+  {
+    "name": "Postnord Paketterminal Torsvik",
+    "lat": 57.67568,
+    "lng": 14.158953,
+    "city": "Jönköping",
+    "adress": "Stolsvägen 1",
+    "postnr": "55652",
+    "typ": "distributionscenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:23Z"
+    }
+  },
+  {
+    "name": "Bring Express",
+    "lat": 57.673587,
+    "lng": 14.160953,
+    "city": "Jönköping",
+    "adress": "Bordsvägen 3",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.bring.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Vi levererar med fossilfria drivmedel till runt 6 miljoner svenskar.",
+        "Vårt mål är tydligt: helt elektriska paketleveranser med bilar upp till 4,25 ton i hela Sverige till 2027."
+      ],
+      "source": "https://www.bring.se/miljo",
+      "checkedAt": "2026-04-18T13:34:27Z"
+    }
+  },
+  {
+    "name": "Ekmans Jönköping",
+    "lat": 57.688619,
+    "lng": 14.164601,
+    "city": "Jönköping",
+    "adress": "Momarken 3",
+    "postnr": "55650",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:28Z"
+    }
+  },
+  {
+    "name": "Vuab",
+    "lat": 57.690899,
+    "lng": 14.152069,
+    "city": "Jönköping",
+    "adress": "Alfavägen 2",
+    "postnr": "55650",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQMFNLUDZHc2xobkdBMTVSRHkzUVFBbTNLR2FJQ2J1ZWd2RlVoWU9DdUgzZXB5cmlLOVdBTlEyTmt6M3ZuRTM2SDlhZWk3ei1JVE1aOHBRUkxEdTFjdDdEQVJRMGpxRzM0ZkFPQU04eDZSd3N1YnczS0F4akdPTjUtR1BJVmlxSDFSZE5hOXhBZ0lMSzMwbmdjcWxSNFdUVDNHckRnN1lNY2pGNzExdmw2Q0RKT3haOFNYSUxVYUhvNUFrMGVrblFPTG5zeVlYaXBnbWdfWW1hd2VMYlU?oc=5",
+      "checkedAt": "2026-04-18T13:34:30Z"
+    }
+  },
+  {
+    "name": "Bubs Godis",
+    "lat": 57.69172,
+    "lng": 14.148986,
+    "city": "Jönköping",
+    "adress": "Betavägen 4",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:31Z"
+    }
+  },
+  {
+    "name": "DB Scehnker",
+    "lat": 57.749249,
+    "lng": 14.169973,
+    "city": "Jönköping",
+    "adress": "Skruvgatan 1",
+    "postnr": "55302",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:33Z"
+    }
+  },
+  {
+    "name": "Däckia Jönköping",
+    "lat": 57.756347,
+    "lng": 14.162156,
+    "city": "Jönköping",
+    "adress": "Industrigatan 12",
+    "postnr": "55302",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:34Z"
+    }
+  },
+  {
+    "name": "Tenhults Möbler Lager",
+    "lat": 57.701205,
+    "lng": 14.329089,
+    "city": "Jönköping",
+    "adress": "Centrumvägen",
+    "postnr": "56029",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.tenhultsmobler.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the company website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:34:37Z"
+    }
+  },
+  {
+    "name": "Ebbes kraftstation",
+    "lat": 57.785564,
+    "lng": 14.293615,
+    "city": "Jönköping",
+    "adress": "Ådalsvägen",
+    "postnr": "56141",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:38Z"
+    }
+  },
+  {
+    "name": "Danish Crown",
+    "lat": 57.696611,
+    "lng": 14.137001,
+    "city": "Jönköping",
+    "adress": "Barnarpsvägen 102",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.danishcrown.se",
+    "sustainability": {
+      "score": 25,
+      "category": "mentioned",
+      "evidence": [
+        "Danish Crown focuses on sustainability as part of its branding and packaging initiatives."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNbE4taWhHcU41QUUyMmxwZHI0c2VpYTlYT0tyaXc0aE9mRjdScXE2VUVuLWt6NW9Za1pOX1M1czJ1dXJrTThKLTdlSVgwaVZKb0pkcUpDbThoMmlWaEdmYWd4b3Z3M0d5MzVPbDRYT3lJWUpfQTVXYVVFT1NnMklWTDg0YmtCZlhoVHNmQUYyNU1OdGFrUzc0bHNUNUMyaEl4NHc0VG8wdnRjUHFzeEE5U3lHR25fS0NBaEE2cDczSU5lS20ya2RWN21OVEM4ZXVTc3VKSEVZMVBiY3o4a0hVU2YwaktyMkt1THE1MlBvU21YS1NGVlViM3JxVEZ1S0xIRXY1bg?oc=5",
+      "checkedAt": "2026-04-18T13:34:46Z"
+    }
+  },
+  {
+    "name": "Hobby Fritid",
+    "lat": 57.70587,
+    "lng": 14.317501,
+    "city": "Jönköping",
+    "adress": "Mjälarydsvägen",
+    "postnr": "56029",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.hobbyfritid.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T13:34:48Z"
+    }
+  },
+  {
+    "name": "Haga Galvanisering",
+    "lat": 57.759476,
+    "lng": 14.140297,
+    "city": "Jönköping",
+    "adress": "Hagaleden 35",
+    "postnr": "55474",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:50Z"
+    }
+  },
+  {
+    "name": "V-TAB",
+    "lat": 57.70115,
+    "lng": 14.116097,
+    "city": "Jönköping",
+    "adress": "Hammarvägen 39",
+    "postnr": "56232",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:34:51Z"
+    }
+  },
+  {
+    "name": "Habil AB",
+    "lat": 57.784088,
+    "lng": 14.230031,
+    "city": "Jönköping",
+    "adress": "Sankt Göransvägen",
+    "postnr": "55454",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://habil.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "habil.se",
+      "checkedAt": "2026-04-18T13:34:53Z"
+    }
+  },
+  {
+    "name": "Dagab",
+    "lat": 57.697987,
+    "lng": 14.138289,
+    "city": "Jönköping",
+    "adress": "Barnarpsvägen 100",
+    "postnr": "56232",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.dagab.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Dagab's transport fleet is already using only fossil-free fuels.",
+        "Dagab is involved in Axfood's ambitious sustainability goals.",
+        "Continual development of their assortment with more organic, vegetarian, and certified products."
+      ],
+      "source": "https://www.dagab.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:34:58Z"
+    }
+  },
+  {
+    "name": "Stena Recycling AB",
+    "lat": 57.676646,
+    "lng": 14.186927,
+    "city": "Jönköping",
+    "adress": "Lovsjövägen 41",
+    "postnr": "555 92",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No sustainability content found on the website or through recent news."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBIb2djX25Md0MtTUhFM3lRVS1wcFdOVGI3MUM2dVp6UHhCQlNQNTUyTVV0Y0ZqaXhORVp2Z0oyNnpTWkVZaGZWbjl6M1ZoQkZzRmdQMnA1cHRrLXp4cTNESWpWXzhPdUlzRDllZ3BidlNLTnNrREs0MUZ",
+      "checkedAt": "2026-04-18T13:35:03Z"
+    }
+  },
+  {
+    "name": "Tabergs Åkeri",
+    "lat": 57.683213,
+    "lng": 14.122855,
+    "city": "Jönköping",
+    "adress": "Målövägen 8",
+    "postnr": "56233",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:05Z"
+    }
+  },
+  {
+    "name": "Hedin Bil",
+    "lat": 57.774608,
+    "lng": 14.21299,
+    "city": "Jönköping",
+    "adress": "Bataljonsgatan",
+    "postnr": "55453",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.hedinbil.se",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "Hedin Automotive holds ISO 14001 certification for its environmental management.",
+        "The company aims to minimize its environmental impact as part of its quality and environmental policy."
+      ],
+      "source": "https://www.hedinbil.se/om-hedin-automotive/kvalitets-miljopolicy",
+      "checkedAt": "2026-04-18T13:35:09Z"
+    }
+  },
+  {
+    "name": "Lyreco",
+    "lat": 57.865972,
+    "lng": 14.130187,
+    "city": "Jönköping",
+    "adress": "Sjöåkravägen 27",
+    "postnr": "56434",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.lyreco.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.lyreco.se/web/ePortal/ctrl?action=catalogue&spec=setCatalogue&catalogue_ri=5035204&showCatalogsPopup=true",
+      "checkedAt": "2026-04-18T13:35:13Z"
+    }
+  },
+  {
+    "name": "Edeskvarna kraftstation",
+    "lat": 57.871809,
+    "lng": 14.273933,
+    "city": "Jönköping",
+    "adress": "E 4",
+    "postnr": "56146",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:15Z"
+    }
+  },
+  {
+    "name": "Beijers Bygg",
+    "lat": 57.760669,
+    "lng": 14.161092,
+    "city": "Jönköping",
+    "adress": "Materialvägen",
+    "postnr": "55302",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:16Z"
+    }
+  },
+  {
+    "name": "Wettersol AB",
+    "lat": 57.869,
+    "lng": 14.113381,
+    "city": "Jönköping",
+    "adress": "Tallvägen 4",
+    "postnr": "563 35",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://wettersol.se",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Website emphasizes the benefits of solar energy in reducing climate impact and costs for businesses and residential associations."
+      ],
+      "source": "https://www.wettersol.se/foretag/",
+      "checkedAt": "2026-04-18T13:35:23Z"
+    }
+  },
+  {
+    "name": "Thunderful",
+    "lat": 57.68666,
+    "lng": 14.15364,
+    "city": "Jönköping",
+    "adress": "Möbelvägen",
+    "postnr": "55652",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.thunderfulgames.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPLWZIVllsR2FJLXEzNkFMZzNRM3VuOG5Cd0RYbTdTdmpUZ19takh1ZExHNGpLUXh3MnlqMjZDX3dFU2lqc3J3UUpEdV9VdXJWeFdCT1UzMC0tSEcwSTM4RUkyYS00c2NHYTctOTVTQW5nRVRhejhBOURLV19yWTlz",
+      "checkedAt": "2026-04-18T13:35:27Z"
+    }
+  },
+  {
+    "name": "M2",
+    "lat": 58.381682,
+    "lng": 13.856145,
+    "city": "Skövde",
+    "adress": "",
+    "postnr": "54136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "unknown",
+      "checkedAt": "2026-04-18T13:35:30Z"
+    }
+  },
+  {
+    "name": "F-Fabriken",
+    "lat": 58.379212,
+    "lng": 13.859573,
+    "city": "Skövde",
+    "adress": "",
+    "postnr": "54136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:32Z"
+    }
+  },
+  {
+    "name": "A-Fabriken",
+    "lat": 58.383848,
+    "lng": 13.85432,
+    "city": "Skövde",
+    "adress": "",
+    "postnr": "54136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:33Z"
+    }
+  },
+  {
+    "name": "M1",
+    "lat": 58.383097,
+    "lng": 13.856711,
+    "city": "Skövde",
+    "adress": "",
+    "postnr": "54136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:35Z"
+    }
+  },
+  {
+    "name": "Gjuteriet",
+    "lat": 58.385564,
+    "lng": 13.855937,
+    "city": "Skövde",
+    "adress": "John G. Grönvalls plats",
+    "postnr": "54137",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.gjuteriet.se",
+    "sustainability": {
+      "score": 10,
+      "category": "mentioned",
+      "evidence": [
+        "Pannkakslagg i gjutjärn vinnare av Formex Sustainability Award"
+      ],
+      "source": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQRUs0bkc5aWJoQm5VbTNIQ2RCbllKVHoxQndadWd5WGp1OXR0RzJiMmQ0NEJDRVMyRUNIUlBMcWZJb2E5R3dJWk1VMGZnZlQ3bzlxUXJZbTVEbDRnS0RXSWUzUUJlMDhRTTNhdTlxeGd0V",
+      "checkedAt": "2026-04-18T13:35:40Z"
+    }
+  },
+  {
+    "name": "D2",
+    "lat": 58.38574,
+    "lng": 13.850498,
+    "city": "Skövde",
+    "adress": "",
+    "postnr": "54136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:42Z"
+    }
+  },
+  {
+    "name": "Logent",
+    "lat": 58.382277,
+    "lng": 13.878048,
+    "city": "Skövde",
+    "adress": "Södra Aspelundsvägen 7",
+    "postnr": "54134",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.logent.se",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Hållbarhet är en del av vår övergripande strategi och avgör",
+        "Varje enskilt beslut som kan skapa mer hållbara logistiklösningar blir därför betydelsefullt för oss"
+      ],
+      "source": "https://logent.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:35:51Z"
+    }
+  },
+  {
+    "name": "Aspelund",
+    "lat": 58.396006,
+    "lng": 13.891232,
+    "city": "Skövde",
+    "adress": "Storängsvägen 22",
+    "postnr": "54134",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:52Z"
+    }
+  },
+  {
+    "name": "Poståkeriet",
+    "lat": 58.385807,
+    "lng": 13.875919,
+    "city": "Skövde",
+    "adress": "Bäckaskogsvägen 10",
+    "postnr": "54134",
+    "typ": "logistikcenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:35:53Z"
+    }
+  },
+  {
+    "name": "KosterFiskarn",
+    "lat": 58.386843,
+    "lng": 13.880825,
+    "city": "Skövde",
+    "adress": "Bäckaskogsvägen 3",
+    "postnr": "54134",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.kosterfiskarn.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.kosterfiskarn.se/",
+      "checkedAt": "2026-04-18T13:35:57Z"
+    }
+  },
+  {
+    "name": "Skövde Värmeverk",
+    "lat": 58.384352,
+    "lng": 13.884977,
+    "city": "Skövde",
+    "adress": "Energivägen",
+    "postnr": "54134",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website or in recent news."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQbEowWUNPY2ZBU2htOGZGSGhSUDMya0JrcDdlX1N0Q2lwdkU3NlpFcHNVS0VzQjIyMXVKY3N3bHZ6NVdieHJOQzJOOFpJaG52QW9fdWc5VHpkTkx0UUotOVprbUZfU0p",
+      "checkedAt": "2026-04-18T13:36:01Z"
+    }
+  },
+  {
+    "name": "Cementa",
+    "lat": 58.385233,
+    "lng": 13.826833,
+    "city": "Skövde",
+    "adress": "Skaravägen",
+    "postnr": "54152",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.cementa.se",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "ISO 14001 certification mentioned in their sustainability practices.",
+        "evoZero - world's first CCS-cement with near-zero emissions introduced.",
+        "Goal of reaching net zero by 2030."
+      ],
+      "source": "https://www.cementa.se/sv/hallbarhet",
+      "checkedAt": "2026-04-18T13:36:08Z"
+    }
+  },
+  {
+    "name": "Leax Arkivator",
+    "lat": 58.165996,
+    "lng": 13.54111,
+    "city": "Falköping",
+    "adress": "Göteborgsvägen 4",
+    "postnr": "52130",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:09Z"
+    }
+  },
+  {
+    "name": "Falköpings Mejeri",
+    "lat": 58.165306,
+    "lng": 13.546948,
+    "city": "Falköping",
+    "adress": "Frejagatan 6",
+    "postnr": "52143",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.falkopingsmejeri.se",
+    "sustainability": {
+      "score": 55,
+      "category": "active",
+      "evidence": [
+        "Falköpings Mejeri provides annual sustainability reports and mentions ecological production.",
+        "Their certification list includes BRC and ecological production."
+      ],
+      "source": "https://www.falkopingsmejeri.se/ekonomiska-rapporter",
+      "checkedAt": "2026-04-18T13:36:14Z"
+    }
+  },
+  {
+    "name": "Pellviks",
+    "lat": 58.148979,
+    "lng": 13.563553,
+    "city": "Falköping",
+    "adress": "Agnestadsgatan 2",
+    "postnr": "52140",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:15Z"
+    }
+  },
+  {
+    "name": "Falköpings Bokbinderi",
+    "lat": 58.172034,
+    "lng": 13.581552,
+    "city": "Falköping",
+    "adress": "Sikagårdsgatan 6",
+    "postnr": "521 34",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:16Z"
+    }
+  },
+  {
+    "name": "PR Slamsugning",
+    "lat": 58.1605,
+    "lng": 13.544103,
+    "city": "Falköping",
+    "adress": "Mossvägen 39",
+    "postnr": "521 30",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:18Z"
+    }
+  },
+  {
+    "name": "Falköpings Bildemontering",
+    "lat": 58.16322,
+    "lng": 13.542146,
+    "city": "Falköping",
+    "adress": "Mossvägen 38",
+    "postnr": "521 30",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:19Z"
+    }
+  },
+  {
+    "name": "Falköpings Tak",
+    "lat": 58.165602,
+    "lng": 13.543985,
+    "city": "Falköping",
+    "adress": "Mossvägen 21",
+    "postnr": "521 30",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:20Z"
+    }
+  },
+  {
+    "name": "Fonus kistfabrik",
+    "lat": 58.165319,
+    "lng": 13.576505,
+    "city": "Falköping",
+    "adress": "Midfalegatan",
+    "postnr": "52145",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:22Z"
+    }
+  },
+  {
+    "name": "Marjarpsverket",
+    "lat": 58.1848,
+    "lng": 13.573035,
+    "city": "Falköping",
+    "adress": "Energigatan 4",
+    "postnr": "52136",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:23Z"
+    }
+  },
+  {
+    "name": "C&D Snickeri",
+    "lat": 58.17962,
+    "lng": 13.568748,
+    "city": "Falköping",
+    "adress": "Sidvallsgatan 4",
+    "postnr": "521 36",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:24Z"
+    }
+  },
+  {
+    "name": "JB Villan",
+    "lat": 58.225473,
+    "lng": 13.565102,
+    "city": "Falköping",
+    "adress": "Solhemsvägen 4",
+    "postnr": "52174",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:25Z"
+    }
+  },
+  {
+    "name": "Arla",
+    "lat": 58.183016,
+    "lng": 13.575935,
+    "city": "Falköping",
+    "adress": "Energigatan 6",
+    "postnr": "52136",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.arla.se",
+    "sustainability": {
+      "score": 60,
+      "category": "active",
+      "evidence": [
+        "Arla aims for all packaging to be recyclable by 2025 and fossil-based plastic use to be zero by 2030.",
+        "Arla's own transport operations in Sweden have been fossil-free since 2018.",
+        "They plan to reduce greenhouse gas emissions from production by 63% by 2030, compared to 2015."
+      ],
+      "source": "https://www.arla.se/hallbarhet/",
+      "checkedAt": "2026-04-18T13:36:31Z"
+    }
+  },
+  {
+    "name": "Bronäs",
+    "lat": 57.799654,
+    "lng": 13.415367,
+    "city": "Ulricehamn",
+    "adress": "Tegelbruksgatan 7",
+    "postnr": "52344",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:32Z"
+    }
+  },
+  {
+    "name": "Vist",
+    "lat": 57.832261,
+    "lng": 13.423439,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 12",
+    "postnr": "52390",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.bolon.com/",
+    "sustainability": {
+      "score": 85,
+      "category": "active",
+      "evidence": [
+        "All products are climate neutral and contain 68% recycled material.",
+        "ISO 14001:2015 standard for environmental management is in place.",
+        "Sustainability reports for 2021, 2022, 2023, and 2024 are available."
+      ],
+      "source": "https://www.bolon.com/sv/hallbarhet",
+      "checkedAt": "2026-04-18T13:36:38Z"
+    }
+  },
+  {
+    "name": "AP&T Sweden AB",
+    "lat": 57.805438,
+    "lng": 13.458091,
+    "city": "Ulricehamn",
+    "adress": "Rönnåsgatan",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.aptgroup.com/",
+    "sustainability": {
+      "score": 25,
+      "category": "mentioned",
+      "evidence": [
+        "AP&T states that they continuously work to be at the forefront of process and technology development in order to improve safety, energy efficiency, and climate and environmental performance.",
+        "They believe that society needs to transition from unsustainable to sustainable practices."
+      ],
+      "source": "https://www.aptgroup.com/company/sustainability",
+      "checkedAt": "2026-04-18T13:36:43Z"
+    }
+  },
+  {
+    "name": "LK Pex",
+    "lat": 57.803699,
+    "lng": 13.456747,
+    "city": "Ulricehamn",
+    "adress": "Rönnåsgatan 4",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T13:36:44Z"
+    }
+  },
+  {
+    "name": "Wernersson Ost AB",
+    "lat": 57.831459,
+    "lng": 13.420779,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 5",
+    "postnr": "52390",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.wernerssonost.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:35Z"
+    }
+  },
+  {
+    "name": "Scand Trade Scandinavia AB",
+    "lat": 57.807179,
+    "lng": 13.404774,
+    "city": "Ulricehamn",
+    "adress": "Dalstigen 6",
+    "postnr": "52337",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://scantrade.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://scantrade.se/",
+      "checkedAt": "2026-04-18T12:21:37Z"
+    }
+  },
+  {
+    "name": "Vandewiele",
+    "lat": 57.808517,
+    "lng": 13.408523,
+    "city": "Ulricehamn",
+    "adress": "Karlsnäsvägen 7",
+    "postnr": "52337",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.iroab.com/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.iroab.com/",
+      "checkedAt": "2026-04-18T12:21:40Z"
+    }
+  },
+  {
+    "name": "Bergman & Beving Logistics",
+    "lat": 57.808219,
+    "lng": 13.413882,
+    "city": "Ulricehamn",
+    "adress": "Vistaforsvägen 3",
+    "postnr": "52337",
+    "typ": "logistikcenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:41Z"
+    }
+  },
+  {
+    "name": "Jobro Plåtkomponenter AB",
+    "lat": 57.809948,
+    "lng": 13.409043,
+    "city": "Ulricehamn",
+    "adress": "Karlsnäsvägen 9",
+    "postnr": "52337",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.jobro.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:43Z"
+    }
+  },
+  {
+    "name": "Viab Ulricehamn AB",
+    "lat": 57.802446,
+    "lng": 13.414382,
+    "city": "Ulricehamn",
+    "adress": "Bronäsgatan 10",
+    "postnr": "52337",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.viabplast.se/",
+    "sustainability": {
+      "score": 30,
+      "category": "mentioned",
+      "evidence": [
+        "Viab makes constant improvements to reduce emissions and minimize environmental impact."
+      ],
+      "source": "https://www.viabplast.se/om-viab/kvalitet/",
+      "checkedAt": "2026-04-18T12:21:47Z"
+    }
+  },
+  {
+    "name": "Craft of Scandinavia",
+    "lat": 57.83624,
+    "lng": 13.424704,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 24",
+    "postnr": "52390",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.craftofscandinavia.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:48Z"
+    }
+  },
+  {
+    "name": "Myhre Miljöprodukter",
+    "lat": 57.835721,
+    "lng": 13.421674,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 15",
+    "postnr": "52390",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:49Z"
+    }
+  },
+  {
+    "name": "Mastec Components AB",
+    "lat": 57.834113,
+    "lng": 13.421402,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 7",
+    "postnr": "52390",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.mastec.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:51Z"
+    }
+  },
+  {
+    "name": "Botek Systems AB",
+    "lat": 57.804284,
+    "lng": 13.463613,
+    "city": "Ulricehamn",
+    "adress": "Rönnåsgatan 5A",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.botek.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:21:52Z"
+    }
+  },
+  {
+    "name": "Emballator Ulricehamn",
+    "lat": 57.800135,
+    "lng": 13.446514,
+    "city": "Ulricehamn",
+    "adress": "Maskinvägen 10",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.emballator.com/",
+    "sustainability": {
+      "score": 40,
+      "category": "active",
+      "evidence": [
+        "By 2030, we will halve our climate footprint per revenue compared with 2021.",
+        "By 2045 we aim to be climate-neutral across the full value chain."
+      ],
+      "source": "https://www.emballator.com/en/sustainability",
+      "checkedAt": "2026-04-18T12:21:57Z"
+    }
+  },
+  {
+    "name": "Bogelack AB",
+    "lat": 57.800839,
+    "lng": 13.443532,
+    "city": "Ulricehamn",
+    "adress": "Hillaredsvägen 12",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.bogelack.se/",
+    "sustainability": {
+      "score": 70,
+      "category": "active",
+      "evidence": [
+        "Bogelack is ISO-14001 certified, indicating a commitment to environmental management.",
+        "The company emphasizes minimal resource and environmental impact in their operations."
+      ],
+      "source": "https://bogelack.se/index.php/startsida-2/",
+      "checkedAt": "2026-04-18T12:22:03Z"
+    }
+  },
+  {
+    "name": "Ulricehamns Fixturteknik AB",
+    "lat": 57.802246,
+    "lng": 13.441503,
+    "city": "Ulricehamn",
+    "adress": "Hillaredsvägen 8",
+    "postnr": "52338",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "http://www.fixturteknik.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "not applicable",
+      "checkedAt": "2026-04-18T12:22:05Z"
+    }
+  },
+  {
+    "name": "Engtex AB",
+    "lat": 57.838561,
+    "lng": 13.424368,
+    "city": "Ulricehamn",
+    "adress": "Industrivägen 32",
+    "postnr": "52390",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.engtex.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:22:07Z"
+    }
+  },
+  {
+    "name": "Lager 157 Logistics",
+    "lat": 57.801437,
+    "lng": 13.469315,
+    "city": "Ulricehamn",
+    "adress": "Rönnåsliden 1A",
+    "postnr": "52338",
+    "typ": "logistikcenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://lager157.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:22:08Z"
+    }
+  },
+  {
+    "name": "Logistikpartner AB",
+    "lat": 57.800886,
+    "lng": 13.462194,
+    "city": "Ulricehamn",
+    "adress": "Rönnåsliden 4",
+    "postnr": "52338",
+    "typ": "logistikcenter",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.logistikpartner.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:22:09Z"
+    }
+  },
+  {
+    "name": "Viared",
+    "lat": 57.69906,
+    "lng": 12.84091,
+    "city": "Borås",
+    "adress": "Viaredsvägen 18",
+    "postnr": "50464",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://viared.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdUlfWThIQ0FGbXZBRm5BVFN6Z2psamJSQnZhUUNIb1hIang3SmxydDhGbmNfUVJwQVJYUFhaZlR0UF9GLVh0RUh6YmxoSVhMa2Z3WmhBQ2EwM2JuZHMxYXlINldMSEdCdTFXWTZCNjI2aEYtWk85NW",
+      "checkedAt": "2026-04-18T12:22:14Z"
+    }
+  },
+  {
+    "name": "Mekonomen",
+    "lat": 57.716635,
+    "lng": 12.95889,
+    "city": "Borås",
+    "adress": "Enedalsgatan 11",
+    "postnr": "50452",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.mekonomen.se",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No sustainability content found on the website or in recent news that indicates concrete actions."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbWVSNkRaR2t0b1ZORnRNS0NXMTBPMHdyRF9lUmVZWFVmSEM0Q2ZCb2dtbUlxZFJURVVncHJlTzNTVzFwUFZSYVdDclo5UmdUN3ZIQ1RDOXc2eHdnanFaZzFGcVlXUWwxTHVsY0VNNTU2",
+      "checkedAt": "2026-04-18T12:22:18Z"
+    }
+  },
+  {
+    "name": "DB Schenker",
+    "lat": 57.689014,
+    "lng": 12.821809,
+    "city": "Borås",
+    "adress": "Ryssnäsgatan 15",
+    "postnr": "50464",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 25,
+      "category": "mentioned",
+      "evidence": [
+        "DB Schenker is noted for being completely fossil-free on Gotland with the help of Scania.",
+        "A news article questions if sustainability is just talk for DB Schenker."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOUXV5WnVPVjhVUG41eldYV0c4VHZzdHFraFotWXU2bWZqdExuZmE1UE5xWl9uWU1razBwbmJOZFdhbHNPeWRKYVEyaFM4VUI3QXA4ZkplbXBHQmZWY3FKWE82V3BWeXhMb2lHblFWbVh",
+      "checkedAt": "2026-04-18T12:22:27Z"
+    }
+  },
+  {
+    "name": "TK PAC",
+    "lat": 57.701707,
+    "lng": 12.841956,
+    "city": "Borås",
+    "adress": "Företagsgatan 62",
+    "postnr": "50464",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://tkpac.se/",
+    "sustainability": {
+      "score": 45,
+      "category": "mentioned",
+      "evidence": [
+        "100% of our cardboard waste is recycled and becomes new return cardboard.",
+        "We are certified according to FSC (Forest Stewardship Council)."
+      ],
+      "source": "https://tkpac.se/miljo-atervinning/",
+      "checkedAt": "2026-04-18T12:22:33Z"
+    }
+  },
+  {
+    "name": "Scania",
+    "lat": 57.709421,
+    "lng": 12.864801,
+    "city": "Borås",
+    "adress": "Viaredsvägen 6",
+    "postnr": "50464",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.scania.com",
+    "sustainability": {
+      "score": 10,
+      "category": "mentioned",
+      "evidence": [
+        "Scanias hållbarhetssuccé: 'Tvättat ur hela leverantörsbasen'.",
+        "Scanias hållbarhetsdilemma: 'Har tagit fram en ellastbil som alla hyllar men ingen vill köpa'."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSkxyRVhtNldPUnVsSHRSRXNqWDcxRXAxd3ZLUmI2YUNBN2lhd0RuemEzZE5Vd1FwQk5MSndZblZhR0lLZF9pUC1vRzh0Z1p0dDBQNFhnNkpEaTg1SUNIclZ6b25JaVJkcjN",
+      "checkedAt": "2026-04-18T12:22:37Z"
+    }
+  },
+  {
+    "name": "Hus 2",
+    "lat": 57.716002,
+    "lng": 12.890202,
+    "city": "Borås",
+    "adress": "Brinellgatan",
+    "postnr": "50462",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T12:22:40Z"
+    }
+  },
+  {
+    "name": "Hus 3",
+    "lat": 57.717085,
+    "lng": 12.892181,
+    "city": "Borås",
+    "adress": "Brinellgatan",
+    "postnr": "50470",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the company's website or in recent news."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T12:22:42Z"
+    }
+  },
+  {
+    "name": "Hus 24",
+    "lat": 57.715065,
+    "lng": 12.892654,
+    "city": "Borås",
+    "adress": "Brinellgatan",
+    "postnr": "50470",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://hus24.se",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:22:43Z"
+    }
+  },
+  {
+    "name": "ABC Vent",
+    "lat": 57.720479,
+    "lng": 12.879948,
+    "city": "Borås",
+    "adress": "Industrigatan 6",
+    "postnr": "504 62",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.abcvent.se/",
+    "sustainability": {
+      "score": 10,
+      "category": "mentioned",
+      "evidence": [
+        "Swegon mentions they offer 'helhetslösningar för inomhusklimat' related to sustainability, but lacks concrete actions or numeric targets."
+      ],
+      "source": "https://www.abcvent.se/sv/hallbarhet/",
+      "checkedAt": "2026-04-18T12:22:52Z"
+    }
+  },
+  {
+    "name": "Viared västra",
+    "lat": 57.688152,
+    "lng": 12.803704,
+    "city": "Borås",
+    "adress": "Prognosgatan",
+    "postnr": "51832",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:22:53Z"
+    }
+  },
+  {
+    "name": "Eton Systems",
+    "lat": 57.695402,
+    "lng": 13.04261,
+    "city": "Borås",
+    "adress": "",
+    "postnr": "50771",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.marksom.se",
+    "sustainability": {
+      "score": 50,
+      "category": "active",
+      "evidence": [
+        "Many of their products are certified with the Nordic Swan Ecolabel, indicating adherence to sustainability standards.",
+        "They focus their sustainability efforts on customer collaboration, thoughtful purchasing, and sustainable logistics solutions."
+      ],
+      "source": "https://www.marksom.se/hallbarhet/",
+      "checkedAt": "2026-04-18T12:22:59Z"
+    }
+  },
+  {
+    "name": "Brunngård",
+    "lat": 57.702117,
+    "lng": 12.829858,
+    "city": "Borås",
+    "adress": "Elementgatan 10A",
+    "postnr": "50464",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.brunngard.com",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Brunngård promotes reuse behavior and an active lifestyle."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMie0FVX3lxTE93N2FVd0l5Tkx3Mk5keFp3Z1NNbVVNTlYwYkNMUUlrNHkyRjk4N0MzUVZUUFJ0M2VLN3Z3THhhTVYwSTdRRUtNT0FSY016bFdNQUYzUkJBdDBYREtNVk1HYnRaSTJYRFZVc1BZdERfSEJfTGc0VEo4c2xPWQ?o",
+      "checkedAt": "2026-04-18T12:23:04Z"
+    }
+  },
+  {
+    "name": "Hus 38",
+    "lat": 57.71409,
+    "lng": 12.890438,
+    "city": "Borås",
+    "adress": "Brinellgatan",
+    "postnr": "50470",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:06Z"
+    }
+  },
+  {
+    "name": "Sobacken kraftvärmeverk",
+    "lat": 57.654416,
+    "lng": 12.909368,
+    "city": "Borås",
+    "adress": "41",
+    "postnr": "51591",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.borasem.se/webb/omborasenergiochmiljo/varaanlaggningar/energiochmiljocenter/kraftvarmeverket.4.1544b908169955a8b1a4a05d.html",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [],
+      "source": "https://www.borasem.se/",
+      "checkedAt": "2026-04-18T12:23:11Z"
+    }
+  },
+  {
+    "name": "NELLY.COM",
+    "lat": 57.750596,
+    "lng": 12.961714,
+    "city": "Borås",
+    "adress": "Bergkantsgatan 6",
+    "postnr": "506 49",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "https://news.google.com/rss/articles/CBMijgJBVV95cUxOVEh1X2x1dGE2WW01UnVIQUlNTjBYS2RVUWdFQnhGUEZ4bWZmXzY0SmY4WC1GbHI2RnNBX1QxZ1MwdzhUOHlh",
+      "checkedAt": "2026-04-18T12:23:15Z"
+    }
+  },
+  {
+    "name": "Rydboholms kraftverk",
+    "lat": 57.651336,
+    "lng": 12.888756,
+    "city": "Borås",
+    "adress": "Sven Eriksons väg 8B",
+    "postnr": "51570",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:16Z"
+    }
+  },
+  {
+    "name": "Byggmax",
+    "lat": 57.732177,
+    "lng": 12.92303,
+    "city": "Borås",
+    "adress": "Getängsvägen",
+    "postnr": "50468",
+    "typ": "lager",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 20,
+      "category": "mentioned",
+      "evidence": [
+        "Byggmax chooses sustainability over Black Friday discounts",
+        "Byggmax in Partille first with climate-friendly timber regulations"
+      ],
+      "source": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNS08yMFczTzhxaUlfeWRfNTU3WVJFT1ctNXRneXl6N3lGaFBoSUtCc2hOclRKbGJiSzM1NG40UzNERU9pdDh3M1ByQi1oRXVsbVdJcVJ4SF9Qb1p5N3docnA1U3lBSG5wZmZrbDI4UkJDcXlaUEl",
+      "checkedAt": "2026-04-18T12:23:20Z"
+    }
+  },
+  {
+    "name": "Dalsjöfors Kött",
+    "lat": 57.703574,
+    "lng": 13.067809,
+    "city": "Borås",
+    "adress": "",
+    "postnr": "51690",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://dalsjöfors.com",
+    "sustainability": {
+      "score": 0,
+      "category": "silent",
+      "evidence": [
+        "No meaningful sustainability content found on the website."
+      ],
+      "source": "N/A",
+      "checkedAt": "2026-04-18T12:23:23Z"
+    }
+  },
+  {
+    "name": "Borås Energi och Miljö - Värmecentral Viared 1",
+    "lat": 57.708905,
+    "lng": 12.851672,
+    "city": "Borås",
+    "adress": "Företagsgatan 36",
+    "postnr": "50464",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:24Z"
+    }
+  },
+  {
+    "name": "Sävelund",
+    "lat": 57.940559,
+    "lng": 12.563854,
+    "city": "Alingsås",
+    "adress": "Sävelundsgatan",
+    "postnr": "44138",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:26Z"
+    }
+  },
+  {
+    "name": "EDGE Emballage",
+    "lat": 57.981389,
+    "lng": 12.593704,
+    "city": "Alingsås",
+    "adress": "Vänersborgsvägen",
+    "postnr": "44192",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "https://www.edgeemballage.se/",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "https://www.edgeemballage.se/",
+      "checkedAt": "2026-04-18T12:23:27Z"
+    }
+  },
+  {
+    "name": "Hallorstorp",
+    "lat": 57.992639,
+    "lng": 12.652084,
+    "city": "Alingsås",
+    "adress": "",
+    "postnr": "44192",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:28Z"
+    }
+  },
+  {
+    "name": "Bolltorp",
+    "lat": 57.949921,
+    "lng": 12.530345,
+    "city": "Alingsås",
+    "adress": "",
+    "postnr": "44158",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:30Z"
+    }
+  },
+  {
+    "name": "Rubena Produkter AB",
+    "lat": 57.910126,
+    "lng": 12.51722,
+    "city": "Alingsås",
+    "adress": "Rothoffkärrsvägen 20",
+    "postnr": "44142",
+    "typ": "industrilokal",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:31Z"
+    }
+  },
+  {
+    "name": "Bussgaraget Alingsås",
+    "lat": 57.936439,
+    "lng": 12.572121,
+    "city": "Alingsås",
+    "adress": "Kastellgatan",
+    "postnr": "44138",
+    "typ": "industri",
+    "bransch": "",
+    "org_nr": "",
+    "allabolag_url": "",
+    "hemsida": "",
+    "sustainability": {
+      "score": 0,
+      "category": "unknown",
+      "evidence": [],
+      "source": "",
+      "checkedAt": "2026-04-18T12:23:32Z"
+    }
+  }
+]
